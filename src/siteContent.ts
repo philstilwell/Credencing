@@ -2512,4 +2512,382 @@ export const skillPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages];
+function applicationPage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/applications', title),
+    groupTitle: 'Applications',
+    groupPath: '/applications',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const applicationPages: ContentPage[] = [
+  applicationPage(
+    'Science',
+    'Science is organized credencing: a public system for making confidence answerable to evidence, method, and replication.',
+    [
+      {
+        heading: 'Why Science Needs Credencing',
+        body: [
+          'Science rarely moves by instant certainty. It moves through graded confidence, converging evidence, error correction, replication, and revision. A scientific claim may be plausible, supported, well-established, or still speculative. Those levels matter.',
+          'Credencing helps describe the difference between a single study, a robust finding, a theoretical framework, and a settled measurement. It also helps distinguish honest uncertainty from motivated resistance to inconvenient evidence.',
+        ],
+      },
+      {
+        heading: 'Where Science Goes Wrong',
+        body: [
+          'Scientific failure can be Deep: poor measurement, weak statistics, biased sampling, bad priors, or underpowered studies. It can also be Core: prestige protection, paradigm loyalty, publication incentives, or unwillingness to revise a favored theory.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'The repair is institutional as much as individual: preregistration, replication, adversarial collaboration, open data, prediction markets, error correction norms, and credit for revision. Science improves when it lowers the social cost of changing credence.',
+        ],
+      },
+    ],
+    [
+      'Science works through graded confidence, not instant certainty.',
+      'Failures can be methodological or motivational.',
+      'Healthy scientific institutions reward correction.',
+    ],
+    [
+      pagePath('/core-ideas', 'Calibration'),
+      pagePath('/case-studies', 'Biased Expert Cases'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+    ],
+  ),
+  applicationPage(
+    'Medicine',
+    'Medicine applies credencing under uncertainty, high stakes, imperfect tests, and emotionally loaded outcomes.',
+    [
+      {
+        heading: 'Probabilistic Care',
+        body: [
+          'Diagnosis, prognosis, screening, and treatment decisions are all credencing problems. Clinicians and patients must combine base rates, symptoms, test accuracy, patient history, clinical judgment, and risk tolerance.',
+          'The difficulty is that medical evidence is both statistical and personal. A population risk must be translated into a decision for this patient without pretending the statistics disappear.',
+        ],
+      },
+      {
+        heading: 'Where Medicine Goes Wrong',
+        body: [
+          'Deep failures include base-rate neglect, misunderstanding test accuracy, overgeneralizing from small studies, and confusing relative risk with absolute risk. Core failures include denial, fear inflation, defensive medicine, and attachment to a diagnosis that has become part of identity.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Good medical credencing separates probability from preference. It states the evidence, uncertainty, patient values, and action threshold. Shared decision-making works best when patients are not forced to choose between false certainty and helpless confusion.',
+        ],
+      },
+    ],
+    [
+      'Medical judgment is probabilistic and high-stakes.',
+      'Test results require base rates and accuracy context.',
+      'Patient values affect action thresholds, not the evidence itself.',
+    ],
+    [
+      pagePath('/case-studies', 'Medical Testing'),
+      pagePath('/skills', 'How to Avoid Base-Rate Neglect'),
+      pagePath('/case-studies', 'Pragmatic Encroachment'),
+    ],
+  ),
+  applicationPage(
+    'Journalism',
+    'Journalism shapes public perceived evidence by selecting, framing, verifying, and repeating claims.',
+    [
+      {
+        heading: 'Journalism as Evidence Mediation',
+        body: [
+          'Most citizens do not encounter public evidence directly. Journalism mediates E0 into public EP by choosing what to report, what context to include, what experts to quote, what uncertainty to preserve, and what headline to write.',
+          'This gives journalism enormous epistemic power. It can clarify the evidence field or distort it through selection, compression, sensationalism, false balance, or narrative overconfidence.',
+        ],
+      },
+      {
+        heading: 'Where Journalism Goes Wrong',
+        body: [
+          'Deep failures include weak verification, missing base rates, poor statistical framing, and lack of domain expertise. Core failures include audience capture, ideological filtering, traffic incentives, and reluctance to correct errors that served the outlet brand.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Credencing-friendly journalism gives confidence levels, distinguishes allegation from finding, reports base rates, links primary evidence, names uncertainty, and updates visibly. It treats correction as part of credibility rather than a threat to it.',
+        ],
+      },
+    ],
+    [
+      'Journalism mediates public EP.',
+      'Headlines can inflate confidence beyond the evidence.',
+      'Good journalism makes uncertainty and updates visible.',
+    ],
+    [
+      pagePath('/case-studies', 'Risk Inflation'),
+      pagePath('/applications', 'Public Debate'),
+      pagePath('/skills', 'How to Ask Better Epistemic Questions'),
+    ],
+  ),
+  applicationPage(
+    'Law',
+    'Law formalizes action thresholds under uncertainty: suspicion, probable cause, preponderance, and proof beyond reasonable doubt.',
+    [
+      {
+        heading: 'Legal Standards as Credence Thresholds',
+        body: [
+          'Legal systems already recognize that different actions require different levels of confidence. Search, arrest, civil liability, and criminal conviction do not require the same evidential threshold.',
+          'Credencing clarifies why. The question is not only what is probably true, but what level of confidence is sufficient given the cost of error.',
+        ],
+      },
+      {
+        heading: 'Where Law Goes Wrong',
+        body: [
+          'Deep failures include unreliable eyewitness testimony, forensic overstatement, base-rate neglect, and poor statistical reasoning. Core failures include motivated prosecution, defensive policing, jury identity bias, and institutional resistance to exculpatory evidence.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Legal credencing requires explicit standards of proof, careful treatment of error rates, adversarial testing, disclosure obligations, and humility about testimony and forensic confidence. A just system must care not only about truth, but about warranted confidence.',
+        ],
+      },
+    ],
+    [
+      'Legal standards are action thresholds under uncertainty.',
+      'Different decisions require different credence levels.',
+      'Error rates and motivated incentives must be kept visible.',
+    ],
+    [
+      pagePath('/case-studies', 'Pragmatic Encroachment'),
+      pagePath('/core-ideas', 'Confidence Levels'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+    ],
+  ),
+  applicationPage(
+    'Education',
+    'Education should teach students how to form, scale, revise, and explain confidence.',
+    [
+      {
+        heading: 'Beyond Correct Answers',
+        body: [
+          'Education often rewards answer production more than confidence calibration. Students learn to say what they think the teacher wants, not how sure they are, what evidence supports it, or what would revise it.',
+          'A credencing-aware education asks students to distinguish knowing, suspecting, guessing, and being uncertain for specific reasons.',
+        ],
+      },
+      {
+        heading: 'Skills to Teach',
+        body: [
+          'Students can learn base rates, likelihood comparison, source reliability, uncertainty expression, steelmanning, prediction logs, and update conditions. These are not only philosophy skills; they are civic and scientific skills.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Classrooms should reward calibrated uncertainty, revision, and evidence-aware confidence. The student who responsibly changes their mind should be treated as succeeding, not losing.',
+        ],
+      },
+    ],
+    [
+      'Education should teach calibration, not only correctness.',
+      'Students need language for degrees of confidence.',
+      'Revision should be rewarded as a rational success.',
+    ],
+    [
+      pagePath('/skills', 'Practice Exercises'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+      pagePath('/core-ideas', 'Calibration'),
+    ],
+  ),
+  applicationPage(
+    'Public Debate',
+    'Public debate improves when participants expose confidence, evidence, update conditions, and action thresholds.',
+    [
+      {
+        heading: 'The Problem With Performative Certainty',
+        body: [
+          'Public debate rewards confidence displays. The person who speaks with the most force can appear more credible than the person who speaks with calibrated uncertainty. This pushes CA upward for social reasons.',
+          'The result is a public sphere where people often argue from conclusions rather than toward them.',
+        ],
+      },
+      {
+        heading: 'Credencing Norms',
+        body: [
+          'Better debate asks participants to state confidence levels, identify strongest evidence, name uncertainty, specify update conditions, and distinguish belief from action threshold.',
+          'These norms do not remove disagreement. They make disagreement more informative.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repair requires platforms, moderators, institutions, and communities to reward epistemic behavior rather than only rhetorical victory. The best public debater is not the least uncertain person; it is the person whose confidence remains answerable.',
+        ],
+      },
+    ],
+    [
+      'Public debate often rewards overconfident CA.',
+      'Credence levels and update conditions improve disagreement.',
+      'Rhetorical victory should not replace evidence responsiveness.',
+    ],
+    [
+      pagePath('/case-studies', 'Political Tribalism'),
+      pagePath('/skills', 'How to Ask Better Epistemic Questions'),
+      pagePath('/applications', 'Journalism'),
+    ],
+  ),
+  applicationPage(
+    'Policy',
+    'Policy decisions require explicit credences because action must occur under uncertainty and unequal stakes.',
+    [
+      {
+        heading: 'Policy as Collective Action Under Uncertainty',
+        body: [
+          'Policy rarely enjoys certainty. Leaders must act with incomplete evidence, contested models, moral tradeoffs, and delayed feedback. Credencing helps separate factual confidence from value judgments and action thresholds.',
+        ],
+      },
+      {
+        heading: 'Where Policy Goes Wrong',
+        body: [
+          'Deep failures include bad data, weak models, poor causal inference, and neglect of unintended consequences. Core failures include ideological lock-in, donor pressure, bureaucratic self-protection, and refusal to update when policies fail.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Credencing-friendly policy uses pilot programs, uncertainty intervals, public forecasts, sunset clauses, precommitted evaluation metrics, and visible updates. It treats policy as learning, not as identity performance.',
+        ],
+      },
+    ],
+    [
+      'Policy must act before certainty.',
+      'Separate empirical confidence from moral preference.',
+      'Evaluation and revision should be built into policy design.',
+    ],
+    [
+      pagePath('/case-studies', 'Risk Inflation'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+      pagePath('/skills', 'How to Update with New Evidence'),
+    ],
+  ),
+  applicationPage(
+    'Personal Decision-Making',
+    'Personal decisions improve when feelings, evidence, uncertainty, and action thresholds are kept distinct.',
+    [
+      {
+        heading: 'Life Decisions Are Credencing Problems',
+        body: [
+          'Career choices, relationships, relocation, health decisions, and creative risks all require belief under uncertainty. The evidence is often incomplete, emotionally charged, and personally expensive to revise.',
+          'Credencing does not make life mechanical. It gives a person a way to ask what they know, what they fear, what they hope, and what confidence their evidence can actually bear.',
+        ],
+      },
+      {
+        heading: 'Common Failure Modes',
+        body: [
+          'People inflate confidence to escape ambiguity, deflate confidence to avoid responsibility, ignore base rates because their story feels unique, or treat anxiety as evidence. They may also keep believing a plan is good because changing direction would threaten identity.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Use two-gap journaling: estimate E0, EP, CA, and SD for the decision. Then separate evidence from affect. Ask what action threshold is appropriate under the stakes, and what small experiment would improve the evidence.',
+        ],
+      },
+    ],
+    [
+      'Personal decisions mix evidence, emotion, and identity.',
+      'Anxiety and desire should be named separately from credence.',
+      'Small experiments can improve EP before irreversible action.',
+    ],
+    [
+      pagePath('/skills', 'Practice Exercises'),
+      pagePath('/case-studies', 'Fear Overrides'),
+      pagePath('/interactive-lab', 'Build Your Own Scenario'),
+    ],
+  ),
+  applicationPage(
+    'AI Alignment',
+    'AI alignment needs credencing because systems, developers, users, and institutions all act under uncertain models of risk and capability.',
+    [
+      {
+        heading: 'Alignment as Epistemic Governance',
+        body: [
+          'AI alignment is not only a technical control problem. It is also an epistemic problem: how do institutions assign confidence about capability, risk, interpretability, misuse, deployment readiness, and social impact?',
+          'Credencing helps make those confidence assignments explicit rather than hiding them inside product timelines, public relations, or vague optimism and pessimism.',
+        ],
+      },
+      {
+        heading: 'Where Alignment Goes Wrong',
+        body: [
+          'Deep failures include weak evaluation, benchmark overfitting, poor threat modeling, and uncertainty about emergent behavior. Core failures include commercial pressure, reputational incentives, ideological overconfidence, and selective attention to convenient safety evidence.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Alignment governance should make confidence levels public where possible, require update conditions, use adversarial evaluations, track forecasts, separate capability evidence from safety evidence, and protect dissenting risk assessments.',
+        ],
+      },
+    ],
+    [
+      'AI alignment involves institutional credencing under uncertainty.',
+      'Capability confidence and safety confidence must be separated.',
+      'Governance needs protected update mechanisms.',
+    ],
+    [
+      pagePath('/applications', 'Institutional Diagnostics'),
+      pagePath('/skills', 'How to Detect Overconfidence'),
+      pagePath('/case-studies', 'Biased Expert Cases'),
+    ],
+  ),
+  applicationPage(
+    'Institutional Diagnostics',
+    'Institutional diagnostics applies the two-gap model to organizations, not only individuals.',
+    [
+      {
+        heading: 'Organizations Have Credences',
+        body: [
+          'Institutions assign confidence through reports, budgets, policies, risk ratings, hiring, forecasts, and public statements. They may not call these credences, but they act as if some claims are more likely or more important than others.',
+        ],
+      },
+      {
+        heading: 'Institutional E0-EP Gaps',
+        body: [
+          'Organizations misperceive evidence when data pipelines are bad, feedback is filtered, dissent is punished, metrics are gamed, or leaders are insulated from ground truth. This is institutional Deep Rationality failure.',
+        ],
+      },
+      {
+        heading: 'Institutional EP-CA Gaps',
+        body: [
+          'Organizations can also perceive a problem and still refuse to assign public confidence accordingly. They may bury known risks, soften warnings, overstate success, or maintain official optimism because the cost of honesty is high.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repair requires feedback channels, protected dissent, red teams, audit trails, prediction records, independent review, and leadership norms that reward early correction. Institutions become wiser when they make it safe to notice and safe to update.',
+        ],
+      },
+    ],
+    [
+      'Institutions have practical credences even when they do not name them.',
+      'Bad feedback creates E0-EP gaps.',
+      'Suppressed knowledge creates EP-CA gaps.',
+      'Protected dissent is an epistemic technology.',
+    ],
+    [
+      pagePath('/applications', 'Science'),
+      pagePath('/applications', 'Policy'),
+      pagePath('/skills', 'How to Separate Core from Deep Failure'),
+    ],
+  ),
+];
+
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...applicationPages];
