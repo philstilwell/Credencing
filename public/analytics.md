@@ -1,6 +1,6 @@
 # Credencing Analytics Note
 
-The site is prepared for privacy-respecting Plausible analytics using the public domain `credencing.org`.
+The site is prepared for privacy-respecting Plausible analytics using the public domain `credencing.com`.
 
 This analytics layer is intentionally narrow:
 
@@ -9,4 +9,4 @@ This analytics layer is intentionally narrow:
 - no visitor-level identity system
 - no analytics dependency for the site to function
 
-To activate it completely, create or connect the `credencing.org` site inside Plausible after DNS is pointed at GitHub Pages.
+To activate it completely, create or connect the `credencing.com` site inside Plausible after DNS is pointed at GitHub Pages.

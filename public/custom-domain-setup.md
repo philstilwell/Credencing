@@ -1,6 +1,6 @@
 # Custom Domain Setup
 
-The intended domain is `credencing.org`, but DNS is not currently pointed at GitHub Pages.
+The intended domain is `credencing.com`, but DNS must be pointed at GitHub Pages from Namecheap.
 
 To activate the custom domain safely:
 
@@ -12,14 +12,14 @@ To activate the custom domain safely:
 2. Point `www` to GitHub Pages:
    - `CNAME philstilwell.github.io`
 3. In the GitHub repository, open **Settings -> Pages**.
-4. Set the custom domain to `credencing.org`.
+4. Set the custom domain to `credencing.com`.
 5. Wait for DNS verification, then enable **Enforce HTTPS**.
 6. After verification, add a `public/CNAME` file containing:
 
 ```text
-credencing.org
+credencing.com
 ```
 
 Until DNS is configured, the stable public URL remains:
 
-https://philstilwell.github.io/Credencing/
+https://credencing.com/

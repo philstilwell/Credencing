@@ -19,7 +19,7 @@ View your app in AI Studio: https://ai.studio/apps/5712911b-102e-4d58-9a53-08242
 
 ## Deploy to GitHub Pages
 
-The Vite base path is currently `/Credencing/`, matching the GitHub repository name.
+The Vite base path is relative so the build can work during the transition from the GitHub Pages project URL to `https://credencing.com/`.
 
 1. Publish this folder to GitHub as `philstilwell/Credencing`.
 2. In the repository settings, go to **Pages**.
@@ -35,4 +35,4 @@ The included workflow builds `dist/` and deploys it to GitHub Pages.
 - Printable PDFs: `public/downloads/*.pdf`
 - Custom domain checklist: `public/custom-domain-setup.md`
 
-The custom domain should not be activated until `credencing.org` DNS points at GitHub Pages.
+The custom domain should not be considered fully active until `credencing.com` DNS points at GitHub Pages and GitHub Pages reports HTTPS as available.
