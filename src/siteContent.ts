@@ -2890,4 +2890,402 @@ export const applicationPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...applicationPages];
+function libraryPage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/library', title),
+    groupTitle: 'Library',
+    groupPath: '/library',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const libraryPages: ContentPage[] = [
+  libraryPage(
+    'Papers',
+    'The Papers page gathers formal and semi-formal work behind the Credencing framework.',
+    [
+      {
+        heading: 'Purpose',
+        body: [
+          'The papers library is the bridge between the public-facing model and the more formal argument behind it. It should eventually collect drafts, formal definitions, diagrams, objections, revisions, and future extensions.',
+          'The public site explains the framework in practical language. The paper trail should make the commitments precise enough to criticize.',
+        ],
+      },
+      {
+        heading: 'What Belongs Here',
+        body: [
+          'Formal definitions of E0, EP, CA, SD, calculation error, core irrationality, warranted uncertainty, and epistemic archetypes belong here. So do responses to objections, comparisons with Bayesian epistemology, and domain-specific extensions.',
+        ],
+      },
+      {
+        heading: 'How to Read',
+        body: [
+          'Read the public Start Here and Core Ideas sections first. Then use the papers to inspect the formal scaffolding, not as a replacement for the interactive model but as its theoretical support.',
+        ],
+      },
+    ],
+    [
+      'The papers library supports formal criticism and extension.',
+      'Public pages explain; papers specify.',
+      'The formal work should remain connected to the interactive model.',
+    ],
+    [
+      pagePath('/library', 'A Formal Framework for Core and Deep Rationality'),
+      pagePath('/core-ideas', 'Core vs Deep Rationality'),
+      pagePath('/interactive-lab', 'Interactive Model'),
+    ],
+  ),
+  libraryPage(
+    'A Formal Framework for Core and Deep Rationality',
+    'This page anchors the project’s central distinction between rational skill and rational integrity.',
+    [
+      {
+        heading: 'Central Thesis',
+        body: [
+          'The formal framework distinguishes Deep Rationality from Core Rationality. Deep Rationality concerns the tools that allow an agent to perceive evidential support accurately. Core Rationality concerns whether the agent assigns credence according to that perceived support.',
+          'The framework is designed to show why intelligence, education, and technical sophistication do not automatically produce epistemic integrity.',
+        ],
+      },
+      {
+        heading: 'Formal Variables',
+        body: [
+          'The central variables are E0 for Objective Evidence, EP for Perceived Evidence, CA for Assigned Credence, and SD for Deep Rationality. Calculation Error measures the E0-EP gap. Core Irrationality measures the EP-CA gap.',
+        ],
+      },
+      {
+        heading: 'Public Use',
+        body: [
+          'The paper gives formal structure to the public model, while the site turns that structure into explanations, examples, exercises, and applications. The two should be read together: the paper supplies precision; the site supplies usability.',
+        ],
+      },
+    ],
+    [
+      'The project’s central distinction is skill vs integrity.',
+      'E0-EP and EP-CA are the two diagnostic gaps.',
+      'The formal paper and public model are complementary.',
+    ],
+    [
+      pagePath('/core-ideas', 'Deep Rationality (SD)'),
+      pagePath('/core-ideas', 'Core Rationality'),
+      pagePath('/library', 'Future Papers'),
+    ],
+  ),
+  libraryPage(
+    'Future Papers',
+    'Future papers should extend the framework into measurement, institutions, AI, disagreement, and pedagogy.',
+    [
+      {
+        heading: 'Measurement Extensions',
+        body: [
+          'One future direction is measurement: how should we estimate E0, EP, CA, and SD in real contexts? What would count as evidence of a Core Rationality failure rather than merely a difficult evidential environment?',
+        ],
+      },
+      {
+        heading: 'Institutional Extensions',
+        body: [
+          'Another direction is institutional epistemology. Organizations have evidence pipelines, public credences, incentives, and update failures. The two-gap model can be extended from individual agents to committees, agencies, labs, courts, and media institutions.',
+        ],
+      },
+      {
+        heading: 'AI and Collective Reasoning',
+        body: [
+          'AI systems make credencing both more urgent and more complex. Future work should examine model confidence, human overtrust, benchmark interpretation, institutional deployment thresholds, and the social systems that decide when AI outputs become believed.',
+        ],
+      },
+    ],
+    [
+      'Future work should improve measurement and validation.',
+      'Institutions can be analyzed with the same two-gap model.',
+      'AI creates new credencing problems at scale.',
+    ],
+    [
+      pagePath('/applications', 'AI Alignment'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+      pagePath('/library', 'Project Notes'),
+    ],
+  ),
+  libraryPage(
+    'Essays',
+    'Essays translate the framework into accessible reflections, arguments, examples, and public-facing explanations.',
+    [
+      {
+        heading: 'Role of Essays',
+        body: [
+          'Essays are where the project can breathe. They do not need the compression of glossary entries or the rigor of formal papers. They can explore examples, objections, analogies, and lived cases of credencing failure and repair.',
+        ],
+      },
+      {
+        heading: 'Possible Essay Threads',
+        body: [
+          'Natural essay threads include the intellect as bodyguard, the ethics of changing one mind, why certainty feels good, how institutions punish update, and why honest uncertainty is difficult to perform in public.',
+        ],
+      },
+      {
+        heading: 'Connection to the Site',
+        body: [
+          'Each essay should link back to the conceptual pages it uses. The site works best when essays are not isolated posts but entrances into the broader web.',
+        ],
+      },
+    ],
+    [
+      'Essays make the framework vivid and public-facing.',
+      'They should explore examples and objections.',
+      'Every essay should link back into the conceptual web.',
+    ],
+    [
+      pagePath('/library', 'Glossary'),
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/about', 'Project Overview'),
+    ],
+  ),
+  libraryPage(
+    'Glossary',
+    'The glossary provides concise definitions for the site’s core vocabulary.',
+    [
+      {
+        heading: 'Why a Glossary Matters',
+        body: [
+          'Credencing uses familiar words in careful ways. Evidence, confidence, uncertainty, rationality, and belief all carry everyday meanings that can blur the model. A glossary keeps the vocabulary stable.',
+        ],
+      },
+      {
+        heading: 'Core Entries',
+        body: [
+          'Essential entries include credence, objective evidence, perceived evidence, assigned credence, Deep Rationality, Core Rationality, calculation error, core irrationality, warranted uncertainty, calibration, prior, likelihood, and posterior.',
+        ],
+      },
+      {
+        heading: 'How to Use It',
+        body: [
+          'The glossary should be used as a quick reference while reading the longer pages. If a term becomes unclear, return to the glossary, then follow the related link to the full concept article.',
+        ],
+      },
+    ],
+    [
+      'The glossary stabilizes project vocabulary.',
+      'Short definitions should link to full concept pages.',
+      'It helps readers move through the web without losing the thread.',
+    ],
+    [
+      pagePath('/core-ideas', 'Credences'),
+      pagePath('/core-ideas', 'Core vs Deep Rationality'),
+      pagePath('/library', 'FAQ'),
+    ],
+  ),
+  libraryPage(
+    'FAQ',
+    'The FAQ answers recurring questions and prevents common misunderstandings of the framework.',
+    [
+      {
+        heading: 'Is This Just Bayesianism?',
+        body: [
+          'No. The framework is Bayesian-friendly, but it adds a diagnostic distinction between perceiving evidence and assigning credence. Bayesian tools help with Deep Rationality; they do not guarantee Core Rationality.',
+        ],
+      },
+      {
+        heading: 'Is Core Irrationality a Moral Accusation?',
+        body: [
+          'Not automatically. It is a structural diagnosis of an EP-CA gap. Moral assessment depends on context, access, incentives, trauma, social pressure, and whether the agent is willing to repair the gap.',
+        ],
+      },
+      {
+        heading: 'Does the Model Claim Numerical Precision?',
+        body: [
+          'No. The numbers are often interpretive approximations. Their purpose is to make relationships visible. The model asks where gaps open and what would repair them, not whether every human belief can be measured exactly.',
+        ],
+      },
+    ],
+    [
+      'The framework is Bayesian-friendly but broader.',
+      'Core Irrationality is diagnostic before it is moralized.',
+      'The model uses numbers to clarify relationships, not to fake precision.',
+    ],
+    [
+      pagePath('/start-here', 'What Is Credencing?'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/library', 'Glossary'),
+    ],
+  ),
+  libraryPage(
+    'References',
+    'References should collect sources, influences, and adjacent traditions in epistemology, probability, psychology, and institutional reasoning.',
+    [
+      {
+        heading: 'Reference Areas',
+        body: [
+          'The project sits near Bayesian epistemology, calibration research, cognitive bias literature, decision theory, virtue epistemology, social epistemology, and institutional epistemics. References should eventually make those neighborhoods explicit.',
+        ],
+      },
+      {
+        heading: 'How References Should Function',
+        body: [
+          'References are not decoration. They should help readers test the framework, compare it with existing work, and locate places where the project needs refinement.',
+        ],
+      },
+      {
+        heading: 'Living Bibliography',
+        body: [
+          'The references page should remain a living bibliography. As the project grows, sources can be grouped by concept: priors, likelihoods, calibration, motivated reasoning, disagreement, decision thresholds, and institutional failure.',
+        ],
+      },
+    ],
+    [
+      'References connect the project to adjacent literatures.',
+      'They should invite criticism and refinement.',
+      'The bibliography should grow with the site.',
+    ],
+    [
+      pagePath('/library', 'Papers'),
+      pagePath('/library', 'Project Notes'),
+      pagePath('/core-ideas', 'Bayesian Updating'),
+    ],
+  ),
+  libraryPage(
+    'Visual Archive',
+    'The visual archive stores diagrams, screenshots, model states, and explanatory graphics.',
+    [
+      {
+        heading: 'Purpose',
+        body: [
+          'The visual archive should collect reusable images and diagrams that explain the model: archetype snapshots, gap diagrams, comparison panels, teaching visuals, and historical iterations of the interface.',
+        ],
+      },
+      {
+        heading: 'What to Archive',
+        body: [
+          'Archive the ideal agent, honest novice, biased expert, epistemic delusion, gaslighting, academic dogma, strict empiricism, and any future scenario diagrams. Include captions explaining what the visual teaches.',
+        ],
+      },
+      {
+        heading: 'Why It Matters',
+        body: [
+          'The visual language is central to the project. Many readers will understand the distinction between Core and Deep failure faster from a diagram than from a formal definition.',
+        ],
+      },
+    ],
+    [
+      'The archive preserves the project visual language.',
+      'Scenario images should include interpretive captions.',
+      'Visuals help teach the two-gap model quickly.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Visual Legend'),
+      pagePath('/interactive-lab', 'Preset Scenarios'),
+      pagePath('/library', 'Teaching Materials'),
+    ],
+  ),
+  libraryPage(
+    'Teaching Materials',
+    'Teaching materials turn the framework into lessons, handouts, exercises, and discussion prompts.',
+    [
+      {
+        heading: 'Classroom Use',
+        body: [
+          'The framework can be taught in philosophy, critical thinking, statistics, media literacy, science communication, and civic education. Its advantage is that it connects abstract epistemology to ordinary decisions.',
+        ],
+      },
+      {
+        heading: 'Materials to Build',
+        body: [
+          'Useful materials include a one-page model guide, scenario worksheets, calibration exercises, debate prompts, case-study packets, and assignments where students estimate E0, EP, CA, and SD.',
+        ],
+      },
+      {
+        heading: 'Pedagogical Aim',
+        body: [
+          'The aim is not to make students perform certainty. It is to help them become more honest, precise, and updateable about uncertainty.',
+        ],
+      },
+    ],
+    [
+      'The model can teach practical epistemology across subjects.',
+      'Scenario worksheets are a natural teaching format.',
+      'The core teaching goal is calibrated, updateable confidence.',
+    ],
+    [
+      pagePath('/applications', 'Education'),
+      pagePath('/skills', 'Practice Exercises'),
+      pagePath('/library', 'Downloads'),
+    ],
+  ),
+  libraryPage(
+    'Downloads',
+    'Downloads will collect reusable PDFs, worksheets, diagrams, and presentation assets.',
+    [
+      {
+        heading: 'What Downloads Should Include',
+        body: [
+          'The downloads area should eventually include classroom handouts, model diagrams, glossary sheets, scenario worksheets, slide decks, and printable exercises.',
+        ],
+      },
+      {
+        heading: 'Versioning',
+        body: [
+          'Because the framework is still developing, downloads should be versioned. A worksheet used in a class or workshop should make clear which version of the model it assumes.',
+        ],
+      },
+      {
+        heading: 'Public Reuse',
+        body: [
+          'Reusable materials should be designed so teachers, writers, and discussion groups can use them without needing to understand the whole site first. Each download should include a short orientation and links back to the relevant pages.',
+        ],
+      },
+    ],
+    [
+      'Downloads should support teaching and reuse.',
+      'Versioning matters while the framework develops.',
+      'Each artifact should link back into the site.',
+    ],
+    [
+      pagePath('/library', 'Teaching Materials'),
+      pagePath('/library', 'Visual Archive'),
+      pagePath('/skills', 'Practice Exercises'),
+    ],
+  ),
+  libraryPage(
+    'Project Notes',
+    'Project notes track design decisions, open questions, revisions, and future directions.',
+    [
+      {
+        heading: 'Why Keep Notes Public',
+        body: [
+          'A project about credencing should model its own updateability. Project notes can show what is settled, what is provisional, what changed, and what remains unresolved.',
+        ],
+      },
+      {
+        heading: 'Open Questions',
+        body: [
+          'Open questions include how to estimate model variables in real cases, how to distinguish sincere misperception from avoidant misperception, how to avoid moralizing too quickly, and how to adapt the model for groups and institutions.',
+        ],
+      },
+      {
+        heading: 'Revision Norms',
+        body: [
+          'Revision should be treated as evidence of health rather than embarrassment. The site should preserve enough history to show how the framework improves.',
+        ],
+      },
+    ],
+    [
+      'Project notes make the framework visibly updateable.',
+      'Open questions should remain explicit.',
+      'Revision is part of the project ethos.',
+    ],
+    [
+      pagePath('/about', 'Future Directions'),
+      pagePath('/library', 'Future Papers'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+    ],
+  ),
+];
+
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...applicationPages, ...libraryPages];
