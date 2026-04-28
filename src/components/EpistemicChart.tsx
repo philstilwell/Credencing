@@ -109,9 +109,9 @@ const EpistemicChart = memo(function EpistemicChart({ data }: EpistemicChartProp
           x1={cx} y1={cy} 
           x2={caPos.x} y2={caPos.y} 
           stroke="#60a5fa" 
-          strokeWidth="3" 
+          strokeWidth="1" 
           strokeLinecap="round"
-          style={{ filter: 'drop-shadow(0 0 5px rgba(96, 165, 250, 0.5))' }}
+          style={{ filter: 'drop-shadow(0 0 2px rgba(96, 165, 250, 0.4))' }}
         />
 
         {/* Perceived Evidence Notch */}

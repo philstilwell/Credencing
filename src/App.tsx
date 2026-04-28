@@ -126,7 +126,16 @@ export default function App() {
                     <div className="space-y-6">
                       <h2 className="text-4xl font-light tracking-tight text-white mb-2 underline decoration-blue-500/20 underline-offset-8">Why Study Credencing?</h2>
                       <p className="text-slate-100 text-lg leading-relaxed font-light">
-                        Belief is not a binary toggle; it is a <span className="text-white font-medium italic underline decoration-blue-500/40 underline-offset-4">dynamic orientation</span> of the self toward the world. We call this process <span className="text-blue-400 font-bold tracking-wider">Credencing</span>.
+                        Belief is not a binary toggle; it is our <span className="text-white font-medium italic underline decoration-blue-500/40 underline-offset-4">dynamic orientation</span> towards the changing realities in our experience. We call this process <span className="text-blue-400 font-bold tracking-wider">Credencing</span>.
+                      </p>
+                      <p className="text-slate-300 text-sm leading-relaxed font-light">
+                        This model is profoundly practical in high-stakes life decisions. When choosing a career or a life partner, we often confuse our deep-seated desires or fears (Core Rationality) with the objective evidence of compatibility and market demand (Deep Rationality). By mapping these components, we can better discern when we are over-weighting a "sense of rightness" that may just be a familiar but suboptimal pattern, versus a genuine alignment with our values and the world's opportunities.
+                      </p>
+                      <p className="text-slate-300 text-sm leading-relaxed font-light">
+                        In personal agency and cognitive health, understanding credencing allows us to identify where our "intellect as bodyguard" is defending an identity rather than seeking truth. By unbundling skill (Deep Rationality) from will (Core Rationality), individuals can target their development—either by refining their analytical tools or by cultivating the fortitude to follow the evidence where it leads, even when it challenges held beliefs.
+                      </p>
+                      <p className="text-slate-300 text-sm leading-relaxed font-light">
+                        In professional domains, this model provides a diagnostic for decision-making failures. In scientific research, it helps differentiate between data-processing errors and paradigm-clinging biases. In leadership and public policy, it offers a language for navigating "epistemic fog," ensuring that institutional commitments are calibrated to reality rather than rigid dogmatic stances that risk decoupling from the world.
                       </p>
                     </div>
 
