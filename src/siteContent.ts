@@ -533,4 +533,723 @@ export const startHerePages: ContentPage[] = [
   },
 ];
 
-export const contentPages = [...startHerePages];
+function corePage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/core-ideas', title),
+    groupTitle: 'Core Ideas',
+    groupPath: '/core-ideas',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const coreIdeasPages: ContentPage[] = [
+  corePage(
+    'Credences',
+    'Credences are graded confidence assignments: the basic unit of the whole project.',
+    [
+      {
+        heading: 'A Credence Is a Degree of Confidence',
+        body: [
+          'A credence is a quantified or at least ordered degree of belief. It says not merely whether a claim is accepted, but how strongly it is held. The difference between 0.51 and 0.95 is not cosmetic; it changes how one should argue, act, defer, investigate, and update.',
+          'Credences can be expressed numerically, verbally, or comparatively. The important point is that confidence should have shape. "I lean yes," "I am nearly certain," and "I assign about 70 percent confidence" are all attempts to make the weight of belief visible.',
+        ],
+      },
+      {
+        heading: 'Credences Connect Evidence to Action',
+        body: [
+          'Credences sit between evidence and action. Evidence informs confidence; confidence informs thresholds for action. A physician, voter, researcher, judge, or partner may face a practical decision, but the decision should not erase the underlying uncertainty.',
+          'Good credencing lets a person say: this is my confidence, this is why, this is what would move it, and this is the action threshold I am using under these stakes.',
+        ],
+      },
+      {
+        heading: 'Credences in the Model',
+        body: [
+          'In the interactive model, Assigned Credence is the final confidence the agent adopts. It may track perceived evidence closely, or it may drift away under pressure from fear, desire, identity, or group loyalty.',
+          'That drift is the core diagnostic target of the project. A person who perceives 0.55 evidence but assigns 0.95 confidence is not merely confident; they are overstepping their own evidential position.',
+        ],
+      },
+    ],
+    [
+      'Credences are graded beliefs.',
+      'They preserve distinctions hidden by binary belief language.',
+      'Assigned Credence is the final belief weight adopted by the agent.',
+    ],
+    [
+      pagePath('/start-here', 'What Is Credencing?'),
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
+      pagePath('/skills', 'How to Think in Credences'),
+    ],
+  ),
+  corePage(
+    'Evidence',
+    'Evidence is support that should move confidence when interpreted through reliable methods.',
+    [
+      {
+        heading: 'Evidence Is What Bears on a Claim',
+        body: [
+          'Evidence is not the same as whatever feels persuasive. Evidence is information that should rationally affect confidence in a claim. It can include observation, measurement, testimony, memory, experiment, background theory, statistical frequency, expert convergence, and the absence of a signal that should have appeared.',
+          'The same item can be strong evidence in one context and weak evidence in another. A single vivid story may matter when the claim is about one person, but it may be nearly useless when the claim is about a population.',
+        ],
+      },
+      {
+        heading: 'Evidence Has Weight and Direction',
+        body: [
+          'Direction asks which hypothesis the evidence favors. Weight asks how much it should move credence. People often notice direction while exaggerating weight: they find something that points their way and treat it as decisive.',
+          'Credencing requires both questions. Does this support the claim? How strongly? Compared with what alternatives? Under what assumptions? With what error rate?',
+        ],
+      },
+      {
+        heading: 'Evidence in the Model',
+        body: [
+          'Objective Evidence, E0, represents the evidential situation as it stands apart from the agent. Perceived Evidence, EP, represents what the agent takes that evidence to show. The gap between them is a measure of evidential misperception or processing error.',
+          'The model therefore does not assume that evidence reaches the mind cleanly. It passes through attention, incentives, framing, memory, statistical skill, and social context.',
+        ],
+      },
+    ],
+    [
+      'Evidence is rational support, not emotional force.',
+      'Evidence has both direction and weight.',
+      'The E0-EP gap captures errors in perceiving or processing evidence.',
+    ],
+    [
+      pagePath('/start-here', 'Evidence and Confidence'),
+      pagePath('/core-ideas', 'Objective Evidence (E0)'),
+      pagePath('/core-ideas', 'Perceived Evidence (EP)'),
+    ],
+  ),
+  corePage(
+    'Confidence Levels',
+    'Confidence levels name the strength of a credence and help prevent certainty from arriving too cheaply.',
+    [
+      {
+        heading: 'Confidence Is Not a Mood',
+        body: [
+          'Confidence often feels like an internal intensity, but epistemically it should be a relation between a claim and its support. A calm person can be overconfident; an anxious person can be correct. The feeling of certainty is not the same as warrant for certainty.',
+          'A confidence level should answer a practical question: how much risk of being wrong am I implicitly accepting by holding or acting on this belief?',
+        ],
+      },
+      {
+        heading: 'Useful Ranges',
+        body: [
+          'Low confidence marks live uncertainty. Moderate confidence permits leaning without closure. High confidence permits strong action but should remain updateable. Near certainty should be rare and reserved for claims with overwhelming support, definitional truths, or extremely stable background knowledge.',
+          'The model encourages this range-sensitive language because many failures come from using high-confidence behavior on medium-confidence evidence.',
+        ],
+      },
+      {
+        heading: 'Confidence and Stakes',
+        body: [
+          'The same confidence level can justify different actions under different stakes. A 70 percent credence may justify bringing an umbrella, but not convicting someone of a crime. Credence and decision threshold are related but distinct.',
+          'Keeping that distinction visible prevents a common error: pretending to be more certain than one is because action is required.',
+        ],
+      },
+    ],
+    [
+      'Confidence should track warrant, not emotional intensity.',
+      'Different confidence ranges license different attitudes.',
+      'Action thresholds vary with stakes.',
+    ],
+    [
+      pagePath('/start-here', 'Why Binary Belief Is Too Crude'),
+      pagePath('/core-ideas', 'Calibration'),
+      pagePath('/skills', 'How to Scale Confidence to Evidence'),
+    ],
+  ),
+  corePage(
+    'Priors',
+    'Priors are starting credences formed from base rates, background knowledge, and previous evidence.',
+    [
+      {
+        heading: 'Every Inquiry Starts Somewhere',
+        body: [
+          'A prior is the confidence assigned before considering the newest evidence. Priors may come from base rates, causal knowledge, track records, known mechanisms, or the frequency of similar events. They are unavoidable because no mind receives evidence from nowhere.',
+          'The danger is not having priors. The danger is hiding them, freezing them, or smuggling prejudice into them.',
+        ],
+      },
+      {
+        heading: 'Good and Bad Priors',
+        body: [
+          'A good prior is relevant, explicit, proportionate, and revisable. It says, "Before this new evidence, here is what similar cases led me to expect." A bad prior is rigid, identity-protective, or selected only because it favors the desired conclusion.',
+          'Base rates are often the most neglected priors. People prefer stories about this case, but this case belongs to some class, and the history of that class matters.',
+        ],
+      },
+      {
+        heading: 'Priors and Updating',
+        body: [
+          'Bayesian updating does not let the prior dominate forever. Strong evidence can overwhelm a skeptical prior; weak evidence may barely move a strong one. The art is in letting prior and evidence interact without allowing either to become tyrannical.',
+        ],
+      },
+    ],
+    [
+      'Priors are unavoidable starting points.',
+      'Good priors are explicit, relevant, and revisable.',
+      'Base rates are among the most important priors.',
+    ],
+    [
+      pagePath('/start-here', 'What Bayesian Updating Is'),
+      pagePath('/core-ideas', 'Bayesian Updating'),
+      pagePath('/case-studies', 'Base-Rate Neglect'),
+    ],
+  ),
+  corePage(
+    'Likelihoods',
+    'Likelihoods measure how expected the evidence is under different hypotheses.',
+    [
+      {
+        heading: 'The Discrimination Question',
+        body: [
+          'A likelihood asks: if this hypothesis were true, how expected would this evidence be? Evidence is powerful when it discriminates among hypotheses. If the evidence is equally expected whether a claim is true or false, it should not move confidence much.',
+          'This is a central reason vividness misleads. Vivid evidence can feel important while failing to distinguish between competing explanations.',
+        ],
+      },
+      {
+        heading: 'Comparative Thinking',
+        body: [
+          'Likelihoods are comparative. A symptom, document, behavior, experiment, or testimony must be compared across live possibilities. How likely is it under H1? Under H2? Under mundane alternatives? Under error, fraud, noise, coincidence, or selection effects?',
+          'Good reasoning often improves simply by adding the missing comparison class.',
+        ],
+      },
+      {
+        heading: 'Likelihoods in Credencing',
+        body: [
+          'Likelihood reasoning improves Deep Rationality because it sharpens the path from E0 to EP. It helps the agent perceive what the evidence actually supports rather than merely noticing that something happened.',
+        ],
+      },
+    ],
+    [
+      'Likelihoods ask how expected evidence is under a hypothesis.',
+      'Strong evidence discriminates between live possibilities.',
+      'Likelihood reasoning improves perception of evidential weight.',
+    ],
+    [
+      pagePath('/core-ideas', 'Priors'),
+      pagePath('/core-ideas', 'Posteriors'),
+      pagePath('/skills', 'How to Read Likelihoods'),
+    ],
+  ),
+  corePage(
+    'Posteriors',
+    'Posteriors are updated credences after priors and new evidence have been brought together.',
+    [
+      {
+        heading: 'The Result of Updating',
+        body: [
+          'A posterior is the confidence one should hold after considering new evidence. It is not merely the prior, and it is not merely the new evidence. It is the result of their interaction.',
+          'In informal reasoning, a posterior is the answer to: after seeing this, where should my confidence now land?',
+        ],
+      },
+      {
+        heading: 'Why Posteriors Matter',
+        body: [
+          'Posteriors matter because inquiry is sequential. Today posterior becomes tomorrow prior. If updates are too dramatic, belief becomes unstable. If updates are too small, belief becomes stubborn. Good credencing seeks responsiveness without volatility.',
+        ],
+      },
+      {
+        heading: 'Posterior vs Assigned Credence',
+        body: [
+          'The posterior is the credence warranted by the update. Assigned Credence, CA, is what the agent actually adopts. In an ideal case, they match. When they diverge, the model asks whether some core-rational force is overriding the update.',
+        ],
+      },
+    ],
+    [
+      'Posteriors are updated confidence levels.',
+      'Good updating is responsive without being erratic.',
+      'The warranted posterior may diverge from the agent actual assigned credence.',
+    ],
+    [
+      pagePath('/core-ideas', 'Bayesian Updating'),
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+    ],
+  ),
+  corePage(
+    'Bayesian Updating',
+    'Bayesian updating is the disciplined revision of credence in light of new evidence.',
+    [
+      {
+        heading: 'The Basic Movement',
+        body: [
+          'Bayesian updating moves from prior confidence through new evidence to posterior confidence. The direction and size of the movement depend on how strongly the evidence favors one hypothesis over alternatives.',
+          'The formal mathematics can be precise, but the practical habit is already valuable: start with base rates, compare likelihoods, update proportionally.',
+        ],
+      },
+      {
+        heading: 'Common Updating Errors',
+        body: [
+          'People often update too much from vivid anecdotes, too little from statistical evidence, too much from identity-confirming information, and too little from disconfirming information. They also ignore the prior when the new evidence feels dramatic.',
+          'These are not merely math errors. They often reflect the entanglement of Deep Rationality and Core Rationality: weak tools mixed with protective motivation.',
+        ],
+      },
+      {
+        heading: 'Updating as a Discipline',
+        body: [
+          'Updating is not a one-time concession. It is a posture of continued answerability. The rational agent remains available to evidence, but not gullible before every new signal.',
+        ],
+      },
+    ],
+    [
+      'Updating moves from prior to posterior through evidence.',
+      'Evidence should move confidence proportionally.',
+      'Good updating is open but not gullible.',
+    ],
+    [
+      pagePath('/start-here', 'What Bayesian Updating Is'),
+      pagePath('/core-ideas', 'Priors'),
+      pagePath('/core-ideas', 'Posteriors'),
+    ],
+  ),
+  corePage(
+    'Calibration',
+    'Calibration is the fit between confidence levels and actual reliability.',
+    [
+      {
+        heading: 'What Calibration Means',
+        body: [
+          'A person is well calibrated when their confidence levels match reality over time. Claims held at 70 percent confidence should be true roughly 70 percent of the time. Calibration does not mean always being right; it means knowing how right one tends to be.',
+        ],
+      },
+      {
+        heading: 'Overconfidence and Underconfidence',
+        body: [
+          'Overconfidence assigns more certainty than the evidence warrants. Underconfidence assigns less. Both are failures of proportion. Overconfidence tends to produce dogmatism; underconfidence can produce paralysis, false humility, or chronic deference.',
+        ],
+      },
+      {
+        heading: 'Calibration in the Model',
+        body: [
+          'Calibration supports both Deep and Core Rationality. Deep Rationality improves the accuracy of perceived evidence. Core Rationality keeps assigned credence from inflating or deflating for non-evidential reasons.',
+        ],
+      },
+    ],
+    [
+      'Calibration is confidence matched to reliability.',
+      'Both overconfidence and underconfidence are distortions.',
+      'Calibration requires skill and honesty.',
+    ],
+    [
+      pagePath('/core-ideas', 'Confidence Levels'),
+      pagePath('/skills', 'How to Detect Overconfidence'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+    ],
+  ),
+  corePage(
+    'Uncertainty',
+    'Uncertainty is not a defect in reasoning; it is often the honest shape of limited evidence.',
+    [
+      {
+        heading: 'Uncertainty as Information',
+        body: [
+          'Uncertainty tells us something about the state of support. It may reflect missing data, noisy evidence, live alternatives, weak methods, high stakes, or genuine complexity in the world. Treating all uncertainty as failure encourages fake confidence.',
+        ],
+      },
+      {
+        heading: 'Healthy vs Evasive Uncertainty',
+        body: [
+          'Healthy uncertainty is specific: it can say what is unknown, what would help, and which possibilities remain live. Evasive uncertainty is fog used as shelter: it refuses proportion even when the evidence is strong enough to lean.',
+        ],
+      },
+      {
+        heading: 'Uncertainty and Action',
+        body: [
+          'Action under uncertainty is normal. The question is not whether uncertainty remains, but whether the action threshold has been met. Credencing makes that threshold visible rather than disguising action as certainty.',
+        ],
+      },
+    ],
+    [
+      'Uncertainty can be rational and informative.',
+      'Healthy uncertainty is specific and updateable.',
+      'Action may be justified before certainty arrives.',
+    ],
+    [
+      pagePath('/core-ideas', 'Warranted Uncertainty'),
+      pagePath('/core-ideas', 'Confidence Levels'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+    ],
+  ),
+  corePage(
+    'Warranted Uncertainty',
+    'Warranted uncertainty is the range of doubt an agent is entitled to given their evidence and rational skill.',
+    [
+      {
+        heading: 'Not All Spread Is Failure',
+        body: [
+          'The model allows a range of reasonable credence around perceived evidence. A person with weaker tools or noisier evidence may be warranted in a wider range of uncertainty. Rationality is not a demand for artificial sharpness.',
+        ],
+      },
+      {
+        heading: 'The Omega Range',
+        body: [
+          'In the interactive model, omega represents warranted uncertainty. As Deep Rationality increases, the warranted spread narrows: better tools reduce fog. As Deep Rationality decreases, the range widens: the agent should be less precise because their optics are less reliable.',
+        ],
+      },
+      {
+        heading: 'When Uncertainty Becomes Cover',
+        body: [
+          'Uncertainty becomes suspect when the agent uses it selectively. If uncertainty is invoked only to resist unwelcome evidence, but disappears when the evidence supports a favored conclusion, it is no longer humility. It is core-rational evasion.',
+        ],
+      },
+    ],
+    [
+      'Some uncertainty is warranted by limited evidence or tools.',
+      'Omega models the reasonable spread around perceived evidence.',
+      'Selective uncertainty can become motivated evasion.',
+    ],
+    [
+      pagePath('/core-ideas', 'Deep Rationality (SD)'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/interactive-lab', 'Visual Legend'),
+    ],
+  ),
+  corePage(
+    'Objective Evidence (E0)',
+    'Objective Evidence is the evidential support available in the world before an agent interprets it.',
+    [
+      {
+        heading: 'The Target',
+        body: [
+          'Objective Evidence, E0, is the model target: the support that exists independent of a particular agent perception. It is not omniscience, and it is not always directly accessible. It represents the evidential reality the agent is trying to track.',
+        ],
+      },
+      {
+        heading: 'Why E0 Matters',
+        body: [
+          'Without E0, all we have are perspectives. The model needs a target because some interpretations are better than others. Evidence can be missed, distorted, hidden, or misunderstood. E0 gives us a way to talk about those failures.',
+        ],
+      },
+      {
+        heading: 'Humility About E0',
+        body: [
+          'E0 is often estimated rather than possessed. In real life, no person usually holds the whole evidential field. The model therefore uses E0 as a conceptual anchor, not a claim that any observer has perfect access.',
+        ],
+      },
+    ],
+    [
+      'E0 is the evidential target in the world.',
+      'It allows us to distinguish better and worse perception.',
+      'E0 is often estimated, not directly possessed.',
+    ],
+    [
+      pagePath('/core-ideas', 'Evidence'),
+      pagePath('/core-ideas', 'Perceived Evidence (EP)'),
+      pagePath('/core-ideas', 'Calculation Error (DE)'),
+    ],
+  ),
+  corePage(
+    'Perceived Evidence (EP)',
+    'Perceived Evidence is what the agent takes the evidence to show after interpretation.',
+    [
+      {
+        heading: 'The Lens',
+        body: [
+          'Perceived Evidence, EP, is the agent internal read on the evidence. It is not merely raw sensation. It includes attention, memory, testimony, statistical interpretation, social framing, and background assumptions.',
+        ],
+      },
+      {
+        heading: 'Why Perception Diverges',
+        body: [
+          'EP can diverge from E0 because data are missing, tools are weak, incentives distort attention, or the environment manipulates what is visible. Propaganda, gaslighting, selection effects, and poor measurement all operate at this stage.',
+        ],
+      },
+      {
+        heading: 'EP and Responsibility',
+        body: [
+          'A distorted EP may or may not be blameworthy. The agent may have had no access to better information, or they may have avoided it. This is why the model separates diagnosis from moral accusation.',
+        ],
+      },
+    ],
+    [
+      'EP is the agent internal reading of the evidence.',
+      'It can diverge from E0 through many mechanisms.',
+      'A bad EP is not automatically bad faith.',
+    ],
+    [
+      pagePath('/core-ideas', 'Objective Evidence (E0)'),
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
+      pagePath('/case-studies', 'Conspiracy Thinking'),
+    ],
+  ),
+  corePage(
+    'Assigned Credence (CA)',
+    'Assigned Credence is the final confidence level an agent actually adopts.',
+    [
+      {
+        heading: 'The Belief Anchor',
+        body: [
+          'Assigned Credence, CA, is where the agent finally anchors belief. It is the confidence they live with, argue from, and act upon. In a well-aligned state, CA tracks EP closely.',
+        ],
+      },
+      {
+        heading: 'Why CA Drifts',
+        body: [
+          'CA can drift from EP when desire, fear, identity, loyalty, trauma, incentives, or public commitment pull confidence away from what the agent takes the evidence to show. This is the domain of Core Rationality.',
+        ],
+      },
+      {
+        heading: 'CA Is the Site of Integrity',
+        body: [
+          'The model treats CA as ethically important because it reveals whether the agent honors their own perception. A person cannot always control E0, and may only partly control EP, but the adoption of credence is where epistemic integrity becomes visible.',
+        ],
+      },
+    ],
+    [
+      'CA is the final confidence an agent adopts.',
+      'CA should normally track perceived evidence.',
+      'A gap between EP and CA reveals core-rational pressure.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core Rationality'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/start-here', 'The Difference Between Being Mistaken and Being Epistemically Inconsistent'),
+    ],
+  ),
+  corePage(
+    'Deep Rationality (SD)',
+    'Deep Rationality is the skill dimension: the quality of the agent inferential tools.',
+    [
+      {
+        heading: 'The Skill Axis',
+        body: [
+          'Deep Rationality, SD, refers to the agent ability to process evidence well. It includes statistical literacy, causal reasoning, Bayesian updating, comparison of hypotheses, base-rate sensitivity, and awareness of bias-producing structures.',
+        ],
+      },
+      {
+        heading: 'What SD Improves',
+        body: [
+          'Higher SD narrows the gap between E0 and EP. Better tools do not guarantee truth, but they improve the odds that the agent perceived evidence resembles the evidential situation.',
+        ],
+      },
+      {
+        heading: 'The Limit of Skill',
+        body: [
+          'Skill alone is not enough. A person may be statistically sophisticated and still use that sophistication defensively. Deep Rationality improves perception; Core Rationality governs whether the agent follows that perception honestly.',
+        ],
+      },
+    ],
+    [
+      'SD is the rational skill dimension.',
+      'It improves the E0-EP relationship.',
+      'Skill can serve truth or rationalization depending on core integrity.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core Rationality'),
+      pagePath('/core-ideas', 'Calculation Error (DE)'),
+      pagePath('/interactive-lab', 'Biased Expert'),
+    ],
+  ),
+  corePage(
+    'Core Rationality',
+    'Core Rationality is the integrity dimension: the willingness to assign credence according to perceived evidence.',
+    [
+      {
+        heading: 'The Will Axis',
+        body: [
+          'Core Rationality concerns whether the agent believes according to what they take the evidence to show. It is not about having perfect tools. It is about refusing to let comfort, tribe, fear, or identity dictate the final credence.',
+        ],
+      },
+      {
+        heading: 'Good Faith',
+        body: [
+          'A core-rational agent can be mistaken. What makes them core-rational is that they are tethered to their perceived evidence. They do not knowingly inflate, deflate, or redirect belief to protect a preferred self-image.',
+        ],
+      },
+      {
+        heading: 'Why Core Rationality Is Hard',
+        body: [
+          'Core Rationality is hard because evidence often threatens belonging, status, plans, and identity. It asks not merely "Can you see?" but "Will you follow what you see?"',
+        ],
+      },
+    ],
+    [
+      'Core Rationality is integrity in assigned credence.',
+      'It concerns the EP-CA relationship.',
+      'A core-rational agent can still be honestly mistaken.',
+    ],
+    [
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/skills', 'How to Detect Motivated Override'),
+    ],
+  ),
+  corePage(
+    'Calculation Error (DE)',
+    'Calculation Error is the distance between objective evidence and perceived evidence.',
+    [
+      {
+        heading: 'The E0-EP Gap',
+        body: [
+          'Calculation Error, DE, measures the distance between E0 and EP. It is the gap between the evidential situation and the agent internal representation of that situation.',
+        ],
+      },
+      {
+        heading: 'Sources of Calculation Error',
+        body: [
+          'Calculation Error can arise from missing information, poor measurement, weak priors, base-rate neglect, bad likelihood comparisons, misleading testimony, propaganda, or limited cognitive skill.',
+          'Not all calculation error is culpable. Sometimes the world is simply hard to read.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repairing DE usually means improving Deep Rationality or improving access to evidence: better tools, better data, better comparison classes, better feedback, and less distorted information environments.',
+        ],
+      },
+    ],
+    [
+      'DE is the E0-EP gap.',
+      'It diagnoses perceptual or inferential error.',
+      'It is repaired through tools, data, and feedback.',
+    ],
+    [
+      pagePath('/core-ideas', 'Deep Rationality (SD)'),
+      pagePath('/core-ideas', 'Objective Evidence (E0)'),
+      pagePath('/case-studies', 'Medical Testing'),
+    ],
+  ),
+  corePage(
+    'Core Irrationality (IC)',
+    'Core Irrationality is the distance between perceived evidence and assigned credence.',
+    [
+      {
+        heading: 'The EP-CA Gap',
+        body: [
+          'Core Irrationality, IC, measures the gap between what the agent takes the evidence to show and what they actually believe. It is the doxastic gap: a failure of alignment between perception and commitment.',
+        ],
+      },
+      {
+        heading: 'Why It Matters',
+        body: [
+          'IC is especially important because it marks a different kind of failure from ignorance. A high IC agent is not merely missing information; they are assigning confidence against their own evidential perception.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repairing IC requires more than information. It may require lowering identity threat, improving emotional regulation, making revision socially survivable, and practicing honesty about uncertainty.',
+        ],
+      },
+    ],
+    [
+      'IC is the EP-CA gap.',
+      'It diagnoses motivated or integrity-related distortion.',
+      'It often requires courage and social repair, not only more facts.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core Rationality'),
+      pagePath('/core-ideas', 'Epistemic Akrasia'),
+      pagePath('/case-studies', 'Motivated Reasoning'),
+    ],
+  ),
+  corePage(
+    'Epistemic Akrasia',
+    'Epistemic akrasia is believing against one own perceived evidence.',
+    [
+      {
+        heading: 'Weakness of Epistemic Will',
+        body: [
+          'Akrasia is acting against one better judgment. Epistemic akrasia is the belief-forming analogue: assigning a credence that conflicts with what one takes the evidence to warrant.',
+        ],
+      },
+      {
+        heading: 'Everyday Forms',
+        body: [
+          'A person may know a fear is exaggerated but treat it as likely. They may know a source is unreliable but believe it because it flatters their group. They may see that an objection is strong but keep repeating the weaker argument.',
+        ],
+      },
+      {
+        heading: 'Relation to IC',
+        body: [
+          'Epistemic akrasia is one way Core Irrationality appears from the inside. IC is the measurable gap; akrasia is the lived experience of not following one own evidential sense.',
+        ],
+      },
+    ],
+    [
+      'Epistemic akrasia is believing against perceived evidence.',
+      'It is a core-rational failure.',
+      'It often feels like fear, loyalty, or identity overriding judgment.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/skills', 'How to Detect Motivated Override'),
+      pagePath('/case-studies', 'Fear Overrides'),
+    ],
+  ),
+  corePage(
+    'Core vs Deep Rationality',
+    'Core vs Deep Rationality separates integrity of belief from skill in evidence processing.',
+    [
+      {
+        heading: 'Two Axes, Not One Scale',
+        body: [
+          'The central distinction of the project is that rationality has at least two separable dimensions. Deep Rationality concerns the skill of seeing. Core Rationality concerns the integrity of believing according to what one sees.',
+        ],
+      },
+      {
+        heading: 'Why the Distinction Helps',
+        body: [
+          'The distinction prevents two errors. First, it prevents blaming honest novices as if every mistake were bad faith. Second, it prevents excusing biased experts as rational simply because they are intelligent.',
+        ],
+      },
+      {
+        heading: 'The Four Quadrants',
+        body: [
+          'High Deep and high Core gives the ideal agent. Low Deep and high Core gives the honest novice. High Deep and low Core gives the biased expert. Low Deep and low Core gives epistemic delusion or collapse, depending on the case.',
+        ],
+      },
+    ],
+    [
+      'Deep Rationality is skill; Core Rationality is integrity.',
+      'The distinction protects both charity and accountability.',
+      'The archetypes emerge from combinations of the two axes.',
+    ],
+    [
+      pagePath('/core-ideas', 'Deep Rationality (SD)'),
+      pagePath('/core-ideas', 'Core Rationality'),
+      pagePath('/core-ideas', 'Epistemic Archetypes'),
+    ],
+  ),
+  corePage(
+    'Epistemic Archetypes',
+    'Epistemic archetypes are recurring patterns formed by different alignments of skill, perception, and belief.',
+    [
+      {
+        heading: 'Why Archetypes',
+        body: [
+          'Archetypes make the model memorable. They are not permanent identities or diagnoses of whole persons. They are local patterns in a given belief state.',
+        ],
+      },
+      {
+        heading: 'The Main Four',
+        body: [
+          'The ideal agent has high skill and high integrity. The honest novice has limited tools but good faith. The biased expert has strong tools but uses them defensively. The epistemic delusion pattern shows severe detachment between credence and evidence.',
+        ],
+      },
+      {
+        heading: 'Use With Care',
+        body: [
+          'The archetypes are meant to diagnose belief states, not insult people. A person may be an honest novice in medicine, a biased expert in politics, and an ideal agent in a narrow professional specialty.',
+        ],
+      },
+    ],
+    [
+      'Archetypes describe patterns, not permanent identities.',
+      'They arise from Core and Deep Rationality combinations.',
+      'They should be used diagnostically, not as insults.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Ideal Agent'),
+      pagePath('/interactive-lab', 'Honest Novice'),
+      pagePath('/interactive-lab', 'Biased Expert'),
+    ],
+  ),
+];
+
+export const contentPages = [...startHerePages, ...coreIdeasPages];
