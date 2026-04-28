@@ -2074,4 +2074,442 @@ export const caseStudyPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages];
+function skillPage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/skills', title),
+    groupTitle: 'Skills',
+    groupPath: '/skills',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const skillPages: ContentPage[] = [
+  skillPage(
+    'How to Think in Credences',
+    'Thinking in credences means replacing all-or-nothing belief with explicit degrees of confidence.',
+    [
+      {
+        heading: 'Start With a Number or Range',
+        body: [
+          'The first skill is to stop hiding behind yes-or-no belief when the evidence is graded. You do not always need a precise number, but you do need a sense of strength: barely leaning, moderately confident, highly confident, or nearly certain.',
+          'A range is often better than fake precision. Saying "I am somewhere between 0.6 and 0.7" is more honest than pretending to know you are at exactly 0.64.',
+        ],
+      },
+      {
+        heading: 'Name What Would Move You',
+        body: [
+          'A credence becomes more rational when it is updateable. Ask what evidence would raise it, lower it, or leave it unchanged. If no possible evidence would move the credence, you may be dealing with identity protection rather than inquiry.',
+        ],
+      },
+      {
+        heading: 'Practice',
+        body: [
+          'Choose three ordinary claims each day and assign rough credences. Then write one sentence explaining the evidence and one sentence naming what would change your mind. The goal is not mathematical performance. The goal is to make confidence answerable.',
+        ],
+      },
+    ],
+    [
+      'Use ranges when exact numbers would be fake precision.',
+      'Every serious credence should have possible update conditions.',
+      'The habit is confidence made explicit and answerable.',
+    ],
+    [
+      pagePath('/core-ideas', 'Credences'),
+      pagePath('/start-here', 'Why Binary Belief Is Too Crude'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+    ],
+  ),
+  skillPage(
+    'How to Scale Confidence to Evidence',
+    'Scaling confidence means letting evidential support determine the strength of belief.',
+    [
+      {
+        heading: 'Separate Direction From Weight',
+        body: [
+          'First ask which direction the evidence points. Then ask how much it should move confidence. Many people stop after direction: they find something that supports their view and treat it as decisive. Scaling requires the second question.',
+        ],
+      },
+      {
+        heading: 'Use Confidence Bands',
+        body: [
+          'A practical scale helps: below 0.5 means leaning against, around 0.5 means unresolved, 0.6 to 0.7 means tentative support, 0.7 to 0.85 means substantial support, 0.85 and above means strong support, and near certainty should be rare.',
+          'These bands are not laws. They are guardrails against treating every favorable consideration as proof.',
+        ],
+      },
+      {
+        heading: 'Check for Inflation',
+        body: [
+          'Ask whether your confidence would look excessive if someone you disagreed with used the same evidence. If so, you may be scaling by desire rather than support.',
+        ],
+      },
+    ],
+    [
+      'Evidence direction and evidence weight are different.',
+      'Confidence bands prevent cheap certainty.',
+      'Symmetry tests reveal motivated inflation.',
+    ],
+    [
+      pagePath('/core-ideas', 'Confidence Levels'),
+      pagePath('/core-ideas', 'Calibration'),
+      pagePath('/case-studies', 'Risk Inflation'),
+    ],
+  ),
+  skillPage(
+    'How to Update with New Evidence',
+    'Updating well means revising confidence proportionally without becoming volatile or stubborn.',
+    [
+      {
+        heading: 'State the Prior',
+        body: [
+          'Before considering the new information, state your prior. What did you believe before this arrived, and why? This prevents the new evidence from taking over the whole field simply because it is fresh.',
+        ],
+      },
+      {
+        heading: 'Ask How Diagnostic the Evidence Is',
+        body: [
+          'New evidence should move confidence only to the extent that it discriminates between hypotheses. If the evidence is expected under several possibilities, update modestly. If it is much more expected under one possibility, update more strongly.',
+        ],
+      },
+      {
+        heading: 'Record the Movement',
+        body: [
+          'Write the movement explicitly: "I was at 0.55; this moves me to 0.68." This makes updating visible and prevents the mind from rewriting its history after the fact.',
+        ],
+      },
+    ],
+    [
+      'Begin with the prior.',
+      'Update according to diagnostic strength.',
+      'Record confidence movement to prevent hindsight distortion.',
+    ],
+    [
+      pagePath('/core-ideas', 'Bayesian Updating'),
+      pagePath('/core-ideas', 'Likelihoods'),
+      pagePath('/core-ideas', 'Posteriors'),
+    ],
+  ),
+  skillPage(
+    'How to Estimate Priors',
+    'Estimating priors means finding the right background frequency before vivid new evidence dominates judgment.',
+    [
+      {
+        heading: 'Find the Reference Class',
+        body: [
+          'Ask what kind of case this is. A medical symptom belongs to a patient population. A news claim belongs to a source track record. A personal conflict belongs to a history of similar interactions. The reference class gives the first anchor.',
+        ],
+      },
+      {
+        heading: 'Use Multiple Anchors',
+        body: [
+          'No reference class is perfect. Try several. What is the broad base rate? What is the narrower base rate? What changes if you choose a different but still relevant comparison class?',
+        ],
+      },
+      {
+        heading: 'Beware Convenient Priors',
+        body: [
+          'A prior chosen because it protects a desired conclusion is not doing honest work. Good priors may be rough, but they should be chosen because they are relevant, not because they are useful ammunition.',
+        ],
+      },
+    ],
+    [
+      'A prior starts with a reference class.',
+      'Multiple reference classes can test robustness.',
+      'Convenient priors are often disguised motivated reasoning.',
+    ],
+    [
+      pagePath('/core-ideas', 'Priors'),
+      pagePath('/case-studies', 'Base-Rate Neglect'),
+      pagePath('/skills', 'How to Avoid Base-Rate Neglect'),
+    ],
+  ),
+  skillPage(
+    'How to Read Likelihoods',
+    'Reading likelihoods means asking how expected the evidence is under each live hypothesis.',
+    [
+      {
+        heading: 'Compare, Do Not Merely Confirm',
+        body: [
+          'The key question is not "Does this fit my view?" Many things fit many views. The better question is "Is this evidence more expected if my view is true than if an alternative is true?"',
+        ],
+      },
+      {
+        heading: 'List Live Alternatives',
+        body: [
+          'Before interpreting evidence, list at least two alternatives. Include mundane explanations, error, noise, coincidence, and selection effects where relevant. Evidence that survives comparison deserves more weight.',
+        ],
+      },
+      {
+        heading: 'Look for Discriminators',
+        body: [
+          'Strong evidence discriminates. It rules some possibilities down while raising others. Weak evidence is compatible with too many possibilities to move confidence much.',
+        ],
+      },
+    ],
+    [
+      'Likelihoods are comparative.',
+      'Evidence is stronger when it discriminates among hypotheses.',
+      'Always include mundane alternatives.',
+    ],
+    [
+      pagePath('/core-ideas', 'Likelihoods'),
+      pagePath('/core-ideas', 'Evidence'),
+      pagePath('/case-studies', 'Medical Testing'),
+    ],
+  ),
+  skillPage(
+    'How to Avoid Base-Rate Neglect',
+    'Avoiding base-rate neglect means keeping background frequency visible when case details become vivid.',
+    [
+      {
+        heading: 'Ask "How Often?" First',
+        body: [
+          'Before interpreting a vivid case, ask how often this kind of thing occurs in the relevant population. This does not settle the question, but it prevents the anecdote from becoming the whole evidential world.',
+        ],
+      },
+      {
+        heading: 'Translate Stories Into Frequencies',
+        body: [
+          'When possible, convert the situation into natural frequencies. Instead of thinking "the test is accurate," ask how many true positives and false positives would appear among 1,000 people like this.',
+        ],
+      },
+      {
+        heading: 'Return to the Particular',
+        body: [
+          'Base rates are anchors, not prisons. After anchoring, return to the case details and ask how diagnostic they really are. The skill is integration, not ignoring particulars.',
+        ],
+      },
+    ],
+    [
+      'Ask for the relevant frequency before interpreting vivid details.',
+      'Natural frequencies make many probability errors easier to see.',
+      'Base rates anchor inquiry without replacing case evidence.',
+    ],
+    [
+      pagePath('/case-studies', 'Base-Rate Neglect'),
+      pagePath('/core-ideas', 'Priors'),
+      pagePath('/skills', 'How to Estimate Priors'),
+    ],
+  ),
+  skillPage(
+    'How to Detect Overconfidence',
+    'Detecting overconfidence means noticing when assigned credence outruns evidential support.',
+    [
+      {
+        heading: 'Watch for Certainty Markers',
+        body: [
+          'Overconfidence often announces itself through language: obviously, impossible, no serious person, everyone knows, case closed. These phrases may be justified sometimes, but they should trigger a calibration check.',
+        ],
+      },
+      {
+        heading: 'Use the Rival Test',
+        body: [
+          'Ask whether a reasonable rival could hold a different credence without being stupid or corrupt. If yes, your certainty should probably come down. The existence of competent disagreement does not make all views equal, but it often widens warranted uncertainty.',
+        ],
+      },
+      {
+        heading: 'Check Track Record',
+        body: [
+          'Overconfidence becomes visible over time. Keep a small prediction log. If your 90 percent claims are true only 60 percent of the time, the problem is not bad luck; it is miscalibration.',
+        ],
+      },
+    ],
+    [
+      'Certainty language should trigger calibration checks.',
+      'Competent disagreement often widens warranted uncertainty.',
+      'Prediction logs reveal overconfidence over time.',
+    ],
+    [
+      pagePath('/core-ideas', 'Calibration'),
+      pagePath('/core-ideas', 'Warranted Uncertainty'),
+      pagePath('/case-studies', 'Biased Expert Cases'),
+    ],
+  ),
+  skillPage(
+    'How to Detect Motivated Override',
+    'Motivated override occurs when fear, desire, identity, or incentives pull assigned credence away from perceived evidence.',
+    [
+      {
+        heading: 'Look for Asymmetric Standards',
+        body: [
+          'Ask whether you demand more evidence from unwelcome claims than from welcome ones. Asymmetric standards are one of the clearest signs that motivation has entered the credencing process.',
+        ],
+      },
+      {
+        heading: 'Notice Identity Threat',
+        body: [
+          'Motivated override often appears when a belief is tied to who you are, who your people are, or what your past choices mean. If changing your mind feels like humiliation or betrayal, Core Rationality is under pressure.',
+        ],
+      },
+      {
+        heading: 'Name the Split',
+        body: [
+          'A useful sentence is: "My perceived evidence is X, but I notice pressure to believe Y." Naming the split helps keep EP and CA from collapsing into one another.',
+        ],
+      },
+    ],
+    [
+      'Asymmetric standards reveal motivated override.',
+      'Identity threat pressures Core Rationality.',
+      'Naming the EP-CA split makes repair possible.',
+    ],
+    [
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/interactive-lab', 'Biased Expert'),
+    ],
+  ),
+  skillPage(
+    'How to Separate Core from Deep Failure',
+    'Separating Core from Deep failure means diagnosing whether the main problem is perception, skill, or belief integrity.',
+    [
+      {
+        heading: 'Ask Where the First Gap Opens',
+        body: [
+          'If the agent does not perceive the evidence accurately, begin with Deep Rationality. If the agent perceives the evidence but assigns a different credence, begin with Core Rationality.',
+        ],
+      },
+      {
+        heading: 'Use the Repair Test',
+        body: [
+          'Ask what would fix the problem. If better data, base rates, feedback, or statistical tools would help, the failure is probably Deep. If the agent already has enough information but cannot bear the implication, the failure is Core.',
+        ],
+      },
+      {
+        heading: 'Expect Mixed Cases',
+        body: [
+          'Many real cases involve both. A person may consume distorted information and also resist correction. The point is not to force purity, but to avoid using one diagnosis for every problem.',
+        ],
+      },
+    ],
+    [
+      'Deep failure concerns E0-EP.',
+      'Core failure concerns EP-CA.',
+      'The repair test helps identify the main diagnosis.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core vs Deep Rationality'),
+      pagePath('/interactive-lab', 'Interpretation Guide'),
+      pagePath('/case-studies', 'Honest Novice Cases'),
+    ],
+  ),
+  skillPage(
+    'How to Express Uncertainty Honestly',
+    'Honest uncertainty is specific, proportionate, and open to update.',
+    [
+      {
+        heading: 'Avoid Fog Words Alone',
+        body: [
+          'Words like maybe, possibly, likely, and certainly can help, but they are often too elastic. Pair them with rough ranges or explanations. "Likely, around 70 percent" is clearer than "probably" by itself.',
+        ],
+      },
+      {
+        heading: 'Say What You Do Not Know',
+        body: [
+          'Good uncertainty is not a decorative disclaimer. It identifies the missing information, live alternatives, weak assumptions, or evidence that would matter next.',
+        ],
+      },
+      {
+        heading: 'Do Not Use Uncertainty Selectively',
+        body: [
+          'If uncertainty appears only when evidence is inconvenient, it becomes a shield. Honest uncertainty applies across the board, including to claims you want to be true.',
+        ],
+      },
+    ],
+    [
+      'Use ranges when possible.',
+      'Name the source of uncertainty.',
+      'Apply uncertainty symmetrically.',
+    ],
+    [
+      pagePath('/core-ideas', 'Uncertainty'),
+      pagePath('/core-ideas', 'Warranted Uncertainty'),
+      pagePath('/case-studies', 'Pragmatic Encroachment'),
+    ],
+  ),
+  skillPage(
+    'How to Ask Better Epistemic Questions',
+    'Better epistemic questions locate evidence, confidence, alternatives, update conditions, and possible gaps.',
+    [
+      {
+        heading: 'Questions About Evidence',
+        body: [
+          'Ask what evidence exists, what evidence is missing, what evidence would be expected if the claim were false, and how reliable the source or method is.',
+        ],
+        bullets: [
+          'What would I expect to see if this were true?',
+          'What would I expect to see if this were false?',
+          'What alternative explanations remain live?',
+          'How often does this source or method get similar claims right?',
+        ],
+      },
+      {
+        heading: 'Questions About Confidence',
+        body: [
+          'Ask how strong the credence is, whether the confidence matches the evidence, and what would move it. A belief without update conditions is not yet fully answerable to evidence.',
+        ],
+      },
+      {
+        heading: 'Questions About Gaps',
+        body: [
+          'Ask whether the likely problem is E0-EP or EP-CA. Are we missing tools and evidence, or are we resisting what we already see? This question often changes the whole conversation.',
+        ],
+      },
+    ],
+    [
+      'Good questions make evidence, alternatives, and confidence explicit.',
+      'Update conditions are central.',
+      'Gap questions distinguish skill problems from integrity problems.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Interpretation Guide'),
+      pagePath('/case-studies', 'Conspiracy Thinking'),
+      pagePath('/skills', 'How to Separate Core from Deep Failure'),
+    ],
+  ),
+  skillPage(
+    'Practice Exercises',
+    'Practice exercises help turn credencing from a vocabulary into a habit.',
+    [
+      {
+        heading: 'Daily Calibration',
+        body: [
+          'Write three predictions each day with confidence levels. Later, check outcomes. The aim is to discover whether your confidence language is too strong, too weak, or domain-dependent.',
+        ],
+      },
+      {
+        heading: 'The Two-Gap Journal',
+        body: [
+          'For one belief that matters, write E0, EP, CA, and SD estimates. Then identify the largest gap. Ask whether the next repair should be better evidence, better reasoning, or more honesty about what you already perceive.',
+        ],
+      },
+      {
+        heading: 'The Rival Reconstruction',
+        body: [
+          'Choose a belief you reject. Reconstruct the strongest version of the rival evidence and assign it a credence from the rival perspective. Then return to your own credence and ask whether it should move.',
+        ],
+      },
+    ],
+    [
+      'Prediction logs build calibration.',
+      'Two-gap journaling applies the model to live beliefs.',
+      'Rival reconstruction reduces one-sided evidence perception.',
+    ],
+    [
+      pagePath('/skills', 'How to Think in Credences'),
+      pagePath('/skills', 'How to Update with New Evidence'),
+      pagePath('/interactive-lab', 'Build Your Own Scenario'),
+    ],
+  ),
+];
+
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages];
