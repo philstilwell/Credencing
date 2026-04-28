@@ -15,6 +15,7 @@ import {
   Info,
   Library,
   Map,
+  Network,
   Search,
   ShieldAlert,
   Terminal,
@@ -34,13 +35,28 @@ const navItems = [
   { label: 'Ideas', path: '/core-ideas', icon: <Brain size={14} /> },
   { label: 'Lab', path: '/interactive-lab', icon: <Activity size={14} /> },
   { label: 'Library', path: '/library', icon: <Library size={14} /> },
+  { label: 'Search', path: '/search', icon: <Search size={14} /> },
   { label: 'Map', path: '/site-map', icon: <Map size={14} /> },
+];
+
+const glossaryTerms = [
+  ['E0', 'Objective Evidence: the evidential target in the world.'],
+  ['EP', 'Perceived Evidence: what an agent takes the evidence to show.'],
+  ['CA', 'Assigned Credence: the confidence an agent finally adopts.'],
+  ['SD', 'Deep Rationality: skill in processing evidence.'],
+  ['DE', 'Calculation Error: the gap between E0 and EP.'],
+  ['IC', 'Core Irrationality: the gap between EP and CA.'],
+  ['Calibration', 'The fit between confidence and actual reliability.'],
+  ['Prior', 'A starting credence before new evidence is considered.'],
+  ['Likelihood', 'How expected evidence is under a hypothesis.'],
+  ['Posterior', 'An updated credence after evidence is considered.'],
 ];
 
 export default function App() {
   const [route, setRoute] = useHashRoute();
   const activeGroup = pageGroups.find((group) => group.path === route);
   const activePage = contentPages.find((page) => page.path === route);
+  useRouteMetadata(route, activeGroup, activePage);
 
   return (
     <div className="min-h-screen p-4 md:p-8 relative overflow-hidden">
@@ -110,6 +126,18 @@ export default function App() {
             </motion.main>
           )}
 
+          {route === '/search' && (
+            <motion.main
+              key="search"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+            >
+              <SearchAndTopicIndex onNavigate={setRoute} />
+            </motion.main>
+          )}
+
           {activePage && (
             <motion.main
               key={activePage.path}
@@ -122,7 +150,7 @@ export default function App() {
             </motion.main>
           )}
 
-          {!activeGroup && !activePage && route !== '/' && route !== '/site-map' && (
+          {!activeGroup && !activePage && route !== '/' && route !== '/site-map' && route !== '/search' && (
             <motion.main
               key="not-found"
               initial={{ opacity: 0, y: 12 }}
@@ -146,6 +174,18 @@ export default function App() {
       </div>
     </div>
   );
+}
+
+function useRouteMetadata(route: string, group?: PageGroup, page?: ContentPage) {
+  useEffect(() => {
+    const title = page ? `${page.title} | Credencing` : group ? `${group.title} | Credencing` : route === '/search' ? 'Search | Credencing' : route === '/site-map' ? 'Site Map | Credencing' : 'Credencing: Core & Deep Rationality';
+    const description = page?.summary ?? group?.summary ?? 'A public framework and interactive model for mapping evidence, perception, confidence, and rational integrity.';
+    document.title = title;
+    const meta = document.querySelector('meta[name="description"]');
+    meta?.setAttribute('content', description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+  }, [route, group, page]);
 }
 
 function useHashRoute(): [string, (path: string) => void] {
@@ -245,6 +285,7 @@ function HomeExperience({ onNavigate }: { onNavigate: (path: string) => void }) 
       </section>
 
       <InteractiveExperience initialTab="intro" compact />
+      <DiagramGallery />
 
       <section className="space-y-6">
         <div className="flex items-end justify-between gap-4">
@@ -494,13 +535,17 @@ function PageTeaser({ group, page, index }: { group: PageGroup; page: string; in
 
 function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
   const group = pageGroups.find((item) => item.path === page.groupPath);
+  const sequence = group?.pages.map((title) => pagePath(group.path, title)) ?? [];
+  const currentIndex = sequence.indexOf(page.path);
+  const previousPath = currentIndex > 0 ? sequence[currentIndex - 1] : undefined;
+  const nextPath = currentIndex >= 0 && currentIndex < sequence.length - 1 ? sequence[currentIndex + 1] : undefined;
+  const previousPage = previousPath ? contentPages.find((item) => item.path === previousPath) : undefined;
+  const nextPage = nextPath ? contentPages.find((item) => item.path === nextPath) : undefined;
 
   return (
     <article className="space-y-8">
       <header className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
-        <button onClick={() => onNavigate(page.groupPath)} className="text-[10px] uppercase tracking-[0.3em] text-blue-400 hover:text-blue-300 font-bold">
-          {page.groupTitle}
-        </button>
+        <Breadcrumbs page={page} onNavigate={onNavigate} />
         <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">{page.title}</h2>
         <p className="text-slate-300 max-w-3xl text-base md:text-lg leading-relaxed">{page.summary}</p>
       </header>
@@ -527,9 +572,26 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
               )}
             </section>
           ))}
+          <PriorityExpansion title={page.title} />
+          <DownloadPanel page={page} />
+          <nav className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {previousPath && (
+              <button onClick={() => onNavigate(previousPath)} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 text-left transition-colors">
+                <span className="block text-[9px] uppercase tracking-widest text-slate-500 mb-2">Previous</span>
+                <span className="text-white text-sm">{previousPage?.title ?? previousPath}</span>
+              </button>
+            )}
+            {nextPath && (
+              <button onClick={() => onNavigate(nextPath)} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 text-left transition-colors">
+                <span className="block text-[9px] uppercase tracking-widest text-slate-500 mb-2">Next</span>
+                <span className="text-white text-sm">{nextPage?.title ?? nextPath}</span>
+              </button>
+            )}
+          </nav>
         </div>
 
         <aside className="lg:col-span-4 lg:sticky lg:top-8 space-y-5">
+          <GlossaryChips page={page} onNavigate={onNavigate} />
           <div className="glass-panel p-6 bg-blue-500/[0.04] border-blue-500/20 space-y-4">
             <h3 className="text-[10px] uppercase tracking-[0.25em] text-blue-300 font-bold">Key Takeaways</h3>
             <ul className="space-y-3">
@@ -587,6 +649,122 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
   );
 }
 
+function Breadcrumbs({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.24em] font-bold">
+      <button onClick={() => onNavigate('/')} className="text-slate-500 hover:text-blue-300">Home</button>
+      <span className="text-slate-700">/</span>
+      <button onClick={() => onNavigate(page.groupPath)} className="text-blue-400 hover:text-blue-300">{page.groupTitle}</button>
+      <span className="text-slate-700">/</span>
+      <span className="text-slate-500">{page.title}</span>
+    </div>
+  );
+}
+
+function GlossaryChips({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
+  const text = `${page.title} ${page.summary} ${page.sections.flatMap((section) => [section.heading, ...section.body]).join(' ')}`;
+  const matches = glossaryTerms.filter(([term]) => new RegExp(`\\b${term.replace(/[()]/g, '\\$&')}\\b`, 'i').test(text)).slice(0, 6);
+  if (matches.length === 0) return null;
+
+  return (
+    <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
+      <h3 className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-bold">Glossary</h3>
+      <div className="flex flex-wrap gap-2">
+        {matches.map(([term, definition]) => (
+          <button
+            key={term}
+            title={definition}
+            onClick={() => onNavigate(pagePath('/library', 'Glossary'))}
+            className="px-3 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-200 text-[10px] font-mono hover:border-blue-400/50"
+          >
+            {term}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PriorityExpansion({ title }: { title: string }) {
+  const expansions: Record<string, { heading: string; body: string[] }> = {
+    'Core vs Deep Rationality': {
+      heading: 'Concrete Example',
+      body: [
+        'Imagine two people evaluating a medical screening result. One does not understand false positives and therefore overreads the test. That is mainly a Deep Rationality failure. Another understands the statistics but treats the result as certain because fear has taken over. That is mainly a Core Rationality failure.',
+        'The same outward confidence can therefore come from different structures. The model earns its keep when it prevents the wrong repair: statistics for a fear problem, or courage-talk for a math problem.',
+      ],
+    },
+    'Core Irrationality (IC)': {
+      heading: 'Why IC Is the Ethical Pressure Point',
+      body: [
+        'IC becomes ethically important because it is the place where an agent stops following their own evidential lights. The issue is not whether they possess perfect evidence; it is whether they honor what they take themselves to have seen.',
+        'That is why IC should be handled carefully. It is not a quick insult. It is a serious diagnosis of doxastic misalignment.',
+      ],
+    },
+    'Biased Expert': {
+      heading: 'The Dangerous Competence Problem',
+      body: [
+        'The biased expert is dangerous because their arguments may be genuinely impressive. The problem is not low intelligence; it is directional intelligence. Attention, skepticism, and creativity are aimed asymmetrically.',
+        'A useful test is whether the expert can state update conditions that would move them against their current position. If not, expertise has become fortification.',
+      ],
+    },
+    'Motivated Reasoning': {
+      heading: 'A Diagnostic Signature',
+      body: [
+        'Motivated reasoning often shows up as moving standards. The agent asks for rigorous proof from unwelcome claims and accepts loose association from welcome claims.',
+        'The repair is not simply "try harder." It is to precommit to standards before knowing which side they will favor.',
+      ],
+    },
+    'Institutional Diagnostics': {
+      heading: 'From Individual Bias to Organizational Structure',
+      body: [
+        'Institutions can have something like motivated reasoning even when no single person is consciously dishonest. Bad news may be filtered upward, incentives may punish candor, or public commitments may make revision expensive.',
+        'The practical question is structural: what would let the institution notice reality sooner and admit it faster?',
+      ],
+    },
+    'AI Alignment': {
+      heading: 'Alignment as Credence Governance',
+      body: [
+        'AI alignment debates often mix capability forecasts, safety confidence, institutional incentives, and emotional orientation toward technology. Credencing helps separate these layers.',
+        'A lab might have high confidence that a model is capable and much lower confidence that it is safe. Treating those as one confidence is an institutional error.',
+      ],
+    },
+  };
+  const expansion = expansions[title];
+  if (!expansion) return null;
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-blue-500/[0.035] border-blue-500/20 space-y-4">
+      <h3 className="text-2xl font-light text-white">{expansion.heading}</h3>
+      {expansion.body.map((paragraph) => (
+        <p key={paragraph} className="text-slate-300 text-sm md:text-base leading-relaxed">{paragraph}</p>
+      ))}
+    </section>
+  );
+}
+
+function DownloadPanel({ page }: { page: ContentPage }) {
+  if (page.path !== pagePath('/library', 'Downloads') && page.path !== pagePath('/library', 'Teaching Materials')) return null;
+  const downloads = [
+    ['One-Page Model Guide', '/Credencing/downloads/credencing-one-page-guide.md'],
+    ['Scenario Worksheet', '/Credencing/downloads/credencing-scenario-worksheet.md'],
+    ['Classroom Exercise Packet', '/Credencing/downloads/credencing-classroom-exercises.md'],
+  ];
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
+      <h3 className="text-2xl font-light text-white">Starter Downloads</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {downloads.map(([label, href]) => (
+          <a key={href} href={href} className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-blue-500/30 text-sm text-blue-200">
+            {label}
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function RelatedGroups({ currentPath, onNavigate }: { currentPath: string; onNavigate: (path: string) => void }) {
   return (
     <section className="space-y-5">
@@ -613,6 +791,100 @@ function GroupCard({ group, onNavigate }: { group: PageGroup; onNavigate: (path:
       <p className="text-slate-400 text-xs leading-relaxed mb-5">{group.summary}</p>
       <p className="text-[9px] uppercase tracking-widest text-slate-600">{group.pages.length} planned pages</p>
     </button>
+  );
+}
+
+function SearchAndTopicIndex({ onNavigate }: { onNavigate: (path: string) => void }) {
+  const [query, setQuery] = useState('');
+  const topics = ['Evidence', 'Confidence', 'Bayesian', 'Core Rationality', 'Deep Rationality', 'Calibration', 'Motivated', 'Institutional', 'AI', 'Teaching'];
+  const normalized = query.trim().toLowerCase();
+  const results = contentPages.filter((page) => {
+    const haystack = `${page.title} ${page.groupTitle} ${page.summary} ${page.keyTakeaways.join(' ')} ${page.sections.map((section) => `${section.heading} ${section.body.join(' ')}`).join(' ')}`.toLowerCase();
+    return normalized.length === 0 || haystack.includes(normalized);
+  });
+
+  return (
+    <section className="space-y-8">
+      <div className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold">Utility Layer</p>
+        <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">Search and Topic Index</h2>
+        <p className="text-slate-300 max-w-3xl leading-relaxed">Search the public Credencing web by concept, issue, domain, or skill. Topic chips are quick filters over the same page index.</p>
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Search credences, calibration, AI alignment..."
+          className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-slate-100 outline-none focus:border-blue-500/50"
+        />
+        <div className="flex flex-wrap gap-2">
+          {topics.map((topic) => (
+            <button key={topic} onClick={() => setQuery(topic)} className="px-3 py-1.5 rounded-full border border-white/10 text-[10px] uppercase tracking-wider text-slate-300 hover:border-blue-500/40">
+              {topic}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {results.map((page) => (
+          <button key={page.path} onClick={() => onNavigate(page.path)} className="glass-panel p-5 text-left bg-white/[0.015] border-white/5 hover:border-blue-500/30 transition-colors">
+            <span className="text-[9px] uppercase tracking-widest text-blue-400">{page.groupTitle}</span>
+            <h3 className="text-white text-lg font-light mt-2">{page.title}</h3>
+            <p className="text-slate-400 text-xs leading-relaxed mt-2">{page.summary}</p>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function DiagramGallery() {
+  return (
+    <section className="space-y-6">
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold mb-3">Concept Diagrams</p>
+        <h2 className="text-3xl font-light text-white">Three ways to see the model</h2>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <DiagramCard title="Evidence Flow">
+          <div className="flex items-center justify-between gap-2 text-center">
+            {['E0', 'EP', 'CA'].map((node, index) => (
+              <div key={node} className="flex items-center gap-2 flex-1">
+                <div className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-3 text-blue-100 font-mono text-sm w-full">{node}</div>
+                {index < 2 && <ArrowRight size={16} className="text-slate-500 shrink-0" />}
+              </div>
+            ))}
+          </div>
+          <p className="text-slate-400 text-xs leading-relaxed">Objective evidence becomes perceived evidence, then assigned credence. The project studies where this flow bends.</p>
+        </DiagramCard>
+        <DiagramCard title="Core vs Deep">
+          <div className="grid grid-cols-2 gap-2 text-xs">
+            {['Ideal Agent', 'Biased Expert', 'Honest Novice', 'Delusion Risk'].map((label) => (
+              <div key={label} className="border border-white/10 bg-white/[0.02] rounded-lg p-3 text-slate-200 min-h-[70px] flex items-center justify-center text-center">{label}</div>
+            ))}
+          </div>
+          <p className="text-slate-400 text-xs leading-relaxed">Skill and integrity are separate axes. Intelligence alone does not guarantee calibrated belief.</p>
+        </DiagramCard>
+        <DiagramCard title="Action Threshold">
+          <div className="space-y-3">
+            <div className="h-2 rounded-full bg-gradient-to-r from-slate-700 via-blue-500 to-green-400"></div>
+            <div className="flex justify-between text-[10px] text-slate-500 font-mono">
+              <span>uncertain</span>
+              <span>act?</span>
+              <span>strong</span>
+            </div>
+          </div>
+          <p className="text-slate-400 text-xs leading-relaxed">Credence and action threshold are distinct. High stakes can require more confidence without changing the evidence.</p>
+        </DiagramCard>
+      </div>
+    </section>
+  );
+}
+
+function DiagramCard({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-5 min-h-[250px]">
+      <h3 className="text-white font-light text-lg flex items-center gap-2"><Network size={16} className="text-blue-400" /> {title}</h3>
+      {children}
+    </div>
   );
 }
 
