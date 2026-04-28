@@ -160,12 +160,12 @@ export default function App() {
               exit={{ opacity: 0, y: -12 }}
               className="glass-panel p-8 md:p-12 space-y-4"
             >
-              <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold">Route Pending</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Route Pending</p>
               <h1 className="text-3xl text-white font-light">This page is in the map, but not yet drafted.</h1>
-              <p className="text-slate-400 max-w-2xl">
+              <p className="text-stone-400 max-w-2xl">
                 The content architecture is now in place. This route can become a full essay, case study, skill guide, or glossary entry as the project expands.
               </p>
-              <button onClick={() => setRoute('/site-map')} className="text-blue-300 text-xs uppercase tracking-widest font-bold">
+              <button onClick={() => setRoute('/site-map')} className="text-amber-300 text-xs uppercase tracking-widest font-bold">
                 View Site Map
               </button>
             </motion.main>
@@ -220,7 +220,7 @@ function SiteHeader({ route, onNavigate }: { route: string; onNavigate: (path: s
     <header className="pb-10 space-y-6">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <button onClick={() => onNavigate('/')} className="text-left">
-          <p className="text-[10px] text-slate-400 font-mono uppercase tracking-widest mb-2">Credencing.org</p>
+          <p className="text-[10px] text-stone-400 font-mono uppercase tracking-widest mb-2">Credencing.com</p>
           <h1 className="text-4xl md:text-5xl font-light tracking-tight text-white leading-none">
             Credencing: <span className="opacity-40">Visualizing Irrationality</span>
           </h1>
@@ -232,8 +232,8 @@ function SiteHeader({ route, onNavigate }: { route: string; onNavigate: (path: s
               onClick={() => onNavigate(item.path)}
               className={`px-4 py-2 rounded-full flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider transition-all ${
                 route === item.path
-                  ? 'bg-blue-600/20 text-blue-300 border border-blue-500/50'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/10'
+                  ? 'bg-amber-600/20 text-amber-300 border border-amber-500/50'
+                  : 'text-stone-400 hover:text-stone-200 hover:bg-white/10'
               }`}
             >
               {item.icon}
@@ -251,23 +251,23 @@ function HomeExperience({ onNavigate }: { onNavigate: (path: string) => void }) 
     <>
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         <div className="lg:col-span-7 space-y-8">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold">Central Exhibit</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Central Exhibit</p>
           <h2 className="text-4xl md:text-6xl font-extralight tracking-tight text-white leading-[1.02]">
             A map for the distance between evidence, perception, and belief.
           </h2>
-          <p className="text-slate-300 text-lg leading-relaxed font-light">
+          <p className="text-stone-300 text-lg leading-relaxed font-light">
             The interactive model remains the center of the site. Around it, this public web will grow into a guided library of concepts, case studies, skills, and applications for thinking in credences.
           </p>
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => onNavigate('/interactive-lab')}
-              className="px-5 py-3 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/50 rounded-xl text-xs font-bold tracking-widest transition-all text-blue-300 flex items-center gap-3 uppercase"
+              className="px-5 py-3 bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/50 rounded-xl text-xs font-bold tracking-widest transition-all text-amber-300 flex items-center gap-3 uppercase"
             >
               Open Lab <Activity size={14} />
             </button>
             <button
               onClick={() => onNavigate('/start-here')}
-              className="px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-bold tracking-widest transition-all text-slate-300 flex items-center gap-3 uppercase"
+              className="px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-bold tracking-widest transition-all text-stone-300 flex items-center gap-3 uppercase"
             >
               Start Here <ArrowRight size={14} />
             </button>
@@ -295,10 +295,10 @@ function HomeExperience({ onNavigate }: { onNavigate: (path: string) => void }) 
       <section className="space-y-6">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold mb-3">Featured Paths</p>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold mb-3">Featured Paths</p>
             <h2 className="text-3xl font-light text-white">The surrounding web</h2>
           </div>
-          <button onClick={() => onNavigate('/site-map')} className="hidden sm:flex items-center gap-2 text-[10px] text-slate-400 hover:text-blue-300 uppercase tracking-widest font-bold">
+          <button onClick={() => onNavigate('/site-map')} className="hidden sm:flex items-center gap-2 text-[10px] text-stone-400 hover:text-amber-300 uppercase tracking-widest font-bold">
             Full Map <Map size={14} />
           </button>
         </div>
@@ -368,11 +368,11 @@ function IntroPanel() {
   return (
     <motion.div key="intro" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-10">
       <div className="space-y-6">
-        <h2 className="text-4xl font-light tracking-tight text-white underline decoration-blue-500/20 underline-offset-8">Why Study Credencing?</h2>
-        <p className="text-slate-100 text-lg leading-relaxed font-light">
-          Belief is not a binary toggle; it is our <span className="text-white font-medium italic underline decoration-blue-500/40 underline-offset-4">dynamic orientation</span> toward changing realities. We call this process <span className="text-blue-400 font-bold tracking-wider">Credencing</span>.
+        <h2 className="text-4xl font-light tracking-tight text-white underline decoration-amber-500/20 underline-offset-8">Why Study Credencing?</h2>
+        <p className="text-stone-100 text-lg leading-relaxed font-light">
+          Belief is not a binary toggle; it is our <span className="text-white font-medium italic underline decoration-amber-500/40 underline-offset-4">dynamic orientation</span> toward changing realities. We call this process <span className="text-amber-400 font-bold tracking-wider">Credencing</span>.
         </p>
-        <p className="text-slate-300 text-sm leading-relaxed font-light">
+        <p className="text-stone-300 text-sm leading-relaxed font-light">
           The model helps separate failures of skill from failures of will: what the evidence is, what an agent perceives, what they finally believe, and how much rational resolution they bring to the task.
         </p>
       </div>
@@ -388,7 +388,7 @@ function ModelPanel({ data, dynamicDescription }: { data: EpistemicData; dynamic
   return (
     <motion.div key="model" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} className="space-y-8">
       <EpistemicChart data={data} />
-      <div className="glass-panel p-6 border-white/5 text-[13px] text-slate-200 serif-thought leading-relaxed bg-white/[0.03] shadow-inner min-h-[80px] flex items-center">
+      <div className="glass-panel p-6 border-white/5 text-[13px] text-stone-200 serif-thought leading-relaxed bg-white/[0.03] shadow-inner min-h-[80px] flex items-center">
         {dynamicDescription}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/10">
@@ -403,14 +403,14 @@ function TheoryPanel() {
   return (
     <motion.div key="explanation" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-8">
       <section className="space-y-4">
-        <span className="text-[10px] uppercase tracking-[0.2em] text-blue-400 font-bold block">The Analytical Distinction</span>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-amber-400 font-bold block">The Analytical Distinction</span>
         <h2 className="text-2xl font-light text-white leading-tight">Competence vs. Consistency</h2>
-        <p className="text-slate-400 leading-relaxed text-sm">
+        <p className="text-stone-400 leading-relaxed text-sm">
           Credencing unbundles algorithmic failures from affective overrides. An honest novice may lack the tools to see clearly; a biased expert may see clearly and still refuse the implication.
         </p>
       </section>
       <div className="space-y-5">
-        <BorderNote title="1. Deep Rationality" text="The exercise of rational tools: probability theory, statistics, Bayesian analysis, and careful comparison of hypotheses." color="border-blue-500/30" />
+        <BorderNote title="1. Deep Rationality" text="The exercise of rational tools: probability theory, statistics, Bayesian analysis, and careful comparison of hypotheses." color="border-amber-500/30" />
         <BorderNote title="2. Core Rationality" text="The adoption of a degree of belief that aligns with perceived evidence rather than identity, fear, tribe, or desire." color="border-red-500/30" />
       </div>
     </motion.div>
@@ -421,7 +421,7 @@ function FormalizationPanel() {
   return (
     <motion.div key="formalization" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="space-y-8 pb-10">
       <header className="space-y-4">
-        <div className="flex items-center gap-2 text-blue-400">
+        <div className="flex items-center gap-2 text-amber-400">
           <Terminal size={20} strokeWidth={1.5} />
           <h2 className="text-[10px] uppercase tracking-[0.4em] font-bold">The Epistemic Formalism</h2>
         </div>
@@ -445,12 +445,12 @@ function FormalizationPanel() {
 function ContextPanel({ activeTab, onOpenModel }: { activeTab: Tab; onOpenModel: () => void }) {
   if (activeTab === 'intro') {
     return (
-      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="glass-panel p-8 space-y-6 bg-blue-500/[0.06] border-blue-500/40 shadow-2xl">
+      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="glass-panel p-8 space-y-6 bg-amber-500/[0.06] border-amber-500/40 shadow-2xl">
         <h3 className="text-2xl font-light text-white">Unbundling Failure</h3>
-        <p className="text-slate-100 text-sm leading-relaxed">
+        <p className="text-stone-100 text-sm leading-relaxed">
           Traditional labels often blur the honest novice and the biased expert. Credencing keeps those failures separate so each can be diagnosed more precisely.
         </p>
-        <button onClick={onOpenModel} className="w-full px-6 py-3 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/50 rounded-xl text-xs font-bold tracking-widest transition-all text-blue-300 flex items-center justify-center gap-3 uppercase">
+        <button onClick={onOpenModel} className="w-full px-6 py-3 bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/50 rounded-xl text-xs font-bold tracking-widest transition-all text-amber-300 flex items-center justify-center gap-3 uppercase">
           Launch Simulator <Activity size={12} />
         </button>
       </motion.div>
@@ -462,9 +462,9 @@ function ContextPanel({ activeTab, onOpenModel }: { activeTab: Tab; onOpenModel:
       <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="space-y-6">
         {[
           ['The Sage', 'High skill and high integrity; belief tracks evidence closely.', <UserCheck size={16} className="text-green-400" />],
-          ['Honest Novice', 'Good faith with limited tools; blurry perception but sincere alignment.', <Brain size={16} className="text-blue-400" />],
+          ['Honest Novice', 'Good faith with limited tools; blurry perception but sincere alignment.', <Brain size={16} className="text-amber-400" />],
           ['Biased Expert', 'High analytical power used to protect a prior commitment.', <ShieldAlert size={16} className="text-red-400" />],
-          ['Epistemic Delusion', 'Assigned credence drifts beyond the warranted uncertainty range.', <UserMinus size={16} className="text-slate-500" />],
+          ['Epistemic Delusion', 'Assigned credence drifts beyond the warranted uncertainty range.', <UserMinus size={16} className="text-stone-500" />],
         ].map(([name, desc, icon]) => (
           <ArchetypeCard key={String(name)} name={String(name)} desc={String(desc)} icon={icon as ReactNode} />
         ))}
@@ -474,15 +474,15 @@ function ContextPanel({ activeTab, onOpenModel }: { activeTab: Tab; onOpenModel:
 
   return (
     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="glass-panel p-8 space-y-5 bg-white/[0.02]">
-      <p className="serif-thought text-xl text-blue-100 leading-snug">"The intellect as bodyguard"</p>
-      <p className="text-slate-400 text-xs leading-relaxed">
+      <p className="serif-thought text-xl text-amber-100 leading-snug">"The intellect as bodyguard"</p>
+      <p className="text-stone-400 text-xs leading-relaxed">
         Intelligence does not automatically cure bias. Sometimes it gives identity better lawyers.
       </p>
       <a
         href="https://www.academia.edu/165572684/_A_Formal_Framework_for_Core_and_Deep_Rationality"
         target="_blank"
         rel="noopener noreferrer"
-        className="block text-[10px] text-blue-400 font-mono uppercase tracking-[0.2em]"
+        className="block text-[10px] text-amber-400 font-mono uppercase tracking-[0.2em]"
       >
         Full Reference Paper
       </a>
@@ -493,9 +493,9 @@ function ContextPanel({ activeTab, onOpenModel }: { activeTab: Tab; onOpenModel:
 function SectionHero({ group, kicker }: { group: PageGroup; kicker?: string }) {
   return (
     <section className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
-      <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold">{kicker ?? group.title}</p>
+      <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">{kicker ?? group.title}</p>
       <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">{group.title}</h2>
-      <p className="text-slate-300 max-w-3xl text-base md:text-lg leading-relaxed">{group.summary}</p>
+      <p className="text-stone-300 max-w-3xl text-base md:text-lg leading-relaxed">{group.summary}</p>
     </section>
   );
 }
@@ -522,14 +522,14 @@ function PageTeaser({ group, page, index, onNavigate }: { group: PageGroup; page
       onClick={() => {
         onNavigate(targetPath);
       }}
-      className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 transition-colors text-left"
+      className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-amber-500/30 transition-colors text-left"
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-[9px] text-slate-600 font-mono uppercase tracking-widest mb-2">Page {String(index + 1).padStart(2, '0')}</p>
+          <p className="text-[9px] text-stone-600 font-mono uppercase tracking-widest mb-2">Page {String(index + 1).padStart(2, '0')}</p>
           <h4 className="text-white font-medium leading-snug">{page}</h4>
         </div>
-        <span className={`text-[9px] border rounded-full px-2 py-1 uppercase tracking-wider ${hasContent ? 'text-blue-300 border-blue-500/30' : 'text-slate-500 border-white/10'}`}>
+        <span className={`text-[9px] border rounded-full px-2 py-1 uppercase tracking-wider ${hasContent ? 'text-amber-300 border-amber-500/30' : 'text-stone-500 border-white/10'}`}>
           {hasContent ? 'Read' : 'Draft'}
         </span>
       </div>
@@ -551,7 +551,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
       <header className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
         <Breadcrumbs page={page} onNavigate={onNavigate} />
         <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">{page.title}</h2>
-        <p className="text-slate-300 max-w-3xl text-base md:text-lg leading-relaxed">{page.summary}</p>
+        <p className="text-stone-300 max-w-3xl text-base md:text-lg leading-relaxed">{page.summary}</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -560,15 +560,15 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
             <section key={section.heading} className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
               <h3 className="text-2xl font-light text-white">{section.heading}</h3>
               {section.body.map((paragraph) => (
-                <p key={paragraph} className="text-slate-300 text-sm md:text-base leading-relaxed">
+                <p key={paragraph} className="text-stone-300 text-sm md:text-base leading-relaxed">
                   {paragraph}
                 </p>
               ))}
               {section.bullets && (
                 <ul className="grid gap-2 pt-2">
                   {section.bullets.map((bullet) => (
-                    <li key={bullet} className="text-slate-300 text-sm leading-relaxed flex gap-3">
-                      <span className="text-blue-400">|</span>
+                    <li key={bullet} className="text-stone-300 text-sm leading-relaxed flex gap-3">
+                      <span className="text-amber-400">|</span>
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -582,14 +582,14 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
           <ContactPanel page={page} />
           <nav className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {previousPath && (
-              <button onClick={() => onNavigate(previousPath)} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 text-left transition-colors">
-                <span className="block text-[9px] uppercase tracking-widest text-slate-500 mb-2">Previous</span>
+              <button onClick={() => onNavigate(previousPath)} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-amber-500/30 text-left transition-colors">
+                <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Previous</span>
                 <span className="text-white text-sm">{previousPage?.title ?? previousPath}</span>
               </button>
             )}
             {nextPath && (
-              <button onClick={() => onNavigate(nextPath)} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 text-left transition-colors">
-                <span className="block text-[9px] uppercase tracking-widest text-slate-500 mb-2">Next</span>
+              <button onClick={() => onNavigate(nextPath)} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-amber-500/30 text-left transition-colors">
+                <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Next</span>
                 <span className="text-white text-sm">{nextPage?.title ?? nextPath}</span>
               </button>
             )}
@@ -598,12 +598,12 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
 
         <aside className="lg:col-span-4 lg:sticky lg:top-8 space-y-5">
           <GlossaryChips page={page} onNavigate={onNavigate} />
-          <div className="glass-panel p-6 bg-blue-500/[0.04] border-blue-500/20 space-y-4">
-            <h3 className="text-[10px] uppercase tracking-[0.25em] text-blue-300 font-bold">Key Takeaways</h3>
+          <div className="glass-panel p-6 bg-amber-500/[0.04] border-amber-500/20 space-y-4">
+            <h3 className="text-[10px] uppercase tracking-[0.25em] text-amber-300 font-bold">Key Takeaways</h3>
             <ul className="space-y-3">
               {page.keyTakeaways.map((takeaway) => (
-                <li key={takeaway} className="text-slate-200 text-xs leading-relaxed flex gap-2">
-                  <span className="text-blue-400 mt-0.5">-</span>
+                <li key={takeaway} className="text-stone-200 text-xs leading-relaxed flex gap-2">
+                  <span className="text-amber-400 mt-0.5">-</span>
                   <span>{takeaway}</span>
                 </li>
               ))}
@@ -611,7 +611,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
           </div>
 
           <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
-            <h3 className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-bold">Related</h3>
+            <h3 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Related</h3>
             <div className="space-y-2">
               {page.related.map((relatedPath) => {
                 const relatedPage = contentPages.find((item) => item.path === relatedPath);
@@ -620,10 +620,10 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
                   <button
                     key={relatedPath}
                     onClick={() => onNavigate(relatedPath)}
-                    className="w-full text-left p-3 rounded-lg border border-white/5 hover:border-blue-500/30 bg-white/[0.02] transition-colors"
+                    className="w-full text-left p-3 rounded-lg border border-white/5 hover:border-amber-500/30 bg-white/[0.02] transition-colors"
                   >
                     <span className="block text-xs text-white">{relatedPage?.title ?? relatedGroup?.title ?? relatedPath}</span>
-                    <span className="block text-[9px] uppercase tracking-widest text-slate-600 mt-1">{relatedPage ? relatedPage.groupTitle : relatedGroup ? 'Section' : 'Planned page'}</span>
+                    <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">{relatedPage ? relatedPage.groupTitle : relatedGroup ? 'Section' : 'Planned page'}</span>
                   </button>
                 );
               })}
@@ -632,7 +632,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
 
           {group && (
             <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
-              <h3 className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-bold">Section Sequence</h3>
+              <h3 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Section Sequence</h3>
               <div className="space-y-2">
                 {group.pages.map((pageTitle) => {
                   const path = pagePath(group.path, pageTitle);
@@ -640,7 +640,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
                     <button
                       key={pageTitle}
                       onClick={() => onNavigate(path)}
-                      className={`w-full text-left text-xs p-2 rounded border transition-colors ${path === page.path ? 'text-blue-300 border-blue-500/30 bg-blue-500/10' : 'text-slate-400 border-transparent hover:border-white/10 hover:bg-white/5'}`}
+                      className={`w-full text-left text-xs p-2 rounded border transition-colors ${path === page.path ? 'text-amber-300 border-amber-500/30 bg-amber-500/10' : 'text-stone-400 border-transparent hover:border-white/10 hover:bg-white/5'}`}
                     >
                       {pageTitle}
                     </button>
@@ -658,11 +658,11 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
 function Breadcrumbs({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
   return (
     <div className="flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.24em] font-bold">
-      <button onClick={() => onNavigate('/')} className="text-slate-500 hover:text-blue-300">Home</button>
-      <span className="text-slate-700">/</span>
-      <button onClick={() => onNavigate(page.groupPath)} className="text-blue-400 hover:text-blue-300">{page.groupTitle}</button>
-      <span className="text-slate-700">/</span>
-      <span className="text-slate-500">{page.title}</span>
+      <button onClick={() => onNavigate('/')} className="text-stone-500 hover:text-amber-300">Home</button>
+      <span className="text-stone-700">/</span>
+      <button onClick={() => onNavigate(page.groupPath)} className="text-amber-400 hover:text-amber-300">{page.groupTitle}</button>
+      <span className="text-stone-700">/</span>
+      <span className="text-stone-500">{page.title}</span>
     </div>
   );
 }
@@ -674,14 +674,14 @@ function GlossaryChips({ page, onNavigate }: { page: ContentPage; onNavigate: (p
 
   return (
     <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
-      <h3 className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-bold">Glossary</h3>
+      <h3 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Glossary</h3>
       <div className="flex flex-wrap gap-2">
         {matches.map(([term, definition]) => (
           <button
             key={term}
             title={definition}
             onClick={() => onNavigate(pagePath('/library', 'Glossary'))}
-            className="px-3 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-200 text-[10px] font-mono hover:border-blue-400/50"
+            className="px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-200 text-[10px] font-mono hover:border-amber-400/50"
           >
             {term}
           </button>
@@ -740,10 +740,10 @@ function PriorityExpansion({ title }: { title: string }) {
   if (!expansion) return null;
 
   return (
-    <section className="glass-panel p-6 md:p-8 bg-blue-500/[0.035] border-blue-500/20 space-y-4">
+    <section className="glass-panel p-6 md:p-8 bg-amber-500/[0.035] border-amber-500/20 space-y-4">
       <h3 className="text-2xl font-light text-white">{expansion.heading}</h3>
       {expansion.body.map((paragraph) => (
-        <p key={paragraph} className="text-slate-300 text-sm md:text-base leading-relaxed">{paragraph}</p>
+        <p key={paragraph} className="text-stone-300 text-sm md:text-base leading-relaxed">{paragraph}</p>
       ))}
     </section>
   );
@@ -765,8 +765,8 @@ function DownloadPanel({ page }: { page: ContentPage }) {
       <h3 className="text-2xl font-light text-white">Starter Downloads</h3>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {downloads.map(([label, href, type]) => (
-          <a key={href} href={href} className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-blue-500/30 text-sm text-blue-200">
-            <span className="block text-[9px] uppercase tracking-widest text-slate-500 mb-2">{type}</span>
+          <a key={href} href={href} className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-amber-500/30 text-sm text-amber-200">
+            <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">{type}</span>
             {label}
           </a>
         ))}
@@ -801,13 +801,13 @@ function CitationPanel({ page }: { page: ContentPage }) {
   return (
     <section className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
       <h3 className="text-2xl font-light text-white">Adjacent References</h3>
-      <p className="text-slate-400 text-sm leading-relaxed">
+      <p className="text-stone-400 text-sm leading-relaxed">
         These are starting points rather than exhaustive citations. They connect this page to nearby work in probability, calibration, cognitive bias, and social epistemology.
       </p>
       <ul className="grid gap-2">
         {[...new Set(citations)].map((citation) => (
-          <li key={citation} className="text-slate-300 text-sm leading-relaxed flex gap-3">
-            <span className="text-blue-400">|</span>
+          <li key={citation} className="text-stone-300 text-sm leading-relaxed flex gap-3">
+            <span className="text-amber-400">|</span>
             <span>{citation}</span>
           </li>
         ))}
@@ -852,20 +852,20 @@ function ReadingPaths({ onNavigate }: { onNavigate: (path: string) => void }) {
   return (
     <section className="space-y-6">
       <div>
-        <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold mb-3">Suggested Reading Paths</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold mb-3">Suggested Reading Paths</p>
         <h2 className="text-3xl font-light text-white">Three ways into the site</h2>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {paths.map((path) => (
           <div key={path.label} className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
             <h3 className="text-white font-light text-lg">{path.label}</h3>
-            <p className="text-slate-400 text-xs leading-relaxed">{path.summary}</p>
+            <p className="text-stone-400 text-xs leading-relaxed">{path.summary}</p>
             <div className="space-y-2">
               {path.steps.map((step, index) => {
                 const page = contentPages.find((item) => item.path === step);
                 return (
-                  <button key={step} onClick={() => onNavigate(step)} className="w-full text-left p-3 rounded-lg border border-white/5 hover:border-blue-500/30 bg-white/[0.02] transition-colors">
-                    <span className="text-[9px] uppercase tracking-widest text-slate-600">Step {index + 1}</span>
+                  <button key={step} onClick={() => onNavigate(step)} className="w-full text-left p-3 rounded-lg border border-white/5 hover:border-amber-500/30 bg-white/[0.02] transition-colors">
+                    <span className="text-[9px] uppercase tracking-widest text-stone-600">Step {index + 1}</span>
                     <span className="block text-xs text-white mt-1">{page?.title ?? step}</span>
                   </button>
                 );
@@ -882,16 +882,16 @@ function ContactPanel({ page }: { page: ContentPage }) {
   if (page.path !== pagePath('/about', 'Contact') && page.path !== pagePath('/about', 'Author')) return null;
 
   return (
-    <section className="glass-panel p-6 md:p-8 bg-blue-500/[0.035] border-blue-500/20 space-y-4">
+    <section className="glass-panel p-6 md:p-8 bg-amber-500/[0.035] border-amber-500/20 space-y-4">
       <h3 className="text-2xl font-light text-white">Project Contact</h3>
-      <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+      <p className="text-stone-300 text-sm md:text-base leading-relaxed">
         The most durable public feedback path for this GitHub Pages version is the GitHub repository. Use it for corrections, broken-link reports, suggested examples, and issue-specific discussion.
       </p>
       <div className="flex flex-wrap gap-3">
-        <a href="https://github.com/philstilwell/Credencing" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-blue-200 text-xs font-bold uppercase tracking-wider hover:border-blue-500/40">
+        <a href="https://github.com/philstilwell/Credencing" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-amber-200 text-xs font-bold uppercase tracking-wider hover:border-amber-500/40">
           Repository
         </a>
-        <a href="https://github.com/philstilwell/Credencing/issues" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-blue-200 text-xs font-bold uppercase tracking-wider hover:border-blue-500/40">
+        <a href="https://github.com/philstilwell/Credencing/issues" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-amber-200 text-xs font-bold uppercase tracking-wider hover:border-amber-500/40">
           Issues
         </a>
       </div>
@@ -902,7 +902,7 @@ function ContactPanel({ page }: { page: ContentPage }) {
 function RelatedGroups({ currentPath, onNavigate }: { currentPath: string; onNavigate: (path: string) => void }) {
   return (
     <section className="space-y-5">
-      <p className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold">Related Paths</p>
+      <p className="text-[10px] uppercase tracking-[0.3em] text-stone-500 font-bold">Related Paths</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {pageGroups
           .filter((group) => group.path !== currentPath)
@@ -917,13 +917,13 @@ function RelatedGroups({ currentPath, onNavigate }: { currentPath: string; onNav
 
 function GroupCard({ group, onNavigate }: { group: PageGroup; onNavigate: (path: string) => void }) {
   return (
-    <button onClick={() => onNavigate(group.path)} className="glass-panel p-6 text-left bg-white/[0.015] border-white/5 hover:border-blue-500/40 transition-all group min-h-[210px]">
+    <button onClick={() => onNavigate(group.path)} className="glass-panel p-6 text-left bg-white/[0.015] border-white/5 hover:border-amber-500/40 transition-all group min-h-[210px]">
       <div className="flex items-center justify-between gap-4 mb-5">
         <h3 className="text-lg text-white font-light">{group.title}</h3>
-        <ArrowRight size={16} className="text-slate-600 group-hover:text-blue-300 transition-colors" />
+        <ArrowRight size={16} className="text-stone-600 group-hover:text-amber-300 transition-colors" />
       </div>
-      <p className="text-slate-400 text-xs leading-relaxed mb-5">{group.summary}</p>
-      <p className="text-[9px] uppercase tracking-widest text-slate-600">{group.pages.length} pages</p>
+      <p className="text-stone-400 text-xs leading-relaxed mb-5">{group.summary}</p>
+      <p className="text-[9px] uppercase tracking-widest text-stone-600">{group.pages.length} pages</p>
     </button>
   );
 }
@@ -940,38 +940,38 @@ function SearchAndTopicIndex({ onNavigate }: { onNavigate: (path: string) => voi
   return (
     <section className="space-y-8">
       <div className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold">Utility Layer</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Utility Layer</p>
         <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">Search and Topic Index</h2>
-        <p className="text-slate-300 max-w-3xl leading-relaxed">Search the public Credencing web by concept, issue, domain, or skill. Topic chips are quick filters over the same page index.</p>
+        <p className="text-stone-300 max-w-3xl leading-relaxed">Search the public Credencing web by concept, issue, domain, or skill. Topic chips are quick filters over the same page index.</p>
         <input
           aria-label="Search Credencing pages"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search credences, calibration, AI alignment..."
-          className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-slate-100 outline-none focus:border-blue-500/50"
+          className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-stone-100 outline-none focus:border-amber-500/50"
         />
         <div className="flex flex-wrap gap-2">
           {topics.map((topic) => (
-            <button key={topic} onClick={() => setQuery(topic)} className="px-3 py-1.5 rounded-full border border-white/10 text-[10px] uppercase tracking-wider text-slate-300 hover:border-blue-500/40">
+            <button key={topic} onClick={() => setQuery(topic)} className="px-3 py-1.5 rounded-full border border-white/10 text-[10px] uppercase tracking-wider text-stone-300 hover:border-amber-500/40">
               {topic}
             </button>
           ))}
-          <a href={`${basePath}search-index.json`} className="px-3 py-1.5 rounded-full border border-blue-500/30 text-[10px] uppercase tracking-wider text-blue-200 hover:border-blue-400/60">
+          <a href={`${basePath}search-index.json`} className="px-3 py-1.5 rounded-full border border-amber-500/30 text-[10px] uppercase tracking-wider text-amber-200 hover:border-amber-400/60">
             JSON Index
           </a>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {results.length === 0 && (
-          <div className="glass-panel p-8 md:col-span-2 bg-white/[0.015] border-white/5 text-slate-300">
+          <div className="glass-panel p-8 md:col-span-2 bg-white/[0.015] border-white/5 text-stone-300">
             No pages match that search yet. Try a broader term such as evidence, confidence, calibration, Bayesian, or rationality.
           </div>
         )}
         {results.map((page) => (
-          <button key={page.path} onClick={() => onNavigate(page.path)} className="glass-panel p-5 text-left bg-white/[0.015] border-white/5 hover:border-blue-500/30 transition-colors">
-            <span className="text-[9px] uppercase tracking-widest text-blue-400">{page.groupTitle}</span>
+          <button key={page.path} onClick={() => onNavigate(page.path)} className="glass-panel p-5 text-left bg-white/[0.015] border-white/5 hover:border-amber-500/30 transition-colors">
+            <span className="text-[9px] uppercase tracking-widest text-amber-400">{page.groupTitle}</span>
             <h3 className="text-white text-lg font-light mt-2">{page.title}</h3>
-            <p className="text-slate-400 text-xs leading-relaxed mt-2">{page.summary}</p>
+            <p className="text-stone-400 text-xs leading-relaxed mt-2">{page.summary}</p>
           </button>
         ))}
       </div>
@@ -983,7 +983,7 @@ function DiagramGallery() {
   return (
     <section className="space-y-6">
       <div>
-        <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold mb-3">Concept Diagrams</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold mb-3">Concept Diagrams</p>
         <h2 className="text-3xl font-light text-white">Three ways to see the model</h2>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -991,31 +991,31 @@ function DiagramGallery() {
           <div className="flex items-center justify-between gap-2 text-center">
             {['E0', 'EP', 'CA'].map((node, index) => (
               <div key={node} className="flex items-center gap-2 flex-1">
-                <div className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-3 text-blue-100 font-mono text-sm w-full">{node}</div>
-                {index < 2 && <ArrowRight size={16} className="text-slate-500 shrink-0" />}
+                <div className="rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-amber-100 font-mono text-sm w-full">{node}</div>
+                {index < 2 && <ArrowRight size={16} className="text-stone-500 shrink-0" />}
               </div>
             ))}
           </div>
-          <p className="text-slate-400 text-xs leading-relaxed">Objective evidence becomes perceived evidence, then assigned credence. The project studies where this flow bends.</p>
+          <p className="text-stone-400 text-xs leading-relaxed">Objective evidence becomes perceived evidence, then assigned credence. The project studies where this flow bends.</p>
         </DiagramCard>
         <DiagramCard title="Core vs Deep">
           <div className="grid grid-cols-2 gap-2 text-xs" aria-label="Core rationality and deep rationality quadrant examples">
             {['Ideal Agent', 'Biased Expert', 'Honest Novice', 'Delusion Risk'].map((label) => (
-              <div key={label} className="border border-white/10 bg-white/[0.02] rounded-lg p-3 text-slate-200 min-h-[70px] flex items-center justify-center text-center">{label}</div>
+              <div key={label} className="border border-white/10 bg-white/[0.02] rounded-lg p-3 text-stone-200 min-h-[70px] flex items-center justify-center text-center">{label}</div>
             ))}
           </div>
-          <p className="text-slate-400 text-xs leading-relaxed">Skill and integrity are separate axes. Intelligence alone does not guarantee calibrated belief.</p>
+          <p className="text-stone-400 text-xs leading-relaxed">Skill and integrity are separate axes. Intelligence alone does not guarantee calibrated belief.</p>
         </DiagramCard>
         <DiagramCard title="Action Threshold">
           <div className="space-y-3">
-            <div className="h-2 rounded-full bg-gradient-to-r from-slate-700 via-blue-500 to-green-400"></div>
-            <div className="flex justify-between text-[10px] text-slate-500 font-mono">
+            <div className="h-2 rounded-full bg-gradient-to-r from-stone-700 via-amber-500 to-green-400"></div>
+            <div className="flex justify-between text-[10px] text-stone-500 font-mono">
               <span>uncertain</span>
               <span>act?</span>
               <span>strong</span>
             </div>
           </div>
-          <p className="text-slate-400 text-xs leading-relaxed">Credence and action threshold are distinct. High stakes can require more confidence without changing the evidence.</p>
+          <p className="text-stone-400 text-xs leading-relaxed">Credence and action threshold are distinct. High stakes can require more confidence without changing the evidence.</p>
         </DiagramCard>
       </div>
     </section>
@@ -1025,7 +1025,7 @@ function DiagramGallery() {
 function DiagramCard({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-5 min-h-[250px]">
-      <h3 className="text-white font-light text-lg flex items-center gap-2"><Network size={16} className="text-blue-400" /> {title}</h3>
+      <h3 className="text-white font-light text-lg flex items-center gap-2"><Network size={16} className="text-amber-400" /> {title}</h3>
       {children}
     </div>
   );
@@ -1035,9 +1035,9 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
   return (
     <section className="space-y-8">
       <div className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold mb-4">Utility Layer</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold mb-4">Utility Layer</p>
         <h2 className="text-4xl md:text-5xl font-light text-white leading-tight mb-4">Site Map</h2>
-        <p className="text-slate-300 max-w-3xl leading-relaxed">
+        <p className="text-stone-300 max-w-3xl leading-relaxed">
           A first-pass architecture for the public Credencing site. The central model stays prominent while related ideas, guides, applications, and resources form a searchable web around it.
         </p>
       </div>
@@ -1047,11 +1047,11 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
             <h3 className="text-white font-light text-xl mb-4">{group.title}</h3>
             <ul className="space-y-2">
               {group.pages.map((page) => (
-                <li key={page} className="text-slate-400 text-xs flex items-start gap-2">
-                  <span className="text-blue-500/70 mt-0.5">|</span>
+                <li key={page} className="text-stone-400 text-xs flex items-start gap-2">
+                  <span className="text-amber-500/70 mt-0.5">|</span>
                   <button
                     onClick={() => onNavigate(pagePath(group.path, page))}
-                    className="text-left hover:text-blue-300 transition-colors"
+                    className="text-left hover:text-amber-300 transition-colors"
                   >
                     {page}
                   </button>
@@ -1063,10 +1063,10 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
       </div>
       <div className="glass-panel p-6 bg-white/[0.015] border-white/5">
         <h3 className="text-white font-light text-xl mb-4">Utility Layer</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-slate-400">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-stone-400">
           {['Search', 'Topic Index', 'Tag Index', 'Related Pages Engine', 'Breadcrumbs', 'Newsletter / Updates'].map((item) => (
             <div key={item} className="border border-white/5 rounded-lg p-3 flex items-center gap-2">
-              <Search size={12} className="text-blue-400" />
+              <Search size={12} className="text-amber-400" />
               {item}
             </div>
           ))}
@@ -1123,7 +1123,7 @@ function TabButton({ active, onClick, icon, label }: { active: boolean; onClick:
     <button
       onClick={onClick}
       className={`px-5 py-2 rounded-full flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider transition-all ${
-        active ? 'bg-blue-600/20 text-blue-400 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.2)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/10'
+        active ? 'bg-amber-600/20 text-amber-400 border border-amber-500/50 shadow-[0_0_15px_rgba(246,180,75,0.22)]' : 'text-stone-400 hover:text-stone-200 hover:bg-white/10'
       }`}
     >
       {icon}
@@ -1136,21 +1136,21 @@ function ConceptCard({ title, text, tone }: { title: string; text: string; tone:
   return (
     <div className="glass-panel p-6 space-y-4 border-white/20 bg-white/[0.04] shadow-xl">
       <h3 className="text-lg font-light text-white flex items-center gap-2">
-        <div className={`w-1.5 h-1.5 rounded-full ${tone === 'blue' ? 'bg-blue-400' : 'bg-red-400'}`}></div>
+        <div className={`w-1.5 h-1.5 rounded-full ${tone === 'blue' ? 'bg-amber-400' : 'bg-red-400'}`}></div>
         {title}
       </h3>
-      <p className="text-slate-200 text-xs leading-relaxed">{text}</p>
+      <p className="text-stone-200 text-xs leading-relaxed">{text}</p>
     </div>
   );
 }
 
 function MiniNote({ icon, title, text, danger = false }: { icon: ReactNode; title: string; text: string; danger?: boolean }) {
   return (
-    <div className={`p-4 rounded-xl ${danger ? 'bg-red-500/[0.04] border border-red-500/20' : 'bg-blue-500/[0.02] border border-blue-500/10'}`}>
-      <h4 className={`text-[9px] uppercase tracking-[0.2em] font-black mb-2 flex items-center gap-2 ${danger ? 'text-red-500' : 'text-blue-400'}`}>
+    <div className={`p-4 rounded-xl ${danger ? 'bg-red-500/[0.04] border border-red-500/20' : 'bg-amber-500/[0.02] border border-amber-500/10'}`}>
+      <h4 className={`text-[9px] uppercase tracking-[0.2em] font-black mb-2 flex items-center gap-2 ${danger ? 'text-red-500' : 'text-amber-400'}`}>
         {icon} {title}
       </h4>
-      <p className="text-slate-400 text-[11px] leading-relaxed">{text}</p>
+      <p className="text-stone-400 text-[11px] leading-relaxed">{text}</p>
     </div>
   );
 }
@@ -1159,7 +1159,7 @@ function BorderNote({ title, text, color }: { title: string; text: string; color
   return (
     <div className={`border-l ${color} pl-6 space-y-2`}>
       <h3 className="text-white font-medium">{title}</h3>
-      <p className="text-slate-400 text-xs leading-relaxed">{text}</p>
+      <p className="text-stone-400 text-xs leading-relaxed">{text}</p>
     </div>
   );
 }
@@ -1167,8 +1167,8 @@ function BorderNote({ title, text, color }: { title: string; text: string; color
 function VarDef({ sym, label, desc }: { sym: string; label: string; desc: string }) {
   return (
     <div className="glass-panel p-4 bg-white/2 border-white/5">
-      <div className="text-white text-sm mb-1 font-light"><span className="text-blue-400 font-bold font-mono mr-2">{sym}</span> {label}</div>
-      <div className="text-[10px] text-slate-500 leading-relaxed uppercase tracking-tight">{desc}</div>
+      <div className="text-white text-sm mb-1 font-light"><span className="text-amber-400 font-bold font-mono mr-2">{sym}</span> {label}</div>
+      <div className="text-[10px] text-stone-500 leading-relaxed uppercase tracking-tight">{desc}</div>
     </div>
   );
 }
@@ -1177,7 +1177,7 @@ function Formula({ code, title, text }: { code: string; title: string; text: str
   return (
     <div className="space-y-3">
       <code className="text-2xl text-white font-mono tracking-tighter">{code}</code>
-      <p className="text-slate-400 text-sm leading-relaxed border-l border-blue-500/20 pl-6">
+      <p className="text-stone-400 text-sm leading-relaxed border-l border-amber-500/20 pl-6">
         <strong>{title}.</strong> {text}
       </p>
     </div>
@@ -1191,7 +1191,7 @@ function ArchetypeCard({ name, icon, desc }: { name: string; icon: ReactNode; de
         {icon}
         <h4 className="text-xs font-bold text-white uppercase tracking-wider">{name}</h4>
       </div>
-      <p className="text-[11px] text-slate-400 leading-relaxed">{desc}</p>
+      <p className="text-[11px] text-stone-400 leading-relaxed">{desc}</p>
     </div>
   );
 }
