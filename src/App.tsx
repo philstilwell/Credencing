@@ -288,6 +288,7 @@ function HomeExperience({ onNavigate }: { onNavigate: (path: string) => void }) 
         </div>
       </section>
 
+      <ReadingPaths onNavigate={onNavigate} />
       <InteractiveExperience initialTab="intro" compact />
       <DiagramGallery />
 
@@ -576,6 +577,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
             </section>
           ))}
           <PriorityExpansion title={page.title} />
+          <CitationPanel page={page} />
           <DownloadPanel page={page} />
           <ContactPanel page={page} />
           <nav className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -750,19 +752,126 @@ function PriorityExpansion({ title }: { title: string }) {
 function DownloadPanel({ page }: { page: ContentPage }) {
   if (page.path !== pagePath('/library', 'Downloads') && page.path !== pagePath('/library', 'Teaching Materials')) return null;
   const downloads = [
-    ['One-Page Model Guide', `${basePath}downloads/credencing-one-page-guide.md`],
-    ['Scenario Worksheet', `${basePath}downloads/credencing-scenario-worksheet.md`],
-    ['Classroom Exercise Packet', `${basePath}downloads/credencing-classroom-exercises.md`],
+    ['One-Page Model Guide', `${basePath}downloads/credencing-one-page-guide.pdf`, 'PDF'],
+    ['Scenario Worksheet', `${basePath}downloads/credencing-scenario-worksheet.pdf`, 'PDF'],
+    ['Classroom Exercise Packet', `${basePath}downloads/credencing-classroom-exercises.pdf`, 'PDF'],
+    ['Markdown Guide', `${basePath}downloads/credencing-one-page-guide.md`, 'MD'],
+    ['Markdown Worksheet', `${basePath}downloads/credencing-scenario-worksheet.md`, 'MD'],
+    ['Markdown Exercises', `${basePath}downloads/credencing-classroom-exercises.md`, 'MD'],
   ];
 
   return (
     <section className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
       <h3 className="text-2xl font-light text-white">Starter Downloads</h3>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        {downloads.map(([label, href]) => (
+        {downloads.map(([label, href, type]) => (
           <a key={href} href={href} className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-blue-500/30 text-sm text-blue-200">
+            <span className="block text-[9px] uppercase tracking-widest text-slate-500 mb-2">{type}</span>
             {label}
           </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CitationPanel({ page }: { page: ContentPage }) {
+  const key = `${page.groupTitle} ${page.title}`.toLowerCase();
+  const citations: string[] = [];
+
+  if (/(bayesian|prior|likelihood|posterior|evidence)/.test(key)) {
+    citations.push('Thomas Bayes, "An Essay towards solving a Problem in the Doctrine of Chances" (1763).');
+    citations.push('E. T. Jaynes, Probability Theory: The Logic of Science (2003).');
+  }
+  if (/(base-rate|medical testing|calibration|confidence|overconfidence)/.test(key)) {
+    citations.push('Daniel Kahneman and Amos Tversky, "Judgment under Uncertainty: Heuristics and Biases" (1974).');
+    citations.push('Sarah Lichtenstein, Baruch Fischhoff, and Lawrence D. Phillips, "Calibration of Probabilities" (1982).');
+  }
+  if (/(motivated|political|conspiracy|tribalism|biased expert|public debate)/.test(key)) {
+    citations.push('Ziva Kunda, "The Case for Motivated Reasoning" (1990).');
+    citations.push('Charles S. Taber and Milton Lodge, "Motivated Skepticism in the Evaluation of Political Beliefs" (2006).');
+  }
+  if (/(institutional|journalism|law|policy|science|ai alignment)/.test(key)) {
+    citations.push('Philip E. Tetlock, Expert Political Judgment (2005).');
+    citations.push('Helen Longino, Science as Social Knowledge (1990).');
+  }
+
+  if (citations.length === 0) return null;
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
+      <h3 className="text-2xl font-light text-white">Adjacent References</h3>
+      <p className="text-slate-400 text-sm leading-relaxed">
+        These are starting points rather than exhaustive citations. They connect this page to nearby work in probability, calibration, cognitive bias, and social epistemology.
+      </p>
+      <ul className="grid gap-2">
+        {[...new Set(citations)].map((citation) => (
+          <li key={citation} className="text-slate-300 text-sm leading-relaxed flex gap-3">
+            <span className="text-blue-400">|</span>
+            <span>{citation}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function ReadingPaths({ onNavigate }: { onNavigate: (path: string) => void }) {
+  const paths = [
+    {
+      label: '20-Minute Path',
+      summary: 'A quick orientation for first-time visitors.',
+      steps: [
+        pagePath('/start-here', 'What Is Credencing?'),
+        pagePath('/start-here', 'Why Binary Belief Is Too Crude'),
+        pagePath('/interactive-lab', 'Interactive Model'),
+      ],
+    },
+    {
+      label: 'One-Hour Path',
+      summary: 'A fuller path through vocabulary, diagnosis, and repair.',
+      steps: [
+        pagePath('/core-ideas', 'Credences'),
+        pagePath('/core-ideas', 'Core vs Deep Rationality'),
+        pagePath('/case-studies', 'Motivated Reasoning'),
+        pagePath('/skills', 'How to Separate Core from Deep Failure'),
+      ],
+    },
+    {
+      label: 'Teacher Path',
+      summary: 'Materials and pages for classroom or workshop use.',
+      steps: [
+        pagePath('/library', 'Teaching Materials'),
+        pagePath('/skills', 'Practice Exercises'),
+        pagePath('/applications', 'Education'),
+        pagePath('/library', 'Downloads'),
+      ],
+    },
+  ];
+
+  return (
+    <section className="space-y-6">
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-blue-400 font-bold mb-3">Suggested Reading Paths</p>
+        <h2 className="text-3xl font-light text-white">Three ways into the site</h2>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {paths.map((path) => (
+          <div key={path.label} className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
+            <h3 className="text-white font-light text-lg">{path.label}</h3>
+            <p className="text-slate-400 text-xs leading-relaxed">{path.summary}</p>
+            <div className="space-y-2">
+              {path.steps.map((step, index) => {
+                const page = contentPages.find((item) => item.path === step);
+                return (
+                  <button key={step} onClick={() => onNavigate(step)} className="w-full text-left p-3 rounded-lg border border-white/5 hover:border-blue-500/30 bg-white/[0.02] transition-colors">
+                    <span className="text-[9px] uppercase tracking-widest text-slate-600">Step {index + 1}</span>
+                    <span className="block text-xs text-white mt-1">{page?.title ?? step}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         ))}
       </div>
     </section>
@@ -847,6 +956,9 @@ function SearchAndTopicIndex({ onNavigate }: { onNavigate: (path: string) => voi
               {topic}
             </button>
           ))}
+          <a href={`${basePath}search-index.json`} className="px-3 py-1.5 rounded-full border border-blue-500/30 text-[10px] uppercase tracking-wider text-blue-200 hover:border-blue-400/60">
+            JSON Index
+          </a>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

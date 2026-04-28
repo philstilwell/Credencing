@@ -27,3 +27,12 @@ The Vite base path is currently `/Credencing/`, matching the GitHub repository n
 4. Push to `main`.
 
 The included workflow builds `dist/` and deploys it to GitHub Pages.
+
+## Public Assets
+
+- Social preview image: `public/images/credencing-og.png`
+- Search index: `public/search-index.json`
+- Printable PDFs: `public/downloads/*.pdf`
+- Custom domain checklist: `public/custom-domain-setup.md`
+
+The custom domain should not be activated until `credencing.org` DNS points at GitHub Pages.

@@ -1,0 +1,972 @@
+{
+  "version": "2026-04-28",
+  "site": "Credencing",
+  "baseUrl": "https://philstilwell.github.io/Credencing/",
+  "entries": [
+    {
+      "title": "What Is Credencing?",
+      "path": "/start-here/what-is-credencing",
+      "group": "Start Here",
+      "summary": "A guided entry into credences, evidence, confidence, Bayesian updating, and the difference between being mistaken and being epistemically inconsistent.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "bayesian"
+      ]
+    },
+    {
+      "title": "Why Binary Belief Is Too Crude",
+      "path": "/start-here/why-binary-belief-is-too-crude",
+      "group": "Start Here",
+      "summary": "A guided entry into credences, evidence, confidence, Bayesian updating, and the difference between being mistaken and being epistemically inconsistent.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "bayesian"
+      ]
+    },
+    {
+      "title": "Evidence and Confidence",
+      "path": "/start-here/evidence-and-confidence",
+      "group": "Start Here",
+      "summary": "A guided entry into credences, evidence, confidence, Bayesian updating, and the difference between being mistaken and being epistemically inconsistent.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "bayesian"
+      ]
+    },
+    {
+      "title": "What Bayesian Updating Is",
+      "path": "/start-here/what-bayesian-updating-is",
+      "group": "Start Here",
+      "summary": "A guided entry into credences, evidence, confidence, Bayesian updating, and the difference between being mistaken and being epistemically inconsistent.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "bayesian"
+      ]
+    },
+    {
+      "title": "Why People Go Wrong",
+      "path": "/start-here/why-people-go-wrong",
+      "group": "Start Here",
+      "summary": "A guided entry into credences, evidence, confidence, Bayesian updating, and the difference between being mistaken and being epistemically inconsistent.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "bayesian"
+      ]
+    },
+    {
+      "title": "The Difference Between Being Mistaken and Being Epistemically Inconsistent",
+      "path": "/start-here/the-difference-between-being-mistaken-and-being-epistemically-inconsistent",
+      "group": "Start Here",
+      "summary": "A guided entry into credences, evidence, confidence, Bayesian updating, and the difference between being mistaken and being epistemically inconsistent.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "bayesian"
+      ]
+    },
+    {
+      "title": "Where to Go Next",
+      "path": "/start-here/where-to-go-next",
+      "group": "Start Here",
+      "summary": "A guided entry into credences, evidence, confidence, Bayesian updating, and the difference between being mistaken and being epistemically inconsistent.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "bayesian"
+      ]
+    },
+    {
+      "title": "Credences",
+      "path": "/core-ideas/credences",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Evidence",
+      "path": "/core-ideas/evidence",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Confidence Levels",
+      "path": "/core-ideas/confidence-levels",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Priors",
+      "path": "/core-ideas/priors",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Likelihoods",
+      "path": "/core-ideas/likelihoods",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Posteriors",
+      "path": "/core-ideas/posteriors",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Bayesian Updating",
+      "path": "/core-ideas/bayesian-updating",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "bayesian",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Calibration",
+      "path": "/core-ideas/calibration",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "calibration",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Uncertainty",
+      "path": "/core-ideas/uncertainty",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Warranted Uncertainty",
+      "path": "/core-ideas/warranted-uncertainty",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Objective Evidence (E0)",
+      "path": "/core-ideas/objective-evidence-e0",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Perceived Evidence (EP)",
+      "path": "/core-ideas/perceived-evidence-ep",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Assigned Credence (CA)",
+      "path": "/core-ideas/assigned-credence-ca",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Deep Rationality (SD)",
+      "path": "/core-ideas/deep-rationality-sd",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "deep rationality",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Core Rationality",
+      "path": "/core-ideas/core-rationality",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "core rationality",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Calculation Error (DE)",
+      "path": "/core-ideas/calculation-error-de",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Core Irrationality (IC)",
+      "path": "/core-ideas/core-irrationality-ic",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Epistemic Akrasia",
+      "path": "/core-ideas/epistemic-akrasia",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Core vs Deep Rationality",
+      "path": "/core-ideas/core-vs-deep-rationality",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "deep rationality",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Epistemic Archetypes",
+      "path": "/core-ideas/epistemic-archetypes",
+      "group": "Core Ideas",
+      "summary": "The conceptual vocabulary behind the model: priors, likelihoods, posteriors, uncertainty, objective evidence, perceived evidence, assigned credence, and rationality types.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood",
+        "posterior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "Interactive Model",
+      "path": "/interactive-lab/interactive-model",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "How to Read the Model",
+      "path": "/interactive-lab/how-to-read-the-model",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Visual Legend",
+      "path": "/interactive-lab/visual-legend",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Preset Scenarios",
+      "path": "/interactive-lab/preset-scenarios",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Ideal Agent",
+      "path": "/interactive-lab/ideal-agent",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Honest Novice",
+      "path": "/interactive-lab/honest-novice",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Biased Expert",
+      "path": "/interactive-lab/biased-expert",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Epistemic Delusion",
+      "path": "/interactive-lab/epistemic-delusion",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Build Your Own Scenario",
+      "path": "/interactive-lab/build-your-own-scenario",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Compare Two Scenarios",
+      "path": "/interactive-lab/compare-two-scenarios",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Interpretation Guide",
+      "path": "/interactive-lab/interpretation-guide",
+      "group": "Interactive Lab",
+      "summary": "The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.",
+      "tags": []
+    },
+    {
+      "title": "Base-Rate Neglect",
+      "path": "/case-studies/base-rate-neglect",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Medical Testing",
+      "path": "/case-studies/medical-testing",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Motivated Reasoning",
+      "path": "/case-studies/motivated-reasoning",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "motivated reasoning",
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Political Tribalism",
+      "path": "/case-studies/political-tribalism",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Conspiracy Thinking",
+      "path": "/case-studies/conspiracy-thinking",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Risk Inflation",
+      "path": "/case-studies/risk-inflation",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Pragmatic Encroachment",
+      "path": "/case-studies/pragmatic-encroachment",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Fear Overrides",
+      "path": "/case-studies/fear-overrides",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Honest Novice Cases",
+      "path": "/case-studies/honest-novice-cases",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Biased Expert Cases",
+      "path": "/case-studies/biased-expert-cases",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "Delusion Threshold Cases",
+      "path": "/case-studies/delusion-threshold-cases",
+      "group": "Case Studies",
+      "summary": "Concrete examples of epistemic failure and repair in reasoning, institutions, media, medicine, politics, and ordinary judgment.",
+      "tags": [
+        "ai",
+        "medicine"
+      ]
+    },
+    {
+      "title": "How to Think in Credences",
+      "path": "/skills/how-to-think-in-credences",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "How to Scale Confidence to Evidence",
+      "path": "/skills/how-to-scale-confidence-to-evidence",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "How to Update with New Evidence",
+      "path": "/skills/how-to-update-with-new-evidence",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "How to Estimate Priors",
+      "path": "/skills/how-to-estimate-priors",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "How to Read Likelihoods",
+      "path": "/skills/how-to-read-likelihoods",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior",
+        "likelihood"
+      ]
+    },
+    {
+      "title": "How to Avoid Base-Rate Neglect",
+      "path": "/skills/how-to-avoid-base-rate-neglect",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "How to Detect Overconfidence",
+      "path": "/skills/how-to-detect-overconfidence",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "confidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "How to Detect Motivated Override",
+      "path": "/skills/how-to-detect-motivated-override",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "How to Separate Core from Deep Failure",
+      "path": "/skills/how-to-separate-core-from-deep-failure",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior",
+        "ai"
+      ]
+    },
+    {
+      "title": "How to Express Uncertainty Honestly",
+      "path": "/skills/how-to-express-uncertainty-honestly",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior",
+        "ai",
+        "uncertainty"
+      ]
+    },
+    {
+      "title": "How to Ask Better Epistemic Questions",
+      "path": "/skills/how-to-ask-better-epistemic-questions",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "Practice Exercises",
+      "path": "/skills/practice-exercises",
+      "group": "Skills",
+      "summary": "Practical exercises for thinking in credences, updating with new evidence, estimating priors, avoiding base-rate neglect, and asking better questions.",
+      "tags": [
+        "evidence",
+        "prior"
+      ]
+    },
+    {
+      "title": "Science",
+      "path": "/applications/science",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law"
+      ]
+    },
+    {
+      "title": "Medicine",
+      "path": "/applications/medicine",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law"
+      ]
+    },
+    {
+      "title": "Journalism",
+      "path": "/applications/journalism",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law"
+      ]
+    },
+    {
+      "title": "Law",
+      "path": "/applications/law",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law"
+      ]
+    },
+    {
+      "title": "Education",
+      "path": "/applications/education",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law",
+        "education"
+      ]
+    },
+    {
+      "title": "Public Debate",
+      "path": "/applications/public-debate",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law"
+      ]
+    },
+    {
+      "title": "Policy",
+      "path": "/applications/policy",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law",
+        "policy"
+      ]
+    },
+    {
+      "title": "Personal Decision-Making",
+      "path": "/applications/personal-decision-making",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law"
+      ]
+    },
+    {
+      "title": "AI Alignment",
+      "path": "/applications/ai-alignment",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law"
+      ]
+    },
+    {
+      "title": "Institutional Diagnostics",
+      "path": "/applications/institutional-diagnostics",
+      "group": "Applications",
+      "summary": "Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.",
+      "tags": [
+        "institutional",
+        "ai",
+        "medicine",
+        "journalism",
+        "law"
+      ]
+    },
+    {
+      "title": "Papers",
+      "path": "/library/papers",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "A Formal Framework for Core and Deep Rationality",
+      "path": "/library/a-formal-framework-for-core-and-deep-rationality",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "deep rationality",
+        "teaching"
+      ]
+    },
+    {
+      "title": "Future Papers",
+      "path": "/library/future-papers",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "Essays",
+      "path": "/library/essays",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "Glossary",
+      "path": "/library/glossary",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "FAQ",
+      "path": "/library/faq",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "References",
+      "path": "/library/references",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "Visual Archive",
+      "path": "/library/visual-archive",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "Teaching Materials",
+      "path": "/library/teaching-materials",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "Downloads",
+      "path": "/library/downloads",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "Project Notes",
+      "path": "/library/project-notes",
+      "group": "Library",
+      "summary": "Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.",
+      "tags": [
+        "teaching"
+      ]
+    },
+    {
+      "title": "Project Overview",
+      "path": "/about/project-overview",
+      "group": "About",
+      "summary": "Project overview, methodological commitments, intended use, author notes, contact, and future directions.",
+      "tags": []
+    },
+    {
+      "title": "Why the Term \"Credencing\"",
+      "path": "/about/why-the-term-credencing",
+      "group": "About",
+      "summary": "Project overview, methodological commitments, intended use, author notes, contact, and future directions.",
+      "tags": []
+    },
+    {
+      "title": "Methodological Commitments",
+      "path": "/about/methodological-commitments",
+      "group": "About",
+      "summary": "Project overview, methodological commitments, intended use, author notes, contact, and future directions.",
+      "tags": []
+    },
+    {
+      "title": "Descriptive Rather than Prescriptive Orientation",
+      "path": "/about/descriptive-rather-than-prescriptive-orientation",
+      "group": "About",
+      "summary": "Project overview, methodological commitments, intended use, author notes, contact, and future directions.",
+      "tags": []
+    },
+    {
+      "title": "How to Use This Site",
+      "path": "/about/how-to-use-this-site",
+      "group": "About",
+      "summary": "Project overview, methodological commitments, intended use, author notes, contact, and future directions.",
+      "tags": []
+    },
+    {
+      "title": "Author",
+      "path": "/about/author",
+      "group": "About",
+      "summary": "Project overview, methodological commitments, intended use, author notes, contact, and future directions.",
+      "tags": []
+    },
+    {
+      "title": "Contact",
+      "path": "/about/contact",
+      "group": "About",
+      "summary": "Project overview, methodological commitments, intended use, author notes, contact, and future directions.",
+      "tags": []
+    },
+    {
+      "title": "Future Directions",
+      "path": "/about/future-directions",
+      "group": "About",
+      "summary": "Project overview, methodological commitments, intended use, author notes, contact, and future directions.",
+      "tags": []
+    }
+  ]
+}

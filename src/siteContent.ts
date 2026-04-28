@@ -3118,24 +3118,30 @@ export const libraryPages: ContentPage[] = [
   ),
   libraryPage(
     'References',
-    'References should collect sources, influences, and adjacent traditions in epistemology, probability, psychology, and institutional reasoning.',
+    'References collect sources, influences, and adjacent traditions in epistemology, probability, psychology, and institutional reasoning.',
     [
       {
-        heading: 'Reference Areas',
+        heading: 'Probability and Updating',
         body: [
-          'The project sits near Bayesian epistemology, calibration research, cognitive bias literature, decision theory, virtue epistemology, social epistemology, and institutional epistemics. References should eventually make those neighborhoods explicit.',
+          'Thomas Bayes, "An Essay towards solving a Problem in the Doctrine of Chances" (1763), remains the historical starting point for Bayesian updating. E. T. Jaynes, Probability Theory: The Logic of Science (2003), is a major modern expression of probability as extended logic. These sources sit behind the site treatment of priors, likelihoods, posteriors, and Bayesian movement.',
+        ],
+      },
+      {
+        heading: 'Heuristics, Biases, and Calibration',
+        body: [
+          'Daniel Kahneman and Amos Tversky, "Judgment under Uncertainty: Heuristics and Biases" (1974), anchors much of the modern discussion of bias and base-rate neglect. Sarah Lichtenstein, Baruch Fischhoff, and Lawrence D. Phillips, "Calibration of Probabilities" (1982), is a natural reference point for the site emphasis on confidence matching reliability.',
+        ],
+      },
+      {
+        heading: 'Motivated and Social Reasoning',
+        body: [
+          'Ziva Kunda, "The Case for Motivated Reasoning" (1990), and Charles S. Taber and Milton Lodge, "Motivated Skepticism in the Evaluation of Political Beliefs" (2006), help frame cases where reasoning is directionally pressured. Philip E. Tetlock, Expert Political Judgment (2005), and Helen Longino, Science as Social Knowledge (1990), connect the project to expert judgment and social epistemology.',
         ],
       },
       {
         heading: 'How References Should Function',
         body: [
-          'References are not decoration. They should help readers test the framework, compare it with existing work, and locate places where the project needs refinement.',
-        ],
-      },
-      {
-        heading: 'Living Bibliography',
-        body: [
-          'The references page should remain a living bibliography. As the project grows, sources can be grouped by concept: priors, likelihoods, calibration, motivated reasoning, disagreement, decision thresholds, and institutional failure.',
+          'References are not decoration. They help readers test the framework, compare it with existing work, and locate places where the project needs refinement. Adjacent-reference panels now appear on many pages where a concept has obvious scholarly neighbors.',
         ],
       },
     ],
@@ -3220,12 +3226,12 @@ export const libraryPages: ContentPage[] = [
   ),
   libraryPage(
     'Downloads',
-    'Downloads will collect reusable PDFs, worksheets, diagrams, and presentation assets.',
+    'Downloads collect reusable PDFs, worksheets, diagrams, Markdown source files, and presentation assets.',
     [
       {
-        heading: 'What Downloads Should Include',
+        heading: 'Available Downloads',
         body: [
-          'The downloads area should eventually include classroom handouts, model diagrams, glossary sheets, scenario worksheets, slide decks, and printable exercises.',
+          'The current download set includes a one-page model guide, a scenario worksheet, and a classroom exercise packet. Each is available as a printable PDF and as Markdown source for easy adaptation.',
         ],
       },
       {
@@ -3453,7 +3459,7 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'For First-Time Readers',
         body: [
-          'Begin with Start Here, then Core Ideas, then Interactive Lab. This gives you the vocabulary, the conceptual structure, and the visual model before you move into case studies and applications.',
+          'Begin with Start Here, then Core Ideas, then Interactive Lab. The home page now includes three suggested reading paths: a 20-minute path, a one-hour path, and a teacher path. These give different levels of commitment without requiring readers to understand the entire site first.',
         ],
       },
       {
@@ -3465,7 +3471,7 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'For Teaching or Research',
         body: [
-          'Use the Library for glossary entries, future downloads, teaching materials, and formal papers. The content is intended to become modular: each concept page should be teachable on its own while linking back into the whole framework.',
+          'Use the Library for glossary entries, printable downloads, teaching materials, formal papers, and the public search index. The content is intended to become modular: each concept page should be teachable on its own while linking back into the whole framework.',
         ],
       },
     ],
