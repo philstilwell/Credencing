@@ -24,7 +24,7 @@ import {
 import { EpistemicData } from './types';
 import EpistemicChart from './components/EpistemicChart';
 import Dashboard from './components/Dashboard';
-import { featuredPaths, pageGroups, PageGroup } from './siteContent';
+import { contentPages, featuredPaths, pageGroups, pagePath, PageGroup, ContentPage } from './siteContent';
 
 type Tab = 'intro' | 'model' | 'explanation' | 'formalization';
 
@@ -40,6 +40,7 @@ const navItems = [
 export default function App() {
   const [route, setRoute] = useHashRoute();
   const activeGroup = pageGroups.find((group) => group.path === route);
+  const activePage = contentPages.find((page) => page.path === route);
 
   return (
     <div className="min-h-screen p-4 md:p-8 relative overflow-hidden">
@@ -109,7 +110,19 @@ export default function App() {
             </motion.main>
           )}
 
-          {!activeGroup && route !== '/' && route !== '/site-map' && (
+          {activePage && (
+            <motion.main
+              key={activePage.path}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+            >
+              <ContentArticle page={activePage} onNavigate={setRoute} />
+            </motion.main>
+          )}
+
+          {!activeGroup && !activePage && route !== '/' && route !== '/site-map' && (
             <motion.main
               key="not-found"
               initial={{ opacity: 0, y: 12 }}
@@ -447,18 +460,130 @@ function PageCluster({ group }: { group: PageGroup }) {
       <h3 className="text-xl font-light text-white">Pages in this section</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {group.pages.map((page, index) => (
-          <article key={page} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 transition-colors">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-[9px] text-slate-600 font-mono uppercase tracking-widest mb-2">Page {String(index + 1).padStart(2, '0')}</p>
-                <h4 className="text-white font-medium leading-snug">{page}</h4>
-              </div>
-              <span className="text-[9px] text-slate-500 border border-white/10 rounded-full px-2 py-1 uppercase tracking-wider">Draft</span>
-            </div>
-          </article>
+          <PageTeaser key={page} group={group} page={page} index={index} />
         ))}
       </div>
     </section>
+  );
+}
+
+function PageTeaser({ group, page, index }: { group: PageGroup; page: string; index: number }) {
+  const targetPath = pagePath(group.path, page);
+  const hasContent = contentPages.some((contentPage) => contentPage.path === targetPath);
+
+  return (
+    <button
+      onClick={() => {
+        window.location.hash = targetPath;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }}
+      className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 transition-colors text-left"
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-[9px] text-slate-600 font-mono uppercase tracking-widest mb-2">Page {String(index + 1).padStart(2, '0')}</p>
+          <h4 className="text-white font-medium leading-snug">{page}</h4>
+        </div>
+        <span className={`text-[9px] border rounded-full px-2 py-1 uppercase tracking-wider ${hasContent ? 'text-blue-300 border-blue-500/30' : 'text-slate-500 border-white/10'}`}>
+          {hasContent ? 'Read' : 'Draft'}
+        </span>
+      </div>
+    </button>
+  );
+}
+
+function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
+  const group = pageGroups.find((item) => item.path === page.groupPath);
+
+  return (
+    <article className="space-y-8">
+      <header className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
+        <button onClick={() => onNavigate(page.groupPath)} className="text-[10px] uppercase tracking-[0.3em] text-blue-400 hover:text-blue-300 font-bold">
+          {page.groupTitle}
+        </button>
+        <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">{page.title}</h2>
+        <p className="text-slate-300 max-w-3xl text-base md:text-lg leading-relaxed">{page.summary}</p>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="lg:col-span-8 space-y-6">
+          {page.sections.map((section) => (
+            <section key={section.heading} className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
+              <h3 className="text-2xl font-light text-white">{section.heading}</h3>
+              {section.body.map((paragraph) => (
+                <p key={paragraph} className="text-slate-300 text-sm md:text-base leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+              {section.bullets && (
+                <ul className="grid gap-2 pt-2">
+                  {section.bullets.map((bullet) => (
+                    <li key={bullet} className="text-slate-300 text-sm leading-relaxed flex gap-3">
+                      <span className="text-blue-400">|</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          ))}
+        </div>
+
+        <aside className="lg:col-span-4 lg:sticky lg:top-8 space-y-5">
+          <div className="glass-panel p-6 bg-blue-500/[0.04] border-blue-500/20 space-y-4">
+            <h3 className="text-[10px] uppercase tracking-[0.25em] text-blue-300 font-bold">Key Takeaways</h3>
+            <ul className="space-y-3">
+              {page.keyTakeaways.map((takeaway) => (
+                <li key={takeaway} className="text-slate-200 text-xs leading-relaxed flex gap-2">
+                  <span className="text-blue-400 mt-0.5">-</span>
+                  <span>{takeaway}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
+            <h3 className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-bold">Related</h3>
+            <div className="space-y-2">
+              {page.related.map((relatedPath) => {
+                const relatedPage = contentPages.find((item) => item.path === relatedPath);
+                const relatedGroup = pageGroups.find((item) => item.path === relatedPath);
+                return (
+                  <button
+                    key={relatedPath}
+                    onClick={() => onNavigate(relatedPath)}
+                    className="w-full text-left p-3 rounded-lg border border-white/5 hover:border-blue-500/30 bg-white/[0.02] transition-colors"
+                  >
+                    <span className="block text-xs text-white">{relatedPage?.title ?? relatedGroup?.title ?? relatedPath}</span>
+                    <span className="block text-[9px] uppercase tracking-widest text-slate-600 mt-1">{relatedPage ? relatedPage.groupTitle : relatedGroup ? 'Section' : 'Planned page'}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {group && (
+            <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
+              <h3 className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-bold">Section Sequence</h3>
+              <div className="space-y-2">
+                {group.pages.map((pageTitle) => {
+                  const path = pagePath(group.path, pageTitle);
+                  return (
+                    <button
+                      key={pageTitle}
+                      onClick={() => onNavigate(path)}
+                      className={`w-full text-left text-xs p-2 rounded border transition-colors ${path === page.path ? 'text-blue-300 border-blue-500/30 bg-blue-500/10' : 'text-slate-400 border-transparent hover:border-white/10 hover:bg-white/5'}`}
+                    >
+                      {pageTitle}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </aside>
+      </div>
+    </article>
   );
 }
 
