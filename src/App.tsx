@@ -52,6 +52,8 @@ const glossaryTerms = [
   ['Posterior', 'An updated credence after evidence is considered.'],
 ];
 
+const basePath = import.meta.env.BASE_URL;
+
 export default function App() {
   const [route, setRoute] = useHashRoute();
   const activeGroup = pageGroups.find((group) => group.path === route);
@@ -94,7 +96,7 @@ export default function App() {
                 kicker="Interactive Lab"
               />
               <InteractiveExperience initialTab="model" />
-              <PageCluster group={pageGroups.find((group) => group.path === '/interactive-lab')!} />
+              <PageCluster group={pageGroups.find((group) => group.path === '/interactive-lab')!} onNavigate={setRoute} />
             </motion.main>
           )}
 
@@ -108,7 +110,7 @@ export default function App() {
               className="space-y-10"
             >
               <SectionHero group={activeGroup} />
-              <PageCluster group={activeGroup} />
+              <PageCluster group={activeGroup} onNavigate={setRoute} />
               <RelatedGroups currentPath={activeGroup.path} onNavigate={setRoute} />
             </motion.main>
           )}
@@ -122,7 +124,7 @@ export default function App() {
               transition={{ duration: 0.2 }}
               className="space-y-10"
             >
-              <SiteMap />
+              <SiteMap onNavigate={setRoute} />
             </motion.main>
           )}
 
@@ -191,7 +193,8 @@ function useRouteMetadata(route: string, group?: PageGroup, page?: ContentPage) 
 function useHashRoute(): [string, (path: string) => void] {
   const readRoute = () => {
     const hash = window.location.hash.replace(/^#/, '');
-    return hash.startsWith('/') ? hash : '/';
+    if (!hash.startsWith('/')) return '/';
+    return hash.length > 1 ? hash.replace(/\/+$/, '') : '/';
   };
 
   const [route, setRouteState] = useState(readRoute);
@@ -203,8 +206,9 @@ function useHashRoute(): [string, (path: string) => void] {
   }, []);
 
   const setRoute = useCallback((path: string) => {
-    window.location.hash = path;
-    setRouteState(path);
+    const normalizedPath = path.length > 1 ? path.replace(/\/+$/, '') : '/';
+    window.location.hash = normalizedPath;
+    setRouteState(normalizedPath);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
@@ -495,28 +499,27 @@ function SectionHero({ group, kicker }: { group: PageGroup; kicker?: string }) {
   );
 }
 
-function PageCluster({ group }: { group: PageGroup }) {
+function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (path: string) => void }) {
   return (
     <section className="space-y-5">
       <h3 className="text-xl font-light text-white">Pages in this section</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {group.pages.map((page, index) => (
-          <PageTeaser key={page} group={group} page={page} index={index} />
+          <PageTeaser key={page} group={group} page={page} index={index} onNavigate={onNavigate} />
         ))}
       </div>
     </section>
   );
 }
 
-function PageTeaser({ group, page, index }: { group: PageGroup; page: string; index: number }) {
+function PageTeaser({ group, page, index, onNavigate }: { group: PageGroup; page: string; index: number; onNavigate: (path: string) => void }) {
   const targetPath = pagePath(group.path, page);
   const hasContent = contentPages.some((contentPage) => contentPage.path === targetPath);
 
   return (
     <button
       onClick={() => {
-        window.location.hash = targetPath;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        onNavigate(targetPath);
       }}
       className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 transition-colors text-left"
     >
@@ -574,6 +577,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
           ))}
           <PriorityExpansion title={page.title} />
           <DownloadPanel page={page} />
+          <ContactPanel page={page} />
           <nav className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {previousPath && (
               <button onClick={() => onNavigate(previousPath)} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-blue-500/30 text-left transition-colors">
@@ -746,9 +750,9 @@ function PriorityExpansion({ title }: { title: string }) {
 function DownloadPanel({ page }: { page: ContentPage }) {
   if (page.path !== pagePath('/library', 'Downloads') && page.path !== pagePath('/library', 'Teaching Materials')) return null;
   const downloads = [
-    ['One-Page Model Guide', '/Credencing/downloads/credencing-one-page-guide.md'],
-    ['Scenario Worksheet', '/Credencing/downloads/credencing-scenario-worksheet.md'],
-    ['Classroom Exercise Packet', '/Credencing/downloads/credencing-classroom-exercises.md'],
+    ['One-Page Model Guide', `${basePath}downloads/credencing-one-page-guide.md`],
+    ['Scenario Worksheet', `${basePath}downloads/credencing-scenario-worksheet.md`],
+    ['Classroom Exercise Packet', `${basePath}downloads/credencing-classroom-exercises.md`],
   ];
 
   return (
@@ -760,6 +764,27 @@ function DownloadPanel({ page }: { page: ContentPage }) {
             {label}
           </a>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function ContactPanel({ page }: { page: ContentPage }) {
+  if (page.path !== pagePath('/about', 'Contact') && page.path !== pagePath('/about', 'Author')) return null;
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-blue-500/[0.035] border-blue-500/20 space-y-4">
+      <h3 className="text-2xl font-light text-white">Project Contact</h3>
+      <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+        The most durable public feedback path for this GitHub Pages version is the GitHub repository. Use it for corrections, broken-link reports, suggested examples, and issue-specific discussion.
+      </p>
+      <div className="flex flex-wrap gap-3">
+        <a href="https://github.com/philstilwell/Credencing" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-blue-200 text-xs font-bold uppercase tracking-wider hover:border-blue-500/40">
+          Repository
+        </a>
+        <a href="https://github.com/philstilwell/Credencing/issues" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-blue-200 text-xs font-bold uppercase tracking-wider hover:border-blue-500/40">
+          Issues
+        </a>
       </div>
     </section>
   );
@@ -789,7 +814,7 @@ function GroupCard({ group, onNavigate }: { group: PageGroup; onNavigate: (path:
         <ArrowRight size={16} className="text-slate-600 group-hover:text-blue-300 transition-colors" />
       </div>
       <p className="text-slate-400 text-xs leading-relaxed mb-5">{group.summary}</p>
-      <p className="text-[9px] uppercase tracking-widest text-slate-600">{group.pages.length} planned pages</p>
+      <p className="text-[9px] uppercase tracking-widest text-slate-600">{group.pages.length} pages</p>
     </button>
   );
 }
@@ -810,6 +835,7 @@ function SearchAndTopicIndex({ onNavigate }: { onNavigate: (path: string) => voi
         <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">Search and Topic Index</h2>
         <p className="text-slate-300 max-w-3xl leading-relaxed">Search the public Credencing web by concept, issue, domain, or skill. Topic chips are quick filters over the same page index.</p>
         <input
+          aria-label="Search Credencing pages"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search credences, calibration, AI alignment..."
@@ -824,6 +850,11 @@ function SearchAndTopicIndex({ onNavigate }: { onNavigate: (path: string) => voi
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {results.length === 0 && (
+          <div className="glass-panel p-8 md:col-span-2 bg-white/[0.015] border-white/5 text-slate-300">
+            No pages match that search yet. Try a broader term such as evidence, confidence, calibration, Bayesian, or rationality.
+          </div>
+        )}
         {results.map((page) => (
           <button key={page.path} onClick={() => onNavigate(page.path)} className="glass-panel p-5 text-left bg-white/[0.015] border-white/5 hover:border-blue-500/30 transition-colors">
             <span className="text-[9px] uppercase tracking-widest text-blue-400">{page.groupTitle}</span>
@@ -856,7 +887,7 @@ function DiagramGallery() {
           <p className="text-slate-400 text-xs leading-relaxed">Objective evidence becomes perceived evidence, then assigned credence. The project studies where this flow bends.</p>
         </DiagramCard>
         <DiagramCard title="Core vs Deep">
-          <div className="grid grid-cols-2 gap-2 text-xs">
+          <div className="grid grid-cols-2 gap-2 text-xs" aria-label="Core rationality and deep rationality quadrant examples">
             {['Ideal Agent', 'Biased Expert', 'Honest Novice', 'Delusion Risk'].map((label) => (
               <div key={label} className="border border-white/10 bg-white/[0.02] rounded-lg p-3 text-slate-200 min-h-[70px] flex items-center justify-center text-center">{label}</div>
             ))}
@@ -888,7 +919,7 @@ function DiagramCard({ title, children }: { title: string; children: ReactNode }
   );
 }
 
-function SiteMap() {
+function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
   return (
     <section className="space-y-8">
       <div className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5">
@@ -906,7 +937,12 @@ function SiteMap() {
               {group.pages.map((page) => (
                 <li key={page} className="text-slate-400 text-xs flex items-start gap-2">
                   <span className="text-blue-500/70 mt-0.5">|</span>
-                  <span>{page}</span>
+                  <button
+                    onClick={() => onNavigate(pagePath(group.path, page))}
+                    className="text-left hover:text-blue-300 transition-colors"
+                  >
+                    {page}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -933,7 +969,7 @@ function SiteFooter({ onNavigate }: { onNavigate: (path: string) => void }) {
     <footer className="pt-16 pb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-[10px] uppercase tracking-widest opacity-50 font-mono">
       <span>Credencing Public Web</span>
       <div className="flex flex-wrap gap-5">
-        <button onClick={() => onNavigate('/about')}>About</button>
+        <button onClick={() => onNavigate(pagePath('/about', 'Project Overview'))}>About</button>
         <button onClick={() => onNavigate('/site-map')}>Site Map</button>
         <span>2026 Epistemic Protocol</span>
       </div>
@@ -965,7 +1001,7 @@ function getDynamicDescription(data: EpistemicData) {
     return "Honest Novice: good faith with limited tools. The agent is aligned with perception, even if that perception is blurry.";
   }
   if (coreIrrationality > (1 - data.deepRationality) * 0.25) {
-    return "Epistemic Delusion: assigned credence has drifted so far from perceived evidence that the doxastic gap has collapsed.";
+    return "Epistemic Delusion: assigned credence has drifted so far from perceived evidence that the doxastic gap has torn loose.";
   }
   return "Standard Agent: minor deviations represent common bias or noise, but belief remains broadly tethered to perceived evidence.";
 }

@@ -3493,7 +3493,7 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'Author Note',
         body: [
-          'This page can later include a fuller author biography, relevant publications, talks, teaching materials, and links to related work. For now, it serves as a placeholder for authorship and accountability.',
+          'This page can later include a fuller author biography, relevant publications, talks, teaching materials, and links to related work. For now, it establishes authorship and points readers toward the public project repository for corrections and collaboration.',
         ],
       },
       {
@@ -3516,7 +3516,7 @@ export const aboutPages: ContentPage[] = [
   ),
   aboutPage(
     'Contact',
-    'The contact page will provide a path for corrections, collaboration, teaching use, and future project inquiries.',
+    'The contact page provides a public feedback path for corrections, collaboration, teaching use, and future project inquiries.',
     [
       {
         heading: 'Why Contact Matters',
@@ -3531,9 +3531,9 @@ export const aboutPages: ContentPage[] = [
         ],
       },
       {
-        heading: 'Future Contact Layer',
+        heading: 'Public Contact Layer',
         body: [
-          'This page can later include an email address, contact form, newsletter signup, or issue tracker. For now, it defines the intended role of feedback in the project.',
+          'For this GitHub Pages version, the public repository and issue tracker are the most durable contact layer. A later version can add an email address, contact form, or newsletter signup if the project needs a more direct channel.',
         ],
       },
     ],
@@ -3567,7 +3567,7 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'Public Web Expansion',
         body: [
-          'The site map already points toward search, tag index, topic index, related-pages engine, breadcrumbs, and newsletter updates. These utility layers will matter more as the site grows.',
+          'The site now includes search, topic filtering, breadcrumbs, section sequencing, related-page links, and starter downloads. The next utility layer should focus on better tags, richer cross-linking, and update subscriptions.',
         ],
       },
       {
@@ -3579,7 +3579,7 @@ export const aboutPages: ContentPage[] = [
     ],
     [
       'The site can grow in content, tools, utility layers, and research depth.',
-      'Scenario comparison and downloads are natural next features.',
+      'Scenario saving, richer comparison, and printable formats are natural next features.',
       'Validation and measurement remain major open questions.',
     ],
     [
