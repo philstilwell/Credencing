@@ -1252,4 +1252,416 @@ export const coreIdeasPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages];
+function labPage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/interactive-lab', title),
+    groupTitle: 'Interactive Lab',
+    groupPath: '/interactive-lab',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const interactiveLabPages: ContentPage[] = [
+  labPage(
+    'Interactive Model',
+    'The interactive model is the central instrument for visualizing how evidence, perception, belief, and rational skill diverge.',
+    [
+      {
+        heading: 'What the Model Is For',
+        body: [
+          'The interactive model is not a personality test and not a complete theory of all cognition. It is a visual instrument for one recurring epistemic problem: the distance between what the evidence is, what an agent perceives, what they finally believe, and how much rational skill they bring to the process.',
+          'Its purpose is diagnostic. By moving the sliders, a visitor can create states that represent honest error, motivated belief, expert rationalization, uncertainty, and healthy alignment.',
+        ],
+      },
+      {
+        heading: 'The Four Controls',
+        body: [
+          'Objective Evidence, E0, sets the evidential target. Perceived Evidence, EP, sets what the agent takes that evidence to show. Assigned Credence, CA, sets the confidence the agent adopts. Deep Rationality, SD, sets the quality of the agent inferential tools.',
+          'The controls are intentionally simple. Their simplicity makes the relationships visible. The goal is not to simulate every psychological mechanism, but to separate the major gaps that normally get blurred together.',
+        ],
+      },
+      {
+        heading: 'The Two Gaps',
+        body: [
+          'The E0-EP gap shows error in perception or inference. The EP-CA gap shows doxastic misalignment: a failure to assign confidence according to what the agent takes the evidence to show.',
+          'Most of the project grows from these two gaps. If you can identify which gap is doing the work, you can ask better questions about responsibility, repair, and interpretation.',
+        ],
+      },
+    ],
+    [
+      'The model visualizes evidence, perception, belief, and rational skill.',
+      'E0-EP diagnoses perception or inference failure.',
+      'EP-CA diagnoses core-rational misalignment.',
+    ],
+    [
+      '/interactive-lab',
+      pagePath('/interactive-lab', 'How to Read the Model'),
+      pagePath('/core-ideas', 'Core vs Deep Rationality'),
+    ],
+  ),
+  labPage(
+    'How to Read the Model',
+    'Read the model by following the path from objective evidence to perceived evidence to assigned credence.',
+    [
+      {
+        heading: 'Start With the Target',
+        body: [
+          'Begin by locating Objective Evidence, E0. This is the model estimate of where the evidence really points. In real life, E0 is often uncertain, but in the lab it gives the visual system a target.',
+          'Then compare E0 to Perceived Evidence, EP. If they are close, the agent is reading the evidential situation well. If they are far apart, something has gone wrong in access, attention, interpretation, method, or environment.',
+        ],
+      },
+      {
+        heading: 'Then Read the Commitment',
+        body: [
+          'After EP, look at Assigned Credence, CA. This is where the agent finally places belief. When CA tracks EP, the agent is internally consistent even if they are mistaken about the world. When CA diverges from EP, the agent is believing against their own evidential perception.',
+        ],
+      },
+      {
+        heading: 'Use Deep Rationality as Resolution',
+        body: [
+          'Deep Rationality, SD, functions like resolution. High SD means the agent has better tools for narrowing the distance between the world and their perception. Low SD means more fog and wider warranted uncertainty.',
+          'Do not read low SD as moral failure by itself. A novice may lack tools and still be honest. The model becomes morally interesting when you compare SD with the EP-CA gap.',
+        ],
+      },
+    ],
+    [
+      'Read E0 first, then EP, then CA.',
+      'E0-EP is the perception/inference gap.',
+      'EP-CA is the belief-integrity gap.',
+      'SD changes how much uncertainty is warranted.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Visual Legend'),
+      pagePath('/core-ideas', 'Objective Evidence (E0)'),
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
+    ],
+  ),
+  labPage(
+    'Visual Legend',
+    'The visual elements represent the evidential target, perceived balance, assigned credence, skill depth, uncertainty, and irrationality.',
+    [
+      {
+        heading: 'Markers and Lines',
+        body: [
+          'The objective evidence marker indicates the evidential target. The perceived evidence marker indicates what the agent takes the evidence to show. The assigned credence line shows the final confidence commitment.',
+          'When these elements cluster together, the state is aligned. When they separate, the model asks which kind of separation has occurred.',
+        ],
+      },
+      {
+        heading: 'Skill and Uncertainty',
+        body: [
+          'The skill-depth marker reflects Deep Rationality. As skill rises, warranted uncertainty narrows. As skill falls, the agent is entitled to a wider range of uncertainty because their tools are less precise.',
+          'The green uncertainty region is not a defect. It represents the range in which variation in credence may remain reasonable given the agent limitations.',
+        ],
+      },
+      {
+        heading: 'The Red Region',
+        body: [
+          'The red region appears when Assigned Credence diverges from Perceived Evidence. It visualizes core irrationality: not merely being wrong, but adopting a confidence that departs from what the agent takes the evidence to warrant.',
+          'The stronger and more stable that red divergence becomes, the more the model moves from ordinary bias toward epistemic delusion.',
+        ],
+      },
+    ],
+    [
+      'Markers show E0, EP, CA, and SD.',
+      'Green uncertainty can be warranted.',
+      'Red divergence shows the EP-CA gap.',
+    ],
+    [
+      pagePath('/interactive-lab', 'How to Read the Model'),
+      pagePath('/core-ideas', 'Warranted Uncertainty'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+    ],
+  ),
+  labPage(
+    'Preset Scenarios',
+    'Preset scenarios show canonical patterns so visitors can learn the model quickly.',
+    [
+      {
+        heading: 'Why Presets Matter',
+        body: [
+          'A blank model can be hard to read. Presets give visitors stable examples: the ideal agent, the honest novice, the biased expert, and epistemic delusion. These cases establish reference points before users build their own scenarios.',
+        ],
+      },
+      {
+        heading: 'The Practical Scenarios',
+        body: [
+          'The lab also includes practical scenarios such as gaslighting, academic dogma, and strict empiricism. These are not meant as final labels for real people. They are training cases for seeing whether the main error lies in evidence perception, assigned credence, or both.',
+        ],
+      },
+      {
+        heading: 'How to Use Presets Well',
+        body: [
+          'Select a preset, read the description, then move one slider at a time. Ask what changes when perception improves, when assigned credence becomes more honest, or when Deep Rationality increases. The point is to learn the relationships, not simply memorize the archetypes.',
+        ],
+      },
+    ],
+    [
+      'Presets are reference cases for learning the model.',
+      'They teach relationships among E0, EP, CA, and SD.',
+      'Small slider changes reveal which gap drives the diagnosis.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Ideal Agent'),
+      pagePath('/interactive-lab', 'Biased Expert'),
+      pagePath('/interactive-lab', 'Build Your Own Scenario'),
+    ],
+  ),
+  labPage(
+    'Ideal Agent',
+    'The ideal agent has strong evidence perception and assigns credence in line with that perception.',
+    [
+      {
+        heading: 'High Skill, High Integrity',
+        body: [
+          'The ideal agent is a local pattern in which Deep Rationality is high and Assigned Credence closely tracks Perceived Evidence. The agent has good tools and uses them honestly.',
+          'This does not require omniscience. The ideal agent can still face uncertainty. What makes the state ideal is proportionality: the agent neither overstates nor evades what the evidence supports.',
+        ],
+      },
+      {
+        heading: 'What It Looks Like',
+        body: [
+          'In the model, E0, EP, and CA sit close together, and SD is high. The uncertainty region is relatively narrow because the agent tools are strong. There is little or no red core-irrationality region.',
+        ],
+      },
+      {
+        heading: 'Why It Matters',
+        body: [
+          'The ideal agent is not meant to shame ordinary agents. It is a regulative target. It shows what the model is aiming for: belief that is both well-informed and internally honest.',
+        ],
+      },
+    ],
+    [
+      'The ideal agent combines skill and integrity.',
+      'E0, EP, and CA remain closely aligned.',
+      'The archetype is a target, not a claim of perfection.',
+    ],
+    [
+      pagePath('/core-ideas', 'Calibration'),
+      pagePath('/core-ideas', 'Core vs Deep Rationality'),
+      pagePath('/interactive-lab', 'Honest Novice'),
+    ],
+  ),
+  labPage(
+    'Honest Novice',
+    'The honest novice lacks strong tools but assigns credence according to their perceived evidence.',
+    [
+      {
+        heading: 'Low Skill, High Good Faith',
+        body: [
+          'The honest novice has limited Deep Rationality but relatively strong Core Rationality. They may not know the statistics, may miss comparison classes, or may struggle with noisy evidence. But they do not knowingly force belief away from what they perceive.',
+        ],
+      },
+      {
+        heading: 'Why This Case Deserves Charity',
+        body: [
+          'The honest novice reminds us that false belief is not always bad faith. A person may be wrong because the task is hard, the evidence is confusing, or their tools are underdeveloped. The right repair is often education and support, not accusation.',
+        ],
+      },
+      {
+        heading: 'What It Looks Like',
+        body: [
+          'In the model, EP may diverge from E0 because the agent perception is imperfect. But CA remains close to EP. The agent believes what they honestly take the evidence to show.',
+        ],
+      },
+    ],
+    [
+      'The honest novice may be wrong without being dishonest.',
+      'The main gap is E0-EP, not EP-CA.',
+      'Repair usually requires better tools and better evidence access.',
+    ],
+    [
+      pagePath('/core-ideas', 'Calculation Error (DE)'),
+      pagePath('/skills', 'How to Estimate Priors'),
+      pagePath('/interactive-lab', 'Biased Expert'),
+    ],
+  ),
+  labPage(
+    'Biased Expert',
+    'The biased expert has strong tools but uses them to protect a preferred conclusion.',
+    [
+      {
+        heading: 'High Skill, Low Integrity',
+        body: [
+          'The biased expert is one of the most important archetypes because it breaks the assumption that intelligence automatically produces rationality. The biased expert can process evidence well, but assigns credence in a way that protects identity, status, ideology, or incentive.',
+        ],
+      },
+      {
+        heading: 'The Intellect as Bodyguard',
+        body: [
+          'In this pattern, intelligence becomes defensive. The agent does not merely fail to see; they use what they see selectively. They produce sophisticated reasons for a conclusion that was effectively chosen before the reasoning began.',
+        ],
+      },
+      {
+        heading: 'What It Looks Like',
+        body: [
+          'In the model, SD may be high and EP may be reasonably close to E0. The problem appears when CA pulls away from EP. The red region is not caused by ignorance; it is caused by motivated assignment of confidence.',
+        ],
+      },
+    ],
+    [
+      'The biased expert has tools but misuses them defensively.',
+      'The main gap is EP-CA.',
+      'Education alone may not repair the pattern.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/skills', 'How to Detect Motivated Override'),
+    ],
+  ),
+  labPage(
+    'Epistemic Delusion',
+    'Epistemic delusion marks severe detachment between assigned credence and perceived evidence.',
+    [
+      {
+        heading: 'Beyond Ordinary Bias',
+        body: [
+          'Epistemic delusion, in this model, is not a clinical diagnosis. It names a structural state in which Assigned Credence drifts so far from Perceived Evidence that the belief is no longer answerable to the agent own evidential sense.',
+        ],
+      },
+      {
+        heading: 'The Collapse of the Doxastic Gap',
+        body: [
+          'Ordinary bias may tug credence. Delusion-level distortion overwhelms the tether. The agent may be operating from fear, fantasy, group pressure, or identity defense so powerful that evidence no longer has normal traction.',
+        ],
+      },
+      {
+        heading: 'Use the Label Carefully',
+        body: [
+          'This term should be used cautiously. The site uses it for model behavior, not as a casual insult. The important question is how far credence has detached from perceived evidence, and what conditions would restore answerability.',
+        ],
+      },
+    ],
+    [
+      'Epistemic delusion is a structural model state, not a clinical label.',
+      'It involves severe EP-CA detachment.',
+      'The repair question is how evidence can regain traction.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/case-studies', 'Delusion Threshold Cases'),
+      pagePath('/interactive-lab', 'Interpretation Guide'),
+    ],
+  ),
+  labPage(
+    'Build Your Own Scenario',
+    'Building your own scenario means assigning E0, EP, CA, and SD for a real or imagined belief state.',
+    [
+      {
+        heading: 'Choose the Claim',
+        body: [
+          'Start with a specific claim. Avoid vague topics like "politics" or "medicine." Use a concrete proposition: this treatment is likely to work, this source is reliable, this policy will reduce harm, this person is trustworthy.',
+        ],
+      },
+      {
+        heading: 'Set the Four Values',
+        body: [
+          'Estimate E0 as the evidential target, EP as what the agent perceives, CA as what the agent actually believes, and SD as the agent inferential skill in this domain. Do not worry about exact precision at first. The relationships matter more than the decimal.',
+        ],
+        bullets: [
+          'Ask what the evidence really supports.',
+          'Ask what the agent takes it to support.',
+          'Ask how strongly the agent actually believes.',
+          'Ask how reliable the agent tools are in this domain.',
+        ],
+      },
+      {
+        heading: 'Read the Gaps',
+        body: [
+          'If E0 and EP diverge, investigate information quality and reasoning skill. If EP and CA diverge, investigate motivation, fear, identity, incentives, or social pressure. If both diverge, the scenario likely combines ignorance with motivated belief.',
+        ],
+      },
+    ],
+    [
+      'Use specific claims, not broad topics.',
+      'Estimate all four values before diagnosing.',
+      'Different gaps imply different repairs.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Compare Two Scenarios'),
+      pagePath('/skills', 'How to Separate Core from Deep Failure'),
+      pagePath('/case-studies', 'Base-Rate Neglect'),
+    ],
+  ),
+  labPage(
+    'Compare Two Scenarios',
+    'Scenario comparison shows how similar surface beliefs can arise from different epistemic structures.',
+    [
+      {
+        heading: 'Why Compare',
+        body: [
+          'Two agents can hold the same belief for very different reasons. One may be an honest novice; another may be a biased expert. One may have bad data; another may have good data and bad faith. Comparing scenarios prevents superficial diagnosis.',
+        ],
+      },
+      {
+        heading: 'Comparison Questions',
+        body: [
+          'Compare where the gaps occur. Is one case mostly E0-EP and the other mostly EP-CA? Does one agent have lower SD but better internal alignment? Does one agent become more accurate when given better evidence, while the other resists?',
+        ],
+      },
+      {
+        heading: 'What Comparison Teaches',
+        body: [
+          'Comparison teaches that the same conclusion can have different epistemic quality. Being right is not enough; being right for evidence-responsive reasons matters. Being wrong is not always culpable; the structure of the error matters.',
+        ],
+      },
+    ],
+    [
+      'Similar beliefs can have different epistemic structures.',
+      'Compare gap locations before judging.',
+      'The same conclusion can be held responsibly or irresponsibly.',
+    ],
+    [
+      pagePath('/start-here', 'The Difference Between Being Mistaken and Being Epistemically Inconsistent'),
+      pagePath('/interactive-lab', 'Build Your Own Scenario'),
+      pagePath('/case-studies', 'Honest Novice Cases'),
+    ],
+  ),
+  labPage(
+    'Interpretation Guide',
+    'The interpretation guide translates model patterns into diagnostic questions and repair strategies.',
+    [
+      {
+        heading: 'Do Not Overread the Model',
+        body: [
+          'The model is a thinking aid, not an oracle. Its values are interpretive estimates. It helps organize questions, but it does not remove the need for judgment, humility, and context.',
+        ],
+      },
+      {
+        heading: 'From Pattern to Diagnosis',
+        body: [
+          'When you see an E0-EP gap, ask about evidence access, measurement quality, statistical tools, and framing. When you see an EP-CA gap, ask about emotional threat, identity protection, incentives, public commitment, and social cost of revision.',
+        ],
+      },
+      {
+        heading: 'From Diagnosis to Repair',
+        body: [
+          'Deep-rational repairs include better data, better priors, better likelihood comparisons, feedback, and education. Core-rational repairs include lowering defensive threat, rewarding revision, practicing uncertainty, and making belief change socially survivable.',
+        ],
+      },
+    ],
+    [
+      'The model organizes judgment; it does not replace it.',
+      'E0-EP gaps suggest tool and evidence repairs.',
+      'EP-CA gaps suggest motivational and integrity repairs.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core vs Deep Rationality'),
+      pagePath('/skills', 'How to Separate Core from Deep Failure'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+    ],
+  ),
+];
+
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages];
