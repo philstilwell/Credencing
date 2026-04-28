@@ -1664,4 +1664,414 @@ export const interactiveLabPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages];
+function casePage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/case-studies', title),
+    groupTitle: 'Case Studies',
+    groupPath: '/case-studies',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const caseStudyPages: ContentPage[] = [
+  casePage(
+    'Base-Rate Neglect',
+    'Base-rate neglect occurs when vivid case-specific evidence overwhelms the background frequency that should anchor judgment.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'Base-rate neglect is the failure to give enough weight to how common a condition, event, trait, or outcome is in the relevant reference class. A story about this particular case becomes so vivid that the general frequency quietly disappears.',
+          'In Credencing terms, the agent often allows Perceived Evidence to drift away from Objective Evidence because the evidence field has been visually or emotionally compressed. The striking detail is seen; the background distribution is not.',
+        ],
+      },
+      {
+        heading: 'Where the Gap Opens',
+        body: [
+          'The main failure is usually Deep Rationality. The E0-EP gap widens because the agent lacks or ignores the statistical frame needed to interpret the evidence. But a Core Rationality failure can appear when the agent knows the base rate matters and avoids it because the anecdote supports a preferred conclusion.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repair begins by asking for the reference class. How often does this happen among cases like this? What is the prior probability before the vivid new detail arrives? How diagnostic is the detail relative to the background rate?',
+          'The skill is not to dismiss particulars. It is to place particulars inside the right population before allowing confidence to move.',
+        ],
+      },
+    ],
+    [
+      'Base rates anchor credence before case-specific evidence is interpreted.',
+      'The typical failure is an E0-EP distortion.',
+      'Anecdotes should be interpreted inside reference classes.',
+    ],
+    [
+      pagePath('/core-ideas', 'Priors'),
+      pagePath('/core-ideas', 'Bayesian Updating'),
+      pagePath('/skills', 'How to Avoid Base-Rate Neglect'),
+    ],
+  ),
+  casePage(
+    'Medical Testing',
+    'Medical tests show why sensitivity, specificity, prevalence, and emotional salience must all be kept separate.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'Medical testing is a classic case where evidence sounds stronger than it is. A positive test result may feel like direct evidence that a condition is present, but its meaning depends on prevalence, false positives, false negatives, test quality, and the population being tested.',
+          'A rare disease with a decent test can still produce many false alarms when applied broadly. The emotional force of a positive result can make the likelihood feel stronger than the posterior actually warrants.',
+        ],
+      },
+      {
+        heading: 'Where the Gap Opens',
+        body: [
+          'The common error is Deep Rationality: EP overstates what the test result means because the agent does not combine base rate and test accuracy correctly. Core Rationality may enter when fear turns a moderate posterior into near certainty, or when avoidance turns a serious result into denial.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Ask four questions: how common is the condition in this group, how often does the test detect real cases, how often does it falsely flag non-cases, and what follow-up evidence would discriminate better?',
+          'Medical credencing requires emotional steadiness. The aim is not to feel calm by force, but to prevent fear from silently rewriting probability.',
+        ],
+      },
+    ],
+    [
+      'Test results need prevalence and accuracy context.',
+      'Fear can inflate assigned credence beyond perceived evidence.',
+      'Follow-up testing often narrows warranted uncertainty.',
+    ],
+    [
+      pagePath('/core-ideas', 'Likelihoods'),
+      pagePath('/core-ideas', 'Posteriors'),
+      pagePath('/applications', 'Medicine'),
+    ],
+  ),
+  casePage(
+    'Motivated Reasoning',
+    'Motivated reasoning occurs when inquiry is recruited to defend a desired conclusion rather than discover what is true.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'Motivated reasoning is not merely having motives. Every inquiry happens inside human concerns. The problem arises when the desired conclusion controls the treatment of evidence: friendly evidence is accepted cheaply, hostile evidence is scrutinized endlessly, and ambiguity is resolved in one direction.',
+          'In the model, motivated reasoning often produces an EP-CA gap, but it can also contaminate EP itself. The agent may both perceive selectively and assign credence defensively.',
+        ],
+      },
+      {
+        heading: 'The Biased Expert',
+        body: [
+          'Motivated reasoning is especially dangerous in high-skill agents. Intelligence supplies more ways to protect the conclusion. The agent can generate objections, exceptions, technical distinctions, and alternative explanations that function less as inquiry and more as legal defense.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repair requires changing the incentives around belief. Ask what would be embarrassing to admit, what group membership is at stake, what evidence would actually change the conclusion, and whether the standard of proof shifts depending on whether the evidence is welcome.',
+          'Good practice includes precommitting to update conditions and making belief revision honorable rather than humiliating.',
+        ],
+      },
+    ],
+    [
+      'Motivated reasoning bends standards of evidence toward a desired conclusion.',
+      'It can affect both EP and CA.',
+      'High intelligence can strengthen rationalization unless Core Rationality improves.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Biased Expert'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/skills', 'How to Detect Motivated Override'),
+    ],
+  ),
+  casePage(
+    'Political Tribalism',
+    'Political tribalism turns beliefs into loyalty signals, making update costs social rather than merely intellectual.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'Political tribalism makes credence answerable to coalition identity. Claims are not evaluated only by support; they are evaluated by what accepting them would imply about one side, status, enemies, and belonging.',
+          'This changes the cost of updating. A private probability shift becomes a public act of disloyalty. When that happens, Assigned Credence may remain fixed even as Perceived Evidence quietly changes.',
+        ],
+      },
+      {
+        heading: 'Where the Gap Opens',
+        body: [
+          'Tribalism can distort EP through selective media and social sorting. It can distort CA through identity pressure. The most stable tribal belief systems often involve both: members see a filtered evidence world and face punishment for admitting when even that filtered world becomes inconvenient.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repair requires cross-pressures that make truth tracking socially possible. Private reflection, mixed coalitions, steelmanning opponents, issue-by-issue credences, and explicit uncertainty can lower the perceived betrayal cost of updating.',
+        ],
+      },
+    ],
+    [
+      'Tribalism turns credence into a loyalty signal.',
+      'It can distort both evidence perception and belief assignment.',
+      'Repair requires making revision socially survivable.',
+    ],
+    [
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/applications', 'Public Debate'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+    ],
+  ),
+  casePage(
+    'Conspiracy Thinking',
+    'Conspiracy thinking becomes epistemically dangerous when every counter-signal is absorbed as further confirmation.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'Some conspiracies are real, so the error is not simply suspecting coordination or deception. The dangerous pattern is unfalsifiability: evidence for the theory confirms it, evidence against the theory is reinterpreted as proof of cover-up, and absence of evidence becomes evidence of suppression.',
+          'This creates a closed credencing loop. Assigned Credence becomes insulated from ordinary evidential correction.',
+        ],
+      },
+      {
+        heading: 'Where the Gap Opens',
+        body: [
+          'Conspiracy thinking often begins with an E0-EP problem: missing context, distrust, pattern over-detection, or exposure to curated claims. It hardens into an EP-CA problem when the agent refuses update conditions and treats every possible observation as compatible with the theory.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'The first repair question is: what would lower confidence? If no imaginable evidence would count against the claim, the issue is no longer ordinary uncertainty. The belief has become structurally protected from evidence.',
+          'Useful repair also distinguishes justified institutional distrust from global distrust. Specific distrust can improve inquiry; total distrust destroys the possibility of shared evidence.',
+        ],
+      },
+    ],
+    [
+      'The key danger is unfalsifiability.',
+      'Conspiracy thinking can begin as perception error and harden into core irrationality.',
+      'A belief needs possible update conditions to remain evidence-responsive.',
+    ],
+    [
+      pagePath('/core-ideas', 'Epistemic Akrasia'),
+      pagePath('/interactive-lab', 'Epistemic Delusion'),
+      pagePath('/skills', 'How to Ask Better Epistemic Questions'),
+    ],
+  ),
+  casePage(
+    'Risk Inflation',
+    'Risk inflation occurs when possibility is treated as probability and probability is treated as practical certainty.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'Risk inflation begins with a real possibility. Something could happen. The mistake is allowing could to become likely, and likely to become effectively certain, without corresponding evidence.',
+          'This is common when outcomes are frightening, vivid, morally charged, or personally salient. The imagination supplies detail; credence follows the detail rather than the evidence.',
+        ],
+      },
+      {
+        heading: 'Where the Gap Opens',
+        body: [
+          'Risk inflation can involve both gaps. EP may overread the evidence because vividness is mistaken for likelihood. CA may then exceed even EP because fear demands action as if the worst case were imminent.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Separate severity from probability. A severe outcome can deserve attention even when unlikely, but its severity does not make it probable. Then ask about base rates, comparison risks, marginal risk increase, and the cost of false alarms.',
+        ],
+      },
+    ],
+    [
+      'Possibility is not probability.',
+      'Severity and likelihood must be separated.',
+      'Fear can inflate both EP and CA.',
+    ],
+    [
+      pagePath('/core-ideas', 'Confidence Levels'),
+      pagePath('/case-studies', 'Fear Overrides'),
+      pagePath('/applications', 'Policy'),
+    ],
+  ),
+  casePage(
+    'Pragmatic Encroachment',
+    'Pragmatic encroachment describes how practical stakes influence what confidence is sufficient for action.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'Pragmatic encroachment is the pressure practical stakes place on belief and assertion. If little depends on being wrong, moderate confidence may be enough for action. If much depends on being wrong, the same confidence may be inadequate.',
+          'The danger is sliding from "this confidence is not enough for action" to "the claim is not likely." Those are different judgments.',
+        ],
+      },
+      {
+        heading: 'Credence vs Action Threshold',
+        body: [
+          'Credencing keeps the distinction visible. A person may assign 0.75 confidence while still refusing to act because the downside is too high. Or they may act on 0.55 because the cost of inaction is worse.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'State both numbers: the confidence level and the action threshold. Much confusion dissolves when people say, "I think this is probably true, but not enough to act under these stakes."',
+        ],
+      },
+    ],
+    [
+      'Practical stakes affect action thresholds.',
+      'Action threshold should not be confused with credence.',
+      'High stakes may require more confidence without changing the evidence itself.',
+    ],
+    [
+      pagePath('/core-ideas', 'Confidence Levels'),
+      pagePath('/start-here', 'Why Binary Belief Is Too Crude'),
+      pagePath('/applications', 'Law'),
+    ],
+  ),
+  casePage(
+    'Fear Overrides',
+    'Fear overrides happen when threat salience pushes assigned credence beyond what the agent perceives the evidence to support.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'Fear is not irrational by default. It is a signal of possible threat. The failure occurs when fear silently becomes evidence, raising confidence beyond what the actual support warrants.',
+          'A person may know that a danger is unlikely and still live as if it is probable. That is an EP-CA gap: perceived evidence and assigned credence have come apart under emotional pressure.',
+        ],
+      },
+      {
+        heading: 'Why Fear Is Persuasive',
+        body: [
+          'Fear is persuasive because it is action-oriented. It treats delay as danger. It prefers false positives to false negatives. In some environments that bias is adaptive; in reflective inquiry it can miscalibrate belief.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repair begins by naming the split: "My fear is high; my evidence is moderate." That sentence protects the difference between affect and credence. Then use base rates, outside views, time delays, and trusted review to restore calibration.',
+        ],
+      },
+    ],
+    [
+      'Fear can be useful without being evidentially decisive.',
+      'Fear overrides often create an EP-CA gap.',
+      'Naming affect separately from credence helps restore calibration.',
+    ],
+    [
+      pagePath('/core-ideas', 'Epistemic Akrasia'),
+      pagePath('/skills', 'How to Detect Motivated Override'),
+      pagePath('/applications', 'Personal Decision-Making'),
+    ],
+  ),
+  casePage(
+    'Honest Novice Cases',
+    'Honest novice cases involve sincere alignment with perceived evidence despite limited tools or incomplete information.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'The honest novice is wrong, uncertain, or imprecise because their tools are limited, not because they are protecting a preferred belief. Their Assigned Credence broadly follows their Perceived Evidence.',
+          'This case matters because public argument often punishes wrongness without asking whether the wrongness came from bad faith or limited access.',
+        ],
+      },
+      {
+        heading: 'Typical Examples',
+        body: [
+          'A patient misreads a test result because they have never learned base rates. A student trusts a simplified explanation that later needs qualification. A citizen believes a bad report from a normally reliable source. These can be real mistakes without core irrationality.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'The repair is educational and environmental: better explanations, better feedback, better access to the relevant evidence, and social permission to revise without humiliation.',
+        ],
+      },
+    ],
+    [
+      'Honest novice cases are primarily Deep Rationality cases.',
+      'They call for instruction, not contempt.',
+      'Good faith is shown by willingness to update when tools improve.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Honest Novice'),
+      pagePath('/core-ideas', 'Calculation Error (DE)'),
+      pagePath('/skills', 'How to Estimate Priors'),
+    ],
+  ),
+  casePage(
+    'Biased Expert Cases',
+    'Biased expert cases involve high skill used defensively to protect an identity, incentive, or prior commitment.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'The biased expert is dangerous because the surface performance can look rational. The argument may be technical, fluent, credentialed, and full of distinctions. But the direction of scrutiny is asymmetric: friendly evidence is welcomed, hostile evidence is buried under demands for impossible certainty.',
+        ],
+      },
+      {
+        heading: 'Typical Examples',
+        body: [
+          'A scholar protects a school of thought from decisive criticism. A partisan analyst notices every flaw in the opponent evidence and none in their own. A professional whose status depends on a method keeps treating anomalies as nuisances rather than signals.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repair requires accountability structures, adversarial review, prediction records, precommitted standards, and incentives that reward correction. The biased expert does not mainly need more intelligence; they need less protection for motivated confidence.',
+        ],
+      },
+    ],
+    [
+      'Biased experts use skill defensively.',
+      'The signature is asymmetric scrutiny.',
+      'Repair requires accountability and precommitted standards.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Biased Expert'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+    ],
+  ),
+  casePage(
+    'Delusion Threshold Cases',
+    'Delusion threshold cases occur when assigned credence becomes structurally detached from perceived evidence.',
+    [
+      {
+        heading: 'The Pattern',
+        body: [
+          'A delusion threshold case, in this project non-clinical sense, is a belief state in which normal evidence responsiveness has broken down. The agent confidence no longer behaves as if it is answerable to perceived evidence.',
+          'The point is not insult. The point is to mark when ordinary disagreement tools stop working because the credence is protected against update.',
+        ],
+      },
+      {
+        heading: 'Signals',
+        body: [
+          'Signals include unfalsifiability, totalizing explanations, refusal to state update conditions, escalating certainty under counterevidence, and social environments that punish doubt as betrayal.',
+        ],
+      },
+      {
+        heading: 'Repair',
+        body: [
+          'Repair often begins indirectly. Facts alone may intensify defense. Better approaches lower threat, rebuild shared standards, identify small update points, and restore the possibility that evidence can matter without destroying identity.',
+        ],
+      },
+    ],
+    [
+      'The label is structural, not clinical.',
+      'The core sign is loss of evidence responsiveness.',
+      'Repair often requires lowering threat before presenting more evidence.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Epistemic Delusion'),
+      pagePath('/case-studies', 'Conspiracy Thinking'),
+      pagePath('/skills', 'How to Ask Better Epistemic Questions'),
+    ],
+  ),
+];
+
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages];
