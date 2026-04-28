@@ -3288,4 +3288,306 @@ export const libraryPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...applicationPages, ...libraryPages];
+function aboutPage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/about', title),
+    groupTitle: 'About',
+    groupPath: '/about',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const aboutPages: ContentPage[] = [
+  aboutPage(
+    'Project Overview',
+    'Credencing is a public framework for understanding how confidence forms, distorts, and becomes answerable to evidence.',
+    [
+      {
+        heading: 'The Project in One Sentence',
+        body: [
+          'Credencing is a framework for mapping the distance between evidence, perception, and belief. It asks what the evidence supports, what an agent takes it to support, what confidence the agent finally adopts, and what kind of rational skill is operating.',
+        ],
+      },
+      {
+        heading: 'Why It Exists',
+        body: [
+          'Public argument often uses blunt labels: rational, irrational, biased, skeptical, dogmatic. The project exists because those labels are too coarse. A person can be honestly mistaken, cleverly self-deceived, uncertain for good reasons, or correct for bad reasons.',
+          'The two-gap model gives a more careful vocabulary: E0-EP for evidence perception and EP-CA for belief integrity.',
+        ],
+      },
+      {
+        heading: 'What the Site Provides',
+        body: [
+          'The site provides a central interactive model, conceptual explanations, case studies, skills, applications, and a library for future formal work. It is designed as a public web rather than a single essay because the concepts support one another laterally.',
+        ],
+      },
+    ],
+    [
+      'Credencing maps evidence, perception, belief, and rational skill.',
+      'The project distinguishes honest error from motivated misalignment.',
+      'The site is a web of concepts around a central interactive model.',
+    ],
+    [
+      pagePath('/start-here', 'What Is Credencing?'),
+      pagePath('/core-ideas', 'Core vs Deep Rationality'),
+      pagePath('/interactive-lab', 'Interactive Model'),
+    ],
+  ),
+  aboutPage(
+    'Why the Term "Credencing"',
+    'The term credencing emphasizes belief as an active, graded, updateable process.',
+    [
+      {
+        heading: 'Believing as a Process',
+        body: [
+          'The word belief can sound static: a box checked or unchecked. Credencing emphasizes the ongoing act of assigning, maintaining, revising, and sometimes defending confidence.',
+          'The term keeps attention on movement. Confidence changes as evidence changes, as interpretation improves, and as pressure on the agent shifts.',
+        ],
+      },
+      {
+        heading: 'Why Not Just "Belief"?',
+        body: [
+          'Belief language often hides degree. Someone says they believe a claim, but that may mean a slight lean or near certainty. Credencing makes the degree central.',
+        ],
+      },
+      {
+        heading: 'Why Not Just "Probability"?',
+        body: [
+          'Probability is essential, but the project also tracks will, identity, social pressure, and the difference between perceived evidence and assigned confidence. Credencing names the human process in which probability, interpretation, and commitment meet.',
+        ],
+      },
+    ],
+    [
+      'Credencing names belief as active and graded.',
+      'It keeps confidence levels visible.',
+      'It includes probability without reducing the whole project to math.',
+    ],
+    [
+      pagePath('/core-ideas', 'Credences'),
+      pagePath('/start-here', 'Why Binary Belief Is Too Crude'),
+      pagePath('/library', 'Glossary'),
+    ],
+  ),
+  aboutPage(
+    'Methodological Commitments',
+    'The project is committed to graded belief, diagnostic charity, explicit uncertainty, and updateability.',
+    [
+      {
+        heading: 'Graded Rather Than Binary',
+        body: [
+          'The project assumes that many important beliefs are best represented as degrees of confidence. Binary belief has practical uses, but it should not erase the underlying evidential scale.',
+        ],
+      },
+      {
+        heading: 'Diagnostic Before Accusatory',
+        body: [
+          'The model is meant to diagnose where a gap opens before assigning blame. An E0-EP gap may reflect limited tools or bad evidence access. An EP-CA gap may reflect identity pressure or motivated override. Moral evaluation comes after diagnosis, not before.',
+        ],
+      },
+      {
+        heading: 'Updateability',
+        body: [
+          'The framework should remain answerable to criticism. If the site argues for calibrated belief, the site itself should model revision, open questions, and explicit uncertainty.',
+        ],
+      },
+    ],
+    [
+      'Belief is treated as graded.',
+      'Diagnosis comes before accusation.',
+      'The project should model the updateability it recommends.',
+    ],
+    [
+      pagePath('/library', 'Project Notes'),
+      pagePath('/core-ideas', 'Uncertainty'),
+      pagePath('/about', 'Descriptive Rather than Prescriptive Orientation'),
+    ],
+  ),
+  aboutPage(
+    'Descriptive Rather than Prescriptive Orientation',
+    'The framework first describes belief structure before prescribing what a person should do.',
+    [
+      {
+        heading: 'Description First',
+        body: [
+          'The model begins by asking what is happening: what evidence exists, what is perceived, what confidence is assigned, and where the gaps open. This descriptive posture prevents premature moralizing.',
+        ],
+      },
+      {
+        heading: 'Prescription Still Matters',
+        body: [
+          'Description is not the end. Once the structure is visible, we can ask what repair is appropriate. Deep failures invite better tools and evidence. Core failures invite courage, emotional regulation, incentive changes, and social conditions that make updating possible.',
+        ],
+      },
+      {
+        heading: 'Why the Order Matters',
+        body: [
+          'If we prescribe too quickly, we may offer the wrong remedy. More facts will not fix every core-rational failure. More courage will not fix every information deficit. The diagnosis determines the repair.',
+        ],
+      },
+    ],
+    [
+      'The model describes before it prescribes.',
+      'Different gaps require different remedies.',
+      'Good repair depends on accurate diagnosis.',
+    ],
+    [
+      pagePath('/interactive-lab', 'Interpretation Guide'),
+      pagePath('/skills', 'How to Separate Core from Deep Failure'),
+      pagePath('/case-studies', 'Honest Novice Cases'),
+    ],
+  ),
+  aboutPage(
+    'How to Use This Site',
+    'The site can be read as a guided sequence, used as a reference map, or explored through the interactive lab.',
+    [
+      {
+        heading: 'For First-Time Readers',
+        body: [
+          'Begin with Start Here, then Core Ideas, then Interactive Lab. This gives you the vocabulary, the conceptual structure, and the visual model before you move into case studies and applications.',
+        ],
+      },
+      {
+        heading: 'For Practical Use',
+        body: [
+          'If you are trying to analyze a live belief, go to the Interactive Lab and build a scenario. Then use the Skills section to ask whether the main problem is priors, likelihoods, calibration, motivated override, or action thresholds.',
+        ],
+      },
+      {
+        heading: 'For Teaching or Research',
+        body: [
+          'Use the Library for glossary entries, future downloads, teaching materials, and formal papers. The content is intended to become modular: each concept page should be teachable on its own while linking back into the whole framework.',
+        ],
+      },
+    ],
+    [
+      'Read Start Here first if you are new.',
+      'Use the Lab for live belief analysis.',
+      'Use Library for formal and teaching materials.',
+    ],
+    [
+      pagePath('/start-here', 'Where to Go Next'),
+      pagePath('/interactive-lab', 'Build Your Own Scenario'),
+      pagePath('/library', 'Teaching Materials'),
+    ],
+  ),
+  aboutPage(
+    'Author',
+    'The author page identifies the project voice and leaves room for a fuller biographical note.',
+    [
+      {
+        heading: 'Project Voice',
+        body: [
+          'Credencing is written as a public philosophy and reasoning project. Its voice aims to be rigorous without becoming sealed off from ordinary judgment, decision-making, and public life.',
+        ],
+      },
+      {
+        heading: 'Author Note',
+        body: [
+          'This page can later include a fuller author biography, relevant publications, talks, teaching materials, and links to related work. For now, it serves as a placeholder for authorship and accountability.',
+        ],
+      },
+      {
+        heading: 'Accountability',
+        body: [
+          'A project about epistemic integrity should make authorship visible. Claims should be attributable, corrigible, and open to criticism.',
+        ],
+      },
+    ],
+    [
+      'The author page is a placeholder for fuller attribution.',
+      'The project voice aims for public rigor.',
+      'Authorship is part of epistemic accountability.',
+    ],
+    [
+      pagePath('/about', 'Contact'),
+      pagePath('/library', 'Papers'),
+      pagePath('/library', 'Project Notes'),
+    ],
+  ),
+  aboutPage(
+    'Contact',
+    'The contact page will provide a path for corrections, collaboration, teaching use, and future project inquiries.',
+    [
+      {
+        heading: 'Why Contact Matters',
+        body: [
+          'A public reasoning project benefits from correction. Readers may notice unclear definitions, missing cases, weak examples, broken links, or places where the framework overreaches.',
+        ],
+      },
+      {
+        heading: 'What to Send',
+        body: [
+          'Useful contact includes corrections, objections, teaching use cases, suggested references, requests for diagrams, and examples that test the framework. The best criticism identifies which page or concept it targets.',
+        ],
+      },
+      {
+        heading: 'Future Contact Layer',
+        body: [
+          'This page can later include an email address, contact form, newsletter signup, or issue tracker. For now, it defines the intended role of feedback in the project.',
+        ],
+      },
+    ],
+    [
+      'Feedback is part of the project update loop.',
+      'Corrections and objections should target specific claims.',
+      'A fuller contact mechanism can be added later.',
+    ],
+    [
+      pagePath('/library', 'Project Notes'),
+      pagePath('/about', 'Future Directions'),
+      pagePath('/library', 'References'),
+    ],
+  ),
+  aboutPage(
+    'Future Directions',
+    'Future directions include deeper content, downloadable materials, search, diagrams, custom scenarios, and institutional extensions.',
+    [
+      {
+        heading: 'Content Expansion',
+        body: [
+          'The first expansion path is deeper content: fuller essays, stronger examples, formal papers, glossary refinements, and case studies with more detailed real-world structure.',
+        ],
+      },
+      {
+        heading: 'Tool Expansion',
+        body: [
+          'The interactive lab can grow into scenario saving, scenario comparison, visual exports, classroom worksheets, and perhaps a guided diagnostic wizard that asks the user where the gaps appear.',
+        ],
+      },
+      {
+        heading: 'Public Web Expansion',
+        body: [
+          'The site map already points toward search, tag index, topic index, related-pages engine, breadcrumbs, and newsletter updates. These utility layers will matter more as the site grows.',
+        ],
+      },
+      {
+        heading: 'Research Expansion',
+        body: [
+          'The deepest future work is validation: how to estimate variables, how to distinguish sincere from avoidant misperception, how to measure institutional credencing, and how to apply the framework without overclaiming.',
+        ],
+      },
+    ],
+    [
+      'The site can grow in content, tools, utility layers, and research depth.',
+      'Scenario comparison and downloads are natural next features.',
+      'Validation and measurement remain major open questions.',
+    ],
+    [
+      pagePath('/library', 'Future Papers'),
+      pagePath('/library', 'Downloads'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+    ],
+  ),
+];
+
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...applicationPages, ...libraryPages, ...aboutPages];
