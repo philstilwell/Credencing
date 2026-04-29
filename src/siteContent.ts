@@ -5301,35 +5301,107 @@ export const aboutPages: ContentPage[] = [
   ),
   aboutPage(
     'Methodological Commitments',
-    'The project is committed to graded belief, diagnostic charity, explicit uncertainty, and updateability.',
+    'The project is committed to graded belief, evidential accountability, diagnostic charity, explicit uncertainty, and updateability.',
     [
       {
         heading: 'Graded Rather Than Binary',
         body: [
-          'The project assumes that many important beliefs are best represented as degrees of confidence. Binary belief has practical uses, but it should not erase the underlying evidential scale.',
+          'The project assumes that many important beliefs are best represented as degrees of confidence. Binary belief has practical uses: courts need verdicts, doctors need treatment decisions, institutions need policies, and ordinary people often need to act before uncertainty disappears. But those decisions should not erase the underlying evidential scale.',
+          'Credencing therefore asks readers to keep two questions separate: what confidence does the evidence warrant, and what action threshold is appropriate under the stakes? A person may be 70 percent confident and still act, or 95 percent confident and still seek review when the cost of error is high. The method resists the habit of turning every practical decision into a claim of certainty.',
+        ],
+      },
+      {
+        heading: 'Evidence Before Identity',
+        body: [
+          'The framework gives methodological priority to evidence rather than group identity, personal comfort, institutional loyalty, or rhetorical advantage. It asks what the evidence would support if the claim were detached from the agent’s tribe, reputation, fear, hope, or inherited narrative.',
+          'This does not mean pretending that agents have no histories or pressures. Those pressures are part of the diagnostic field. The point is that identity may explain why a credence formed, but it does not by itself justify the credence. The justificatory question remains: what does the evidence actually support?',
+        ],
+      },
+      {
+        heading: 'Separate the Evidence from the Agent',
+        body: [
+          'Credencing distinguishes Objective Evidence (E0), Perceived Evidence (EP), and Assigned Credence (CA) because different failures occur at different locations. A person may lack access to the relevant evidence, misread the evidence they have, or understand the evidence fairly well and then assign a confidence level that serves some other need.',
+          'This separation prevents both over-blame and under-blame. It is unfair to treat every false belief as a moral failure. It is also too lenient to treat every distorted belief as mere ignorance. The model asks where the distortion entered before deciding what kind of responsibility or repair is appropriate.',
         ],
       },
       {
         heading: 'Diagnostic Before Accusatory',
         body: [
           'The model is meant to diagnose where a gap opens before assigning blame. An Objective Evidence to Perceived Evidence gap (E0-EP) may reflect limited tools or bad evidence access. A Perceived Evidence to Assigned Credence gap (EP-CA) may reflect identity pressure or motivated override. Moral evaluation comes after diagnosis, not before.',
+          'This is a commitment to charity, but not to softness. Diagnostic charity means giving the most accurate account of the error, not the most flattering one. Sometimes the charitable explanation is that the person lacked statistical tools. Sometimes it is that they had the tools but protected a preferred conclusion. In both cases, the first obligation is precision.',
+        ],
+      },
+      {
+        heading: 'Uncertainty Must Be Visible',
+        body: [
+          'The project treats uncertainty as a first-class feature of rational life. Uncertainty is not always a defect, a dodge, or a lack of courage. Often it is the honest shape of the evidence. A mature epistemic practice makes uncertainty visible instead of hiding it behind confident language.',
+          'Visible uncertainty also makes updating easier. If a person says, "I am at 60 percent confidence because of these three considerations," the belief is easier to inspect and revise. If they say only, "I believe it," listeners cannot tell whether the confidence is cautious, strong, brittle, or performative.',
+        ],
+      },
+      {
+        heading: 'Bayesian Discipline Without Bayesian Theater',
+        body: [
+          'The project is Bayesian in spirit: prior probabilities, likelihoods, base rates, and posterior confidence matter. But it does not require every reader to produce formal equations before reasoning responsibly. The method asks for Bayesian discipline even when the numbers remain rough.',
+          'That discipline includes asking what was plausible before the new evidence arrived, how expected the evidence would be if the hypothesis were true, how expected it would be under rival explanations, and how far confidence should move. The aim is not mathematical performance. The aim is proportional belief.',
+        ],
+      },
+      {
+        heading: 'Fallibilism and Revision',
+        body: [
+          'The project assumes fallibilism: any particular judgment may be wrong, including judgments made by the site itself. This does not collapse all claims into equal uncertainty. Some claims are much better supported than others. Fallibilism means that confidence remains answerable to evidence, not that confidence must remain permanently weak.',
+          'Because of this, Credencing should be revised when its distinctions fail to illuminate cases, when examples are misleading, when terminology obscures more than it clarifies, or when criticism reveals a better model. A theory about updateability should not become immune to update.',
+        ],
+      },
+      {
+        heading: 'Public Reasoning and Checkability',
+        body: [
+          'The site favors claims that can be checked, criticized, compared, and improved. A useful epistemic model should not depend on private authority or opaque intuition alone. It should show its distinctions clearly enough that readers can test them against concrete cases.',
+          'This is why the site uses diagrams, scenarios, case studies, glossary entries, discussion prompts, and comparison tools. Different readers test ideas in different ways. Some need definitions, some need examples, some need a model they can manipulate, and some need objections stated plainly enough to answer.',
+        ],
+      },
+      {
+        heading: 'Non-Polemical but Not Neutral About Standards',
+        body: [
+          'Credencing aims to be non-polemical in tone. It should not win by ridicule, tribal signaling, or selective contempt. But non-polemical does not mean standardless. The project is openly committed to evidence-proportioned confidence, calibration, intellectual honesty, and repairable reasoning.',
+          'A view can be treated respectfully while still being judged poorly supported. A person can be treated with dignity while their confidence level is challenged. The method separates humane engagement from epistemic permissiveness.',
+        ],
+      },
+      {
+        heading: 'Practical Use Over Terminological Display',
+        body: [
+          'Terms such as Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), Calculation Error (DE), Deep Rationality (SD), and Core Irrationality (IC) are useful only if they help readers think more clearly. The terminology should serve diagnosis, not become a private dialect.',
+          'For that reason, the site should continue to define abbreviations, provide plain-language equivalents, and connect formal vocabulary to ordinary cases. A visitor should not need to become an insider before the model becomes useful.',
+        ],
+      },
+      {
+        heading: 'Repair Is Part of the Method',
+        body: [
+          'The project is not satisfied with naming distortions. A good diagnosis should point toward repair. If the main problem is evidence access, the repair may be better sources. If the main problem is base-rate neglect, the repair may be statistical training. If the main problem is motivated override, the repair may require safer social conditions, identity detachment, or courage to accept what one already sees.',
+          'This repair orientation keeps the project from becoming merely classificatory. The aim is not to label people as irrational; it is to help individuals and groups locate where confidence stopped tracking evidence and then make better tracking possible.',
         ],
       },
       {
         heading: 'Updateability',
         body: [
           'The framework should remain answerable to criticism. If the site argues for calibrated belief, the site itself should model revision, open questions, and explicit uncertainty.',
+          'This commitment applies at several levels: individual pages should be corrected when they overstate, the model should be refined when cases expose weaknesses, and the public site should invite objections that improve the framework. A closed epistemology site would betray its own subject matter.',
         ],
       },
     ],
     [
-      'Belief is treated as graded.',
-      'Diagnosis comes before accusation.',
+      'Belief is treated as graded even when action requires a yes-or-no decision.',
+      'Evidence, perception, and assigned confidence are kept distinct.',
+      'Diagnosis comes before accusation, but charity does not mean avoiding hard conclusions.',
+      'Uncertainty should be visible, explicit, and updateable.',
+      'Bayesian discipline matters even when the numbers are approximate.',
       'The project should model the updateability it recommends.',
     ],
     [
       pagePath('/library', 'Project Notes'),
       pagePath('/core-ideas', 'Uncertainty'),
+      pagePath('/core-ideas', 'Objective Evidence (E0)'),
+      pagePath('/core-ideas', 'Perceived Evidence (EP)'),
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
       pagePath('/about', 'Descriptive Rather than Prescriptive Orientation'),
     ],
   ),
