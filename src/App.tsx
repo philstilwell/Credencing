@@ -303,8 +303,7 @@ export default function App() {
                 group={pageGroups.find((group) => group.path === '/interactive-lab')!}
                 kicker="Interactive Lab"
               />
-              <InteractiveExperience initialTab="model" />
-              <LabComparisonCallout onNavigate={setRoute} />
+              <InteractiveExperience initialTab="model" onNavigate={setRoute} />
               <PageCluster group={pageGroups.find((group) => group.path === '/interactive-lab')!} onNavigate={setRoute} />
             </motion.main>
           )}
@@ -498,7 +497,7 @@ function HomeExperience({ onNavigate }: { onNavigate: (path: string) => void }) 
       </section>
 
       <ReadingPaths onNavigate={onNavigate} />
-      <InteractiveExperience initialTab="intro" compact />
+      <InteractiveExperience initialTab="intro" compact onNavigate={onNavigate} />
       <DiagramGallery />
 
       <section className="space-y-6">
@@ -523,7 +522,7 @@ function HomeExperience({ onNavigate }: { onNavigate: (path: string) => void }) 
   );
 }
 
-function InteractiveExperience({ initialTab, compact = false }: { initialTab: Tab; compact?: boolean }) {
+function InteractiveExperience({ initialTab, compact = false, onNavigate }: { initialTab: Tab; compact?: boolean; onNavigate: (path: string) => void }) {
   const [data, setData] = useState<EpistemicData>({
     objectiveEvidence: 0.41,
     perceivedEvidence: 0.62,
@@ -551,7 +550,7 @@ function InteractiveExperience({ initialTab, compact = false }: { initialTab: Ta
         <main className="min-h-[380px]">
           <AnimatePresence mode="wait">
             {activeTab === 'intro' && <IntroPanel />}
-            {activeTab === 'model' && <ModelPanel data={data} dynamicDescription={dynamicDescription} />}
+            {activeTab === 'model' && <ModelPanel data={data} dynamicDescription={dynamicDescription} onNavigate={onNavigate} />}
             {activeTab === 'explanation' && <TheoryPanel />}
             {activeTab === 'formalization' && <FormalizationPanel />}
           </AnimatePresence>
@@ -593,7 +592,7 @@ function IntroPanel() {
   );
 }
 
-function ModelPanel({ data, dynamicDescription }: { data: EpistemicData; dynamicDescription: string }) {
+function ModelPanel({ data, dynamicDescription, onNavigate }: { data: EpistemicData; dynamicDescription: string; onNavigate: (path: string) => void }) {
   return (
     <motion.div key="model" initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} className="space-y-8">
       <EpistemicChart data={data} />
@@ -604,6 +603,7 @@ function ModelPanel({ data, dynamicDescription }: { data: EpistemicData; dynamic
         <MiniNote icon={<Activity size={10} />} title="Standard Agent" text="Minor deviations represent common biases while belief remains broadly tethered to perceived evidence." />
         <MiniNote icon={<Terminal size={10} />} title="Delusion Threshold" text="Past the threshold, the agent is no longer participating honestly with their own perceived evidence." danger />
       </div>
+      <ComparisonRecommendation onNavigate={onNavigate} />
     </motion.div>
   );
 }
@@ -732,20 +732,20 @@ function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (pat
   );
 }
 
-function LabComparisonCallout({ onNavigate }: { onNavigate: (path: string) => void }) {
+function ComparisonRecommendation({ onNavigate }: { onNavigate: (path: string) => void }) {
   return (
-    <section className="glass-panel p-6 md:p-8 bg-amber-500/[0.045] border-amber-500/25">
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+    <section className="glass-panel p-5 md:p-6 bg-amber-500/[0.045] border-amber-500/25">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
         <div className="space-y-3 max-w-3xl">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Next Lab Move</p>
-          <h3 className="text-2xl md:text-3xl font-light text-white">Compare two scenarios side by side</h3>
-          <p className="text-stone-300 text-sm md:text-base leading-relaxed">
-            Once a single scenario makes sense, the comparison lab shows why two agents can share a surface belief while differing sharply in evidence-reading skill, assigned credence, and belief integrity.
+          <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Recommended Next Step</p>
+          <h3 className="text-xl md:text-2xl font-light text-white">Test the distinction by comparing two scenarios</h3>
+          <p className="text-stone-300 text-sm leading-relaxed">
+            After reading the Standard Agent and Delusion Threshold contrast, open the comparison lab. It shows how two agents can share a surface belief while differing sharply in evidence-reading skill, assigned credence, and belief integrity.
           </p>
         </div>
         <button
           onClick={() => onNavigate(pagePath('/interactive-lab', 'Compare Two Scenarios'))}
-          className="w-full sm:w-fit px-5 py-3 bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/50 rounded-xl text-xs font-bold tracking-widest transition-all text-amber-200 flex items-center justify-center gap-3 uppercase"
+          className="w-full sm:w-fit md:shrink-0 px-5 py-3 bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/50 rounded-xl text-xs font-bold tracking-widest transition-all text-amber-200 flex items-center justify-center gap-3 uppercase"
         >
           Open Comparison Lab <Network size={14} />
         </button>
