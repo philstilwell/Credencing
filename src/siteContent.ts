@@ -3501,7 +3501,7 @@ export const aboutPages: ContentPage[] = [
         heading: 'Rationality as Belief Regulation',
         body: [
           'For Stilwell, rationality is fundamentally epistemic: a practice of regulating belief so that confidence remains answerable to evidence. Critical thinking is therefore not merely a style of argument or a disposition toward skepticism. It is a trained habit of calibration, updateability, methodological consistency, and resistance to rhetoric that masks evidential weakness.',
-          'The Free of Faith stance page describes this outlook as favoring probabilistic reasoning, epistemic humility, and meta-epistemic awareness. Those themes reappear throughout Credencing in the distinction between Deep Rationality, the skill of processing evidence, and Core Rationality, the willingness to assign the confidence one’s own evidence warrants.',
+          'Stilwell’s public writing describes this outlook as favoring probabilistic reasoning, epistemic humility, and meta-epistemic awareness. Those themes reappear throughout Credencing in the distinction between Deep Rationality, the skill of processing evidence, and Core Rationality, the willingness to assign the confidence one’s own evidence warrants.',
         ],
       },
       {
@@ -3560,14 +3560,14 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'Public Contact Layer',
         body: [
-          'For this GitHub Pages version, the public repository and issue tracker are the most durable contact layer. A later version can add an email address, contact form, or newsletter signup if the project needs a more direct channel.',
+          'For this GitHub Pages version, the contact page includes a browser-side form that prepares an email without printing the recipient address on the page. The public repository and issue tracker remain useful for code-level corrections, broken-link reports, and project-specific issues.',
         ],
       },
     ],
     [
       'Feedback is part of the project update loop.',
       'Corrections and objections should target specific claims.',
-      'A fuller contact mechanism can be added later.',
+      'The contact form prepares an email while avoiding a visible address on the page.',
     ],
     [
       pagePath('/library', 'Project Notes'),

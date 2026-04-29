@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useCallback, useEffect, useMemo, useState, ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState, ReactNode, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Activity,
@@ -698,9 +698,9 @@ function AuthorFeature({ page }: { page: ContentPage }) {
               <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Research Profile</span>
               Academia.edu
             </a>
-            <a href="https://freeoffaith.com/phils-stances/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/10 hover:border-amber-400/50 text-amber-100 text-sm">
-              <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Epistemic Stance</span>
-              Free of Faith
+            <a href="https://byteseismic.com/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/10 hover:border-amber-400/50 text-amber-100 text-sm">
+              <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Writing & Projects</span>
+              ByteSeismic
             </a>
           </div>
         </div>
@@ -934,6 +934,7 @@ function ReadingPaths({ onNavigate }: { onNavigate: (path: string) => void }) {
 
 function ContactPanel({ page }: { page: ContentPage }) {
   if (page.path !== pagePath('/about', 'Contact') && page.path !== pagePath('/about', 'Author')) return null;
+  if (page.path === pagePath('/about', 'Contact')) return <ContactForm />;
 
   return (
     <section className="glass-panel p-6 md:p-8 bg-amber-500/[0.035] border-amber-500/20 space-y-4">
@@ -949,6 +950,92 @@ function ContactPanel({ page }: { page: ContentPage }) {
           Issues
         </a>
       </div>
+    </section>
+  );
+}
+
+function ContactForm() {
+  const [form, setForm] = useState({
+    name: '',
+    replyTo: '',
+    subject: '',
+    message: '',
+  });
+
+  const update = (field: keyof typeof form, value: string) => {
+    setForm((current) => ({ ...current, [field]: value }));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const recipient = [112, 104, 105, 108, 115, 116, 105, 108, 119, 101, 108, 108, 64, 121, 97, 104, 111, 111, 46, 99, 111, 109]
+      .map((code) => String.fromCharCode(code))
+      .join('');
+    const subject = form.subject.trim() || 'Credencing contact';
+    const body = [
+      `Name: ${form.name.trim() || 'Not provided'}`,
+      `Reply-to: ${form.replyTo.trim() || 'Not provided'}`,
+      '',
+      form.message.trim(),
+    ].join('\n');
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-amber-500/[0.035] border-amber-500/20 space-y-5">
+      <div className="space-y-3">
+        <h3 className="text-2xl font-light text-white">Contact Phil</h3>
+        <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+          Use this form for corrections, collaboration, teaching use, suggested references, or examples that test the Credencing framework. Submitting opens your email client with the message prefilled.
+        </p>
+        <p className="text-stone-500 text-xs leading-relaxed">
+          The recipient address is not printed on the page; it is assembled only when the form is submitted.
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="grid gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label className="grid gap-2 text-xs text-stone-300">
+            <span className="uppercase tracking-widest text-stone-500 font-bold">Name</span>
+            <input
+              value={form.name}
+              onChange={(event) => update('name', event.target.value)}
+              className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-stone-100 outline-none focus:border-amber-500/50"
+              autoComplete="name"
+            />
+          </label>
+          <label className="grid gap-2 text-xs text-stone-300">
+            <span className="uppercase tracking-widest text-stone-500 font-bold">Reply Email</span>
+            <input
+              type="email"
+              value={form.replyTo}
+              onChange={(event) => update('replyTo', event.target.value)}
+              className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-stone-100 outline-none focus:border-amber-500/50"
+              autoComplete="email"
+            />
+          </label>
+        </div>
+        <label className="grid gap-2 text-xs text-stone-300">
+          <span className="uppercase tracking-widest text-stone-500 font-bold">Subject</span>
+          <input
+            value={form.subject}
+            onChange={(event) => update('subject', event.target.value)}
+            className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-stone-100 outline-none focus:border-amber-500/50"
+          />
+        </label>
+        <label className="grid gap-2 text-xs text-stone-300">
+          <span className="uppercase tracking-widest text-stone-500 font-bold">Message</span>
+          <textarea
+            required
+            value={form.message}
+            onChange={(event) => update('message', event.target.value)}
+            className="min-h-40 rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-stone-100 outline-none focus:border-amber-500/50"
+          />
+        </label>
+        <button type="submit" className="w-fit px-5 py-3 rounded-xl border border-amber-500/40 bg-amber-600/20 text-amber-100 text-xs font-bold uppercase tracking-wider hover:bg-amber-600/30">
+          Prepare Email
+        </button>
+      </form>
     </section>
   );
 }
