@@ -3505,6 +3505,14 @@ export const aboutPages: ContentPage[] = [
         ],
       },
       {
+        heading: 'Education and Teaching Background',
+        body: [
+          'Stilwell earned a Bachelor of Arts in Philosophy with Highest Distinction and a Master of Arts in Education (TESOL) from the University of Kansas. That combination of philosophy and education helps explain the site’s dual posture: conceptually careful, but designed for public teaching and practical use.',
+          'His teaching and curriculum work has been centered in the Tokyo area across academic, government, and professional settings. The resume records work with the University of Tokyo, Nichibei Kaiwa Gakuin, NYU School of Professional Studies, and Gakushuin University, along with editing work for Tokyo University of Science and academic rewriting support for professors and graduate students at universities in Japan.',
+          'The same background also includes teaching tailored courses for Japanese government institutions and companies, including work connected to the Japanese Cabinet Office. This public-institution setting is relevant to Credencing because the project repeatedly asks how reasoning standards function not only in private belief, but in organizations, policy environments, and public accountability systems.',
+        ],
+      },
+      {
         heading: 'Faith, Evidence, and Accountability',
         body: [
           'A recurring theme in Stilwell’s work is criticism of faith as an epistemic method when faith means belief beyond, against, or insulated from evidence. The objection is not merely theological. It is methodological: any belief-forming practice that seeks immunity from counter-evidence weakens public standards of inquiry.',
@@ -3522,6 +3530,7 @@ export const aboutPages: ContentPage[] = [
     [
       'Phil Stilwell frames rational belief as graded confidence proportional to evidence.',
       'Credencing grows out of Bayesian evidentialism, calibration, and epistemic accountability.',
+      'His background combines philosophy, TESOL, university teaching, curriculum design, and Japanese government-institution instruction.',
       'The author’s epistemology rejects protected belief systems that evade evidential testing.',
     ],
     [
