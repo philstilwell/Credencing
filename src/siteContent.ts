@@ -378,7 +378,7 @@ export const startHerePages: ContentPage[] = [
     keyTakeaways: [
       'Evidence is support that should move confidence.',
       'Confidence is good only when calibrated to the support available.',
-      'The model separates misperceiving evidence from refusing one own perception of evidence.',
+      'The model separates misperceiving evidence from refusing one’s own perception of evidence.',
       'Evidence has direction and quality; both matter.',
     ],
     related: [
@@ -1010,7 +1010,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'The Lens',
         body: [
-          'Perceived Evidence (EP) is the agent internal read on the evidence. It is not merely raw sensation. It includes attention, memory, testimony, statistical interpretation, social framing, and background assumptions.',
+          'Perceived Evidence (EP) is the agent’s internal read on the evidence. It is not merely raw sensation. It includes attention, memory, testimony, statistical interpretation, social framing, and background assumptions.',
         ],
       },
       {
@@ -1027,7 +1027,7 @@ export const coreIdeasPages: ContentPage[] = [
       },
     ],
     [
-      'EP is the agent internal reading of the evidence.',
+      'EP is the agent’s internal reading of the evidence.',
       'It can diverge from E0 through many mechanisms.',
       'A bad EP is not automatically bad faith.',
     ],
@@ -1078,7 +1078,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'The Skill Axis',
         body: [
-          'Deep Rationality (SD) refers to the agent ability to process evidence well. It includes statistical literacy, causal reasoning, Bayesian updating, comparison of hypotheses, base-rate sensitivity, and awareness of bias-producing structures.',
+          'Deep Rationality (SD) refers to the agent’s ability to process evidence well. It includes statistical literacy, causal reasoning, Bayesian updating, comparison of hypotheses, base-rate sensitivity, and awareness of bias-producing structures.',
         ],
       },
       {
@@ -1146,7 +1146,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'The Objective Evidence to Perceived Evidence Gap (E0-EP)',
         body: [
-          'Calculation Error (DE) measures the distance between Objective Evidence (E0) and Perceived Evidence (EP). It is the gap between the evidential situation and the agent internal representation of that situation.',
+          'Calculation Error (DE) measures the distance between Objective Evidence (E0) and Perceived Evidence (EP). It is the gap between the evidential situation and the agent’s internal representation of that situation.',
         ],
       },
       {
@@ -1223,7 +1223,7 @@ export const coreIdeasPages: ContentPage[] = [
         heading: 'The Responsibility Filter',
         body: [
           'Before moving from diagnosis to blame, ask four questions. Did the agent have access to better evidence? Did they have the skill and time to process it? Were there emotional, institutional, or social pressures distorting the update? Did they resist repair once the problem became visible?',
-          'This filter preserves the project central distinction. It still holds people accountable for motivated override, but it avoids treating ignorance, trauma, manipulation, fatigue, or poor evidence access as if they were all the same thing.',
+          'This filter preserves the project’s central distinction. It still holds people accountable for motivated override, but it avoids treating ignorance, trauma, manipulation, fatigue, or poor evidence access as if they were all the same thing.',
         ],
       },
       {
@@ -1255,7 +1255,7 @@ export const coreIdeasPages: ContentPage[] = [
   ),
   corePage(
     'Epistemic Akrasia',
-    'Epistemic akrasia is believing against one own perceived evidence.',
+    'Epistemic akrasia is believing against one’s own perceived evidence.',
     [
       {
         heading: 'Weakness of Epistemic Will',
@@ -1272,7 +1272,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'Relation to Core Irrationality (IC)',
         body: [
-          'Epistemic akrasia is one way Core Irrationality appears from the inside. Core Irrationality (IC) is the measurable gap; akrasia is the lived experience of not following one own evidential sense.',
+          'Epistemic akrasia is one way Core Irrationality appears from the inside. Core Irrationality (IC) is the measurable gap; akrasia is the lived experience of not following one’s own evidential sense.',
         ],
       },
     ],

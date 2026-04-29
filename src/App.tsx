@@ -1006,7 +1006,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
               )}
             </section>
           ))}
-          <PriorityExpansion title={page.title} />
+          <PriorityExpansion page={page} />
           <CitationPanel page={page} />
           <DownloadPanel page={page} />
           <ContactPanel page={page} />
@@ -1533,52 +1533,227 @@ function GlossaryChips({ page, onNavigate }: { page: ContentPage; onNavigate: (p
   );
 }
 
-function PriorityExpansion({ title }: { title: string }) {
+function PriorityExpansion({ page }: { page: ContentPage }) {
   const expansions: Record<string, { heading: string; body: string[] }> = {
-    'Core vs Deep Rationality': {
-      heading: 'Concrete Example',
+    [pagePath('/core-ideas', 'Calibration')]: {
+      heading: 'Calibration in Practice',
       body: [
-        'Imagine two people evaluating a medical screening result. One does not understand false positives and therefore overreads the test. That is mainly a Deep Rationality failure. Another understands the statistics but treats the result as certain because fear has taken over. That is mainly a Core Rationality failure.',
-        'The same outward confidence can therefore come from different structures. The model earns its keep when it prevents the wrong repair: statistics for a fear problem, or courage-talk for a math problem.',
+        'Calibration is easiest to understand through repeated predictions. If you mark ten claims as 80 percent likely, about eight should come true over time. The point is not that any single claim must be right; the point is that your confidence language should have a reliable track record.',
+        'This matters because overconfidence and underconfidence both harm inquiry. Overconfidence turns weak evidence into premature closure. Underconfidence refuses to acknowledge strong support. Good calibration lets confidence become both courageous and corrigible.',
       ],
     },
-    'Core Irrationality (IC)': {
+    [pagePath('/core-ideas', 'Uncertainty')]: {
+      heading: 'A Better Use of Uncertainty',
+      body: [
+        'Uncertainty should not be used as a vague cloud. A useful uncertainty claim names what is missing: better base rates, a larger sample, direct observation, independent replication, or a clearer comparison class. Once the missing piece is named, uncertainty becomes a research agenda rather than a retreat.',
+        'The practical test is simple: would the same person preserve uncertainty if the evidence favored their preferred conclusion? If not, uncertainty may be functioning as a protective maneuver rather than an honest description of the evidential state.',
+      ],
+    },
+    [pagePath('/core-ideas', 'Objective Evidence (E0)')]: {
+      heading: 'Keeping the Target Humble',
+      body: [
+        'Objective Evidence (E0) does not mean that someone has perfect access to the facts. It means that the world constrains better and worse interpretations. A blood test, a timestamp, a replication record, a leaked document, or a base rate can all exist independently of whether a particular agent handles them well.',
+        'The humility is important. E0 is often reconstructed through methods, institutions, and cross-checks. The model needs E0 as a target, but it also needs modesty about how partial any human access to that target may be.',
+      ],
+    },
+    [pagePath('/core-ideas', 'Perceived Evidence (EP)')]: {
+      heading: 'Why Perception Needs Its Own Category',
+      body: [
+        'Perceived Evidence (EP) deserves its own category because people do not respond directly to the full evidence field. They respond to what they notice, remember, trust, understand, and can emotionally tolerate noticing. That middle layer is where many real errors begin.',
+        'This helps explain why simply adding facts does not always repair a belief. If the agent’s perception filters are shaped by fear, authority, fatigue, group loyalty, or statistical confusion, the facts may enter the environment without becoming usable evidence for the agent.',
+      ],
+    },
+    [pagePath('/core-ideas', 'Assigned Credence (CA)')]: {
+      heading: 'Where Belief Becomes Commitment',
+      body: [
+        'Assigned Credence (CA) is not merely a private feeling. It is the confidence a person reasons from, speaks from, votes from, teaches from, or acts from. Because it guides behavior, it carries a kind of epistemic responsibility.',
+        'The key diagnostic question is whether CA is answerable to EP. If a person takes the evidence to support 0.55 but performs 0.95 in public, the problem is no longer just evidence interpretation. The confidence has become a commitment serving something beyond evidence.',
+      ],
+    },
+    [pagePath('/core-ideas', 'Deep Rationality (SD)')]: {
+      heading: 'Deep Rationality Is Not Intelligence Worship',
+      body: [
+        'Deep Rationality (SD) is not a flattering label for being clever. It refers to specific evidence-processing capacities: using base rates, comparing hypotheses, checking source reliability, noticing selection effects, and updating in proportion to diagnostic evidence.',
+        'This matters because intelligence can make rationalization more sophisticated. A person with high verbal ability but poor calibration may produce impressive arguments that do not actually track the evidential field. SD should be judged by tracking quality, not by rhetorical shine.',
+      ],
+    },
+    [pagePath('/core-ideas', 'Core Rationality')]: {
+      heading: 'The Integrity Test',
+      body: [
+        'Core Rationality asks whether a person can let their own perceived evidence govern their confidence. The test is not whether the person is calm, articulate, educated, or socially admired. The test is whether belief remains tethered when the evidence becomes inconvenient.',
+        'A useful self-check is: if this evidence supported the opposite conclusion, would I treat it as strongly? If the answer is no, the problem may lie not in evidence access but in the willingness to let evidence have symmetrical force.',
+      ],
+    },
+    [pagePath('/core-ideas', 'Calculation Error (DE)')]: {
+      heading: 'Reading Calculation Error Carefully',
+      body: [
+        'Calculation Error (DE) should not be heard as a sneer. It is a name for the distance between the evidence field and the agent’s interpretation of it. That distance may come from poor education, unavailable data, hostile information environments, or genuinely difficult evidence.',
+        'The repair question is therefore practical: what would improve the agent’s perception? Better measurement, better statistical tools, more reliable testimony, a broader reference class, and slower inference can all reduce DE without moral drama.',
+      ],
+    },
+    [pagePath('/core-ideas', 'Core Irrationality (IC)')]: {
       heading: 'Why Core Irrationality (IC) Is the Ethical Pressure Point',
       body: [
         'Core Irrationality (IC) becomes ethically important because it is the place where an agent stops following their own evidential lights. The issue is not whether they possess perfect evidence; it is whether they honor what they take themselves to have seen.',
         'That is why Core Irrationality (IC) should be handled carefully. It is not a quick insult. It is a serious diagnosis of doxastic misalignment.',
       ],
     },
-    'Biased Expert': {
+    [pagePath('/core-ideas', 'Epistemic Akrasia')]: {
+      heading: 'What Akrasia Feels Like From the Inside',
+      body: [
+        'Epistemic akrasia often feels like a split: one part of the mind sees the evidence, while another part refuses the cost of accepting it. The person may say the right caveats in private and still defend the inflated claim in public.',
+        'This is why the model treats akrasia as a repair problem, not merely a label. The agent may need to lower identity threat, make revision socially survivable, or practice saying, "My confidence should be lower than I want it to be."',
+      ],
+    },
+    [pagePath('/core-ideas', 'Core vs Deep Rationality')]: {
+      heading: 'Concrete Example',
+      body: [
+        'Imagine two people evaluating a medical screening result. One does not understand false positives and therefore overreads the test. That is mainly a Deep Rationality failure. Another understands the statistics but treats the result as certain because fear has taken over. That is mainly a Core Rationality failure.',
+        'The same outward confidence can therefore come from different structures. The model earns its keep when it prevents the wrong repair: statistics for a fear problem, or courage-talk for a math problem.',
+      ],
+    },
+    [pagePath('/core-ideas', 'Epistemic Archetypes')]: {
+      heading: 'Use Archetypes as Snapshots',
+      body: [
+        'The archetypes are best read as snapshots of a particular belief state. Someone may reason like an ideal agent about their craft, like an honest novice about medical statistics, and like a biased expert about a cherished political identity.',
+        'This prevents the archetypes from becoming insults. The question is not "What kind of person are you?" but "What is the structure of this confidence, in this domain, under these pressures?"',
+      ],
+    },
+    [pagePath('/interactive-lab', 'Biased Expert')]: {
       heading: 'The Dangerous Competence Problem',
       body: [
         'The biased expert is dangerous because their arguments may be genuinely impressive. The problem is not low intelligence; it is directional intelligence. Attention, skepticism, and creativity are aimed asymmetrically.',
         'A useful test is whether the expert can state update conditions that would move them against their current position. If not, expertise has become fortification.',
       ],
     },
-    'Motivated Reasoning': {
+    [pagePath('/case-studies', 'Motivated Reasoning')]: {
       heading: 'A Diagnostic Signature',
       body: [
         'Motivated reasoning often shows up as moving standards. The agent asks for rigorous proof from unwelcome claims and accepts loose association from welcome claims.',
         'The repair is not simply "try harder." It is to precommit to standards before knowing which side they will favor.',
       ],
     },
-    'Institutional Diagnostics': {
+    [pagePath('/case-studies', 'Risk Inflation')]: {
+      heading: 'Possibility Is Not Yet Probability',
+      body: [
+        'Risk inflation often begins with a true sentence: something bad could happen. The error comes when possibility is treated as high probability, and high probability is then treated as practical certainty. The emotional vividness of the outcome silently replaces the evidence.',
+        'A better practice is to ask three questions separately: how bad would the outcome be, how likely is it, and what action threshold follows from the stakes? Keeping those questions separate prevents fear from doing probability work.',
+      ],
+    },
+    [pagePath('/case-studies', 'Honest Novice Cases')]: {
+      heading: 'Charity Without Romanticizing Ignorance',
+      body: [
+        'The honest novice deserves charity because the main problem is limited tools, not motivated override. But charity does not mean treating novice judgment as equally reliable. Good faith can coexist with serious error.',
+        'The repair is mentorship, clearer explanations, natural frequencies, better feedback, and a social environment where admitting uncertainty is not humiliating. The novice becomes safer when uncertainty is protected rather than mocked.',
+      ],
+    },
+    [pagePath('/case-studies', 'Biased Expert Cases')]: {
+      heading: 'Why Expertise Can Harden Error',
+      body: [
+        'A biased expert may have enough skill to identify the weakness in an opposing argument but not enough integrity to apply the same scrutiny inward. The error is dangerous because it comes packaged with competence.',
+        'The practical safeguard is symmetry. Ask the expert to state the strongest version of the rival view, identify evidence that would change their mind, and apply the same standard to friendly and unfriendly claims.',
+      ],
+    },
+    [pagePath('/case-studies', 'Delusion Threshold Cases')]: {
+      heading: 'Crossing the Threshold',
+      body: [
+        'The delusion threshold is not simply being wrong. It is a structural break in which assigned credence becomes so detached from perceived evidence that ordinary correction loses traction. The belief is no longer merely overconfident; it is insulated.',
+        'Because the label is serious, it should be used with restraint. The best evidence is not just an extreme belief, but a pattern of protected confidence: unfalsifiability, hostile reinterpretation, social isolation, and refusal of update conditions.',
+      ],
+    },
+    [pagePath('/skills', 'How to Update with New Evidence')]: {
+      heading: 'The Size of the Update Matters',
+      body: [
+        'A common mistake is to treat updating as a dramatic conversion. Most evidence should move confidence modestly. A single anecdote, one expert quote, or one surprising event rarely deserves to overwrite a well-grounded prior by itself.',
+        'Good updating asks for proportional motion. If the evidence is weak but real, move a little. If it sharply discriminates among hypotheses, move more. If it is expected under several explanations, slow down.',
+      ],
+    },
+    [pagePath('/skills', 'How to Read Likelihoods')]: {
+      heading: 'The Rival-Explanation Habit',
+      body: [
+        'Likelihood reasoning becomes powerful only when rival explanations are actually allowed into the room. A claim can fit your theory and still fail to support it if the same evidence fits ordinary alternatives just as well.',
+        'Practice with simple cases: a friend is late, a study reports an effect, a political opponent behaves badly. Ask not only whether the evidence fits your favored explanation, but whether it fits human error, incentives, coincidence, selection, or measurement noise.',
+      ],
+    },
+    [pagePath('/skills', 'How to Avoid Base-Rate Neglect')]: {
+      heading: 'Start Wide, Then Narrow',
+      body: [
+        'The safest order is wide first, narrow second. Begin with the broad frequency of the event, then ask whether the particular details truly move the case away from that background. Vivid details should modify the base rate, not erase it.',
+        'This habit is especially important in medicine, crime, finance, and public risk. In those domains, rare events can feel common when they are frightening, memorable, or constantly repeated.',
+      ],
+    },
+    [pagePath('/skills', 'How to Detect Overconfidence')]: {
+      heading: 'Look for Missing Error Bars',
+      body: [
+        'Overconfidence often shows up as a claim with no error bars. The speaker reports a conclusion but not the uncertainty, alternatives, source limits, or conditions under which the conclusion would weaken.',
+        'When you notice that pattern in yourself, add the missing structure: "I am confident because..., my main uncertainty is..., and the evidence that would lower my confidence is..." This turns confidence back into something inspectable.',
+      ],
+    },
+    [pagePath('/skills', 'How to Detect Motivated Override')]: {
+      heading: 'The Cost-of-Admission Test',
+      body: [
+        'Ask what it would cost to lower your confidence. Would it threaten a group identity, a public commitment, a relationship, a career choice, or a cherished self-description? The higher the cost, the more likely Core Rationality is under pressure.',
+        'This does not prove the belief is false. It only flags a diagnostic risk: the assigned credence may be carrying emotional or social weight that evidence alone cannot explain.',
+      ],
+    },
+    [pagePath('/skills', 'How to Express Uncertainty Honestly')]: {
+      heading: 'Make Uncertainty Operational',
+      body: [
+        'Honest uncertainty should help the next step. Instead of saying only "I am not sure," say what would reduce the uncertainty: a larger sample, a direct source, a base rate, a second expert, a replication, or a clearer definition.',
+        'This keeps uncertainty from sounding like fog. It becomes a map of what the inquiry still needs.',
+      ],
+    },
+    [pagePath('/skills', 'Practice Exercises')]: {
+      heading: 'Turn Exercises Into Records',
+      body: [
+        'Practice becomes more useful when it leaves a record. A notebook of predictions, confidence estimates, updates, and postmortems lets a person see whether they are chronically overconfident, underconfident, volatile, or slow to update.',
+        'The goal is calibration feedback. Without records, the mind often remembers its hits, edits its misses, and mistakes fluency for improvement.',
+      ],
+    },
+    [pagePath('/applications', 'Education')]: {
+      heading: 'What This Looks Like in a Classroom',
+      body: [
+        'A credencing-aware classroom asks students not only for answers but for confidence levels and reasons. A student might say, "I am 70 percent confident because of this source, but I would lower that if the sample was biased." That answer is more intellectually mature than a brittle performance of certainty.',
+        'Teachers can normalize revision by grading the quality of updates. When students see changing one’s mind as a mark of competence, uncertainty becomes a tool rather than a social risk.',
+      ],
+    },
+    [pagePath('/applications', 'Law')]: {
+      heading: 'Evidence, Threshold, and Harm',
+      body: [
+        'Law is a natural domain for Credencing because it already separates levels of confidence. The same evidence may justify investigation, fail to justify conviction, and still matter in civil liability. The threshold changes because the possible harms change.',
+        'A clearer legal culture would keep forensic error rates, eyewitness limits, plea incentives, and institutional pressures visible. Confidence in legal judgment should be earned, not performed.',
+      ],
+    },
+    [pagePath('/applications', 'Public Debate')]: {
+      heading: 'Better Debate Norms',
+      body: [
+        'A healthier debate asks speakers to state their confidence, strongest evidence, best rival explanation, and update condition. This does not make debate bloodless. It makes disagreement more accountable.',
+        'The public payoff is large: audiences learn to distinguish forceful presentation from evidential strength. A calm 65 percent claim may be more honest than a theatrical 99 percent claim.',
+      ],
+    },
+    [pagePath('/applications', 'Policy')]: {
+      heading: 'Policy as a Learning System',
+      body: [
+        'Policy should be designed so that wrongness is discoverable. Pilot programs, sunset clauses, outcome dashboards, and independent audits all make it easier to notice when a policy’s assumed credence was too high.',
+        'This changes the posture of governance. Instead of treating revision as embarrassment, a credencing-friendly institution treats revision as evidence contact.',
+      ],
+    },
+    [pagePath('/applications', 'AI Alignment')]: {
+      heading: 'Separate Capability Confidence From Safety Confidence',
+      body: [
+        'A system can be impressive without being safe, and useful without being well understood. AI alignment discussions become confused when capability confidence, market confidence, interpretability confidence, and deployment confidence are treated as one emotional attitude toward AI.',
+        'Credencing asks each confidence to be named separately. What do we know about performance? What do we know about failure modes? What evidence would delay deployment? What would count as enough safety evidence under the stakes?',
+      ],
+    },
+    [pagePath('/applications', 'Institutional Diagnostics')]: {
       heading: 'From Individual Bias to Organizational Structure',
       body: [
         'Institutions can have something like motivated reasoning even when no single person is consciously dishonest. Bad news may be filtered upward, incentives may punish candor, or public commitments may make revision expensive.',
         'The practical question is structural: what would let the institution notice reality sooner and admit it faster?',
       ],
     },
-    'AI Alignment': {
-      heading: 'Alignment as Credence Governance',
-      body: [
-        'AI alignment debates often mix capability forecasts, safety confidence, institutional incentives, and emotional orientation toward technology. Credencing helps separate these layers.',
-        'A lab might have high confidence that a model is capable and much lower confidence that it is safe. Treating those as one confidence is an institutional error.',
-      ],
-    },
   };
-  const expansion = expansions[title];
+  const expansion = expansions[page.path] ?? expansions[page.title];
   if (!expansion) return null;
 
   return (
@@ -2450,7 +2625,7 @@ function UtilityFeatureArticle({ feature, onNavigate }: { feature: UtilityFeatur
           <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-3">
             <h3 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Status</h3>
             <p className="text-stone-300 text-xs leading-relaxed">
-              This utility entry now resolves to a drafted page instead of a placeholder route. The linked buttons point to the feature or a representative article where the feature is visible.
+              This utility page is meant to orient visitors quickly. Use the working destinations above to jump to the live feature or to a representative article where the feature is visible in context.
             </p>
           </div>
         </aside>
@@ -2593,7 +2768,7 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
         <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold mb-4">Utility Layer</p>
         <h2 className="text-4xl md:text-5xl font-light text-white leading-tight mb-4">Site Map</h2>
         <p className="text-stone-300 max-w-3xl leading-relaxed">
-          A first-pass architecture for the public Credencing site. The central model stays prominent while related ideas, guides, applications, and resources form a searchable web around it.
+          A full map of the public Credencing site. The central model stays prominent while related ideas, guides, applications, and resources form a searchable web around it.
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
