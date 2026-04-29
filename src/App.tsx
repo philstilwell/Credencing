@@ -53,6 +53,27 @@ const glossaryTerms = [
   ['Posterior', 'Posterior', 'An updated credence after evidence is considered.'],
 ];
 
+const tagCatalog = [
+  { id: 'evidence', label: 'Evidence', description: 'Evidence quality, access, objective evidence, perceived evidence, and evidential support.', aliases: ['evidence', 'evidential', 'objective evidence', 'perceived evidence', 'e0', 'ep'] },
+  { id: 'credence', label: 'Credence', description: 'Degrees of belief, assigned credence, confidence levels, and belief strength.', aliases: ['credence', 'credences', 'belief', 'belief strength', 'assigned credence', 'confidence', 'confidence levels', 'ca'] },
+  { id: 'bayesian', label: 'Bayesian Updating', description: 'Priors, likelihoods, posteriors, Bayes factors, base rates, and probabilistic revision.', aliases: ['bayesian', 'prior', 'priors', 'likelihood', 'likelihoods', 'posterior', 'posteriors', 'bayes', 'base-rate', 'base rate'] },
+  { id: 'calibration', label: 'Calibration', description: 'The fit between confidence and actual reliability, including overconfidence and forecasting.', aliases: ['calibration', 'calibrated', 'overconfidence', 'forecast', 'prediction record', 'reliability'] },
+  { id: 'uncertainty', label: 'Uncertainty', description: 'Warranted uncertainty, warranted slack, excess IC, action thresholds, and humility.', aliases: ['uncertainty', 'warranted uncertainty', 'warranted slack', 'excess ic', 'excess core irrationality', 'omega', 'threshold'] },
+  { id: 'core-rationality', label: 'Core Rationality', description: 'Belief integrity, motivated override, epistemic akrasia, and the EP-CA gap.', aliases: ['core rationality', 'core irrationality', 'ic', 'ep-ca', 'akrasia', 'integrity', 'motivated override'] },
+  { id: 'deep-rationality', label: 'Deep Rationality', description: 'Inferential skill, calculation error, evidence processing, and the E0-EP gap.', aliases: ['deep rationality', 'sd', 'calculation error', 'de', 'e0-ep', 'skill', 'tools', 'statistics'] },
+  { id: 'diagnosis', label: 'Diagnosis', description: 'Diagnostic safeguards, responsibility filters, repair strategies, and model interpretation.', aliases: ['diagnosis', 'diagnostic', 'safeguard', 'responsibility filter', 'repair', 'interpretation guide', 'overdiagnosis'] },
+  { id: 'archetypes', label: 'Archetypes', description: 'Ideal agents, honest novices, biased experts, delusion thresholds, and model presets.', aliases: ['archetype', 'archetypes', 'ideal agent', 'honest novice', 'biased expert', 'delusion', 'preset', 'scenario'] },
+  { id: 'motivated-reasoning', label: 'Motivated Reasoning', description: 'Identity protection, rationalization, selective skepticism, tribalism, and fear-driven belief.', aliases: ['motivated', 'motivation', 'rationalization', 'identity', 'tribalism', 'tribe', 'fear', 'selective skepticism'] },
+  { id: 'bias', label: 'Bias and Failure Modes', description: 'Cognitive bias, base-rate neglect, risk inflation, conspiracy thinking, and epistemic bubbles.', aliases: ['bias', 'failure mode', 'base-rate neglect', 'risk inflation', 'conspiracy', 'echo chamber', 'epistemic bubble'] },
+  { id: 'skills', label: 'Practice Skills', description: 'Exercises for estimating priors, reading likelihoods, updating, and asking better questions.', aliases: ['skill', 'skills', 'practice', 'exercise', 'worksheet', 'how to', 'questions'] },
+  { id: 'teaching', label: 'Teaching', description: 'Classroom use, lesson sequences, teaching materials, downloads, and education.', aliases: ['teaching', 'classroom', 'lesson', 'education', 'download', 'worksheet', 'materials'] },
+  { id: 'institutions', label: 'Institutions', description: 'Organizations, public reasoning, journalism, law, policy, governance, and accountability.', aliases: ['institution', 'institutional', 'organization', 'journalism', 'law', 'policy', 'public debate', 'governance', 'accountability'] },
+  { id: 'science-medicine', label: 'Science and Medicine', description: 'Scientific reasoning, medical testing, replication, measurement, and expert judgment.', aliases: ['science', 'medicine', 'medical', 'testing', 'replication', 'measurement', 'expert'] },
+  { id: 'ai', label: 'AI Alignment', description: 'AI confidence, human overtrust, deployment thresholds, and collective reasoning with models.', aliases: ['ai', 'artificial intelligence', 'alignment', 'model confidence', 'overtrust', 'deployment'] },
+  { id: 'library', label: 'Library', description: 'Papers, essays, references, glossary, FAQ, project notes, and visual archive.', aliases: ['paper', 'papers', 'essay', 'essays', 'glossary', 'faq', 'reference', 'visual archive', 'project notes'] },
+  { id: 'author-project', label: 'Author and Project', description: 'Author profile, project overview, methodology, contact, and future directions.', aliases: ['author', 'phil stilwell', 'project', 'methodology', 'contact', 'future directions', 'about'] },
+];
+
 const basePath = import.meta.env.BASE_URL;
 
 export default function App() {
@@ -1074,53 +1095,227 @@ function GroupCard({ group, onNavigate }: { group: PageGroup; onNavigate: (path:
 
 function SearchAndTopicIndex({ onNavigate }: { onNavigate: (path: string) => void }) {
   const [query, setQuery] = useState('');
-  const topics = ['Evidence', 'Confidence', 'Bayesian', 'Core Rationality', 'Deep Rationality', 'Calibration', 'Motivated', 'Institutional', 'AI', 'Teaching'];
-  const normalized = query.trim().toLowerCase();
-  const results = contentPages.filter((page) => {
-    const haystack = `${page.title} ${page.groupTitle} ${page.summary} ${page.keyTakeaways.join(' ')} ${page.sections.map((section) => `${section.heading} ${section.body.join(' ')}`).join(' ')}`.toLowerCase();
-    return normalized.length === 0 || haystack.includes(normalized);
-  });
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const searchIndex = useMemo(() => buildSearchIndex(), []);
+  const tagCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    searchIndex.forEach((entry) => entry.tags.forEach((tag) => counts.set(tag, (counts.get(tag) ?? 0) + 1)));
+    return counts;
+  }, [searchIndex]);
+  const results = useMemo(() => runSearch(searchIndex, query, activeTag), [activeTag, query, searchIndex]);
+  const visibleTags = tagCatalog.filter((tag) => (tagCounts.get(tag.id) ?? 0) > 0);
+  const featuredTags = visibleTags.slice(0, 12);
+  const activeTagLabel = tagCatalog.find((tag) => tag.id === activeTag)?.label;
+
+  const chooseTag = (tagId: string) => {
+    setActiveTag((current) => (current === tagId ? null : tagId));
+  };
 
   return (
     <section className="space-y-8">
       <div className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
         <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Utility Layer</p>
         <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">Search and Topic Index</h2>
-        <p className="text-stone-300 max-w-3xl leading-relaxed">Search the public Credencing web by concept, issue, domain, or skill. Topic chips are quick filters over the same page index.</p>
+        <p className="text-stone-300 max-w-3xl leading-relaxed">Search the public Credencing web by concept, issue, domain, skill, abbreviation, or failure mode. Tags are generated from the same page corpus, so browsing and search stay in sync.</p>
         <input
           aria-label="Search Credencing pages"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search credences, calibration, AI alignment..."
+          placeholder="Search credences, EP-CA, calibration, AI alignment..."
           className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-stone-100 outline-none focus:border-amber-500/50"
         />
         <div className="flex flex-wrap gap-2">
-          {topics.map((topic) => (
-            <button key={topic} onClick={() => setQuery(topic)} className="px-3 py-1.5 rounded-full border border-white/10 text-[10px] uppercase tracking-wider text-stone-300 hover:border-amber-500/40">
-              {topic}
+          {featuredTags.map((tag) => (
+            <button
+              key={tag.id}
+              onClick={() => chooseTag(tag.id)}
+              className={`px-3 py-1.5 rounded-full border text-[10px] uppercase tracking-wider transition-colors ${
+                activeTag === tag.id ? 'border-amber-400/70 bg-amber-500/15 text-amber-100' : 'border-white/10 text-stone-300 hover:border-amber-500/40'
+              }`}
+            >
+              {tag.label}
             </button>
           ))}
-          <a href={`${basePath}search-index.json`} className="px-3 py-1.5 rounded-full border border-amber-500/30 text-[10px] uppercase tracking-wider text-amber-200 hover:border-amber-400/60">
-            JSON Index
-          </a>
+          {(query || activeTag) && (
+            <button onClick={() => { setQuery(''); setActiveTag(null); }} className="px-3 py-1.5 rounded-full border border-red-500/20 text-[10px] uppercase tracking-wider text-red-200 hover:border-red-400/50">
+              Clear
+            </button>
+          )}
         </div>
+        <p className="text-[11px] text-stone-500">
+          Showing {results.length} of {searchIndex.length} pages{activeTagLabel ? ` tagged ${activeTagLabel}` : ''}{query.trim() ? ` matching "${query.trim()}"` : ''}.
+        </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {results.length === 0 && (
           <div className="glass-panel p-8 md:col-span-2 bg-white/[0.015] border-white/5 text-stone-300">
-            No pages match that search yet. Try a broader term such as evidence, confidence, calibration, Bayesian, or rationality.
+            No pages match that search yet. Try a broader term such as evidence, credence, calibration, Bayesian, rationality, EP-CA, or uncertainty.
           </div>
         )}
-        {results.map((page) => (
-          <button key={page.path} onClick={() => onNavigate(page.path)} className="glass-panel p-5 text-left bg-white/[0.015] border-white/5 hover:border-amber-500/30 transition-colors">
-            <span className="text-[9px] uppercase tracking-widest text-amber-400">{page.groupTitle}</span>
-            <h3 className="text-white text-lg font-light mt-2">{page.title}</h3>
-            <p className="text-stone-400 text-xs leading-relaxed mt-2">{page.summary}</p>
+        {results.map((result) => (
+          <button key={result.entry.page.path} onClick={() => onNavigate(result.entry.page.path)} className="glass-panel p-5 text-left bg-white/[0.015] border-white/5 hover:border-amber-500/30 transition-colors">
+            <span className="text-[9px] uppercase tracking-widest text-amber-400">{result.entry.page.groupTitle}</span>
+            <h3 className="text-white text-lg font-light mt-2">{result.entry.page.title}</h3>
+            <p className="text-stone-400 text-xs leading-relaxed mt-2">{result.snippet || result.entry.page.summary}</p>
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {result.entry.tags.slice(0, 5).map((tagId) => {
+                const tag = tagCatalog.find((item) => item.id === tagId);
+                return tag ? (
+                  <span key={tagId} className="rounded-full border border-white/10 px-2 py-1 text-[9px] uppercase tracking-wider text-stone-500">
+                    {tag.label}
+                  </span>
+                ) : null;
+              })}
+            </div>
           </button>
         ))}
       </div>
+      <div className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-5">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold mb-2">Expanded Tag Index</p>
+            <h3 className="text-2xl text-white font-light">Browse by conceptual role</h3>
+          </div>
+          <span className="text-[10px] uppercase tracking-widest text-stone-500">{visibleTags.length} active tags</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+          {visibleTags.map((tag) => (
+            <button
+              key={tag.id}
+              onClick={() => chooseTag(tag.id)}
+              className={`rounded-lg border p-4 text-left transition-colors ${
+                activeTag === tag.id ? 'border-amber-400/70 bg-amber-500/10' : 'border-white/5 bg-black/10 hover:border-amber-500/30'
+              }`}
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-sm text-white font-light">{tag.label}</span>
+                <span className="text-[10px] font-mono text-amber-300">{tagCounts.get(tag.id) ?? 0}</span>
+              </div>
+              <p className="text-[11px] text-stone-500 leading-relaxed mt-2">{tag.description}</p>
+            </button>
+          ))}
+        </div>
+      </div>
     </section>
   );
+}
+
+type SearchEntry = {
+  page: ContentPage;
+  text: string;
+  titleText: string;
+  summaryText: string;
+  tags: string[];
+};
+
+type SearchResult = {
+  entry: SearchEntry;
+  score: number;
+  snippet: string;
+};
+
+function buildSearchIndex(): SearchEntry[] {
+  return contentPages.map((page) => {
+    const sectionText = page.sections.map((section) => `${section.heading} ${section.body.join(' ')} ${section.bullets?.join(' ') ?? ''}`).join(' ');
+    const titleText = normalizeSearchText(`${page.title} ${page.groupTitle}`);
+    const summaryText = normalizeSearchText(page.summary);
+    const text = normalizeSearchText(`${page.title} ${page.groupTitle} ${page.summary} ${page.keyTakeaways.join(' ')} ${sectionText}`);
+    const tags = tagCatalog
+      .filter((tag) => tag.aliases.some((alias) => searchTextHasAlias(text, alias)))
+      .map((tag) => tag.id);
+
+    return {
+      page,
+      text,
+      titleText,
+      summaryText,
+      tags,
+    };
+  });
+}
+
+function runSearch(index: SearchEntry[], query: string, activeTag: string | null): SearchResult[] {
+  const terms = tokenizeQuery(query);
+
+  return index
+    .map((entry) => {
+      if (activeTag && !entry.tags.includes(activeTag)) return null;
+      if (terms.length === 0) {
+        return {
+          entry,
+          score: activeTag ? 8 : 1,
+          snippet: entry.page.summary,
+        };
+      }
+
+      let score = 0;
+      const matchedAllTerms = terms.every((term) => {
+        const inTitle = searchTextHasTerm(entry.titleText, term);
+        const inSummary = searchTextHasTerm(entry.summaryText, term);
+        const inTags = entry.tags.some((tagId) => {
+          const tag = tagCatalog.find((item) => item.id === tagId);
+          return tag ? searchTextHasTerm(normalizeSearchText(`${tag.label} ${tag.aliases.join(' ')}`), term) : false;
+        });
+        const inBody = searchTextHasTerm(entry.text, term);
+
+        if (inTitle) score += 12;
+        if (inSummary) score += 5;
+        if (inTags) score += 4;
+        if (inBody) score += 1;
+
+        return inTitle || inSummary || inTags || inBody;
+      });
+
+      if (!matchedAllTerms) return null;
+
+      return {
+        entry,
+        score,
+        snippet: makeSnippet(entry.page, terms),
+      };
+    })
+    .filter((result): result is SearchResult => result !== null)
+    .sort((a, b) => b.score - a.score || a.entry.page.title.localeCompare(b.entry.page.title));
+}
+
+function tokenizeQuery(query: string) {
+  return normalizeSearchText(query)
+    .split(/\s+/)
+    .map((term) => term.trim())
+    .filter((term) => term.length > 0);
+}
+
+function normalizeSearchText(value: string) {
+  return value.toLowerCase().replace(/[₀ₐᴅ]/g, (char) => ({ '₀': '0', 'ₐ': 'a', 'ᴅ': 'd' }[char] ?? char));
+}
+
+function searchTextHasAlias(text: string, alias: string) {
+  const normalizedAlias = normalizeSearchText(alias);
+  if (normalizedAlias.length <= 2 || /^[a-z0-9]+$/.test(normalizedAlias)) {
+    return new RegExp(`(^|[^a-z0-9])${escapeRegExp(normalizedAlias)}([^a-z0-9]|$)`).test(text);
+  }
+  return text.includes(normalizedAlias);
+}
+
+function searchTextHasTerm(text: string, term: string) {
+  if (term.length <= 2) {
+    return new RegExp(`(^|[^a-z0-9])${escapeRegExp(term)}([^a-z0-9]|$)`).test(text);
+  }
+  return text.includes(term);
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function makeSnippet(page: ContentPage, terms: string[]) {
+  const blocks = [
+    page.summary,
+    ...page.keyTakeaways,
+    ...page.sections.flatMap((section) => [section.heading, ...section.body, ...(section.bullets ?? [])]),
+  ];
+  const block = blocks.find((item) => terms.some((term) => searchTextHasTerm(normalizeSearchText(item), term))) ?? page.summary;
+  return block.length > 230 ? `${block.slice(0, 227).trim()}...` : block;
 }
 
 function DiagramGallery() {
