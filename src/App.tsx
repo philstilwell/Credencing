@@ -859,7 +859,7 @@ function BayesTheoremPanel({ page }: { page: ContentPage }) {
         />
       </div>
       <p className="text-stone-400 text-xs leading-relaxed">
-        The site does not bundle a LaTeX renderer, so the theorem is rendered as an SVG image. Read it left to right: updated confidence equals the diagnostic strength of the evidence times starting confidence, normalized by how expected the evidence is overall.
+        H is the hypothesis: the possible explanation you are checking. E is the evidence: the clue or observation you just noticed. Read the formula as: updated confidence in H after seeing E equals how well E fits H, times your starting confidence in H, adjusted by how common E is overall.
       </p>
     </section>
   );

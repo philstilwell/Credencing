@@ -1402,35 +1402,62 @@ export const bayesPages: ContentPage[] = [
   ),
   bayesPage(
     'The Formula',
-    'The formula shows posterior confidence as prior confidence multiplied by likelihood and normalized by total evidence.',
+    'The formula explains how to update confidence in a possible explanation after you notice a clue or piece of evidence.',
     [
       {
-        heading: 'The Compact Form',
+        heading: 'What H and E Mean',
         body: [
-          'The most common form is: posterior equals likelihood times prior, divided by the evidence term. In symbols, it asks how probable the hypothesis is after the evidence is known.',
-          'The formula may look abstract, but each part has a mental job. The prior asks where you start. The likelihood asks how expected the evidence is if the hypothesis is true. The evidence term asks how expected the evidence is overall. The posterior is where your confidence lands after the update.',
+          'H means hypothesis. A hypothesis is the possible explanation you are checking. In everyday language, H means “maybe this is what is going on.”',
+          'E means evidence. Evidence is the clue, observation, test result, report, or fact you just noticed. In everyday language, E means “this is the new thing I have learned.”',
+          'So P(H|E) means: how confident should I be that H is true after seeing E? The vertical bar means “given” or “after taking into account.” Read P(H|E) as “the probability of H, given E.”',
         ],
       },
       {
-        heading: 'The Expanded Denominator',
+        heading: 'The Formula in Ordinary Words',
         body: [
-          'When there are only two live options, hypothesis and not-hypothesis, the denominator can be expanded. It includes the probability of the evidence if the hypothesis is true, plus the probability of the evidence if the hypothesis is false, each weighted by its prior probability.',
-          'This is the part many people forget. Evidence is not strong merely because it fits your favored explanation. It is strong when it fits your favored explanation better than it fits the alternatives.',
+          'Bayes theorem says: start with how likely your explanation seemed before the clue, then ask how strongly the clue points toward that explanation rather than other explanations.',
+          'P(H) is your starting confidence. P(E|H) asks: if H were true, would I expect to see this evidence? P(E) asks: how common or expected is this evidence overall, including under other explanations?',
+          'The answer, P(H|E), is your updated confidence. It is where your belief should land after the new evidence is considered.',
         ],
       },
       {
-        heading: 'A Plain-English Version',
+        heading: 'The Four Questions',
         body: [
-          'Ask: How plausible was my hypothesis before this evidence? How likely would I be to see this evidence if the hypothesis were true? How likely would I be to see this evidence anyway if the hypothesis were false? After comparing those, where should my confidence now be?',
-          'That mental sequence is the heart of Bayesian reasoning. Scientists, doctors, detectives, historians, and careful citizens use versions of it whenever they ask whether evidence really distinguishes between explanations.',
+          'You do not need to do algebra every time. For ordinary thinking, use four questions.',
+          'First: What explanation am I checking? That is H. Second: What clue or observation did I notice? That is E. Third: would this clue be expected if my explanation were true? Fourth: would this clue also be expected if some other explanation were true?',
+          'The last question is crucial. A clue is not strong just because it fits your favorite explanation. It is strong when it fits your explanation much better than it fits the alternatives.',
+        ],
+      },
+      {
+        heading: 'Everyday Example: A Friend Is Late',
+        body: [
+          'H: my friend is stuck in traffic. E: my friend texts, “Running 20 minutes late.”',
+          'Before the text, traffic might have been only one possible explanation. Maybe they forgot, maybe they are still getting ready, maybe public transit failed. After the text, traffic becomes more likely if the friend is reliable and the roads are often congested at that time.',
+          'But the text is not perfect proof. People sometimes say “traffic” when they left late. Bayes-style thinking keeps you from jumping straight from one clue to total certainty.',
+        ],
+      },
+      {
+        heading: 'Everyday Example: A Medical Test',
+        body: [
+          'H: I have the condition. E: the test came back positive.',
+          'A positive test raises confidence, but it does not automatically mean the condition is likely. You also need to know how common the condition is and how often the test gives false positives.',
+          'This is why doctors care about base rates, follow-up tests, and symptoms. They are asking whether the evidence really points to the condition or whether the same evidence could appear in people who do not have it.',
+        ],
+      },
+      {
+        heading: 'Everyday Example: A News Claim',
+        body: [
+          'H: the headline is accurate. E: a popular account shared it.',
+          'If the source has a strong record of correcting errors, the share may raise your confidence. If the source often posts rumors, the same evidence should move you much less.',
+          'Bayes theorem turns this into a habit: do not ask only whether the claim feels vivid. Ask how reliable this kind of evidence usually is, and whether other explanations such as exaggeration, satire, selective editing, or misunderstanding are also plausible.',
         ],
       },
     ],
     [
-      'The posterior is updated confidence.',
-      'The prior is starting confidence.',
-      'The likelihood measures how expected the evidence is under a hypothesis.',
-      'The denominator prevents evidence from being judged in isolation from alternatives.',
+      'H is the possible explanation you are checking.',
+      'E is the clue, observation, report, or test result you noticed.',
+      'P(H|E) means updated confidence in H after considering E.',
+      'A clue is strong when it fits one explanation better than it fits the alternatives.',
     ],
     [
       pagePath('/bayes-theorem', 'The Prior'),
