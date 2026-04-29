@@ -134,7 +134,7 @@ const Dashboard = memo(function Dashboard({ data, onChange }: DashboardProps) {
 
         <div className="space-y-1">
           <SliderField
-            label="Balance of Evidence (Eₚ)"
+            label="Perceived Evidence (EP)"
             value={data.perceivedEvidence}
             onChange={(v) => update('perceivedEvidence', v)}
             color="accent-amber-400"
@@ -169,12 +169,12 @@ const Dashboard = memo(function Dashboard({ data, onChange }: DashboardProps) {
       {/* Numerical Metrics */}
       <div className="grid grid-cols-3 gap-4">
         <MetricCard
-          label="Error (ΔE)"
+          label="Calculation Error (DE)"
           value={`${(calcError * 100).toFixed(0)}%`}
           color={calcError > 0.1 ? 'text-orange-400' : 'text-stone-300'}
         />
         <MetricCard
-          label="Bias (IC)"
+          label="Core Irrationality (IC)"
           value={`${(coreIrrationality * 100).toFixed(0)}%`}
           color={coreIrrationality > 0.1 ? 'text-red-500' : 'text-stone-300'}
         />

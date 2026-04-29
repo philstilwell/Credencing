@@ -149,10 +149,10 @@ const EpistemicChart = memo(function EpistemicChart({ data }: EpistemicChartProp
       </svg>
 
       {/* Legend inside chart area - simplified */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-6 text-[8px] uppercase tracking-[0.2em] text-stone-500 font-bold z-20">
-        <div className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 bg-amber-500 rounded-full shadow-[0_0_5px_rgba(246,180,75,1)]"></div> Objective Evidence</div>
-        <div className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 bg-white rounded-full"></div> Balance of Evidence</div>
-        <div className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 bg-yellow-500 rounded-full shadow-[0_0_5px_rgba(234,179,8,1)]"></div> Skill Depth</div>
+      <div className="absolute bottom-4 left-0 right-0 flex flex-wrap justify-center gap-x-6 gap-y-2 px-4 text-[8px] uppercase tracking-[0.2em] text-stone-500 font-bold z-20">
+        <div className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 bg-amber-500 rounded-full shadow-[0_0_5px_rgba(246,180,75,1)]"></div> Objective Evidence (E0)</div>
+        <div className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 bg-white rounded-full"></div> Perceived Evidence (EP)</div>
+        <div className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 bg-yellow-500 rounded-full shadow-[0_0_5px_rgba(234,179,8,1)]"></div> Deep Rationality (SD)</div>
       </div>
     </div>
   );

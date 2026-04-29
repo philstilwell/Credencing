@@ -40,16 +40,16 @@ const navItems = [
 ];
 
 const glossaryTerms = [
-  ['E0', 'Objective Evidence: the evidential target in the world.'],
-  ['EP', 'Perceived Evidence: what an agent takes the evidence to show.'],
-  ['CA', 'Assigned Credence: the confidence an agent finally adopts.'],
-  ['SD', 'Deep Rationality: skill in processing evidence.'],
-  ['DE', 'Calculation Error: the gap between E0 and EP.'],
-  ['IC', 'Core Irrationality: the gap between EP and CA.'],
-  ['Calibration', 'The fit between confidence and actual reliability.'],
-  ['Prior', 'A starting credence before new evidence is considered.'],
-  ['Likelihood', 'How expected evidence is under a hypothesis.'],
-  ['Posterior', 'An updated credence after evidence is considered.'],
+  ['E0', 'Objective Evidence (E0)', 'Objective Evidence: the evidential target in the world.'],
+  ['EP', 'Perceived Evidence (EP)', 'Perceived Evidence: what an agent takes the evidence to show.'],
+  ['CA', 'Assigned Credence (CA)', 'Assigned Credence: the confidence an agent finally adopts.'],
+  ['SD', 'Deep Rationality (SD)', 'Deep Rationality: skill in processing evidence.'],
+  ['DE', 'Calculation Error (DE)', 'Calculation Error: the gap between Objective Evidence (E0) and Perceived Evidence (EP).'],
+  ['IC', 'Core Irrationality (IC)', 'Core Irrationality: the gap between Perceived Evidence (EP) and Assigned Credence (CA).'],
+  ['Calibration', 'Calibration', 'The fit between confidence and actual reliability.'],
+  ['Prior', 'Prior', 'A starting credence before new evidence is considered.'],
+  ['Likelihood', 'Likelihood', 'How expected evidence is under a hypothesis.'],
+  ['Posterior', 'Posterior', 'An updated credence after evidence is considered.'],
 ];
 
 const basePath = import.meta.env.BASE_URL;
@@ -429,13 +429,13 @@ function FormalizationPanel() {
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <VarDef sym="E0" label="Objective Evidence" desc="The ground truth probability density in mind-independent reality." />
-        <VarDef sym="EP" label="Perceived Balance" desc="The agent's internal representation after algorithmic processing." />
+        <VarDef sym="EP" label="Perceived Evidence" desc="The agent's internal representation after algorithmic processing." />
         <VarDef sym="CA" label="Assigned Credence" desc="The final doxastic commitment adopted by the agent." />
         <VarDef sym="SD" label="Deep Rationality" desc="Resolution of inferential optics and statistical literacy." />
       </div>
       <div className="space-y-6">
-        <Formula code="delta_ep = |EP - E0|" title="The Algorithmic Gap" text="A failure of competence: the distance between objective evidence and perceived evidence." />
-        <Formula code="delta_ic = |CA - EP|" title="The Doxastic Gap" text="A failure of integrity: the distance between perceived evidence and assigned credence." />
+        <Formula code="DE = |EP - E0|" title="Calculation Error (DE)" text="A failure of competence: the distance between Objective Evidence (E0) and Perceived Evidence (EP)." />
+        <Formula code="IC = |CA - EP|" title="Core Irrationality (IC)" text="A failure of integrity: the distance between Perceived Evidence (EP) and Assigned Credence (CA)." />
         <Formula code="omega = (1 - SD) * (pi / 4)" title="Warranted Uncertainty" text="A healthy range of doubt proportional to skill deficit. Rationality is calibrated doubt, not forced certainty." />
       </div>
     </motion.div>
@@ -730,14 +730,14 @@ function GlossaryChips({ page, onNavigate }: { page: ContentPage; onNavigate: (p
     <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
       <h3 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Glossary</h3>
       <div className="flex flex-wrap gap-2">
-        {matches.map(([term, definition]) => (
+        {matches.map(([term, label, definition]) => (
           <button
             key={term}
             title={definition}
             onClick={() => onNavigate(pagePath('/library', 'Glossary'))}
             className="px-3 py-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-200 text-[10px] font-mono hover:border-amber-400/50"
           >
-            {term}
+            {label}
           </button>
         ))}
       </div>
@@ -755,10 +755,10 @@ function PriorityExpansion({ title }: { title: string }) {
       ],
     },
     'Core Irrationality (IC)': {
-      heading: 'Why IC Is the Ethical Pressure Point',
+      heading: 'Why Core Irrationality (IC) Is the Ethical Pressure Point',
       body: [
-        'IC becomes ethically important because it is the place where an agent stops following their own evidential lights. The issue is not whether they possess perfect evidence; it is whether they honor what they take themselves to have seen.',
-        'That is why IC should be handled carefully. It is not a quick insult. It is a serious diagnosis of doxastic misalignment.',
+        'Core Irrationality (IC) becomes ethically important because it is the place where an agent stops following their own evidential lights. The issue is not whether they possess perfect evidence; it is whether they honor what they take themselves to have seen.',
+        'That is why Core Irrationality (IC) should be handled carefully. It is not a quick insult. It is a serious diagnosis of doxastic misalignment.',
       ],
     },
     'Biased Expert': {

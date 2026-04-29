@@ -4,15 +4,15 @@
  */
 
 export interface EpistemicData {
-  objectiveEvidence: number; // EO [0, 1]
-  perceivedEvidence: number; // EP [0, 1]
-  assignedCredence: number;  // CA [0, 1]
-  deepRationality: number;   // SD [0, 1]
+  objectiveEvidence: number; // Objective Evidence (E0) [0, 1]
+  perceivedEvidence: number; // Perceived Evidence (EP) [0, 1]
+  assignedCredence: number;  // Assigned Credence (CA) [0, 1]
+  deepRationality: number;   // Deep Rationality (SD) [0, 1]
 }
 
 export interface EpistemicMetrics {
-  calculationError: number; // ΔE = |EP - EO|
-  coreIrrationality: number; // IC = |CA - EP|
+  calculationError: number; // Calculation Error (DE) = |Perceived Evidence (EP) - Objective Evidence (E0)|
+  coreIrrationality: number; // Core Irrationality (IC) = |Assigned Credence (CA) - Perceived Evidence (EP)|
   warrantedUncertaintyWidth: number; // ω ∝ f(1 - SD)
 }
 

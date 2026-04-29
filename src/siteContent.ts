@@ -210,7 +210,7 @@ export const startHerePages: ContentPage[] = [
       {
         heading: 'The Three-Part Map',
         body: [
-          'The Credencing model separates three things that are often collapsed together. Objective Evidence, E0, is the support that exists in the world. Perceived Evidence, EP, is what the agent takes the evidence to show after perception, interpretation, memory, social pressure, and reasoning have done their work. Assigned Credence, CA, is the final degree of belief the agent actually adopts.',
+          'The Credencing model separates three things that are often collapsed together. Objective Evidence (E0) is the support that exists in the world. Perceived Evidence (EP) is what the agent takes the evidence to show after perception, interpretation, memory, social pressure, and reasoning have done their work. Assigned Credence (CA) is the final degree of belief the agent actually adopts.',
           'These three values can align, but they can also diverge. A person can misread good evidence, accurately perceive weak evidence, or perceive the evidence well and then refuse to believe accordingly. The public model exists to make those divergences visible.',
         ],
       },
@@ -463,7 +463,7 @@ export const startHerePages: ContentPage[] = [
       {
         heading: 'How the Interactive Model Shows It',
         body: [
-          'In the lab, a gap between E0 and EP represents error in perception or processing. A gap between EP and CA represents core irrationality: the doxastic gap. The first may be innocent, negligent, or unavoidable depending on context. The second points more directly to integrity, pressure, fear, or identity.',
+          'In the lab, a gap between Objective Evidence (E0) and Perceived Evidence (EP) represents error in perception or processing. A gap between Perceived Evidence (EP) and Assigned Credence (CA) represents core irrationality: the doxastic gap. The first may be innocent, negligent, or unavoidable depending on context. The second points more directly to integrity, pressure, fear, or identity.',
         ],
       },
     ],
@@ -471,7 +471,7 @@ export const startHerePages: ContentPage[] = [
       'Being false is not the same as being irrational.',
       'Epistemic inconsistency is a mismatch between perceived evidence and assigned credence.',
       'A person can be responsibly mistaken or irresponsibly correct.',
-      'The E0-EP gap and EP-CA gap diagnose different problems.',
+      'The Objective Evidence to Perceived Evidence gap (E0-EP) and Perceived Evidence to Assigned Credence gap (EP-CA) diagnose different problems.',
     ],
     related: [
       pagePath('/core-ideas', 'Calculation Error (DE)'),
@@ -611,7 +611,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'Evidence in the Model',
         body: [
-          'Objective Evidence, E0, represents the evidential situation as it stands apart from the agent. Perceived Evidence, EP, represents what the agent takes that evidence to show. The gap between them is a measure of evidential misperception or processing error.',
+          'Objective Evidence (E0) represents the evidential situation as it stands apart from the agent. Perceived Evidence (EP) represents what the agent takes that evidence to show. The gap between them is a measure of evidential misperception or processing error.',
           'The model therefore does not assume that evidence reaches the mind cleanly. It passes through attention, incentives, framing, memory, statistical skill, and social context.',
         ],
       },
@@ -619,7 +619,7 @@ export const coreIdeasPages: ContentPage[] = [
     [
       'Evidence is rational support, not emotional force.',
       'Evidence has both direction and weight.',
-      'The E0-EP gap captures errors in perceiving or processing evidence.',
+      'The Objective Evidence to Perceived Evidence gap (E0-EP) captures errors in perceiving or processing evidence.',
     ],
     [
       pagePath('/start-here', 'Evidence and Confidence'),
@@ -756,7 +756,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'Posterior vs Assigned Credence',
         body: [
-          'The posterior is the credence warranted by the update. Assigned Credence, CA, is what the agent actually adopts. In an ideal case, they match. When they diverge, the model asks whether some core-rational force is overriding the update.',
+          'The posterior is the credence warranted by the update. Assigned Credence (CA) is what the agent actually adopts. In an ideal case, they match. When they diverge, the model asks whether some core-rational force is overriding the update.',
         ],
       },
     ],
@@ -916,7 +916,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'The Target',
         body: [
-          'Objective Evidence, E0, is the model target: the support that exists independent of a particular agent perception. It is not omniscience, and it is not always directly accessible. It represents the evidential reality the agent is trying to track.',
+          'Objective Evidence (E0) is the model target: the support that exists independent of a particular agent perception. It is not omniscience, and it is not always directly accessible. It represents the evidential reality the agent is trying to track.',
         ],
       },
       {
@@ -950,7 +950,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'The Lens',
         body: [
-          'Perceived Evidence, EP, is the agent internal read on the evidence. It is not merely raw sensation. It includes attention, memory, testimony, statistical interpretation, social framing, and background assumptions.',
+          'Perceived Evidence (EP) is the agent internal read on the evidence. It is not merely raw sensation. It includes attention, memory, testimony, statistical interpretation, social framing, and background assumptions.',
         ],
       },
       {
@@ -984,7 +984,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'The Belief Anchor',
         body: [
-          'Assigned Credence, CA, is where the agent finally anchors belief. It is the confidence they live with, argue from, and act upon. In a well-aligned state, CA tracks EP closely.',
+          'Assigned Credence (CA) is where the agent finally anchors belief. It is the confidence they live with, argue from, and act upon. In a well-aligned state, Assigned Credence (CA) tracks Perceived Evidence (EP) closely.',
         ],
       },
       {
@@ -1003,7 +1003,7 @@ export const coreIdeasPages: ContentPage[] = [
     [
       'CA is the final confidence an agent adopts.',
       'CA should normally track perceived evidence.',
-      'A gap between EP and CA reveals core-rational pressure.',
+      'A gap between Perceived Evidence (EP) and Assigned Credence (CA) reveals core-rational pressure.',
     ],
     [
       pagePath('/core-ideas', 'Core Rationality'),
@@ -1018,13 +1018,13 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'The Skill Axis',
         body: [
-          'Deep Rationality, SD, refers to the agent ability to process evidence well. It includes statistical literacy, causal reasoning, Bayesian updating, comparison of hypotheses, base-rate sensitivity, and awareness of bias-producing structures.',
+          'Deep Rationality (SD) refers to the agent ability to process evidence well. It includes statistical literacy, causal reasoning, Bayesian updating, comparison of hypotheses, base-rate sensitivity, and awareness of bias-producing structures.',
         ],
       },
       {
         heading: 'What SD Improves',
         body: [
-          'Higher SD narrows the gap between E0 and EP. Better tools do not guarantee truth, but they improve the odds that the agent perceived evidence resembles the evidential situation.',
+          'Higher Deep Rationality (SD) narrows the gap between Objective Evidence (E0) and Perceived Evidence (EP). Better tools do not guarantee truth, but they improve the odds that the agent perceived evidence resembles the evidential situation.',
         ],
       },
       {
@@ -1036,7 +1036,7 @@ export const coreIdeasPages: ContentPage[] = [
     ],
     [
       'SD is the rational skill dimension.',
-      'It improves the E0-EP relationship.',
+      'It improves the Objective Evidence to Perceived Evidence relationship (E0-EP).',
       'Skill can serve truth or rationalization depending on core integrity.',
     ],
     [
@@ -1070,7 +1070,7 @@ export const coreIdeasPages: ContentPage[] = [
     ],
     [
       'Core Rationality is integrity in assigned credence.',
-      'It concerns the EP-CA relationship.',
+      'It concerns the Perceived Evidence to Assigned Credence relationship (EP-CA).',
       'A core-rational agent can still be honestly mistaken.',
     ],
     [
@@ -1084,9 +1084,9 @@ export const coreIdeasPages: ContentPage[] = [
     'Calculation Error is the distance between objective evidence and perceived evidence.',
     [
       {
-        heading: 'The E0-EP Gap',
+        heading: 'The Objective Evidence to Perceived Evidence Gap (E0-EP)',
         body: [
-          'Calculation Error, DE, measures the distance between E0 and EP. It is the gap between the evidential situation and the agent internal representation of that situation.',
+          'Calculation Error (DE) measures the distance between Objective Evidence (E0) and Perceived Evidence (EP). It is the gap between the evidential situation and the agent internal representation of that situation.',
         ],
       },
       {
@@ -1099,12 +1099,12 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'Repair',
         body: [
-          'Repairing DE usually means improving Deep Rationality or improving access to evidence: better tools, better data, better comparison classes, better feedback, and less distorted information environments.',
+          'Repairing Calculation Error (DE) usually means improving Deep Rationality (SD) or improving access to evidence: better tools, better data, better comparison classes, better feedback, and less distorted information environments.',
         ],
       },
     ],
     [
-      'DE is the E0-EP gap.',
+      'Calculation Error (DE) is the Objective Evidence to Perceived Evidence gap (E0-EP).',
       'It diagnoses perceptual or inferential error.',
       'It is repaired through tools, data, and feedback.',
     ],
@@ -1119,26 +1119,26 @@ export const coreIdeasPages: ContentPage[] = [
     'Core Irrationality is the distance between perceived evidence and assigned credence.',
     [
       {
-        heading: 'The EP-CA Gap',
+        heading: 'The Perceived Evidence to Assigned Credence Gap (EP-CA)',
         body: [
-          'Core Irrationality, IC, measures the gap between what the agent takes the evidence to show and what they actually believe. It is the doxastic gap: a failure of alignment between perception and commitment.',
+          'Core Irrationality (IC) measures the gap between what the agent takes the evidence to show and what they actually believe. It is the doxastic gap: a failure of alignment between perception and commitment.',
         ],
       },
       {
         heading: 'Why It Matters',
         body: [
-          'IC is especially important because it marks a different kind of failure from ignorance. A high IC agent is not merely missing information; they are assigning confidence against their own evidential perception.',
+          'Core Irrationality (IC) is especially important because it marks a different kind of failure from ignorance. A high-IC agent is not merely missing information; they are assigning confidence against their own evidential perception.',
         ],
       },
       {
         heading: 'Repair',
         body: [
-          'Repairing IC requires more than information. It may require lowering identity threat, improving emotional regulation, making revision socially survivable, and practicing honesty about uncertainty.',
+          'Repairing Core Irrationality (IC) requires more than information. It may require lowering identity threat, improving emotional regulation, making revision socially survivable, and practicing honesty about uncertainty.',
         ],
       },
     ],
     [
-      'IC is the EP-CA gap.',
+      'Core Irrationality (IC) is the Perceived Evidence to Assigned Credence gap (EP-CA).',
       'It diagnoses motivated or integrity-related distortion.',
       'It often requires courage and social repair, not only more facts.',
     ],
@@ -1165,9 +1165,9 @@ export const coreIdeasPages: ContentPage[] = [
         ],
       },
       {
-        heading: 'Relation to IC',
+        heading: 'Relation to Core Irrationality (IC)',
         body: [
-          'Epistemic akrasia is one way Core Irrationality appears from the inside. IC is the measurable gap; akrasia is the lived experience of not following one own evidential sense.',
+          'Epistemic akrasia is one way Core Irrationality appears from the inside. Core Irrationality (IC) is the measurable gap; akrasia is the lived experience of not following one own evidential sense.',
         ],
       },
     ],
@@ -1286,22 +1286,22 @@ export const interactiveLabPages: ContentPage[] = [
       {
         heading: 'The Four Controls',
         body: [
-          'Objective Evidence, E0, sets the evidential target. Perceived Evidence, EP, sets what the agent takes that evidence to show. Assigned Credence, CA, sets the confidence the agent adopts. Deep Rationality, SD, sets the quality of the agent inferential tools.',
+          'Objective Evidence (E0) sets the evidential target. Perceived Evidence (EP) sets what the agent takes that evidence to show. Assigned Credence (CA) sets the confidence the agent adopts. Deep Rationality (SD) sets the quality of the agent inferential tools.',
           'The controls are intentionally simple. Their simplicity makes the relationships visible. The goal is not to simulate every psychological mechanism, but to separate the major gaps that normally get blurred together.',
         ],
       },
       {
         heading: 'The Two Gaps',
         body: [
-          'The E0-EP gap shows error in perception or inference. The EP-CA gap shows doxastic misalignment: a failure to assign confidence according to what the agent takes the evidence to show.',
+          'The Objective Evidence to Perceived Evidence gap (E0-EP) shows error in perception or inference. The Perceived Evidence to Assigned Credence gap (EP-CA) shows doxastic misalignment: a failure to assign confidence according to what the agent takes the evidence to show.',
           'Most of the project grows from these two gaps. If you can identify which gap is doing the work, you can ask better questions about responsibility, repair, and interpretation.',
         ],
       },
     ],
     [
       'The model visualizes evidence, perception, belief, and rational skill.',
-      'E0-EP diagnoses perception or inference failure.',
-      'EP-CA diagnoses core-rational misalignment.',
+      'Objective Evidence to Perceived Evidence (E0-EP) diagnoses perception or inference failure.',
+      'Perceived Evidence to Assigned Credence (EP-CA) diagnoses core-rational misalignment.',
     ],
     [
       '/interactive-lab',
@@ -1316,29 +1316,29 @@ export const interactiveLabPages: ContentPage[] = [
       {
         heading: 'Start With the Target',
         body: [
-          'Begin by locating Objective Evidence, E0. This is the model estimate of where the evidence really points. In real life, E0 is often uncertain, but in the lab it gives the visual system a target.',
-          'Then compare E0 to Perceived Evidence, EP. If they are close, the agent is reading the evidential situation well. If they are far apart, something has gone wrong in access, attention, interpretation, method, or environment.',
+          'Begin by locating Objective Evidence (E0). This is the model estimate of where the evidence really points. In real life, E0 is often uncertain, but in the lab it gives the visual system a target.',
+          'Then compare Objective Evidence (E0) to Perceived Evidence (EP). If they are close, the agent is reading the evidential situation well. If they are far apart, something has gone wrong in access, attention, interpretation, method, or environment.',
         ],
       },
       {
         heading: 'Then Read the Commitment',
         body: [
-          'After EP, look at Assigned Credence, CA. This is where the agent finally places belief. When CA tracks EP, the agent is internally consistent even if they are mistaken about the world. When CA diverges from EP, the agent is believing against their own evidential perception.',
+          'After Perceived Evidence (EP), look at Assigned Credence (CA). This is where the agent finally places belief. When Assigned Credence (CA) tracks Perceived Evidence (EP), the agent is internally consistent even if they are mistaken about the world. When Assigned Credence (CA) diverges from Perceived Evidence (EP), the agent is believing against their own evidential perception.',
         ],
       },
       {
         heading: 'Use Deep Rationality as Resolution',
         body: [
-          'Deep Rationality, SD, functions like resolution. High SD means the agent has better tools for narrowing the distance between the world and their perception. Low SD means more fog and wider warranted uncertainty.',
-          'Do not read low SD as moral failure by itself. A novice may lack tools and still be honest. The model becomes morally interesting when you compare SD with the EP-CA gap.',
+          'Deep Rationality (SD) functions like resolution. High SD means the agent has better tools for narrowing the distance between the world and their perception. Low SD means more fog and wider warranted uncertainty.',
+          'Do not read low Deep Rationality (SD) as moral failure by itself. A novice may lack tools and still be honest. The model becomes morally interesting when you compare Deep Rationality (SD) with the Perceived Evidence to Assigned Credence gap (EP-CA).',
         ],
       },
     ],
     [
-      'Read E0 first, then EP, then CA.',
-      'E0-EP is the perception/inference gap.',
-      'EP-CA is the belief-integrity gap.',
-      'SD changes how much uncertainty is warranted.',
+      'Read Objective Evidence (E0) first, then Perceived Evidence (EP), then Assigned Credence (CA).',
+      'Objective Evidence to Perceived Evidence (E0-EP) is the perception/inference gap.',
+      'Perceived Evidence to Assigned Credence (EP-CA) is the belief-integrity gap.',
+      'Deep Rationality (SD) changes how much uncertainty is warranted.',
     ],
     [
       pagePath('/interactive-lab', 'Visual Legend'),
@@ -1373,9 +1373,9 @@ export const interactiveLabPages: ContentPage[] = [
       },
     ],
     [
-      'Markers show E0, EP, CA, and SD.',
+      'Markers show Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD).',
       'Green uncertainty can be warranted.',
-      'Red divergence shows the EP-CA gap.',
+      'Red divergence shows the Perceived Evidence to Assigned Credence gap (EP-CA).',
     ],
     [
       pagePath('/interactive-lab', 'How to Read the Model'),
@@ -1408,7 +1408,7 @@ export const interactiveLabPages: ContentPage[] = [
     ],
     [
       'Presets are reference cases for learning the model.',
-      'They teach relationships among E0, EP, CA, and SD.',
+      'They teach relationships among Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD).',
       'Small slider changes reveal which gap drives the diagnosis.',
     ],
     [
@@ -1431,7 +1431,7 @@ export const interactiveLabPages: ContentPage[] = [
       {
         heading: 'What It Looks Like',
         body: [
-          'In the model, E0, EP, and CA sit close together, and SD is high. The uncertainty region is relatively narrow because the agent tools are strong. There is little or no red core-irrationality region.',
+          'In the model, Objective Evidence (E0), Perceived Evidence (EP), and Assigned Credence (CA) sit close together, and Deep Rationality (SD) is high. The uncertainty region is relatively narrow because the agent tools are strong. There is little or no red core-irrationality region.',
         ],
       },
       {
@@ -1443,7 +1443,7 @@ export const interactiveLabPages: ContentPage[] = [
     ],
     [
       'The ideal agent combines skill and integrity.',
-      'E0, EP, and CA remain closely aligned.',
+      'Objective Evidence (E0), Perceived Evidence (EP), and Assigned Credence (CA) remain closely aligned.',
       'The archetype is a target, not a claim of perfection.',
     ],
     [
@@ -1471,13 +1471,13 @@ export const interactiveLabPages: ContentPage[] = [
       {
         heading: 'What It Looks Like',
         body: [
-          'In the model, EP may diverge from E0 because the agent perception is imperfect. But CA remains close to EP. The agent believes what they honestly take the evidence to show.',
+          'In the model, Perceived Evidence (EP) may diverge from Objective Evidence (E0) because the agent perception is imperfect. But Assigned Credence (CA) remains close to Perceived Evidence (EP). The agent believes what they honestly take the evidence to show.',
         ],
       },
     ],
     [
       'The honest novice may be wrong without being dishonest.',
-      'The main gap is E0-EP, not EP-CA.',
+      'The main gap is Objective Evidence to Perceived Evidence (E0-EP), not Perceived Evidence to Assigned Credence (EP-CA).',
       'Repair usually requires better tools and better evidence access.',
     ],
     [
@@ -1505,13 +1505,13 @@ export const interactiveLabPages: ContentPage[] = [
       {
         heading: 'What It Looks Like',
         body: [
-          'In the model, SD may be high and EP may be reasonably close to E0. The problem appears when CA pulls away from EP. The red region is not caused by ignorance; it is caused by motivated assignment of confidence.',
+          'In the model, Deep Rationality (SD) may be high and Perceived Evidence (EP) may be reasonably close to Objective Evidence (E0). The problem appears when Assigned Credence (CA) pulls away from Perceived Evidence (EP). The red region is not caused by ignorance; it is caused by motivated assignment of confidence.',
         ],
       },
     ],
     [
       'The biased expert has tools but misuses them defensively.',
-      'The main gap is EP-CA.',
+      'The main gap is Perceived Evidence to Assigned Credence (EP-CA).',
       'Education alone may not repair the pattern.',
     ],
     [
@@ -1545,7 +1545,7 @@ export const interactiveLabPages: ContentPage[] = [
     ],
     [
       'Epistemic delusion is a structural model state, not a clinical label.',
-      'It involves severe EP-CA detachment.',
+      'It involves severe Perceived Evidence to Assigned Credence (EP-CA) detachment.',
       'The repair question is how evidence can regain traction.',
     ],
     [
@@ -1556,7 +1556,7 @@ export const interactiveLabPages: ContentPage[] = [
   ),
   labPage(
     'Build Your Own Scenario',
-    'Building your own scenario means assigning E0, EP, CA, and SD for a real or imagined belief state.',
+    'Building your own scenario means assigning Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD) for a real or imagined belief state.',
     [
       {
         heading: 'Choose the Claim',
@@ -1579,7 +1579,7 @@ export const interactiveLabPages: ContentPage[] = [
       {
         heading: 'Read the Gaps',
         body: [
-          'If E0 and EP diverge, investigate information quality and reasoning skill. If EP and CA diverge, investigate motivation, fear, identity, incentives, or social pressure. If both diverge, the scenario likely combines ignorance with motivated belief.',
+          'If Objective Evidence (E0) and Perceived Evidence (EP) diverge, investigate information quality and reasoning skill. If Perceived Evidence (EP) and Assigned Credence (CA) diverge, investigate motivation, fear, identity, incentives, or social pressure. If both diverge, the scenario likely combines ignorance with motivated belief.',
         ],
       },
     ],
@@ -1607,7 +1607,7 @@ export const interactiveLabPages: ContentPage[] = [
       {
         heading: 'Comparison Questions',
         body: [
-          'Compare where the gaps occur. Is one case mostly E0-EP and the other mostly EP-CA? Does one agent have lower SD but better internal alignment? Does one agent become more accurate when given better evidence, while the other resists?',
+          'Compare where the gaps occur. Is one case mostly Objective Evidence to Perceived Evidence (E0-EP) and the other mostly Perceived Evidence to Assigned Credence (EP-CA)? Does one agent have lower Deep Rationality (SD) but better internal alignment? Does one agent become more accurate when given better evidence, while the other resists?',
         ],
       },
       {
@@ -1641,7 +1641,7 @@ export const interactiveLabPages: ContentPage[] = [
       {
         heading: 'From Pattern to Diagnosis',
         body: [
-          'When you see an E0-EP gap, ask about evidence access, measurement quality, statistical tools, and framing. When you see an EP-CA gap, ask about emotional threat, identity protection, incentives, public commitment, and social cost of revision.',
+          'When you see an Objective Evidence to Perceived Evidence gap (E0-EP), ask about evidence access, measurement quality, statistical tools, and framing. When you see a Perceived Evidence to Assigned Credence gap (EP-CA), ask about emotional threat, identity protection, incentives, public commitment, and social cost of revision.',
         ],
       },
       {
@@ -1653,8 +1653,8 @@ export const interactiveLabPages: ContentPage[] = [
     ],
     [
       'The model organizes judgment; it does not replace it.',
-      'E0-EP gaps suggest tool and evidence repairs.',
-      'EP-CA gaps suggest motivational and integrity repairs.',
+      'Objective Evidence to Perceived Evidence gaps (E0-EP) suggest tool and evidence repairs.',
+      'Perceived Evidence to Assigned Credence gaps (EP-CA) suggest motivational and integrity repairs.',
     ],
     [
       pagePath('/core-ideas', 'Core vs Deep Rationality'),
@@ -1698,7 +1698,7 @@ export const caseStudyPages: ContentPage[] = [
       {
         heading: 'Where the Gap Opens',
         body: [
-          'The main failure is usually Deep Rationality. The E0-EP gap widens because the agent lacks or ignores the statistical frame needed to interpret the evidence. But a Core Rationality failure can appear when the agent knows the base rate matters and avoids it because the anecdote supports a preferred conclusion.',
+          'The main failure is usually Deep Rationality. The Objective Evidence to Perceived Evidence gap (E0-EP) widens because the agent lacks or ignores the statistical frame needed to interpret the evidence. But a Core Rationality failure can appear when the agent knows the base rate matters and avoids it because the anecdote supports a preferred conclusion.',
         ],
       },
       {
@@ -1711,7 +1711,7 @@ export const caseStudyPages: ContentPage[] = [
     ],
     [
       'Base rates anchor credence before case-specific evidence is interpreted.',
-      'The typical failure is an E0-EP distortion.',
+      'The typical failure is an Objective Evidence to Perceived Evidence distortion (E0-EP).',
       'Anecdotes should be interpreted inside reference classes.',
     ],
     [
@@ -1764,7 +1764,7 @@ export const caseStudyPages: ContentPage[] = [
         heading: 'The Pattern',
         body: [
           'Motivated reasoning is not merely having motives. Every inquiry happens inside human concerns. The problem arises when the desired conclusion controls the treatment of evidence: friendly evidence is accepted cheaply, hostile evidence is scrutinized endlessly, and ambiguity is resolved in one direction.',
-          'In the model, motivated reasoning often produces an EP-CA gap, but it can also contaminate EP itself. The agent may both perceive selectively and assign credence defensively.',
+          'In the model, motivated reasoning often produces a Perceived Evidence to Assigned Credence gap (EP-CA), but it can also contaminate Perceived Evidence (EP) itself. The agent may both perceive selectively and assign credence defensively.',
         ],
       },
       {
@@ -1783,7 +1783,7 @@ export const caseStudyPages: ContentPage[] = [
     ],
     [
       'Motivated reasoning bends standards of evidence toward a desired conclusion.',
-      'It can affect both EP and CA.',
+      'It can affect both Perceived Evidence (EP) and Assigned Credence (CA).',
       'High intelligence can strengthen rationalization unless Core Rationality improves.',
     ],
     [
@@ -1841,7 +1841,7 @@ export const caseStudyPages: ContentPage[] = [
       {
         heading: 'Where the Gap Opens',
         body: [
-          'Conspiracy thinking often begins with an E0-EP problem: missing context, distrust, pattern over-detection, or exposure to curated claims. It hardens into an EP-CA problem when the agent refuses update conditions and treats every possible observation as compatible with the theory.',
+          'Conspiracy thinking often begins with an Objective Evidence to Perceived Evidence problem (E0-EP): missing context, distrust, pattern over-detection, or exposure to curated claims. It hardens into a Perceived Evidence to Assigned Credence problem (EP-CA) when the agent refuses update conditions and treats every possible observation as compatible with the theory.',
         ],
       },
       {
@@ -1890,7 +1890,7 @@ export const caseStudyPages: ContentPage[] = [
     [
       'Possibility is not probability.',
       'Severity and likelihood must be separated.',
-      'Fear can inflate both EP and CA.',
+      'Fear can inflate both Perceived Evidence (EP) and Assigned Credence (CA).',
     ],
     [
       pagePath('/core-ideas', 'Confidence Levels'),
@@ -1941,7 +1941,7 @@ export const caseStudyPages: ContentPage[] = [
         heading: 'The Pattern',
         body: [
           'Fear is not irrational by default. It is a signal of possible threat. The failure occurs when fear silently becomes evidence, raising confidence beyond what the actual support warrants.',
-          'A person may know that a danger is unlikely and still live as if it is probable. That is an EP-CA gap: perceived evidence and assigned credence have come apart under emotional pressure.',
+          'A person may know that a danger is unlikely and still live as if it is probable. That is a Perceived Evidence to Assigned Credence gap (EP-CA): perceived evidence and assigned credence have come apart under emotional pressure.',
         ],
       },
       {
@@ -1959,7 +1959,7 @@ export const caseStudyPages: ContentPage[] = [
     ],
     [
       'Fear can be useful without being evidentially decisive.',
-      'Fear overrides often create an EP-CA gap.',
+      'Fear overrides often create a Perceived Evidence to Assigned Credence gap (EP-CA).',
       'Naming affect separately from credence helps restore calibration.',
     ],
     [
@@ -2353,14 +2353,14 @@ export const skillPages: ContentPage[] = [
       {
         heading: 'Name the Split',
         body: [
-          'A useful sentence is: "My perceived evidence is X, but I notice pressure to believe Y." Naming the split helps keep EP and CA from collapsing into one another.',
+          'A useful sentence is: "My perceived evidence is X, but I notice pressure to believe Y." Naming the split helps keep Perceived Evidence (EP) and Assigned Credence (CA) from collapsing into one another.',
         ],
       },
     ],
     [
       'Asymmetric standards reveal motivated override.',
       'Identity threat pressures Core Rationality.',
-      'Naming the EP-CA split makes repair possible.',
+      'Naming the Perceived Evidence to Assigned Credence split (EP-CA) makes repair possible.',
     ],
     [
       pagePath('/case-studies', 'Motivated Reasoning'),
@@ -2392,8 +2392,8 @@ export const skillPages: ContentPage[] = [
       },
     ],
     [
-      'Deep failure concerns E0-EP.',
-      'Core failure concerns EP-CA.',
+      'Deep failure concerns Objective Evidence to Perceived Evidence (E0-EP).',
+      'Core failure concerns Perceived Evidence to Assigned Credence (EP-CA).',
       'The repair test helps identify the main diagnosis.',
     ],
     [
@@ -2461,7 +2461,7 @@ export const skillPages: ContentPage[] = [
       {
         heading: 'Questions About Gaps',
         body: [
-          'Ask whether the likely problem is E0-EP or EP-CA. Are we missing tools and evidence, or are we resisting what we already see? This question often changes the whole conversation.',
+          'Ask whether the likely problem is Objective Evidence to Perceived Evidence (E0-EP) or Perceived Evidence to Assigned Credence (EP-CA). Are we missing tools and evidence, or are we resisting what we already see? This question often changes the whole conversation.',
         ],
       },
     ],
@@ -2489,7 +2489,7 @@ export const skillPages: ContentPage[] = [
       {
         heading: 'The Two-Gap Journal',
         body: [
-          'For one belief that matters, write E0, EP, CA, and SD estimates. Then identify the largest gap. Ask whether the next repair should be better evidence, better reasoning, or more honesty about what you already perceive.',
+          'For one belief that matters, write Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD) estimates. Then identify the largest gap. Ask whether the next repair should be better evidence, better reasoning, or more honesty about what you already perceive.',
         ],
       },
       {
@@ -2797,7 +2797,7 @@ export const applicationPages: ContentPage[] = [
       {
         heading: 'Repair',
         body: [
-          'Use two-gap journaling: estimate E0, EP, CA, and SD for the decision. Then separate evidence from affect. Ask what action threshold is appropriate under the stakes, and what small experiment would improve the evidence.',
+          'Use two-gap journaling: estimate Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD) for the decision. Then separate evidence from affect. Ask what action threshold is appropriate under the stakes, and what small experiment would improve the evidence.',
         ],
       },
     ],
@@ -2858,13 +2858,13 @@ export const applicationPages: ContentPage[] = [
         ],
       },
       {
-        heading: 'Institutional E0-EP Gaps',
+        heading: 'Institutional Objective Evidence to Perceived Evidence Gaps (E0-EP)',
         body: [
           'Organizations misperceive evidence when data pipelines are bad, feedback is filtered, dissent is punished, metrics are gamed, or leaders are insulated from ground truth. This is institutional Deep Rationality failure.',
         ],
       },
       {
-        heading: 'Institutional EP-CA Gaps',
+        heading: 'Institutional Perceived Evidence to Assigned Credence Gaps (EP-CA)',
         body: [
           'Organizations can also perceive a problem and still refuse to assign public confidence accordingly. They may bury known risks, soften warnings, overstate success, or maintain official optimism because the cost of honesty is high.',
         ],
@@ -2878,8 +2878,8 @@ export const applicationPages: ContentPage[] = [
     ],
     [
       'Institutions have practical credences even when they do not name them.',
-      'Bad feedback creates E0-EP gaps.',
-      'Suppressed knowledge creates EP-CA gaps.',
+      'Bad feedback creates Objective Evidence to Perceived Evidence gaps (E0-EP).',
+      'Suppressed knowledge creates Perceived Evidence to Assigned Credence gaps (EP-CA).',
       'Protected dissent is an epistemic technology.',
     ],
     [
@@ -2968,7 +2968,7 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Formal Variables',
         body: [
-          'The central variables are E0 for Objective Evidence, EP for Perceived Evidence, CA for Assigned Credence, and SD for Deep Rationality. Calculation Error measures the E0-EP gap. Core Irrationality measures the EP-CA gap.',
+          'The central variables are Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD). Calculation Error (DE) measures the Objective Evidence to Perceived Evidence gap (E0-EP). Core Irrationality (IC) measures the Perceived Evidence to Assigned Credence gap (EP-CA).',
         ],
       },
       {
@@ -2980,7 +2980,7 @@ export const libraryPages: ContentPage[] = [
     ],
     [
       'The project’s central distinction is skill vs integrity.',
-      'E0-EP and EP-CA are the two diagnostic gaps.',
+      'Objective Evidence to Perceived Evidence (E0-EP) and Perceived Evidence to Assigned Credence (EP-CA) are the two diagnostic gaps.',
       'The formal paper and public model are complementary.',
     ],
     [
@@ -2996,7 +2996,7 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Measurement and Validation',
         body: [
-          'The first research need is measurement: how can E0, EP, CA, and SD be estimated in real contexts without smuggling in the evaluator’s own bias? A measurement paper would distinguish rough pedagogical scoring from serious empirical validation.',
+          'The first research need is measurement: how can Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD) be estimated in real contexts without smuggling in the evaluator’s own bias? A measurement paper would distinguish rough pedagogical scoring from serious empirical validation.',
           'The key question is diagnostic: what would count as evidence of a Core Rationality failure rather than merely a difficult evidential environment, incomplete information, bad luck, or honest disagreement?',
         ],
       },
@@ -3017,7 +3017,7 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Disagreement and Pedagogy',
         body: [
-          'A disagreement paper would compare two agents with different E0 access, EP interpretation, CA assignment, and update histories. This would make the model useful for public debate without reducing every conflict to bad faith.',
+          'A disagreement paper would compare two agents with different Objective Evidence (E0) access, Perceived Evidence (EP) interpretation, Assigned Credence (CA) assignment, and update histories. This would make the model useful for public debate without reducing every conflict to bad faith.',
           'A pedagogy paper would translate the framework into classroom practice: calibration exercises, evidence-mapping assignments, peer disagreement protocols, and reflective prompts that help students separate “I disagree” from “I have located a specific gap.”',
         ],
       },
@@ -3162,7 +3162,7 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Is Core Irrationality a Moral Accusation?',
         body: [
-          'Not automatically. It is a structural diagnosis of an EP-CA gap. Moral assessment depends on context, access, incentives, trauma, social pressure, and whether the agent is willing to repair the gap.',
+          'Not automatically. It is a structural diagnosis of a Perceived Evidence to Assigned Credence gap (EP-CA). Moral assessment depends on context, access, incentives, trauma, social pressure, and whether the agent is willing to repair the gap.',
           'The model is intentionally diagnostic before it is accusatory. It asks where the gap opens before deciding whether the gap reflects dishonesty, fear, social pressure, ignorance, confusion, or a mixed case.',
         ],
       },
@@ -3290,7 +3290,7 @@ export const libraryPages: ContentPage[] = [
         heading: 'Core Visual Sets',
         body: [
           'The first visual set is the archetype set: ideal agent, honest novice, biased expert, epistemic delusion, gaslighting, academic dogma, strict empiricism, and any later scenario diagrams. Each item should include a caption explaining what the visual teaches and which variables differ.',
-          'The second visual set is the structural set: E0-EP gap diagrams, EP-CA gap diagrams, calibration scales, likelihood curves, update sequences, and comparison panels that show two agents handling the same evidence differently.',
+          'The second visual set is the structural set: Objective Evidence to Perceived Evidence gap diagrams (E0-EP), Perceived Evidence to Assigned Credence gap diagrams (EP-CA), calibration scales, likelihood curves, update sequences, and comparison panels that show two agents handling the same evidence differently.',
           'The third visual set is the teaching set: worksheets, slide-friendly diagrams, printable legends, and annotated screenshots from the interactive lab.',
         ],
       },
@@ -3328,21 +3328,21 @@ export const libraryPages: ContentPage[] = [
         heading: 'Classroom Use',
         body: [
           'The framework can be taught in philosophy, critical thinking, statistics, media literacy, science communication, and civic education. Its advantage is that it connects abstract epistemology to ordinary decisions.',
-          'A short lesson can introduce E0, EP, CA, and SD with one everyday example. A longer unit can move from glossary terms to model reading, then to case studies, then to student-built scenarios.',
+          'A short lesson can introduce Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD) with one everyday example. A longer unit can move from glossary terms to model reading, then to case studies, then to student-built scenarios.',
         ],
       },
       {
         heading: 'Lesson Sequence',
         body: [
           'A natural sequence begins with calibration: students practice stating confidence in percentages and explaining what would change their minds. It then introduces evidence quality, likelihoods, priors, and updating.',
-          'The middle lessons use case studies. Students estimate E0, EP, CA, and SD, then compare whether disagreement comes from different evidence, different interpretation, different confidence assignment, or different incentives.',
+          'The middle lessons use case studies. Students estimate Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD), then compare whether disagreement comes from different evidence, different interpretation, different confidence assignment, or different incentives.',
           'The final lessons ask students to build their own scenarios and write a short diagnostic reflection: where was the gap, why did it appear, and what repair would be epistemically responsible?',
         ],
       },
       {
         heading: 'Reusable Materials',
         body: [
-          'Useful materials include a one-page model guide, scenario worksheets, calibration exercises, debate prompts, case-study packets, slide diagrams, reading questions, and assignments where students estimate E0, EP, CA, and SD.',
+          'Useful materials include a one-page model guide, scenario worksheets, calibration exercises, debate prompts, case-study packets, slide diagrams, reading questions, and assignments where students estimate Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD).',
           'The download library already provides a starter model guide, scenario worksheet, and classroom exercise packet. These should remain editable so teachers can adapt the framework to philosophy, writing, statistics, civic reasoning, or media-literacy courses.',
         ],
       },
@@ -3480,7 +3480,7 @@ export const aboutPages: ContentPage[] = [
         heading: 'Why It Exists',
         body: [
           'Public argument often uses blunt labels: rational, irrational, biased, skeptical, dogmatic. The project exists because those labels are too coarse. A person can be honestly mistaken, cleverly self-deceived, uncertain for good reasons, or correct for bad reasons.',
-          'The two-gap model gives a more careful vocabulary: E0-EP for evidence perception and EP-CA for belief integrity.',
+          'The two-gap model gives a more careful vocabulary: Objective Evidence to Perceived Evidence (E0-EP) for evidence perception and Perceived Evidence to Assigned Credence (EP-CA) for belief integrity.',
         ],
       },
       {
@@ -3549,7 +3549,7 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'Diagnostic Before Accusatory',
         body: [
-          'The model is meant to diagnose where a gap opens before assigning blame. An E0-EP gap may reflect limited tools or bad evidence access. An EP-CA gap may reflect identity pressure or motivated override. Moral evaluation comes after diagnosis, not before.',
+          'The model is meant to diagnose where a gap opens before assigning blame. An Objective Evidence to Perceived Evidence gap (E0-EP) may reflect limited tools or bad evidence access. A Perceived Evidence to Assigned Credence gap (EP-CA) may reflect identity pressure or motivated override. Moral evaluation comes after diagnosis, not before.',
         ],
       },
       {
