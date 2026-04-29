@@ -556,6 +556,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-8 space-y-6">
+          <AuthorFeature page={page} />
           {page.sections.map((section) => (
             <section key={section.heading} className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
               <h3 className="text-2xl font-light text-white">{section.heading}</h3>
@@ -652,6 +653,41 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
         </aside>
       </div>
     </article>
+  );
+}
+
+function AuthorFeature({ page }: { page: ContentPage }) {
+  if (page.path !== pagePath('/about', 'Author')) return null;
+
+  return (
+    <section className="glass-panel overflow-hidden bg-white/[0.02] border-white/5">
+      <div className="grid grid-cols-1 md:grid-cols-[260px_1fr]">
+        <div className="bg-gradient-to-br from-amber-900/30 via-stone-950/20 to-red-950/20 p-6 md:p-8 flex items-center justify-center">
+          <img
+            src={`${basePath}images/phil-stilwell-profile.png`}
+            alt="Phil Stilwell"
+            className="w-48 h-48 md:w-56 md:h-56 rounded-2xl object-cover border border-amber-500/30 shadow-2xl"
+          />
+        </div>
+        <div className="p-6 md:p-8 space-y-5">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Author Profile</p>
+          <h3 className="text-3xl font-light text-white">Phil Stilwell</h3>
+          <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+            Phil Stilwell develops Credencing as an epistemology project about how confidence should scale with evidence, how belief becomes distorted, and how rational agents can preserve updateability under emotional, social, and institutional pressure.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <a href="https://suj.academia.edu/PhilStilwell" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/10 hover:border-amber-400/50 text-amber-100 text-sm">
+              <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Research Profile</span>
+              Academia.edu
+            </a>
+            <a href="https://freeoffaith.com/phils-stances/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/10 hover:border-amber-400/50 text-amber-100 text-sm">
+              <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Epistemic Stance</span>
+              Free of Faith
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

@@ -3488,36 +3488,46 @@ export const aboutPages: ContentPage[] = [
   ),
   aboutPage(
     'Author',
-    'The author page identifies the project voice and leaves room for a fuller biographical note.',
+    'Phil Stilwell develops Credencing as a public epistemology project centered on graded belief, evidential accountability, and rational self-correction.',
     [
       {
-        heading: 'Project Voice',
+        heading: 'Epistemic Orientation',
         body: [
-          'Credencing is written as a public philosophy and reasoning project. Its voice aims to be rigorous without becoming sealed off from ordinary judgment, decision-making, and public life.',
+          'Phil Stilwell’s epistemic stance is best described as Bayesian evidentialism without dogmatism: belief should be treated as a degree of confidence that scales with the degree and quality of evidence. The emphasis is not on claiming certainty, but on making confidence explicit, revisable, and proportionate.',
+          'This orientation explains the central vocabulary of Credencing. The site replaces binary belief with graded credence, treats uncertainty as a discipline rather than an embarrassment, and asks whether a person’s assigned confidence actually tracks the evidence they take themselves to possess.',
         ],
       },
       {
-        heading: 'Author Note',
+        heading: 'Rationality as Belief Regulation',
         body: [
-          'This page can later include a fuller author biography, relevant publications, talks, teaching materials, and links to related work. For now, it establishes authorship and points readers toward the public project repository for corrections and collaboration.',
+          'For Stilwell, rationality is fundamentally epistemic: a practice of regulating belief so that confidence remains answerable to evidence. Critical thinking is therefore not merely a style of argument or a disposition toward skepticism. It is a trained habit of calibration, updateability, methodological consistency, and resistance to rhetoric that masks evidential weakness.',
+          'The Free of Faith stance page describes this outlook as favoring probabilistic reasoning, epistemic humility, and meta-epistemic awareness. Those themes reappear throughout Credencing in the distinction between Deep Rationality, the skill of processing evidence, and Core Rationality, the willingness to assign the confidence one’s own evidence warrants.',
         ],
       },
       {
-        heading: 'Accountability',
+        heading: 'Faith, Evidence, and Accountability',
         body: [
-          'A project about epistemic integrity should make authorship visible. Claims should be attributable, corrigible, and open to criticism.',
+          'A recurring theme in Stilwell’s work is criticism of faith as an epistemic method when faith means belief beyond, against, or insulated from evidence. The objection is not merely theological. It is methodological: any belief-forming practice that seeks immunity from counter-evidence weakens public standards of inquiry.',
+          'Credencing generalizes that concern beyond religion. Whether the subject is theology, politics, institutional judgment, personal decision-making, or AI, the same question recurs: what would rationally move this confidence, and is the believer willing to let it move?',
+        ],
+      },
+      {
+        heading: 'Research Profile',
+        body: [
+          'Stilwell’s Academia.edu profile lists work in epistemology, philosophy of religion, philosophy of science, decision-making, and related areas. Papers especially relevant to this site include “A Formal Framework for Core and Deep Rationality” and “Credence First: Against Plantinga’s Warrant as an Epistemic Upgrade.”',
+          'The author page makes that research context visible while keeping the focus on the public project: a usable framework for mapping evidence, perception, confidence, and rational integrity.',
         ],
       },
     ],
     [
-      'The author page is a placeholder for fuller attribution.',
-      'The project voice aims for public rigor.',
-      'Authorship is part of epistemic accountability.',
+      'Phil Stilwell frames rational belief as graded confidence proportional to evidence.',
+      'Credencing grows out of Bayesian evidentialism, calibration, and epistemic accountability.',
+      'The author’s epistemology rejects protected belief systems that evade evidential testing.',
     ],
     [
       pagePath('/about', 'Contact'),
       pagePath('/library', 'Papers'),
-      pagePath('/library', 'Project Notes'),
+      pagePath('/core-ideas', 'Core vs Deep Rationality'),
     ],
   ),
   aboutPage(
