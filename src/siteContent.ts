@@ -3050,24 +3050,61 @@ export const libraryPages: ContentPage[] = [
   ),
   libraryPage(
     'Glossary',
-    'The glossary provides concise definitions for the site’s core vocabulary.',
+    'The glossary provides concise definitions for Credencing, epistemology, Bayesian theory, cognitive bias, decision theory, and institutional reasoning.',
     [
       {
-        heading: 'Why a Glossary Matters',
+        heading: 'Core Credencing Terms',
         body: [
-          'Credencing uses familiar words in careful ways. Evidence, confidence, uncertainty, rationality, and belief all carry everyday meanings that can blur the model. A glossary keeps the vocabulary stable.',
+          'Credence: a graded degree of confidence in a claim, hypothesis, possibility, or interpretation. Objective Evidence (E0): the evidential support that exists in the world apart from the agent. Perceived Evidence (EP): what the agent takes the evidence to show after attention, interpretation, memory, social pressure, and reasoning have done their work.',
+          'Assigned Credence (CA): the confidence the agent actually adopts. Deep Rationality (SD): the skill side of rationality, including statistical literacy, causal reasoning, Bayesian updating, hypothesis comparison, and sensitivity to base rates. Core Rationality: the integrity side of rationality, the willingness to assign confidence in line with what one takes the evidence to show.',
+          'Calculation Error (DE): the gap between objective evidence and perceived evidence. Core Irrationality (IC): the gap between perceived evidence and assigned credence. Warranted Uncertainty: the range of doubt that remains rational given limited evidence, limited skill, and the stakes of judgment. Epistemic Akrasia: believing against one’s own judgment about what the evidence supports.',
         ],
       },
       {
-        heading: 'Core Entries',
+        heading: 'Bayesian and Probabilistic Terms',
         body: [
-          'Essential entries include credence, objective evidence, perceived evidence, assigned credence, Deep Rationality, Core Rationality, calculation error, core irrationality, warranted uncertainty, calibration, prior, likelihood, and posterior.',
+          'Prior: the starting credence before a new item of evidence is considered. Likelihood: the probability of observing the evidence if a hypothesis were true. Posterior: the updated credence after prior and evidence are combined. Bayesian Updating: disciplined movement from prior to posterior in response to evidence.',
+          'Bayes Factor: a measure of how much more strongly evidence supports one hypothesis over another. Base Rate: the background frequency of an event, condition, or property in the relevant population. Reference Class: the group used to estimate a base rate. Conditional Probability: the probability of one thing given that another thing is true.',
+          'Expected Value: the probability-weighted value of possible outcomes. Decision Threshold: the credence level at which action becomes justified under the stakes. Sensitivity: a test’s true-positive rate. Specificity: a test’s true-negative rate. False Positive: a positive signal when the condition is absent. False Negative: a negative signal when the condition is present.',
+        ],
+      },
+      {
+        heading: 'Epistemology and Rational Inquiry',
+        body: [
+          'Evidence: information that should rationally affect confidence. Justification: the support that makes a belief epistemically responsible. Warrant: a stronger status sometimes used for beliefs formed by reliable or properly functioning processes. Reliability: the tendency of a method, source, or faculty to produce true or accurate beliefs.',
+          'Defeater: information that weakens or cancels a justification. Undercutting Defeater: evidence that attacks the connection between evidence and conclusion. Rebutting Defeater: evidence that directly supports the opposite conclusion. Testability: the degree to which a claim can be checked against observation, prediction, or independent constraint.',
+          'Falsifiability: the possibility that a claim could be shown false under some conditions. Epistemic Humility: awareness of one’s limits and error risk. Epistemic Responsibility: managing belief in ways answerable to evidence. Intellectual Virtue: a stable trait that improves inquiry, such as curiosity, courage, fairness, or honesty about uncertainty.',
+        ],
+      },
+      {
+        heading: 'Cognitive Bias and Failure Modes',
+        body: [
+          'Base-Rate Neglect: ignoring background frequency when vivid case details dominate attention. Confirmation Bias: preferentially seeking or noticing evidence that supports one’s existing view. Motivated Reasoning: reasoning shaped by what one wants, fears, or socially needs to be true. Availability Heuristic: overestimating likelihood because examples are easy to recall.',
+          'Anchoring: relying too heavily on an initial number, frame, or impression. Overconfidence: assigning more certainty than one’s evidence or track record warrants. Dunning-Kruger Effect: low skill paired with inflated self-assessment, especially when the skill needed to judge performance is also weak. Identity-Protective Cognition: processing evidence in ways that defend group belonging or self-concept.',
+          'Cognitive Dissonance: discomfort created by tension among beliefs, values, and actions. Rationalization: constructing reasons after the fact to protect a desired conclusion. Selective Skepticism: applying high standards to unwelcome claims and low standards to welcome claims. Epistemic Bubble: a network where contrary evidence is absent. Echo Chamber: a network where contrary sources are actively discredited.',
+        ],
+      },
+      {
+        heading: 'Argument, Disagreement, and Communication',
+        body: [
+          'Argument: a structured attempt to support a conclusion with reasons. Premise: a supporting claim in an argument. Conclusion: the claim being supported. Validity: a logical relation in which the conclusion follows if the premises are true. Soundness: validity plus true premises. Induction: reasoning from observed cases to broader patterns.',
+          'Abduction: inference to the best explanation. Steelmanning: reconstructing an opposing view in its strongest plausible form. Charitable Interpretation: reading an argument in a way that avoids needless distortion. Burden of Proof: the responsibility to provide support for a claim. Extraordinary Claim: a claim that would strongly disrupt background expectations and therefore needs unusually strong evidence.',
+          'Crux: a point that would actually change one’s view if resolved. Double Crux: a shared disagreement point that would move both parties. Update Condition: a specified observation or argument that would raise or lower credence. Disagreement: evidence that another mind, with its own information and biases, assigns a different credence.',
+        ],
+      },
+      {
+        heading: 'Institutions, Science, and Public Reasoning',
+        body: [
+          'Social Epistemology: the study of how knowledge and belief are shaped by testimony, institutions, trust, expertise, and group processes. Expert Deference: rational reliance on people with better evidence, skill, or domain knowledge. Expert Overreach: confidence outside the expert’s competence or evidential base. Peer Review: institutional filtering by qualified critics before publication.',
+          'Replication: repeating a study or analysis to test whether a result holds. Incentive Gradient: the way rewards and punishments shape what people notice, report, or suppress. Institutional Credencing: the process by which organizations assign confidence, act on information, and manage dissent. Epistemic Governance: structures that make collective belief more accurate, accountable, and updateable.',
+          'Transparency: making evidence, methods, and uncertainty visible. Accountability: exposing claims and decisions to correction. Prediction Record: a track record of forecasted credences and outcomes. Calibration Curve: a comparison between confidence levels and actual frequencies. Public Reason: argument offered in terms that others can inspect without accepting private revelation or protected authority.',
         ],
       },
       {
         heading: 'How to Use It',
         body: [
-          'The glossary should be used as a quick reference while reading the longer pages. If a term becomes unclear, return to the glossary, then follow the related link to the full concept article.',
+          'Use this glossary as a quick reference while reading the longer pages. If a term becomes unclear, return here, then follow the related link to the full concept article or case study.',
+          'The terms are grouped by function rather than alphabetically because Credencing is a model of relationships. Evidence, credence, bias, argument, and institutions are not isolated vocabulary islands; they interact in actual judgment.',
         ],
       },
     ],
@@ -3090,18 +3127,70 @@ export const libraryPages: ContentPage[] = [
         heading: 'Is This Just Bayesianism?',
         body: [
           'No. The framework is Bayesian-friendly, but it adds a diagnostic distinction between perceiving evidence and assigning credence. Bayesian tools help with Deep Rationality; they do not guarantee Core Rationality.',
+          'A person may know how evidence should update a prior and still refuse the resulting posterior because the conclusion is threatening. Credencing therefore treats Bayesian updating as necessary but not sufficient for rational integrity.',
         ],
       },
       {
         heading: 'Is Core Irrationality a Moral Accusation?',
         body: [
           'Not automatically. It is a structural diagnosis of an EP-CA gap. Moral assessment depends on context, access, incentives, trauma, social pressure, and whether the agent is willing to repair the gap.',
+          'The model is intentionally diagnostic before it is accusatory. It asks where the gap opens before deciding whether the gap reflects dishonesty, fear, social pressure, ignorance, confusion, or a mixed case.',
         ],
       },
       {
         heading: 'Does the Model Claim Numerical Precision?',
         body: [
           'No. The numbers are often interpretive approximations. Their purpose is to make relationships visible. The model asks where gaps open and what would repair them, not whether every human belief can be measured exactly.',
+          'The sliders are conceptual instruments. They are useful when they make hidden differences discussable: evidence versus perception, perception versus final confidence, and skill deficit versus motivated override.',
+        ],
+      },
+      {
+        heading: 'What Is the Difference Between Being Wrong and Being Irrational?',
+        body: [
+          'A person can be wrong because the evidence available to them was misleading, incomplete, or difficult to interpret. That is often a Deep Rationality or information-access problem, not a Core Rationality problem.',
+          'Irrationality becomes more serious when a person has enough access to the evidential situation, or at least recognizes the direction of the evidence, but assigns confidence in a way that protects identity, comfort, tribe, or prior commitment.',
+        ],
+      },
+      {
+        heading: 'Why Not Just Talk About Belief Instead of Credence?',
+        body: [
+          'Ordinary belief language is too coarse. “I believe it” can mean a mild lean, a practical acceptance, a strong conviction, or near certainty. Credence makes the strength of belief visible.',
+          'Many mistakes happen when people act as if a 0.55 confidence were a 0.95 confidence. Credencing keeps those states apart so disagreement and decision-making can become more precise.',
+        ],
+      },
+      {
+        heading: 'Does Uncertainty Mean Weakness?',
+        body: [
+          'No. Uncertainty can be a sign of epistemic strength when it accurately reflects limited evidence, poor measurement, live alternatives, or high stakes. The failure is not uncertainty; the failure is pretending to know more than one knows.',
+          'Warranted uncertainty is especially important in public reasoning because it protects inquiry from false closure. It lets a person say, “I have enough evidence to lean, but not enough to declare victory.”',
+        ],
+      },
+      {
+        heading: 'How Does Credencing Treat Faith?',
+        body: [
+          'Credencing criticizes faith when faith functions as belief beyond, against, or insulated from evidence. The problem is methodological: protected belief blocks updateability.',
+          'The model is not limited to religious faith. Any ideology, institution, identity, or emotional commitment can create faith-like protection if it makes some conclusions immune to ordinary evidential pressure.',
+        ],
+      },
+      {
+        heading: 'Can Experts Be Irrational?',
+        body: [
+          'Yes. Expertise improves the capacity to process evidence, but it does not guarantee willingness to accept what the processed evidence implies. A biased expert may have high Deep Rationality and weak Core Rationality.',
+          'This is why the model separates skill from integrity. Intelligence can clarify evidence, but it can also become a better defense attorney for a preferred conclusion.',
+        ],
+      },
+      {
+        heading: 'How Should I Use the Interactive Model?',
+        body: [
+          'Use the model to ask where a belief state is going wrong. If Objective Evidence and Perceived Evidence diverge, look for missing information, poor statistics, framing, propaganda, or weak methods. If Perceived Evidence and Assigned Credence diverge, look for motivation, fear, identity, incentives, or social cost.',
+          'The model is most useful when comparing cases that look similar from the outside. Two people may both assign 0.90 confidence, but one may be tracking strong evidence while the other is inflating weak evidence into certainty.',
+        ],
+      },
+      {
+        heading: 'What Would Count as Progress?',
+        body: [
+          'Progress is not perfect certainty. Progress is better calibration: confidence levels becoming more proportionate to evidence, update conditions becoming clearer, and people becoming more willing to distinguish what they know from what they want.',
+          'At the institutional level, progress means systems that notice reality earlier, punish correction less, preserve dissent, and make confidence claims accountable to records, methods, and outcomes.',
         ],
       },
     ],
@@ -3109,6 +3198,7 @@ export const libraryPages: ContentPage[] = [
       'The framework is Bayesian-friendly but broader.',
       'Core Irrationality is diagnostic before it is moralized.',
       'The model uses numbers to clarify relationships, not to fake precision.',
+      'The FAQ clarifies how Credencing treats uncertainty, expertise, faith, disagreement, and progress.',
     ],
     [
       pagePath('/start-here', 'What Is Credencing?'),
