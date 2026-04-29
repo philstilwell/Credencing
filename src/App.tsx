@@ -645,7 +645,7 @@ export default function App() {
 
 function useRouteMetadata(route: string, group?: PageGroup, page?: ContentPage, utilityPage?: UtilityFeaturePage) {
   useEffect(() => {
-    const title = page ? `${page.title} | Credencing` : utilityPage ? `${utilityPage.title} | Credencing` : group ? `${group.title} | Credencing` : route === '/search' ? 'Search | Credencing' : route === '/site-map' ? 'Site Map | Credencing' : 'Credencing: Core & Deep Rationality';
+    const title = page ? `${page.title} | Credencing` : utilityPage ? `${utilityPage.title} | Credencing` : group ? `${group.title} | Credencing` : route === '/search' ? 'Search | Credencing' : route === '/site-map' ? 'Site Map | Credencing' : 'Credencing: Visualizing & Minimizing Irrationality';
     const description = page?.summary ?? utilityPage?.summary ?? group?.summary ?? 'A public framework and interactive model for mapping evidence, perception, confidence, and rational integrity.';
     document.title = title;
     const meta = document.querySelector('meta[name="description"]');
@@ -687,7 +687,7 @@ function SiteHeader({ route, onNavigate }: { route: string; onNavigate: (path: s
         <button onClick={() => onNavigate('/')} className="text-left">
           <p className="text-[10px] text-stone-400 font-mono uppercase tracking-widest mb-2">Credencing.com</p>
           <h1 className="text-4xl md:text-5xl font-light tracking-tight text-white leading-none">
-            Credencing: <span className="opacity-40">Visualizing Irrationality</span>
+            Credencing: <span className="opacity-40">Visualizing & Minimizing Irrationality</span>
           </h1>
         </button>
         <div className="glass-panel p-1 border border-white/5 rounded-full flex flex-wrap gap-1 w-fit">
