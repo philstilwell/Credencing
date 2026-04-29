@@ -34,6 +34,7 @@ type UtilityFeaturePage = {
   title: string;
   path: string;
   summary: string;
+  kind?: 'topic-index' | 'tag-index' | 'standard';
   sections: {
     heading: string;
     body: string[];
@@ -61,6 +62,7 @@ const utilityFeaturePages: UtilityFeaturePage[] = [
   {
     title: 'Topic Index',
     path: '/utility/topic-index',
+    kind: 'topic-index',
     summary: 'The topic index is the conceptual browsing layer inside the search page.',
     sections: [
       {
@@ -90,6 +92,7 @@ const utilityFeaturePages: UtilityFeaturePage[] = [
   {
     title: 'Tag Index',
     path: '/utility/tag-index',
+    kind: 'tag-index',
     summary: 'The tag index groups the site by recurring epistemic roles: evidence, credence, rationality, bias, applications, and teaching use.',
     sections: [
       {
@@ -112,7 +115,7 @@ const utilityFeaturePages: UtilityFeaturePage[] = [
     ],
   },
   {
-    title: 'Related Pages Engine',
+    title: 'Related Pages',
     path: '/utility/related-pages-engine',
     summary: 'The related-pages panel appears on article pages and keeps the conceptual web connected.',
     sections: [
@@ -136,7 +139,7 @@ const utilityFeaturePages: UtilityFeaturePage[] = [
     ],
   },
   {
-    title: 'Breadcrumbs',
+    title: 'Navigation Trail',
     path: '/utility/breadcrumbs',
     summary: 'Breadcrumbs show where an article sits inside the larger site structure.',
     sections: [
@@ -498,7 +501,13 @@ export default function App() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.2 }}
             >
-              <UtilityFeatureArticle feature={activeUtilityPage} onNavigate={setRoute} />
+              {activeUtilityPage.kind === 'topic-index' ? (
+                <TopicIndexArticle feature={activeUtilityPage} onNavigate={setRoute} />
+              ) : activeUtilityPage.kind === 'tag-index' ? (
+                <TagIndexArticle feature={activeUtilityPage} onNavigate={setRoute} />
+              ) : (
+                <UtilityFeatureArticle feature={activeUtilityPage} onNavigate={setRoute} />
+              )}
             </motion.main>
           )}
 
@@ -2450,14 +2459,131 @@ function UtilityFeatureArticle({ feature, onNavigate }: { feature: UtilityFeatur
   );
 }
 
+function TopicIndexArticle({ feature, onNavigate }: { feature: UtilityFeaturePage; onNavigate: (path: string) => void }) {
+  const childTitlesByGroup = useMemo(
+    () => Object.fromEntries(
+      pageGroups.map((group) => [group.path, new Set(Object.values(nestedPageTitles[group.path] ?? {}).flat())]),
+    ) as Record<string, Set<string>>,
+    [],
+  );
+
+  return (
+    <article className="space-y-8">
+      <header className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
+        <button onClick={() => onNavigate('/site-map')} className="text-[10px] uppercase tracking-[0.25em] text-amber-300 font-bold hover:text-amber-200">
+          Utility Layer / Site Map
+        </button>
+        <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">{feature.title}</h2>
+        <p className="text-stone-300 max-w-3xl text-base md:text-lg leading-relaxed">
+          Browse Credencing by section and page title. This is the fastest way to see the shape of the whole project before deciding where to read next.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        {pageGroups.map((group) => (
+          <section key={group.path} className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
+            <button onClick={() => onNavigate(group.path)} className="text-left group">
+              <span className="block text-[9px] uppercase tracking-widest text-amber-400 mb-2">{group.pages.length} pages</span>
+              <h3 className="text-xl text-white font-light group-hover:text-amber-200 transition-colors">{group.title}</h3>
+            </button>
+            <p className="text-stone-400 text-xs leading-relaxed">{group.summary}</p>
+            <div className="space-y-2 pt-2">
+              {group.pages
+                .filter((pageTitle) => !childTitlesByGroup[group.path]?.has(pageTitle))
+                .map((pageTitle) => (
+                  <div key={pageTitle} className="space-y-1">
+                    <button
+                      onClick={() => onNavigate(pagePath(group.path, pageTitle))}
+                      className="text-left text-xs text-stone-300 hover:text-amber-300 transition-colors"
+                    >
+                      {pageTitle}
+                    </button>
+                    {nestedPageTitles[group.path]?.[pageTitle] && (
+                      <div className="ml-4 border-l border-amber-500/20 pl-3 space-y-1">
+                        {nestedPageTitles[group.path][pageTitle].map((childTitle) => (
+                          <button
+                            key={childTitle}
+                            onClick={() => onNavigate(pagePath(group.path, childTitle))}
+                            className="block text-left text-[11px] text-stone-500 hover:text-amber-300 transition-colors"
+                          >
+                            {childTitle}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function TagIndexArticle({ feature, onNavigate }: { feature: UtilityFeaturePage; onNavigate: (path: string) => void }) {
+  const searchIndex = useMemo(() => buildSearchIndex(), []);
+  const activeTags = tagCatalog
+    .map((tag) => ({
+      tag,
+      pages: searchIndex.filter((entry) => entry.tags.includes(tag.id)),
+    }))
+    .filter((entry) => entry.pages.length > 0);
+
+  return (
+    <article className="space-y-8">
+      <header className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
+        <button onClick={() => onNavigate('/site-map')} className="text-[10px] uppercase tracking-[0.25em] text-amber-300 font-bold hover:text-amber-200">
+          Utility Layer / Site Map
+        </button>
+        <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">{feature.title}</h2>
+        <p className="text-stone-300 max-w-3xl text-base md:text-lg leading-relaxed">
+          Browse by recurring concepts instead of site sections. Each tag shows how many pages it touches and gives a few direct entry points.
+        </p>
+        <button
+          onClick={() => onNavigate('/search')}
+          className="w-full sm:w-fit px-5 py-3 bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/50 rounded-xl text-xs font-bold tracking-widest transition-all text-amber-200 flex items-center justify-center gap-3 uppercase"
+        >
+          Open Search <Search size={14} />
+        </button>
+      </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {activeTags.map(({ tag, pages }) => (
+          <section key={tag.id} className="glass-panel p-5 bg-white/[0.015] border-white/5 space-y-4">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="text-lg text-white font-light">{tag.label}</h3>
+                <p className="text-stone-500 text-[11px] leading-relaxed mt-2">{tag.description}</p>
+              </div>
+              <span className="rounded-full border border-amber-500/30 px-2 py-1 text-[10px] font-mono text-amber-300">{pages.length}</span>
+            </div>
+            <div className="space-y-2">
+              {pages.slice(0, 6).map((entry) => (
+                <button
+                  key={entry.page.path}
+                  onClick={() => onNavigate(entry.page.path)}
+                  className="block w-full rounded-lg border border-white/5 bg-black/10 p-3 text-left hover:border-amber-500/30 transition-colors"
+                >
+                  <span className="block text-xs text-stone-200">{entry.page.title}</span>
+                  <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">{entry.page.groupTitle}</span>
+                </button>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
   const utilityItems = [
-    { label: 'Search', detail: 'Full corpus search', path: '/search' },
-    { label: 'Topic Index', detail: 'Search page filters', path: '/utility/topic-index' },
-    { label: 'Tag Index', detail: 'Expanded tag browser', path: '/utility/tag-index' },
-    { label: 'Related Pages Engine', detail: 'Active on article pages', path: '/utility/related-pages-engine' },
-    { label: 'Breadcrumbs', detail: 'Active on article pages', path: '/utility/breadcrumbs' },
-    { label: 'Contact / Updates', detail: 'Feedback channel', path: pagePath('/about', 'Contact') },
+    { label: 'Search', detail: 'Find a concept or page', path: '/search' },
+    { label: 'Topic Index', detail: 'Browse sections and pages', path: '/utility/topic-index' },
+    { label: 'Tag Index', detail: 'Browse concept tags', path: '/utility/tag-index' },
+    { label: 'Related Pages', detail: 'Follow connected ideas', path: '/utility/related-pages-engine' },
+    { label: 'Contact / Updates', detail: 'Send feedback or corrections', path: pagePath('/about', 'Contact') },
   ];
   const isDraftedPage = (path: string) => contentPages.some((page) => page.path === path);
 
@@ -2520,7 +2646,7 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
       </div>
       <div className="glass-panel p-6 bg-white/[0.015] border-white/5">
         <h3 className="text-white font-light text-xl mb-4">Utility Layer</h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-stone-400">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs text-stone-400">
           {utilityItems.map((item) => (
             <button
               key={item.label}
@@ -2544,11 +2670,17 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
 
 function SiteFooter({ onNavigate }: { onNavigate: (path: string) => void }) {
   return (
-    <footer className="pt-16 pb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-[10px] uppercase tracking-widest opacity-50 font-mono">
-      <span>Credencing Public Web</span>
-      <div className="flex flex-wrap gap-5">
-        <button onClick={() => onNavigate(pagePath('/about', 'Project Overview'))}>About</button>
-        <button onClick={() => onNavigate('/site-map')}>Site Map</button>
+    <footer className="pt-16 pb-4 space-y-4 text-[10px] uppercase tracking-widest opacity-60 font-mono">
+      <div className="h-px bg-white/10"></div>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <span>Credencing Public Web</span>
+        <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-3">
+          <button onClick={() => onNavigate('/')}>Home</button>
+          <button onClick={() => onNavigate('/search')}>Search</button>
+          <button onClick={() => onNavigate('/site-map')}>Site Map</button>
+          <button onClick={() => onNavigate(pagePath('/about', 'Author'))}>Author</button>
+          <button onClick={() => onNavigate(pagePath('/about', 'Contact'))}>Contact</button>
+        </nav>
         <span>2026 Epistemic Protocol</span>
       </div>
     </footer>
