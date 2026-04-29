@@ -853,7 +853,7 @@ function BayesTheoremPanel({ page }: { page: ContentPage }) {
     <section className="glass-panel p-5 md:p-6 bg-white/[0.02] border-amber-500/20 space-y-4">
       <div className="overflow-hidden rounded-2xl border border-amber-500/20 bg-black/20">
         <img
-          src={`${basePath}images/bayes-theorem.svg`}
+          src={`${basePath}images/bayes-theorem-formula.svg`}
           alt="Bayes theorem: P(H given E) equals P(E given H) times P(H), divided by P(E)."
           className="w-full h-auto"
         />
