@@ -138,6 +138,18 @@ const researchPapers = [
 
 const basePath = import.meta.env.BASE_URL;
 
+const nestedPageTitles: Record<string, Record<string, string[]>> = {
+  '/library': {
+    Essays: [
+      'Evidence Mapping Is a Practice, Not a Slogan',
+      'Labels Are Not Credences',
+      'Faith, Trust, and Evidence-Weighted Confidence',
+      'Doubt as the Complement of Credence',
+      'Coherence Is Not Enough',
+    ],
+  },
+};
+
 type ScenarioState = EpistemicData & {
   name: string;
   claim: string;
@@ -720,12 +732,33 @@ function SectionHero({ group, kicker }: { group: PageGroup; kicker?: string }) {
 }
 
 function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (path: string) => void }) {
+  const nestedChildren = nestedPageTitles[group.path] ?? {};
+  const childTitles = new Set(Object.values(nestedChildren).flat());
+  const topLevelPages = group.pages.filter((page) => !childTitles.has(page));
+
   return (
     <section className="space-y-5">
       <h3 className="text-xl font-light text-white">Pages in this section</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {group.pages.map((page, index) => (
-          <PageTeaser key={page} group={group} page={page} index={index} onNavigate={onNavigate} />
+        {topLevelPages.map((page, index) => (
+          <div key={page} className="space-y-2">
+            <PageTeaser group={group} page={page} index={index} onNavigate={onNavigate} />
+            {nestedChildren[page] && (
+              <div className="ml-5 border-l border-amber-500/20 pl-4 space-y-2">
+                <p className="text-[9px] uppercase tracking-[0.22em] text-stone-500 font-bold">Essays in this collection</p>
+                {nestedChildren[page].map((childPage) => (
+                  <button
+                    key={childPage}
+                    onClick={() => onNavigate(pagePath(group.path, childPage))}
+                    className="w-full text-left p-3 rounded-lg border border-white/5 bg-black/10 hover:border-amber-500/30 transition-colors"
+                  >
+                    <span className="block text-xs text-amber-100">{childPage}</span>
+                    <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">Essay</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </section>
@@ -881,16 +914,33 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
             <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
               <h3 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Section Sequence</h3>
               <div className="space-y-2">
-                {group.pages.map((pageTitle) => {
+                {group.pages.filter((pageTitle) => !new Set(Object.values(nestedPageTitles[group.path] ?? {}).flat()).has(pageTitle)).map((pageTitle) => {
                   const path = pagePath(group.path, pageTitle);
                   return (
-                    <button
-                      key={pageTitle}
-                      onClick={() => onNavigate(path)}
-                      className={`w-full text-left text-xs p-2 rounded border transition-colors ${path === page.path ? 'text-amber-300 border-amber-500/30 bg-amber-500/10' : 'text-stone-400 border-transparent hover:border-white/10 hover:bg-white/5'}`}
-                    >
-                      {pageTitle}
-                    </button>
+                    <div key={pageTitle} className="space-y-1">
+                      <button
+                        onClick={() => onNavigate(path)}
+                        className={`w-full text-left text-xs p-2 rounded border transition-colors ${path === page.path ? 'text-amber-300 border-amber-500/30 bg-amber-500/10' : 'text-stone-400 border-transparent hover:border-white/10 hover:bg-white/5'}`}
+                      >
+                        {pageTitle}
+                      </button>
+                      {nestedPageTitles[group.path]?.[pageTitle] && (
+                        <div className="ml-3 border-l border-amber-500/20 pl-2 space-y-1">
+                          {nestedPageTitles[group.path][pageTitle].map((childTitle) => {
+                            const childPath = pagePath(group.path, childTitle);
+                            return (
+                              <button
+                                key={childTitle}
+                                onClick={() => onNavigate(childPath)}
+                                className={`w-full text-left text-[11px] p-2 rounded border transition-colors ${childPath === page.path ? 'text-amber-200 border-amber-500/30 bg-amber-500/10' : 'text-stone-500 border-transparent hover:border-white/10 hover:bg-white/5'}`}
+                              >
+                                {childTitle}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
                   );
                 })}
               </div>
@@ -2216,8 +2266,9 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
           <div key={group.path} className="glass-panel p-6 bg-white/[0.015] border-white/5">
             <h3 className="text-white font-light text-xl mb-4">{group.title}</h3>
             <ul className="space-y-2">
-              {group.pages.map((page) => (
-                <li key={page} className="text-stone-400 text-xs flex items-start gap-2">
+              {group.pages.filter((page) => !new Set(Object.values(nestedPageTitles[group.path] ?? {}).flat()).has(page)).map((page) => (
+                <li key={page} className="text-stone-400 text-xs">
+                  <div className="flex items-start gap-2">
                   <span className="text-amber-500/70 mt-0.5">|</span>
                   <button
                     onClick={() => onNavigate(pagePath(group.path, page))}
@@ -2225,6 +2276,21 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
                   >
                     {page}
                   </button>
+                  </div>
+                  {nestedPageTitles[group.path]?.[page] && (
+                    <ul className="ml-5 mt-2 space-y-1 border-l border-amber-500/20 pl-3">
+                      {nestedPageTitles[group.path][page].map((childPage) => (
+                        <li key={childPage}>
+                          <button
+                            onClick={() => onNavigate(pagePath(group.path, childPage))}
+                            className="text-left text-stone-500 hover:text-amber-300 transition-colors"
+                          >
+                            {childPage}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ul>

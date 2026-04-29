@@ -3953,35 +3953,20 @@ export const libraryPages: ContentPage[] = [
   ),
   libraryPage(
     'Essays',
-    'Essays translate the framework into accessible reflections, arguments, examples, and public-facing explanations.',
+    'The Essays page is a repository of Phil Stilwell essays and adapted essay material directly related to Credencing, calibration, evidence, doubt, trust, and rational integrity.',
     [
       {
-        heading: 'Role of Essays',
+        heading: 'About This Repository',
         body: [
-          'Essays are where the project can breathe. They do not need the compression of glossary entries or the apparatus of formal papers. They can explore examples, objections, analogies, and lived cases of credencing failure and repair.',
-          'An essay can begin with an ordinary scene: a person defending a political claim, a committee refusing to update, a teacher grading confidence, a friend mistaking loyalty for evidence, or a public expert sliding from uncertainty into performance. The essay then traces which variable moved, which variable refused to move, and why that matters.',
+          'This section gathers essays that connect directly to the Credencing project. Some began as Free of Faith essays and have been rewritten here in a less polemical, more general epistemological register. The focus is not essay-writing as an activity; the focus is a curated body of essays about evidence-responsive confidence.',
+          'The essays are meant to be read as applied extensions of the model. Each one takes a recurring epistemic problem and translates it into the language of credence, calibration, updateability, evidence perception, and belief integrity.',
         ],
       },
       {
-        heading: 'Essay Series',
+        heading: 'Current Essays',
         body: [
-          'Several essay series fit the site. “The Intellect as Bodyguard” would examine intelligence used to protect identity rather than track evidence. “The Ethics of Changing One’s Mind” would treat updating as a public virtue, not a private embarrassment.',
-          '“Why Certainty Feels Good” would connect confidence to anxiety, status, group belonging, and decision pressure. “Institutions That Punish Updates” would examine workplaces, parties, churches, agencies, and schools that make revision costly even when evidence changes.',
-          '“Honest Uncertainty in Public” would ask why calibrated doubt is so hard to perform in environments that reward slogans, certainty, and team loyalty.',
-        ],
-      },
-      {
-        heading: 'Essay Method',
-        body: [
-          'Each essay should make one diagnostic move clear. It should name the relevant evidence, describe how the evidence is perceived, identify the assigned confidence, and ask whether any gap is best explained by ignorance, confusion, pressure, motivated reasoning, or deliberate evasion.',
-          'The strongest essays will avoid easy superiority. Credencing is most useful when it lets readers see their own failure modes, not merely diagnose opponents.',
-        ],
-      },
-      {
-        heading: 'Current Adapted Essays',
-        body: [
-          'The first five essays in this library adapt material from Free of Faith into a less polemical, more general Credencing register. Each preserves the epistemic insight while removing unnecessary adversarial framing.',
-          'The adapted essays cover evidence-mapping as a practice, label compression, the difference between faith and evidence-weighted trust, doubt as the rational complement of credence, and the limits of closed-loop coherence.',
+          'The current collection contains five adapted essays. They examine evidence-mapping as a practice, the limits of categorical labels, the distinction between faith and evidence-weighted trust, doubt as a rational complement of credence, and the limits of coherence as a truth-tracking standard.',
+          'These essays are listed as a subordinate collection under this Essays parent page in the Library navigation. They should be read as a connected mini-sequence rather than as unrelated standalone posts.',
         ],
         bullets: [
           'Evidence Mapping Is a Practice, Not a Slogan',
@@ -3992,21 +3977,35 @@ export const libraryPages: ContentPage[] = [
         ],
       },
       {
-        heading: 'Connection to the Site',
+        heading: 'How These Essays Fit Credencing',
         body: [
-          'Each essay links back to the conceptual pages it uses. The site works best when essays are not isolated posts but entrances into the broader web: glossary terms, archetypes, case studies, skills, and applications.',
+          'Each essay clarifies one pressure point in the Credencing model. Evidence mapping concerns whether Objective Evidence (E0), Perceived Evidence (EP), and Assigned Credence (CA) stay answerable to one another. Label compression concerns how binary or tribal categories hide actual confidence levels. The faith/trust essay clarifies when confidence remains evidence-sensitive and when it becomes protected commitment.',
+          'The essay on doubt explains why uncertainty is not automatically a defect. The essay on coherence explains why internal consistency is valuable but insufficient unless beliefs remain vulnerable to external correction.',
+        ],
+      },
+      {
+        heading: 'Reading Order',
+        body: [
+          'Start with “Evidence Mapping Is a Practice, Not a Slogan,” because it gives the broadest criterion: confidence should move when evidence changes. Then read “Labels Are Not Credences,” which explains why social labels are too low-resolution for serious epistemic diagnosis.',
+          'Next read “Faith, Trust, and Evidence-Weighted Confidence” and “Doubt as the Complement of Credence” as a pair. Together they separate rational trust from protected commitment and explain why warranted uncertainty can be a strength. Close with “Coherence Is Not Enough,” which warns that internally satisfying systems can still fail to track reality.',
+        ],
+      },
+      {
+        heading: 'Editorial Note',
+        body: [
+          'The versions here are adapted for Credencing. They preserve the core epistemic arguments while reducing direct polemic, broadening the examples, and linking the essays more tightly to the site’s central model.',
         ],
       },
     ],
     [
-      'Essays make the framework vivid and public-facing.',
-      'They should explore examples and objections.',
-      'Every essay should link back into the conceptual web.',
+      'This is a repository of Credencing-related essays, not a guide to writing essays.',
+      'The five current essays form a subordinate collection under the Essays parent page.',
+      'Each essay applies the model to evidence, labels, trust, doubt, or coherence.',
     ],
     [
-      pagePath('/library', 'Glossary'),
-      pagePath('/case-studies', 'Motivated Reasoning'),
-      pagePath('/about', 'Project Overview'),
+      pagePath('/library', 'Evidence Mapping Is a Practice, Not a Slogan'),
+      pagePath('/library', 'Labels Are Not Credences'),
+      pagePath('/library', 'Faith, Trust, and Evidence-Weighted Confidence'),
     ],
   ),
   libraryPage(
