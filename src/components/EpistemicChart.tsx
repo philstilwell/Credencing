@@ -89,11 +89,11 @@ const EpistemicChart = memo(function EpistemicChart({ data }: EpistemicChartProp
         {/* Labels */}
         <text x={cx - R} y={cy + 15} className="fill-stone-500 text-[10px] font-mono" textAnchor="middle">0%</text>
         <text x={cx + R} y={cy + 15} className="fill-stone-500 text-[10px] font-mono" textAnchor="middle">100%</text>
-        <text x={cx} y={cy - 10} className="fill-amber-100/80 text-[8px] font-mono uppercase tracking-widest" textAnchor="middle">
+        <text x={cx} y={cy - 18} className="fill-amber-100/80 text-[8px] font-mono uppercase tracking-widest" textAnchor="middle">
           Epistemic gradient: assigned credence
         </text>
-        <text x={cx} y={cy + 28} className="fill-stone-500 text-[7px] font-mono uppercase tracking-[0.18em]" textAnchor="middle">
-          left to right shows the confidence scale used by the agent
+        <text x={cx} y={cy - 6} className="fill-stone-500 text-[7px] font-mono uppercase tracking-[0.18em]" textAnchor="middle">
+          0-100% confidence scale used by the epistemic agent
         </text>
         <text x={cx + 12} y={cy - R - 6} className="fill-amber-300 text-[8px] font-mono uppercase tracking-widest" textAnchor="start">SD depth</text>
         {depthMarkers.map((marker) => (
