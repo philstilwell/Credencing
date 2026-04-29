@@ -30,6 +30,21 @@ import { contentPages, featuredPaths, pageGroups, pagePath, PageGroup, ContentPa
 
 type Tab = 'intro' | 'model' | 'explanation' | 'formalization';
 
+type UtilityFeaturePage = {
+  title: string;
+  path: string;
+  summary: string;
+  sections: {
+    heading: string;
+    body: string[];
+    bullets?: string[];
+  }[];
+  actions: {
+    label: string;
+    path: string;
+  }[];
+};
+
 const navItems = [
   { label: 'Home', path: '/', icon: <Home size={14} /> },
   { label: 'Start', path: '/start-here', icon: <Compass size={14} /> },
@@ -40,6 +55,110 @@ const navItems = [
   { label: 'Library', path: '/library', icon: <Library size={14} /> },
   { label: 'Search', path: '/search', icon: <Search size={14} /> },
   { label: 'Map', path: '/site-map', icon: <Map size={14} /> },
+];
+
+const utilityFeaturePages: UtilityFeaturePage[] = [
+  {
+    title: 'Topic Index',
+    path: '/utility/topic-index',
+    summary: 'The topic index is the conceptual browsing layer inside the search page.',
+    sections: [
+      {
+        heading: 'What It Does',
+        body: [
+          'The topic index helps readers find pages by conceptual role rather than by exact title. A reader who is thinking about evidence, calibration, uncertainty, Bayesian updating, motivated reasoning, or AI alignment can start with that topic and then move into the pages most closely connected to it.',
+          'This is especially useful because Credencing is a web of related concepts rather than a single linear essay. Many pages belong to more than one topic: Bayes theorem belongs to probability, evidence, scientific method, and calibration; Core Irrationality belongs to belief integrity, motivated reasoning, and update resistance.',
+        ],
+      },
+      {
+        heading: 'How To Use It',
+        body: [
+          'Open the search page, enter a broad topic, and then use the visible result cards to move into the relevant section. For a quick start, try terms such as evidence, credence, prior, likelihood, posterior, uncertainty, overconfidence, or motivated reasoning.',
+        ],
+        bullets: [
+          'Use broad concepts when you are exploring.',
+          'Use exact terms when you are trying to relocate a page.',
+          'Use the tag browser below the search box when you want a curated conceptual path.',
+        ],
+      },
+    ],
+    actions: [
+      { label: 'Open Search and Topic Index', path: '/search' },
+      { label: 'View Site Map', path: '/site-map' },
+    ],
+  },
+  {
+    title: 'Tag Index',
+    path: '/utility/tag-index',
+    summary: 'The tag index groups the site by recurring epistemic roles: evidence, credence, rationality, bias, applications, and teaching use.',
+    sections: [
+      {
+        heading: 'What It Does',
+        body: [
+          'Tags are generated from the same page corpus used by search. They are not decorative labels; they are a second way of reading the site. Instead of asking, "What section is this page in?" the tag index asks, "What epistemic function is this page serving?"',
+          'This lets a reader follow a theme across sections. For example, calibration appears in core concepts, skills, case studies, applications, discussion groups, and essays. The tag index keeps that cross-sectional pattern visible.',
+        ],
+      },
+      {
+        heading: 'Current Tag Families',
+        body: [
+          'The active tag families include evidence, credence, Bayesian updating, Bayes theorem, calibration, uncertainty, Core Rationality, Deep Rationality, diagnosis, archetypes, motivated reasoning, cases, applications, skills, teaching, library, and research.',
+        ],
+      },
+    ],
+    actions: [
+      { label: 'Browse Active Tags', path: '/search' },
+      { label: 'Read the Glossary', path: pagePath('/library', 'Glossary') },
+    ],
+  },
+  {
+    title: 'Related Pages Engine',
+    path: '/utility/related-pages-engine',
+    summary: 'The related-pages panel appears on article pages and keeps the conceptual web connected.',
+    sections: [
+      {
+        heading: 'What It Does',
+        body: [
+          'Most article pages include a Related panel in the right column. That panel points to neighboring concepts, applications, cases, or skills that clarify the current page. It prevents the site from becoming a pile of isolated definitions.',
+          'The related-pages engine is intentionally selective. It does not try to show every possible connection. It shows a few high-value next steps so a reader can move from a concept to an example, from an example to a repair skill, or from a skill back to the model.',
+        ],
+      },
+      {
+        heading: 'Why It Matters',
+        body: [
+          'Credencing depends on seeing how concepts interlock. Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), Calculation Error (DE), and Core Irrationality (IC) are clearer when they are read as a system. Related links make that system navigable.',
+        ],
+      },
+    ],
+    actions: [
+      { label: 'Open a Sample Article', path: pagePath('/start-here', 'What Is Credencing?') },
+      { label: 'Open Core Ideas', path: '/core-ideas' },
+    ],
+  },
+  {
+    title: 'Breadcrumbs',
+    path: '/utility/breadcrumbs',
+    summary: 'Breadcrumbs show where an article sits inside the larger site structure.',
+    sections: [
+      {
+        heading: 'What They Do',
+        body: [
+          'Breadcrumbs appear at the top of article pages. They show the section and current page so readers can move back up the structure without losing their place.',
+          'This matters because the site is intentionally expansive. A reader may arrive from search, a related link, or an external page. Breadcrumbs make the local context visible immediately.',
+        ],
+      },
+      {
+        heading: 'How To Check Them',
+        body: [
+          'Open any drafted article page and look above the title. You should see the section name and the current page name. The section name is clickable and returns to the section overview.',
+        ],
+      },
+    ],
+    actions: [
+      { label: 'Open a Sample Article', path: pagePath('/bayes-theorem', 'The Formula') },
+      { label: 'View Site Map', path: '/site-map' },
+    ],
+  },
 ];
 
 const glossaryTerms = [
@@ -288,7 +407,8 @@ export default function App() {
   const [route, setRoute] = useHashRoute();
   const activeGroup = pageGroups.find((group) => group.path === route);
   const activePage = contentPages.find((page) => page.path === route);
-  useRouteMetadata(route, activeGroup, activePage);
+  const activeUtilityPage = utilityFeaturePages.find((page) => page.path === route);
+  useRouteMetadata(route, activeGroup, activePage, activeUtilityPage);
 
   return (
     <div className="min-h-screen p-4 md:p-8 relative overflow-hidden">
@@ -370,6 +490,18 @@ export default function App() {
             </motion.main>
           )}
 
+          {activeUtilityPage && (
+            <motion.main
+              key={activeUtilityPage.path}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+            >
+              <UtilityFeatureArticle feature={activeUtilityPage} onNavigate={setRoute} />
+            </motion.main>
+          )}
+
           {activePage && (
             <motion.main
               key={activePage.path}
@@ -382,7 +514,7 @@ export default function App() {
             </motion.main>
           )}
 
-          {!activeGroup && !activePage && route !== '/' && route !== '/site-map' && route !== '/search' && (
+          {!activeGroup && !activePage && !activeUtilityPage && route !== '/' && route !== '/site-map' && route !== '/search' && (
             <motion.main
               key="not-found"
               initial={{ opacity: 0, y: 12 }}
@@ -408,16 +540,16 @@ export default function App() {
   );
 }
 
-function useRouteMetadata(route: string, group?: PageGroup, page?: ContentPage) {
+function useRouteMetadata(route: string, group?: PageGroup, page?: ContentPage, utilityPage?: UtilityFeaturePage) {
   useEffect(() => {
-    const title = page ? `${page.title} | Credencing` : group ? `${group.title} | Credencing` : route === '/search' ? 'Search | Credencing' : route === '/site-map' ? 'Site Map | Credencing' : 'Credencing: Core & Deep Rationality';
-    const description = page?.summary ?? group?.summary ?? 'A public framework and interactive model for mapping evidence, perception, confidence, and rational integrity.';
+    const title = page ? `${page.title} | Credencing` : utilityPage ? `${utilityPage.title} | Credencing` : group ? `${group.title} | Credencing` : route === '/search' ? 'Search | Credencing' : route === '/site-map' ? 'Site Map | Credencing' : 'Credencing: Core & Deep Rationality';
+    const description = page?.summary ?? utilityPage?.summary ?? group?.summary ?? 'A public framework and interactive model for mapping evidence, perception, confidence, and rational integrity.';
     document.title = title;
     const meta = document.querySelector('meta[name="description"]');
     meta?.setAttribute('content', description);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
-  }, [route, group, page]);
+  }, [route, group, page, utilityPage]);
 }
 
 function useHashRoute(): [string, (path: string) => void] {
@@ -2252,15 +2384,82 @@ function DiagramCard({ title, children }: { title: string; children: ReactNode }
   );
 }
 
+function UtilityFeatureArticle({ feature, onNavigate }: { feature: UtilityFeaturePage; onNavigate: (path: string) => void }) {
+  return (
+    <article className="space-y-8">
+      <header className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
+        <button onClick={() => onNavigate('/site-map')} className="text-[10px] uppercase tracking-[0.25em] text-amber-300 font-bold hover:text-amber-200">
+          Utility Layer / Site Map
+        </button>
+        <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">{feature.title}</h2>
+        <p className="text-stone-300 max-w-3xl text-base md:text-lg leading-relaxed">{feature.summary}</p>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="lg:col-span-8 space-y-6">
+          {feature.sections.map((section) => (
+            <section key={section.heading} className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
+              <h3 className="text-2xl font-light text-white">{section.heading}</h3>
+              {section.body.map((paragraph) => (
+                <p key={paragraph} className="text-stone-300 text-sm md:text-base leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+              {section.bullets && (
+                <ul className="grid gap-2 pt-2">
+                  {section.bullets.map((bullet) => (
+                    <li key={bullet} className="text-stone-300 text-sm leading-relaxed flex gap-3">
+                      <span className="text-amber-400">|</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          ))}
+        </div>
+
+        <aside className="lg:col-span-4 lg:sticky lg:top-8 space-y-5">
+          <div className="glass-panel p-6 bg-amber-500/[0.04] border-amber-500/20 space-y-4">
+            <h3 className="text-[10px] uppercase tracking-[0.25em] text-amber-300 font-bold">Working Destinations</h3>
+            <div className="space-y-2">
+              {feature.actions.map((action) => (
+                <button
+                  key={action.path}
+                  onClick={() => onNavigate(action.path)}
+                  className="w-full rounded-lg border border-white/5 bg-white/[0.02] p-3 text-left text-xs text-white hover:border-amber-500/30 transition-colors"
+                >
+                  <span className="flex items-center justify-between gap-3">
+                    {action.label}
+                    <ArrowRight size={14} className="text-amber-400" />
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-3">
+            <h3 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Status</h3>
+            <p className="text-stone-300 text-xs leading-relaxed">
+              This utility entry now resolves to a drafted page instead of a placeholder route. The linked buttons point to the feature or a representative article where the feature is visible.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </article>
+  );
+}
+
 function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
   const utilityItems = [
     { label: 'Search', detail: 'Full corpus search', path: '/search' },
-    { label: 'Topic Index', detail: 'Search page filters', path: '/search' },
-    { label: 'Tag Index', detail: 'Expanded tag browser', path: '/search' },
-    { label: 'Related Pages Engine', detail: 'Active on article pages' },
-    { label: 'Breadcrumbs', detail: 'Active on article pages' },
+    { label: 'Topic Index', detail: 'Search page filters', path: '/utility/topic-index' },
+    { label: 'Tag Index', detail: 'Expanded tag browser', path: '/utility/tag-index' },
+    { label: 'Related Pages Engine', detail: 'Active on article pages', path: '/utility/related-pages-engine' },
+    { label: 'Breadcrumbs', detail: 'Active on article pages', path: '/utility/breadcrumbs' },
     { label: 'Contact / Updates', detail: 'Feedback channel', path: pagePath('/about', 'Contact') },
   ];
+  const isDraftedPage = (path: string) => contentPages.some((page) => page.path === path);
 
   return (
     <section className="space-y-8">
@@ -2280,25 +2479,37 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
                 <li key={page} className="text-stone-400 text-xs">
                   <div className="flex items-start gap-2">
                   <span className="text-amber-500/70 mt-0.5">|</span>
-                  <button
-                    onClick={() => onNavigate(pagePath(group.path, page))}
-                    className="text-left hover:text-amber-300 transition-colors"
-                  >
-                    {page}
-                  </button>
+                  {(() => {
+                    const path = pagePath(group.path, page);
+                    const drafted = isDraftedPage(path);
+                    return (
+                      <button
+                        onClick={() => drafted && onNavigate(path)}
+                        disabled={!drafted}
+                        className={`text-left transition-colors ${drafted ? 'hover:text-amber-300' : 'cursor-default text-stone-600'}`}
+                      >
+                        {page}
+                      </button>
+                    );
+                  })()}
                   </div>
                   {nestedPageTitles[group.path]?.[page] && (
                     <ul className="ml-5 mt-2 space-y-1 border-l border-amber-500/20 pl-3">
-                      {nestedPageTitles[group.path][page].map((childPage) => (
-                        <li key={childPage}>
-                          <button
-                            onClick={() => onNavigate(pagePath(group.path, childPage))}
-                            className="text-left text-stone-500 hover:text-amber-300 transition-colors"
-                          >
-                            {childPage}
-                          </button>
-                        </li>
-                      ))}
+                      {nestedPageTitles[group.path][page].map((childPage) => {
+                        const childPath = pagePath(group.path, childPage);
+                        const childDrafted = isDraftedPage(childPath);
+                        return (
+                          <li key={childPage}>
+                            <button
+                              onClick={() => childDrafted && onNavigate(childPath)}
+                              disabled={!childDrafted}
+                              className={`text-left transition-colors ${childDrafted ? 'text-stone-500 hover:text-amber-300' : 'cursor-default text-stone-700'}`}
+                            >
+                              {childPage}
+                            </button>
+                          </li>
+                        );
+                      })}
                     </ul>
                   )}
                 </li>
