@@ -191,6 +191,11 @@ export const pageGroups: PageGroup[] = [
       'A Formal Framework for Core and Deep Rationality',
       'Future Papers',
       'Essays',
+      'Evidence Mapping Is a Practice, Not a Slogan',
+      'Labels Are Not Credences',
+      'Faith, Trust, and Evidence-Weighted Confidence',
+      'Doubt as the Complement of Credence',
+      'Coherence Is Not Enough',
       'Glossary',
       'FAQ',
       'References',
@@ -3973,6 +3978,20 @@ export const libraryPages: ContentPage[] = [
         ],
       },
       {
+        heading: 'Current Adapted Essays',
+        body: [
+          'The first five essays in this library adapt material from Free of Faith into a less polemical, more general Credencing register. Each preserves the epistemic insight while removing unnecessary adversarial framing.',
+          'The adapted essays cover evidence-mapping as a practice, label compression, the difference between faith and evidence-weighted trust, doubt as the rational complement of credence, and the limits of closed-loop coherence.',
+        ],
+        bullets: [
+          'Evidence Mapping Is a Practice, Not a Slogan',
+          'Labels Are Not Credences',
+          'Faith, Trust, and Evidence-Weighted Confidence',
+          'Doubt as the Complement of Credence',
+          'Coherence Is Not Enough',
+        ],
+      },
+      {
         heading: 'Connection to the Site',
         body: [
           'Each essay links back to the conceptual pages it uses. The site works best when essays are not isolated posts but entrances into the broader web: glossary terms, archetypes, case studies, skills, and applications.',
@@ -3988,6 +4007,256 @@ export const libraryPages: ContentPage[] = [
       pagePath('/library', 'Glossary'),
       pagePath('/case-studies', 'Motivated Reasoning'),
       pagePath('/about', 'Project Overview'),
+    ],
+  ),
+  libraryPage(
+    'Evidence Mapping Is a Practice, Not a Slogan',
+    'Evidence-mapping is not a claim one makes about rationality; it is a discipline shown by how belief actually responds to new evidence.',
+    [
+      {
+        heading: 'Adapted Source',
+        body: [
+          'Adapted from the Free of Faith essay “The Evidence-Mapping Illusion” (January 17, 2026): https://freeoffaith.com/2026/01/17/%E2%9C%93-the-evidence-mapping-illusion/. The version here removes the sharper polemical framing and translates the argument into the general vocabulary of Credencing.',
+        ],
+      },
+      {
+        heading: 'The Central Test',
+        body: [
+          'Many people and institutions claim that their beliefs map to the evidence. The claim is easy to make. The harder question is behavioral: when evidence changes, does confidence actually change with it?',
+          'A belief system can use the language of evidence while rewarding something else: loyalty, early commitment, public certainty, emotional stability, or group belonging. Credencing asks whether the agent’s Assigned Credence (CA) remains responsive to Perceived Evidence (EP), and whether Perceived Evidence (EP) remains answerable to Objective Evidence (E0).',
+        ],
+      },
+      {
+        heading: 'Signs That Mapping Is Only Rhetorical',
+        body: [
+          'Evidence-mapping becomes doubtful when inquiry is praised in theory but discouraged in practice. If a community praises certainty more than updating, treats doubt mainly as a failure to overcome, or celebrates confidence without asking what supports it, then the public rhetoric and the epistemic practice have come apart.',
+          'A second warning sign is the use of social pressure as a substitute for evidential repair. When someone lowers confidence because the evidence weakens, the rational response is to examine the evidence, not to shame the update. Pressure may stabilize a belief, but stabilization is not the same as justification.',
+        ],
+      },
+      {
+        heading: 'The Loop of Self-Persuasion',
+        body: [
+          'Public declarations can change private credence. When people repeatedly testify, pledge, or signal certainty before their evidence justifies it, they may feel pressure to bring their inner confidence into alignment with the public performance.',
+          'This is not unique to religion. Political movements, professional cultures, investment communities, and academic schools can all generate loops in which people publicly overstate confidence and then psychologically adapt to the overstatement. The result is Assigned Credence (CA) pulled away from Perceived Evidence (EP).',
+        ],
+      },
+      {
+        heading: 'What Genuine Evidence-Mapping Requires',
+        body: [
+          'A genuine evidence-mapping culture makes updates ordinary. It asks people to state confidence in degrees, identify what would move them, and distinguish social belonging from evidential support.',
+          'The practical rule is simple: if the evidence weakens, confidence should be allowed to weaken without treating the person as disloyal. If the evidence strengthens, confidence may rise. A system that permits only upward movement in confidence is not mapping evidence; it is protecting identity.',
+        ],
+      },
+    ],
+    [
+      'Evidence-mapping is shown by update behavior, not by rhetoric.',
+      'Social pressure can pull Assigned Credence (CA) away from Perceived Evidence (EP).',
+      'A rational culture makes lowering confidence permissible when evidence weakens.',
+    ],
+    [
+      pagePath('/library', 'Essays'),
+      pagePath('/skills', 'How to Scale Confidence to Evidence'),
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
+    ],
+  ),
+  libraryPage(
+    'Labels Are Not Credences',
+    'Identity labels are low-resolution summaries; careful inquiry requires asking what a person believes, how strongly, and under what update conditions.',
+    [
+      {
+        heading: 'Adapted Source',
+        body: [
+          'Adapted from the Free of Faith essay “Categorical Labels Rarely Reflect Rationality” (January 8, 2026): https://freeoffaith.com/2026/01/08/%E2%9C%93-categorical-labels-rarely-reflect-rationality/. The version here generalizes the argument beyond apologetics and frames it as a Credencing essay on compression and calibration.',
+        ],
+      },
+      {
+        heading: 'The Problem With Labels',
+        body: [
+          'Labels such as atheist, agnostic, religious, liberal, conservative, skeptic, believer, realist, or naturalist can be useful for quick orientation. They become harmful when treated as substitutes for the actual distribution of credences inside a mind.',
+          'A label is often a compressed social signal. It may say something about affiliation, temperament, background, or conversational location. It rarely tells us the agent’s confidence level, the evidence they have considered, the alternatives they regard as live, or the observations that would change their view.',
+        ],
+      },
+      {
+        heading: 'Belief Is a Dial',
+        body: [
+          'Rational belief is normally gradient. A person may be 20 percent confident in one claim, 60 percent confident in a related claim, and 90 percent confident that a specific argument fails. A single label cannot carry that resolution.',
+          'When a conversation begins with labels, people often debate membership instead of evidence. Credencing shifts the question from “What are you?” to “What do you currently think is most likely, how strongly do you hold it, and what would move you?”',
+        ],
+      },
+      {
+        heading: 'Emotional Disturbance Is Not Evidence by Itself',
+        body: [
+          'People sometimes report being troubled, disconcerted, or unsettled by an argument. That feeling can indicate serious engagement, but it can also indicate identity stress. The difference matters.',
+          'A calibrated mind can register a new consideration, adjust confidence, and continue inquiry. A mind defending an identity may experience every contrary point as a threat. In the Credencing model, the question is whether the discomfort improves evidence perception or instead pressures Assigned Credence (CA) to remain fixed.',
+        ],
+      },
+      {
+        heading: 'Better Questions',
+        body: [
+          'When a label is too coarse, raise the resolution. Ask which specific proposition is being evaluated, what the current credence is, what evidence supports it, what evidence undermines it, and what would count as an update condition.',
+          'This practice does not eliminate identity. It simply prevents identity from pretending to be an argument. Labels may begin a conversation; they should not be allowed to end it.',
+        ],
+      },
+    ],
+    [
+      'Labels compress belief-states and often hide the credences that matter.',
+      'Rational discourse should ask for confidence levels and update conditions.',
+      'Identity stress can mimic intellectual seriousness without improving calibration.',
+    ],
+    [
+      pagePath('/library', 'Essays'),
+      pagePath('/core-ideas', 'Credences'),
+      pagePath('/skills', 'How to Ask Better Epistemic Questions'),
+    ],
+  ),
+  libraryPage(
+    'Faith, Trust, and Evidence-Weighted Confidence',
+    'The claim that everyone has faith becomes clearer once we distinguish protected commitment from evidence-weighted trust.',
+    [
+      {
+        heading: 'Adapted Source',
+        body: [
+          'Adapted from the Free of Faith essay “Everyone has faith. Right?” (July 29, 2025): https://freeoffaith.com/2025/07/29/%E2%9C%93-everyone-has-faith-right/. This version removes direct polemical language and treats the issue as a general semantic and epistemic distinction.',
+        ],
+      },
+      {
+        heading: 'The Equivocation',
+        body: [
+          'A common move in disputed belief systems is to say that everyone has faith. The statement can be harmless if “faith” means ordinary trust under uncertainty. But it becomes misleading when it treats all trust as epistemically equivalent.',
+          'Trust in a doctor, mechanic, bridge engineer, or scientific model is usually revisable and evidence-sensitive. It rises with reliability and falls with failure. That is different from a protected commitment that refuses ordinary evidential correction.',
+        ],
+      },
+      {
+        heading: 'Credence Instead of Binary Faith',
+        body: [
+          'Credencing replaces the binary question “Do you have faith?” with a graded question: what is your confidence, and does it match the evidence? This prevents high-credence, evidence-sensitive trust from being collapsed into low-evidence commitment.',
+          'A scientist tentatively accepting a model, a patient trusting a physician, and a citizen relying on a weather forecast are not all doing the same thing simply because none has absolute certainty. They are assigning credences under uncertainty, with different evidence bases and different update conditions.',
+        ],
+      },
+      {
+        heading: 'The Practical Test',
+        body: [
+          'The key test is not whether a belief involves uncertainty. Almost all human belief does. The key test is whether the belief remains answerable to evidence.',
+          'If new counterevidence would lower confidence, the belief is functioning as evidence-weighted trust. If no conceivable counterevidence would matter, the belief is functioning as protected commitment. The difference is central to Core Rationality.',
+        ],
+      },
+      {
+        heading: 'Why the Distinction Matters',
+        body: [
+          'Collapsing all uncertainty into faith weakens public reasoning. It implies that careful inference and insulated conviction occupy the same epistemic category simply because both fall short of certainty.',
+          'A better vocabulary preserves the gradient. We can say that some trust is well calibrated, some is risky but understandable, and some is overconfident or protected from correction. The question is not whether uncertainty exists; the question is how responsibly confidence is managed within it.',
+        ],
+      },
+    ],
+    [
+      'Not all trust under uncertainty is epistemically equivalent.',
+      'Evidence-weighted trust remains revisable; protected commitment resists correction.',
+      'Credence language preserves distinctions that the word faith often blurs.',
+    ],
+    [
+      pagePath('/library', 'Essays'),
+      pagePath('/core-ideas', 'Calibration'),
+      pagePath('/library', 'FAQ'),
+    ],
+  ),
+  libraryPage(
+    'Doubt as the Complement of Credence',
+    'Doubt is not automatically a defect; when evidence is incomplete, doubt is the rational remainder of calibrated confidence.',
+    [
+      {
+        heading: 'Adapted Source',
+        body: [
+          'Adapted from the Free of Faith essay “(Un)Acceptable Christian Doubt” (July 5, 2025): https://freeoffaith.com/2025/07/05/%E2%9C%93-unacceptable-christian-doubt/. The version here generalizes the argument into a Credencing account of doubt, uncertainty, and proportional confidence.',
+        ],
+      },
+      {
+        heading: 'Doubt Is Not the Opposite of Rationality',
+        body: [
+          'In many communities, doubt is treated as a temporary problem to be overcome. Sometimes that is appropriate: doubt based on confusion, misinformation, or anxiety may diminish when evidence improves. But doubt is not irrational merely because it remains.',
+          'When evidence is less than conclusive, some uncertainty is rational. If an agent assigns 70 percent confidence to a proposition, the remaining 30 percent is not a moral flaw or intellectual weakness. It is the space reserved for live alternatives, measurement limits, and possible error.',
+        ],
+      },
+      {
+        heading: 'Belief and Doubt Share the Same Gradient',
+        body: [
+          'Credencing treats belief and doubt as complementary positions on the same epistemic gradient. To say “I am 65 percent confident” is also to say “I retain 35 percent uncertainty.”',
+          'This makes doubt less mysterious. Doubt is not an alien force invading belief; it is what remains when responsible confidence stops short of certainty. The more incomplete or ambiguous the evidence, the more room there should be for doubt.',
+        ],
+      },
+      {
+        heading: 'When Doubt Should Persist',
+        body: [
+          'Doubt should persist when the evidence remains mixed, when sources conflict, when base rates are unclear, when mechanisms are unknown, or when the stakes of error require caution. In such cases, forcing certainty can create a Perceived Evidence to Assigned Credence gap (EP-CA).',
+          'The important question is whether doubt is proportionate. Too much doubt can ignore strong evidence. Too little doubt can inflate weak evidence into certainty. Calibration requires both confidence and doubt to move with the evidential situation.',
+        ],
+      },
+      {
+        heading: 'Healthy Doubt and Repair',
+        body: [
+          'Healthy doubt asks for better evidence, clearer definitions, stronger tests, and honest update conditions. It does not merely stall. It becomes irrational only when it refuses to move after the evidence has become strong enough to warrant movement.',
+          'The repair is not “eliminate doubt.” The repair is “make doubt evidence-responsive.” In practice, this means specifying what would lower uncertainty, what would raise confidence, and what uncertainty must responsibly remain.',
+        ],
+      },
+    ],
+    [
+      'Doubt is the rational remainder when evidence falls short of certainty.',
+      'Both excessive doubt and insufficient doubt can be miscalibrated.',
+      'Healthy doubt is evidence-responsive rather than identity-protective.',
+    ],
+    [
+      pagePath('/library', 'Essays'),
+      pagePath('/core-ideas', 'Warranted Uncertainty'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+    ],
+  ),
+  libraryPage(
+    'Coherence Is Not Enough',
+    'A worldview can feel internally coherent, emotionally satisfying, and socially fruitful while still failing to track reality.',
+    [
+      {
+        heading: 'Adapted Source',
+        body: [
+          'Adapted from the Free of Faith essay “The Epistemic Games of Religions” (July 3, 2025): https://freeoffaith.com/2025/07/03/%E2%9C%93-the-epistemic-games-of-religions/. The version here preserves the central epistemic point while broadening it beyond religion to any closed-loop belief system.',
+        ],
+      },
+      {
+        heading: 'The Coherence Trap',
+        body: [
+          'Coherence matters. A belief that contradicts itself has a problem. But coherence is not enough. Many belief systems can achieve internal fit by controlling definitions, insulating assumptions, and explaining away anomalies.',
+          'A worldview can be elegant, emotionally satisfying, morally motivating, and socially stabilizing while still failing to connect with the external world. Credencing therefore distinguishes internal fit from evidence-tracking.',
+        ],
+      },
+      {
+        heading: 'Closed-Loop Rationality',
+        body: [
+          'Closed-loop systems evaluate themselves mainly by their own internal standards. They ask whether the belief fits the story, supports the community, preserves identity, or produces a desired emotional effect. Those questions may have practical value, but they do not by themselves test truth.',
+          'The danger is that the system can always reinterpret disconfirmation. Apparent failure becomes hidden complexity. Outsiders become unqualified. Contrary evidence becomes evidence of the critic’s defect. The system remains coherent because it has stopped being vulnerable.',
+        ],
+      },
+      {
+        heading: 'The Missing Question',
+        body: [
+          'The missing question is whether confidence proportionately maps to evidence that can push back. A belief should be exposed to observations, arguments, comparisons, and failures that are allowed to change its credence.',
+          'If every possible outcome is compatible with the belief, then the belief may be meaningful as identity, narrative, or practice, but it is weak as a truth-tracking claim. In Credencing terms, Objective Evidence (E0) has been prevented from disciplining Perceived Evidence (EP) and Assigned Credence (CA).',
+        ],
+      },
+      {
+        heading: 'Using Coherence Responsibly',
+        body: [
+          'Coherence should be treated as a necessary but limited virtue. It can reveal contradictions, organize inquiry, and make hypotheses intelligible. But it cannot replace calibration, prediction, independent evidence, and openness to defeat.',
+          'A responsible agent asks both questions: does this view cohere internally, and does it remain answerable externally? The first protects against nonsense. The second protects against beautiful insulation.',
+        ],
+      },
+    ],
+    [
+      'Internal coherence is valuable but insufficient for truth-tracking.',
+      'Closed-loop systems can preserve belief by reinterpreting all disconfirmation.',
+      'A rational belief must remain vulnerable to evidence that can change credence.',
+    ],
+    [
+      pagePath('/library', 'Essays'),
+      pagePath('/core-ideas', 'Evidence'),
+      pagePath('/case-studies', 'Conspiracy Thinking'),
     ],
   ),
   libraryPage(
