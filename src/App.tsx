@@ -14,7 +14,7 @@ import {
   Home,
   Info,
   Library,
-  Map,
+  Map as MapIcon,
   Network,
   Search,
   ShieldAlert,
@@ -54,7 +54,7 @@ const navItems = [
   { label: 'Groups', path: '/discussion-groups', icon: <Users size={14} /> },
   { label: 'Library', path: '/library', icon: <Library size={14} /> },
   { label: 'Search', path: '/search', icon: <Search size={14} /> },
-  { label: 'Map', path: '/site-map', icon: <Map size={14} /> },
+  { label: 'Map', path: '/site-map', icon: <MapIcon size={14} /> },
 ];
 
 const utilityFeaturePages: UtilityFeaturePage[] = [
@@ -661,7 +661,7 @@ function HomeExperience({ onNavigate }: { onNavigate: (path: string) => void }) 
             <h2 className="text-3xl font-light text-white">The surrounding web</h2>
           </div>
           <button onClick={() => onNavigate('/site-map')} className="hidden sm:flex items-center gap-2 text-[10px] text-stone-400 hover:text-amber-300 uppercase tracking-widest font-bold">
-            Full Map <Map size={14} />
+            Full Map <MapIcon size={14} />
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
