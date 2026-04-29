@@ -684,6 +684,14 @@ function AuthorFeature({ page }: { page: ContentPage }) {
               <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Teaching Contexts</span>
               University of Tokyo, NYU SPS, Gakushuin University, Nichibei Kaiwa Gakuin, Japanese Cabinet Office
             </div>
+            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4">
+              <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Course Areas</span>
+              Critical thinking, western philosophy, futurology, macroeconomics, technical writing
+            </div>
+            <div className="rounded-xl border border-white/5 bg-white/[0.02] p-4">
+              <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">Research Areas</span>
+              Epistemology, cognitive science, philosophy of science, theology, educational design
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <a href="https://suj.academia.edu/PhilStilwell" target="_blank" rel="noopener noreferrer" className="p-4 rounded-xl border border-amber-500/20 bg-amber-500/10 hover:border-amber-400/50 text-amber-100 text-sm">
