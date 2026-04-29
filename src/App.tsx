@@ -138,6 +138,130 @@ const researchPapers = [
 
 const basePath = import.meta.env.BASE_URL;
 
+type ScenarioState = EpistemicData & {
+  name: string;
+  claim: string;
+};
+
+type ScenarioPair = {
+  label: string;
+  lesson: string;
+  a: ScenarioState;
+  b: ScenarioState;
+};
+
+type ScenarioMetrics = {
+  calcError: number;
+  coreGap: number;
+  warrantedSlack: number;
+  excessCore: number;
+  diagnosis: string;
+  repair: string;
+};
+
+const scenarioPairs: ScenarioPair[] = [
+  {
+    label: 'Honest Novice vs Biased Expert',
+    lesson: 'Same rough conclusion, different epistemic structure: limited tools on one side, motivated override on the other.',
+    a: {
+      name: 'Honest Novice',
+      claim: 'The new policy is probably harmful.',
+      objectiveEvidence: 0.62,
+      perceivedEvidence: 0.42,
+      assignedCredence: 0.42,
+      deepRationality: 0.25,
+    },
+    b: {
+      name: 'Biased Expert',
+      claim: 'The new policy is definitely harmful.',
+      objectiveEvidence: 0.62,
+      perceivedEvidence: 0.60,
+      assignedCredence: 0.92,
+      deepRationality: 0.88,
+    },
+  },
+  {
+    label: 'Bad Evidence vs Bad Faith',
+    lesson: 'One agent is misled upstream; the other sees the evidence well but assigns a defensive credence.',
+    a: {
+      name: 'Bad Evidence Access',
+      claim: 'The video proves the accusation.',
+      objectiveEvidence: 0.35,
+      perceivedEvidence: 0.78,
+      assignedCredence: 0.76,
+      deepRationality: 0.45,
+    },
+    b: {
+      name: 'Bad Faith Override',
+      claim: 'The video proves the accusation.',
+      objectiveEvidence: 0.35,
+      perceivedEvidence: 0.38,
+      assignedCredence: 0.82,
+      deepRationality: 0.82,
+    },
+  },
+  {
+    label: 'Fear Override vs Evidence-Based Caution',
+    lesson: 'Both agents may act cautiously, but one assigns fear-inflated credence while the other separates risk from belief.',
+    a: {
+      name: 'Fear Override',
+      claim: 'The threat is very likely.',
+      objectiveEvidence: 0.28,
+      perceivedEvidence: 0.34,
+      assignedCredence: 0.80,
+      deepRationality: 0.58,
+    },
+    b: {
+      name: 'Evidence-Based Caution',
+      claim: 'The threat is possible enough to prepare for.',
+      objectiveEvidence: 0.28,
+      perceivedEvidence: 0.33,
+      assignedCredence: 0.36,
+      deepRationality: 0.72,
+    },
+  },
+  {
+    label: 'Same Belief, Different Structure',
+    lesson: 'The final credence can match while the path to that credence differs sharply.',
+    a: {
+      name: 'Lucky Guess',
+      claim: 'The treatment will probably work.',
+      objectiveEvidence: 0.70,
+      perceivedEvidence: 0.35,
+      assignedCredence: 0.70,
+      deepRationality: 0.30,
+    },
+    b: {
+      name: 'Calibrated Update',
+      claim: 'The treatment will probably work.',
+      objectiveEvidence: 0.70,
+      perceivedEvidence: 0.68,
+      assignedCredence: 0.70,
+      deepRationality: 0.86,
+    },
+  },
+  {
+    label: 'Same Evidence, Different Credence',
+    lesson: 'Two agents can perceive the same evidence but differ in how honestly they let it govern confidence.',
+    a: {
+      name: 'Aligned Skeptic',
+      claim: 'The extraordinary claim remains unlikely.',
+      objectiveEvidence: 0.24,
+      perceivedEvidence: 0.28,
+      assignedCredence: 0.28,
+      deepRationality: 0.76,
+    },
+    b: {
+      name: 'Affective Veto',
+      claim: 'The extraordinary claim must be true.',
+      objectiveEvidence: 0.24,
+      perceivedEvidence: 0.28,
+      assignedCredence: 0.84,
+      deepRationality: 0.76,
+    },
+  },
+];
+
 export default function App() {
   const [route, setRoute] = useHashRoute();
   const activeGroup = pageGroups.find((group) => group.path === route);
@@ -648,6 +772,8 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
         <p className="text-stone-300 max-w-3xl text-base md:text-lg leading-relaxed">{page.summary}</p>
       </header>
 
+      <ScenarioComparisonPanel page={page} />
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-8 space-y-6">
           <AuthorFeature page={page} />
@@ -863,6 +989,288 @@ function BayesTheoremPanel({ page }: { page: ContentPage }) {
       </p>
     </section>
   );
+}
+
+function ScenarioComparisonPanel({ page }: { page: ContentPage }) {
+  const [activePair, setActivePair] = useState(0);
+  const [scenarioA, setScenarioA] = useState<ScenarioState>(scenarioPairs[0].a);
+  const [scenarioB, setScenarioB] = useState<ScenarioState>(scenarioPairs[0].b);
+
+  if (page.path !== pagePath('/interactive-lab', 'Compare Two Scenarios')) return null;
+
+  const metricsA = getScenarioMetrics(scenarioA);
+  const metricsB = getScenarioMetrics(scenarioB);
+
+  const loadPair = (index: number) => {
+    setActivePair(index);
+    setScenarioA(scenarioPairs[index].a);
+    setScenarioB(scenarioPairs[index].b);
+  };
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-amber-500/[0.035] border-amber-500/20 space-y-8">
+      <div className="space-y-3">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Comparison Lab</p>
+        <h3 className="text-2xl md:text-3xl font-light text-white">Juxtapose two epistemic structures</h3>
+        <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+          Use the presets or adjust the sliders to compare two agents side by side. The point is not just who is right, but where each agent's belief state is breaking: evidence perception, credence assignment, or both.
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        <h4 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Preset Pairings</h4>
+        <div className="flex flex-wrap gap-2">
+          {scenarioPairs.map((pair, index) => (
+            <button
+              key={pair.label}
+              onClick={() => loadPair(index)}
+              className={`px-3 py-2 rounded-lg border text-[10px] font-bold uppercase tracking-wider transition-colors ${
+                activePair === index
+                  ? 'bg-amber-600/20 text-amber-200 border-amber-500/50'
+                  : 'bg-white/[0.02] text-stone-400 border-white/10 hover:border-amber-500/30 hover:text-amber-200'
+              }`}
+            >
+              {pair.label}
+            </button>
+          ))}
+        </div>
+        <p className="text-stone-400 text-xs leading-relaxed">{scenarioPairs[activePair].lesson}</p>
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        <ScenarioWorkbench label="Scenario A" scenario={scenarioA} metrics={metricsA} onChange={setScenarioA} />
+        <ScenarioWorkbench label="Scenario B" scenario={scenarioB} metrics={metricsB} onChange={setScenarioB} />
+      </div>
+
+      <ScenarioComparisonTable scenarioA={scenarioA} scenarioB={scenarioB} metricsA={metricsA} metricsB={metricsB} />
+      <ScenarioInterpretationPrompts metricsA={metricsA} metricsB={metricsB} />
+    </section>
+  );
+}
+
+function ScenarioWorkbench({
+  label,
+  scenario,
+  metrics,
+  onChange,
+}: {
+  label: string;
+  scenario: ScenarioState;
+  metrics: ScenarioMetrics;
+  onChange: (scenario: ScenarioState) => void;
+}) {
+  const updateNumber = (key: keyof EpistemicData, value: number) => {
+    onChange({ ...scenario, [key]: value });
+  };
+
+  const updateText = (key: 'name' | 'claim', value: string) => {
+    onChange({ ...scenario, [key]: value });
+  };
+
+  return (
+    <div className="rounded-2xl border border-white/10 bg-black/10 p-4 md:p-5 space-y-5">
+      <div className="space-y-3">
+        <p className="text-[9px] uppercase tracking-[0.25em] text-amber-400 font-bold">{label}</p>
+        <input
+          value={scenario.name}
+          onChange={(event) => updateText('name', event.target.value)}
+          aria-label={`${label} name`}
+          className="w-full rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-white text-sm outline-none focus:border-amber-500/50"
+        />
+        <textarea
+          value={scenario.claim}
+          onChange={(event) => updateText('claim', event.target.value)}
+          aria-label={`${label} claim`}
+          rows={2}
+          className="w-full resize-none rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-stone-300 text-xs leading-relaxed outline-none focus:border-amber-500/50"
+        />
+      </div>
+
+      <EpistemicChart data={scenario} />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <CompactScenarioSlider label="Objective Evidence (E0)" value={scenario.objectiveEvidence} onChange={(value) => updateNumber('objectiveEvidence', value)} />
+        <CompactScenarioSlider label="Perceived Evidence (EP)" value={scenario.perceivedEvidence} onChange={(value) => updateNumber('perceivedEvidence', value)} />
+        <CompactScenarioSlider label="Assigned Credence (CA)" value={scenario.assignedCredence} onChange={(value) => updateNumber('assignedCredence', value)} />
+        <CompactScenarioSlider label="Deep Rationality (SD)" value={scenario.deepRationality} onChange={(value) => updateNumber('deepRationality', value)} />
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <ComparisonMetric label="E0-EP" value={metrics.calcError} tone={metrics.calcError > 0.12 ? 'warn' : 'calm'} />
+        <ComparisonMetric label="EP-CA" value={metrics.coreGap} tone={metrics.coreGap > 0.12 ? 'danger' : 'calm'} />
+        <ComparisonMetric label="Slack" value={metrics.warrantedSlack} tone="muted" />
+        <ComparisonMetric label="Excess IC" value={metrics.excessCore} tone={metrics.excessCore > 0.08 ? 'danger' : 'calm'} />
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 space-y-2">
+        <p className="text-[9px] uppercase tracking-[0.25em] text-stone-500 font-bold">Diagnosis</p>
+        <p className="text-white text-sm">{metrics.diagnosis}</p>
+        <p className="text-stone-400 text-xs leading-relaxed">{metrics.repair}</p>
+      </div>
+    </div>
+  );
+}
+
+function CompactScenarioSlider({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
+  return (
+    <label className="space-y-2 block">
+      <span className="flex items-center justify-between gap-3 text-[9px] uppercase tracking-widest text-stone-500 font-bold">
+        <span>{label}</span>
+        <span className="text-amber-200 font-mono">{Math.round(value * 100)}%</span>
+      </span>
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value={value}
+        onChange={(event) => onChange(Number(event.target.value))}
+        className="w-full accent-amber-500"
+      />
+    </label>
+  );
+}
+
+function ComparisonMetric({ label, value, tone }: { label: string; value: number; tone: 'calm' | 'warn' | 'danger' | 'muted' }) {
+  const color = tone === 'danger' ? 'text-red-300' : tone === 'warn' ? 'text-orange-300' : tone === 'calm' ? 'text-green-300' : 'text-stone-300';
+  return (
+    <div className="rounded-lg border border-white/10 bg-black/10 p-3">
+      <span className="block text-[8px] uppercase tracking-widest text-stone-500 mb-1">{label}</span>
+      <span className={`text-sm font-mono ${color}`}>{Math.round(value * 100)}%</span>
+    </div>
+  );
+}
+
+function ScenarioComparisonTable({
+  scenarioA,
+  scenarioB,
+  metricsA,
+  metricsB,
+}: {
+  scenarioA: ScenarioState;
+  scenarioB: ScenarioState;
+  metricsA: ScenarioMetrics;
+  metricsB: ScenarioMetrics;
+}) {
+  const rows = [
+    ['Evidence-reading gap', 'E0-EP', metricsA.calcError, metricsB.calcError, largerGapLabel(metricsA.calcError, metricsB.calcError, 'A misreads evidence more', 'B misreads evidence more')],
+    ['Belief-integrity gap', 'EP-CA', metricsA.coreGap, metricsB.coreGap, largerGapLabel(metricsA.coreGap, metricsB.coreGap, 'A overrides perception more', 'B overrides perception more')],
+    ['Deep Rationality', 'SD', scenarioA.deepRationality, scenarioB.deepRationality, largerGapLabel(scenarioA.deepRationality, scenarioB.deepRationality, 'A has stronger tools', 'B has stronger tools')],
+    ['Excess Core Irrationality', 'Excess IC', metricsA.excessCore, metricsB.excessCore, largerGapLabel(metricsA.excessCore, metricsB.excessCore, 'A has more unwarranted misalignment', 'B has more unwarranted misalignment')],
+  ];
+
+  return (
+    <div className="rounded-2xl border border-white/10 bg-black/10 overflow-x-auto">
+      <div className="min-w-[680px]">
+        <div className="grid grid-cols-[1.2fr_0.7fr_0.7fr_1.2fr] gap-3 px-4 py-3 bg-white/[0.03] text-[9px] uppercase tracking-widest text-stone-500 font-bold">
+          <span>Diagnostic Question</span>
+          <span>{scenarioA.name || 'Scenario A'}</span>
+          <span>{scenarioB.name || 'Scenario B'}</span>
+          <span>Readout</span>
+        </div>
+        {rows.map(([question, code, aValue, bValue, readout]) => (
+          <div key={String(question)} className="grid grid-cols-[1.2fr_0.7fr_0.7fr_1.2fr] gap-3 px-4 py-3 border-t border-white/5 text-xs text-stone-300">
+            <span>
+              <span className="block text-white">{question}</span>
+              <span className="text-[9px] uppercase tracking-widest text-stone-600">{code}</span>
+            </span>
+            <span className="font-mono text-amber-100">{Math.round(Number(aValue) * 100)}%</span>
+            <span className="font-mono text-amber-100">{Math.round(Number(bValue) * 100)}%</span>
+            <span>{readout}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ScenarioInterpretationPrompts({ metricsA, metricsB }: { metricsA: ScenarioMetrics; metricsB: ScenarioMetrics }) {
+  const aSkillIssue = metricsA.calcError > metricsA.coreGap;
+  const bSkillIssue = metricsB.calcError > metricsB.coreGap;
+  const prompts = [
+    `Which agent needs better evidence or better tools? ${aSkillIssue && !bSkillIssue ? 'Scenario A looks more like a skill-side problem.' : bSkillIssue && !aSkillIssue ? 'Scenario B looks more like a skill-side problem.' : 'Both deserve a skill-side check.'}`,
+    `Which agent needs motivational repair? ${metricsA.excessCore > metricsB.excessCore ? 'Scenario A has the larger excess Core Irrationality (IC).' : metricsB.excessCore > metricsA.excessCore ? 'Scenario B has the larger excess Core Irrationality (IC).' : 'Their excess Core Irrationality (IC) is roughly matched.'}`,
+    'Could both agents reach the same conclusion while only one is well aligned?',
+    'What new evidence, reflection, or social condition would move each agent responsibly?',
+  ];
+
+  return (
+    <div className="rounded-2xl border border-amber-500/20 bg-amber-500/[0.04] p-5 space-y-4">
+      <h4 className="text-[10px] uppercase tracking-[0.25em] text-amber-300 font-bold">Interpretation Prompts</h4>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {prompts.map((prompt) => (
+          <p key={prompt} className="rounded-xl border border-white/10 bg-black/10 p-4 text-stone-300 text-xs leading-relaxed">
+            {prompt}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function getScenarioMetrics(data: EpistemicData): ScenarioMetrics {
+  const calcError = Math.abs(data.perceivedEvidence - data.objectiveEvidence);
+  const coreGap = Math.abs(data.assignedCredence - data.perceivedEvidence);
+  const warrantedSlack = (1 - data.deepRationality) * 0.25;
+  const excessCore = Math.max(0, coreGap - warrantedSlack);
+
+  if (calcError < 0.06 && coreGap < 0.06) {
+    return {
+      calcError,
+      coreGap,
+      warrantedSlack,
+      excessCore,
+      diagnosis: 'Aligned or near-aligned',
+      repair: 'The agent is broadly tracking both evidence and perceived evidence. The best repair is ordinary calibration and continued openness.',
+    };
+  }
+
+  if (calcError >= 0.12 && excessCore < 0.04) {
+    return {
+      calcError,
+      coreGap,
+      warrantedSlack,
+      excessCore,
+      diagnosis: 'Mainly a Deep Rationality problem',
+      repair: 'Focus on evidence access, base rates, measurement quality, statistical tools, and better comparison classes.',
+    };
+  }
+
+  if (excessCore >= 0.08 && calcError < 0.12) {
+    return {
+      calcError,
+      coreGap,
+      warrantedSlack,
+      excessCore,
+      diagnosis: 'Mainly a Core Rationality problem',
+      repair: 'Focus on fear, identity, incentives, public commitment, and the conditions under which the agent could honestly update.',
+    };
+  }
+
+  if (calcError >= 0.12 && excessCore >= 0.08) {
+    return {
+      calcError,
+      coreGap,
+      warrantedSlack,
+      excessCore,
+      diagnosis: 'Mixed skill and integrity problem',
+      repair: 'Repair requires both better evidence-processing tools and a less defensive relationship to the perceived result.',
+    };
+  }
+
+  return {
+    calcError,
+    coreGap,
+    warrantedSlack,
+    excessCore,
+    diagnosis: 'Mild or ambiguous misalignment',
+    repair: 'Treat the gaps as questions rather than accusations. Ask whether noise, stakes, emotional pressure, or limited tools explain the pattern.',
+  };
+}
+
+function largerGapLabel(a: number, b: number, aLabel: string, bLabel: string) {
+  if (Math.abs(a - b) < 0.03) return 'Roughly similar';
+  return a > b ? aLabel : bLabel;
 }
 
 function Breadcrumbs({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {

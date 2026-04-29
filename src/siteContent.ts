@@ -2090,8 +2090,15 @@ export const interactiveLabPages: ContentPage[] = [
   ),
   labPage(
     'Compare Two Scenarios',
-    'Scenario comparison shows how similar surface beliefs can arise from different epistemic structures.',
+    'Scenario comparison lets readers juxtapose two agents and see how similar surface beliefs can arise from different epistemic structures.',
     [
+      {
+        heading: 'Use the Comparison Lab First',
+        body: [
+          'Start with a preset pairing, then adjust the sliders on either side. The important move is to compare structures rather than personalities: where is Objective Evidence (E0), what does each agent perceive, what credence do they assign, and how much Deep Rationality (SD) do they bring to the case?',
+          'The comparison table turns the visual difference into diagnostic questions. A larger Objective Evidence to Perceived Evidence gap (E0-EP) suggests an evidence-reading or skill problem. A larger Perceived Evidence to Assigned Credence gap (EP-CA), especially beyond warranted slack, suggests motivated override or belief-integrity pressure.',
+        ],
+      },
       {
         heading: 'Why Compare',
         body: [
@@ -2102,6 +2109,7 @@ export const interactiveLabPages: ContentPage[] = [
         heading: 'Comparison Questions',
         body: [
           'Compare where the gaps occur. Is one case mostly Objective Evidence to Perceived Evidence (E0-EP) and the other mostly Perceived Evidence to Assigned Credence (EP-CA)? Does one agent have lower Deep Rationality (SD) but better internal alignment? Does one agent become more accurate when given better evidence, while the other resists?',
+          'Also compare repair paths. If the problem is mainly Deep Rationality (SD), better information, base rates, and statistical tools may help. If the problem is mainly Core Irrationality (IC), the repair may require safer update conditions, identity detachment, incentive changes, or courage to say what one already sees.',
         ],
       },
       {
@@ -2112,6 +2120,7 @@ export const interactiveLabPages: ContentPage[] = [
       },
     ],
     [
+      'The comparison lab lets two scenarios be read side by side.',
       'Similar beliefs can have different epistemic structures.',
       'Compare gap locations before judging.',
       'The same conclusion can be held responsibly or irresponsibly.',
