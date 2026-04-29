@@ -32,6 +32,7 @@ const EpistemicChart = memo(function EpistemicChart({ data }: EpistemicChartProp
   const caPos = useMemo(() => getPos(data.assignedCredence, R), [data.assignedCredence]);
   const skillRadius = R * data.deepRationality;
   const skillPos = useMemo(() => getPos(data.perceivedEvidence, skillRadius), [data.perceivedEvidence, skillRadius]);
+  const depthMarkers = [0.2, 0.4, 0.6, 0.8, 1];
 
   // Warranted uncertainty spread (omega)
   const omega = (1 - data.deepRationality) * (Math.PI / 4);
@@ -88,6 +89,27 @@ const EpistemicChart = memo(function EpistemicChart({ data }: EpistemicChartProp
         {/* Labels */}
         <text x={cx - R} y={cy + 15} className="fill-stone-500 text-[10px] font-mono" textAnchor="middle">0%</text>
         <text x={cx + R} y={cy + 15} className="fill-stone-500 text-[10px] font-mono" textAnchor="middle">100%</text>
+        <text x={cx + 12} y={cy - R - 6} className="fill-amber-300 text-[8px] font-mono uppercase tracking-widest" textAnchor="start">SD depth</text>
+        {depthMarkers.map((marker) => (
+          <g key={marker}>
+            <line
+              x1={cx - 3}
+              y1={cy - R * marker}
+              x2={cx + 3}
+              y2={cy - R * marker}
+              stroke="rgba(250, 204, 150, 0.32)"
+              strokeWidth="1"
+            />
+            <text
+              x={cx + 10}
+              y={cy - R * marker + 3}
+              className="fill-amber-200 text-[8px] font-mono"
+              textAnchor="start"
+            >
+              {Math.round(marker * 100)}%
+            </text>
+          </g>
+        ))}
 
         {/* Warranted Uncertainty (Green Arc) */}
         <path

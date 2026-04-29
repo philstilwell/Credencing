@@ -1819,6 +1819,7 @@ export const interactiveLabPages: ContentPage[] = [
         heading: 'Use Deep Rationality as Resolution',
         body: [
           'Deep Rationality (SD) functions like resolution. High SD means the agent has better tools for narrowing the distance between the world and their perception. Low SD means more fog and wider warranted uncertainty.',
+          'On the chart, Deep Rationality (SD) increases as the yellow skill marker moves farther away from the center point and toward the outer semicircle. This is intentionally radial: greater depth is farther out, even though people may intuitively expect “deeper” to mean lower.',
           'Do not read low Deep Rationality (SD) as moral failure by itself. A novice may lack tools and still be honest. The model becomes morally interesting when you compare Deep Rationality (SD) with the Perceived Evidence to Assigned Credence gap (EP-CA).',
         ],
       },
@@ -1850,6 +1851,7 @@ export const interactiveLabPages: ContentPage[] = [
         heading: 'Skill and Uncertainty',
         body: [
           'The skill-depth marker reflects Deep Rationality. As skill rises, warranted uncertainty narrows. As skill falls, the agent is entitled to a wider range of uncertainty because their tools are less precise.',
+          'The concentric semicircles are Deep Rationality (SD) percentage markers. The center is low skill depth; each ring farther outward represents a higher percentage, with 100% at the outer rim.',
           'The green uncertainty region is not a defect. It represents the range in which variation in credence may remain reasonable given the agent limitations.',
         ],
       },
