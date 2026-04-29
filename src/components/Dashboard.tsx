@@ -15,15 +15,16 @@ interface DashboardProps {
 const Dashboard = memo(function Dashboard({ data, onChange }: DashboardProps) {
   const calcError = Math.abs(data.perceivedEvidence - data.objectiveEvidence);
   const coreIrrationality = Math.abs(data.assignedCredence - data.perceivedEvidence);
-  const omega = (1 - data.deepRationality) * 0.25;
+  const warrantedSlack = (1 - data.deepRationality) * 0.25;
+  const excessCoreIrrationality = Math.max(0, coreIrrationality - warrantedSlack);
 
   // Fragility: High when credence is far from evidence OR on the absolute edge of the uncertainty bounds
   const fragility = useMemo(() => {
     const distFromCenter = Math.abs(data.assignedCredence - data.perceivedEvidence);
-    const normalizedDist = distFromCenter / (omega || 0.01);
+    const normalizedDist = distFromCenter / (warrantedSlack || 0.01);
     const skillBonus = data.deepRationality * 0.4;
-    return Math.min(1, Math.max(0, (normalizedDist * 0.6) + (coreIrrationality * 1.5) - skillBonus));
-  }, [data, coreIrrationality, omega]);
+    return Math.min(1, Math.max(0, (normalizedDist * 0.4) + (excessCoreIrrationality * 2.2) + (calcError * 0.4) - skillBonus));
+  }, [data, calcError, excessCoreIrrationality, warrantedSlack]);
 
   // Archetype logic
   let archetype: EpistemicArchetype = 'Standard Agent';
@@ -34,8 +35,8 @@ const Dashboard = memo(function Dashboard({ data, onChange }: DashboardProps) {
   } else if (data.deepRationality < 0.3 && coreIrrationality < 0.05) {
     archetype = 'Honest Novice';
   } else {
-    const omega = (1 - data.deepRationality) * 0.25; // Simple probability spread equivalent
-    if (coreIrrationality > omega) {
+    const warrantedSlack = (1 - data.deepRationality) * 0.25; // Simple probability spread equivalent
+    if (coreIrrationality > warrantedSlack) {
       archetype = 'Epistemic Delusion';
     }
   }
@@ -167,7 +168,7 @@ const Dashboard = memo(function Dashboard({ data, onChange }: DashboardProps) {
       </div>
 
       {/* Numerical Metrics */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         <MetricCard
           label="Calculation Error (DE)"
           value={`${(calcError * 100).toFixed(0)}%`}
@@ -177,6 +178,16 @@ const Dashboard = memo(function Dashboard({ data, onChange }: DashboardProps) {
           label="Core Irrationality (IC)"
           value={`${(coreIrrationality * 100).toFixed(0)}%`}
           color={coreIrrationality > 0.1 ? 'text-red-500' : 'text-stone-300'}
+        />
+        <MetricCard
+          label="Warranted Slack"
+          value={`${(warrantedSlack * 100).toFixed(0)}%`}
+          color={warrantedSlack > 0.15 ? 'text-yellow-300' : 'text-stone-300'}
+        />
+        <MetricCard
+          label="Excess IC"
+          value={`${(excessCoreIrrationality * 100).toFixed(0)}%`}
+          color={excessCoreIrrationality > 0.1 ? 'text-red-500' : excessCoreIrrationality > 0 ? 'text-orange-300' : 'text-green-400'}
         />
         <MetricCard
           label="Fragility"
@@ -191,12 +202,12 @@ const Dashboard = memo(function Dashboard({ data, onChange }: DashboardProps) {
           <Activity size={10} /> State Assessment
         </h3>
         <p className="text-[11px] text-stone-300 leading-relaxed italic">
-          {coreIrrationality > 0.15 ? (
-            <span className="text-red-400">Critical affective override detected. The subject is actively ignoring their own perceived evidence. </span>
-          ) : coreIrrationality > 0.05 ? (
-            <span className="text-orange-300">Minor doxastic slippage. Emotional or social factors are beginning to tug at the belief anchor. </span>
+          {excessCoreIrrationality > 0.15 ? (
+            <span className="text-red-400">Critical excess misalignment detected. Assigned credence is outside the range warranted by uncertainty, so the diagnosis should focus on motivated override or integrity pressure. </span>
+          ) : excessCoreIrrationality > 0.02 ? (
+            <span className="text-orange-300">Doxastic slippage exceeds warranted slack. Emotional or social factors may be tugging at the belief anchor. </span>
           ) : (
-            <span className="text-green-400/80">Belief is tethered to perception. The subject is operating in good faith. </span>
+            <span className="text-green-400/80">Belief remains within the warranted slack around perception. Treat any raw gap as diagnostic evidence, not yet as blame. </span>
           )}
 
           {calcError > 0.1 ? (
@@ -204,6 +215,10 @@ const Dashboard = memo(function Dashboard({ data, onChange }: DashboardProps) {
           ) : (
             <span className="text-stone-400">Low epistemic error indicates a functional bridge between reality and the mind. </span>
           )}
+
+          <span className="text-stone-500 block mt-2">
+            Warranted slack is currently {(warrantedSlack * 100).toFixed(0)}%; Excess Core Irrationality (IC) is {(excessCoreIrrationality * 100).toFixed(0)}%.
+          </span>
 
           {fragility > 0.4 ? (
             <span className="text-red-300 block mt-2 border-l-2 border-red-500/50 pl-2">System alert: High fragility detected. The doxastic state is unstable and prone to abrupt collapse or fundamentalism.</span>

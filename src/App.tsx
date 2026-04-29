@@ -46,6 +46,7 @@ const glossaryTerms = [
   ['SD', 'Deep Rationality (SD)', 'Deep Rationality: skill in processing evidence.'],
   ['DE', 'Calculation Error (DE)', 'Calculation Error: the gap between Objective Evidence (E0) and Perceived Evidence (EP).'],
   ['IC', 'Core Irrationality (IC)', 'Core Irrationality: the gap between Perceived Evidence (EP) and Assigned Credence (CA).'],
+  ['Excess IC', 'Excess Core Irrationality', 'The part of Core Irrationality (IC) that remains beyond warranted uncertainty.'],
   ['Calibration', 'Calibration', 'The fit between confidence and actual reliability.'],
   ['Prior', 'Prior', 'A starting credence before new evidence is considered.'],
   ['Likelihood', 'Likelihood', 'How expected evidence is under a hypothesis.'],
@@ -436,7 +437,9 @@ function FormalizationPanel() {
       <div className="space-y-6">
         <Formula code="DE = |EP - E0|" title="Calculation Error (DE)" text="A failure of competence: the distance between Objective Evidence (E0) and Perceived Evidence (EP)." />
         <Formula code="IC = |CA - EP|" title="Core Irrationality (IC)" text="A failure of integrity: the distance between Perceived Evidence (EP) and Assigned Credence (CA)." />
-        <Formula code="omega = (1 - SD) * (pi / 4)" title="Warranted Uncertainty" text="A healthy range of doubt proportional to skill deficit. Rationality is calibrated doubt, not forced certainty." />
+        <Formula code="slack = (1 - SD) * 0.25" title="Warranted Slack" text="A probability-scale allowance for uncertainty proportional to skill deficit." />
+        <Formula code="omega_visual = (1 - SD) * (pi / 4)" title="Visual Uncertainty" text="The angular version of warranted uncertainty used to draw the green uncertainty region." />
+        <Formula code="excess_IC = max(0, IC - slack)" title="Excess Core Irrationality" text="The portion of doxastic misalignment that remains after warranted uncertainty is allowed." />
       </div>
     </motion.div>
   );
@@ -1233,6 +1236,8 @@ function SiteFooter({ onNavigate }: { onNavigate: (path: string) => void }) {
 function getDynamicDescription(data: EpistemicData) {
   const calcError = Math.abs(data.perceivedEvidence - data.objectiveEvidence);
   const coreIrrationality = Math.abs(data.assignedCredence - data.perceivedEvidence);
+  const warrantedSlack = (1 - data.deepRationality) * 0.25;
+  const excessCoreIrrationality = Math.max(0, coreIrrationality - warrantedSlack);
   const isAbout = (val: number, target: number) => Math.abs(val - target) < 0.01;
 
   if (isAbout(data.objectiveEvidence, 0.8) && isAbout(data.perceivedEvidence, 0.2) && isAbout(data.assignedCredence, 0.2) && isAbout(data.deepRationality, 0.4)) {
@@ -1253,7 +1258,7 @@ function getDynamicDescription(data: EpistemicData) {
   if (data.deepRationality < 0.3 && coreIrrationality < 0.05) {
     return "Honest Novice: good faith with limited tools. The agent is aligned with perception, even if that perception is blurry.";
   }
-  if (coreIrrationality > (1 - data.deepRationality) * 0.25) {
+  if (excessCoreIrrationality > 0) {
     return "Epistemic Delusion: assigned credence has drifted so far from perceived evidence that the doxastic gap has torn loose.";
   }
   return "Standard Agent: minor deviations represent common bias or noise, but belief remains broadly tethered to perceived evidence.";

@@ -71,6 +71,7 @@ export const pageGroups: PageGroup[] = [
       'Core Rationality',
       'Calculation Error (DE)',
       'Core Irrationality (IC)',
+      'Diagnostic Safeguards',
       'Epistemic Akrasia',
       'Core vs Deep Rationality',
       'Epistemic Archetypes',
@@ -888,7 +889,15 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'The Omega Range',
         body: [
-          'In the interactive model, omega represents warranted uncertainty. As Deep Rationality increases, the warranted spread narrows: better tools reduce fog. As Deep Rationality decreases, the range widens: the agent should be less precise because their optics are less reliable.',
+          'In the interactive chart, omega represents warranted uncertainty as a visual angle around Perceived Evidence (EP). As Deep Rationality increases, the warranted spread narrows: better tools reduce fog. As Deep Rationality decreases, the range widens: the agent should be less precise because their optics are less reliable.',
+          'The dashboard expresses the same idea as warranted slack: a probability-scale allowance before a raw Perceived Evidence to Assigned Credence gap (EP-CA) is treated as excess misalignment.',
+        ],
+      },
+      {
+        heading: 'Slack Before Blame',
+        body: [
+          'Warranted uncertainty also creates diagnostic slack. If Assigned Credence (CA) differs modestly from Perceived Evidence (EP), but the case is noisy and the agent has limited skill, the model should not immediately treat the gap as blameworthy.',
+          'The improved model therefore distinguishes Core Irrationality (the raw EP-CA distance) from Excess Core Irrationality, the part of that distance that remains after warranted uncertainty is allowed.',
         ],
       },
       {
@@ -901,12 +910,13 @@ export const coreIdeasPages: ContentPage[] = [
     [
       'Some uncertainty is warranted by limited evidence or tools.',
       'Omega models the reasonable spread around perceived evidence.',
+      'Warranted uncertainty creates diagnostic slack before blame.',
       'Selective uncertainty can become motivated evasion.',
     ],
     [
       pagePath('/core-ideas', 'Deep Rationality (SD)'),
+      pagePath('/core-ideas', 'Diagnostic Safeguards'),
       pagePath('/core-ideas', 'Core Irrationality (IC)'),
-      pagePath('/interactive-lab', 'Visual Legend'),
     ],
   ),
   corePage(
@@ -1144,8 +1154,53 @@ export const coreIdeasPages: ContentPage[] = [
     ],
     [
       pagePath('/core-ideas', 'Core Rationality'),
+      pagePath('/core-ideas', 'Diagnostic Safeguards'),
       pagePath('/core-ideas', 'Epistemic Akrasia'),
-      pagePath('/case-studies', 'Motivated Reasoning'),
+    ],
+  ),
+  corePage(
+    'Diagnostic Safeguards',
+    'Diagnostic safeguards prevent the model from turning every gap into an accusation.',
+    [
+      {
+        heading: 'Raw Gap vs Warranted Diagnosis',
+        body: [
+          'The model should distinguish a raw Perceived Evidence to Assigned Credence gap (EP-CA) from a warranted diagnosis of Core Irrationality. A raw gap is evidence that something deserves attention. It is not yet proof of bad faith.',
+          'The improved interactive model therefore tracks Excess Core Irrationality: the portion of the EP-CA gap that remains after allowing for warranted uncertainty. This keeps the model from treating every small deviation, noisy estimate, or high-uncertainty case as a moral failure.',
+        ],
+      },
+      {
+        heading: 'The Responsibility Filter',
+        body: [
+          'Before moving from diagnosis to blame, ask four questions. Did the agent have access to better evidence? Did they have the skill and time to process it? Were there emotional, institutional, or social pressures distorting the update? Did they resist repair once the problem became visible?',
+          'This filter preserves the project central distinction. It still holds people accountable for motivated override, but it avoids treating ignorance, trauma, manipulation, fatigue, or poor evidence access as if they were all the same thing.',
+        ],
+      },
+      {
+        heading: 'Action Thresholds Are Separate',
+        body: [
+          'Credence is not the same as action. A person may rationally act before certainty when stakes are high, delay action when costs are high, or keep investigating when the evidence is not yet decision-ready.',
+          'The model is strongest when it separates three questions: what confidence is warranted, what confidence the agent assigns, and what action threshold the situation requires.',
+        ],
+      },
+      {
+        heading: 'Use With Diagnostic Humility',
+        body: [
+          'Because Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD) are often estimates, the model should report diagnostic confidence as well as diagnostic type.',
+          'The safest use is comparative: which gap appears largest, which repair would reduce it, and what observation would change the diagnosis?',
+        ],
+      },
+    ],
+    [
+      'A raw gap is evidence for inquiry, not automatic blame.',
+      'Excess Core Irrationality is the gap that remains beyond warranted uncertainty.',
+      'Responsibility depends on access, skill, pressure, and willingness to repair.',
+      'Credence and action thresholds should be kept separate.',
+    ],
+    [
+      pagePath('/core-ideas', 'Warranted Uncertainty'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/skills', 'How to Separate Core from Deep Failure'),
     ],
   ),
   corePage(
@@ -3086,7 +3141,8 @@ export const libraryPages: ContentPage[] = [
         body: [
           'Credence: a graded degree of confidence in a claim, hypothesis, possibility, or interpretation. Objective Evidence (E0): the evidential support that exists in the world apart from the agent. Perceived Evidence (EP): what the agent takes the evidence to show after attention, interpretation, memory, social pressure, and reasoning have done their work.',
           'Assigned Credence (CA): the confidence the agent actually adopts. Deep Rationality (SD): the skill side of rationality, including statistical literacy, causal reasoning, Bayesian updating, hypothesis comparison, and sensitivity to base rates. Core Rationality: the integrity side of rationality, the willingness to assign confidence in line with what one takes the evidence to show.',
-          'Calculation Error (DE): the gap between objective evidence and perceived evidence. Core Irrationality (IC): the gap between perceived evidence and assigned credence. Warranted Uncertainty: the range of doubt that remains rational given limited evidence, limited skill, and the stakes of judgment. Epistemic Akrasia: believing against one’s own judgment about what the evidence supports.',
+          'Calculation Error (DE): the gap between objective evidence and perceived evidence. Core Irrationality (IC): the gap between perceived evidence and assigned credence. Warranted Slack: the amount of EP-CA variation treated as reasonable under uncertainty. Excess Core Irrationality: the portion of Core Irrationality that remains after warranted slack is allowed. Warranted Uncertainty: the range of doubt that remains rational given limited evidence, limited skill, and the stakes of judgment.',
+          'Diagnostic Safeguard: a rule that prevents the model from treating every gap as blameworthy. Responsibility Filter: the check for evidence access, skill, pressure, and willingness to repair before moving from diagnosis to moral judgment. Epistemic Akrasia: believing against one’s own judgment about what the evidence supports.',
         ],
       },
       {
@@ -3174,6 +3230,13 @@ export const libraryPages: ContentPage[] = [
         ],
       },
       {
+        heading: 'How Does the Model Avoid Overdiagnosis?',
+        body: [
+          'It separates raw gaps from warranted conclusions. A raw Perceived Evidence to Assigned Credence gap (EP-CA) is a reason to investigate, but the stronger diagnosis depends on how much of that gap remains after warranted uncertainty, evidence noise, skill limits, and access limits are considered.',
+          'The improved model calls this remainder Excess Core Irrationality. It also uses a responsibility filter: before assigning blame, ask whether the agent had access, skill, time, emotional safety, and a real opportunity to repair the gap.',
+        ],
+      },
+      {
         heading: 'What Is the Difference Between Being Wrong and Being Irrational?',
         body: [
           'A person can be wrong because the evidence available to them was misleading, incomplete, or difficult to interpret. That is often a Deep Rationality or information-access problem, not a Core Rationality problem.',
@@ -3226,12 +3289,14 @@ export const libraryPages: ContentPage[] = [
     [
       'The framework is Bayesian-friendly but broader.',
       'Core Irrationality is diagnostic before it is moralized.',
+      'Excess Core Irrationality helps prevent overdiagnosis.',
       'The model uses numbers to clarify relationships, not to fake precision.',
       'The FAQ clarifies how Credencing treats uncertainty, expertise, faith, disagreement, and progress.',
     ],
     [
       pagePath('/start-here', 'What Is Credencing?'),
       pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/core-ideas', 'Diagnostic Safeguards'),
       pagePath('/library', 'Glossary'),
     ],
   ),
