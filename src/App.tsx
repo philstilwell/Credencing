@@ -1371,6 +1371,15 @@ function DiagramCard({ title, children }: { title: string; children: ReactNode }
 }
 
 function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
+  const utilityItems = [
+    { label: 'Search', detail: 'Full corpus search', path: '/search' },
+    { label: 'Topic Index', detail: 'Search page filters', path: '/search' },
+    { label: 'Tag Index', detail: 'Expanded tag browser', path: '/search' },
+    { label: 'Related Pages Engine', detail: 'Active on article pages' },
+    { label: 'Breadcrumbs', detail: 'Active on article pages' },
+    { label: 'Contact / Updates', detail: 'Feedback channel', path: pagePath('/about', 'Contact') },
+  ];
+
   return (
     <section className="space-y-8">
       <div className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5">
@@ -1403,11 +1412,20 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
       <div className="glass-panel p-6 bg-white/[0.015] border-white/5">
         <h3 className="text-white font-light text-xl mb-4">Utility Layer</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-stone-400">
-          {['Search', 'Topic Index', 'Tag Index', 'Related Pages Engine', 'Breadcrumbs', 'Newsletter / Updates'].map((item) => (
-            <div key={item} className="border border-white/5 rounded-lg p-3 flex items-center gap-2">
+          {utilityItems.map((item) => (
+            <button
+              key={item.label}
+              type="button"
+              onClick={() => item.path && onNavigate(item.path)}
+              disabled={!item.path}
+              className={`border border-white/5 rounded-lg p-3 flex items-start gap-2 text-left ${item.path ? 'hover:border-amber-500/30 hover:bg-white/[0.025] transition-colors' : 'cursor-default opacity-75'}`}
+            >
               <Search size={12} className="text-amber-400" />
-              {item}
-            </div>
+              <span>
+                <span className="block text-stone-300">{item.label}</span>
+                <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">{item.detail}</span>
+              </span>
+            </button>
           ))}
         </div>
       </div>
