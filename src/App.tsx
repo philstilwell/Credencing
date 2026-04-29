@@ -19,6 +19,7 @@ import {
   Search,
   ShieldAlert,
   Terminal,
+  Users,
   UserCheck,
   UserMinus,
 } from 'lucide-react';
@@ -34,6 +35,7 @@ const navItems = [
   { label: 'Start', path: '/start-here', icon: <Compass size={14} /> },
   { label: 'Ideas', path: '/core-ideas', icon: <Brain size={14} /> },
   { label: 'Lab', path: '/interactive-lab', icon: <Activity size={14} /> },
+  { label: 'Groups', path: '/discussion-groups', icon: <Users size={14} /> },
   { label: 'Library', path: '/library', icon: <Library size={14} /> },
   { label: 'Search', path: '/search', icon: <Search size={14} /> },
   { label: 'Map', path: '/site-map', icon: <Map size={14} /> },
@@ -66,6 +68,7 @@ const tagCatalog = [
   { id: 'motivated-reasoning', label: 'Motivated Reasoning', description: 'Identity protection, rationalization, selective skepticism, tribalism, and fear-driven belief.', aliases: ['motivated', 'motivation', 'rationalization', 'identity', 'tribalism', 'tribe', 'fear', 'selective skepticism'] },
   { id: 'bias', label: 'Bias and Failure Modes', description: 'Cognitive bias, base-rate neglect, risk inflation, conspiracy thinking, and epistemic bubbles.', aliases: ['bias', 'failure mode', 'base-rate neglect', 'risk inflation', 'conspiracy', 'echo chamber', 'epistemic bubble'] },
   { id: 'skills', label: 'Practice Skills', description: 'Exercises for estimating priors, reading likelihoods, updating, and asking better questions.', aliases: ['skill', 'skills', 'practice', 'exercise', 'worksheet', 'how to', 'questions'] },
+  { id: 'discussion', label: 'Discussion Groups', description: 'Group sessions, facilitation, discussion questions, scenarios, and guided feedback.', aliases: ['discussion', 'group discussion', 'discussion groups', 'session', 'facilitator', 'facilitation', 'questions', 'scenario'] },
   { id: 'teaching', label: 'Teaching', description: 'Classroom use, lesson sequences, teaching materials, downloads, and education.', aliases: ['teaching', 'classroom', 'lesson', 'education', 'download', 'worksheet', 'materials'] },
   { id: 'institutions', label: 'Institutions', description: 'Organizations, public reasoning, journalism, law, policy, governance, and accountability.', aliases: ['institution', 'institutional', 'organization', 'journalism', 'law', 'policy', 'public debate', 'governance', 'accountability'] },
   { id: 'science-medicine', label: 'Science and Medicine', description: 'Scientific reasoning, medical testing, replication, measurement, and expert judgment.', aliases: ['science', 'medicine', 'medical', 'testing', 'replication', 'measurement', 'expert'] },
@@ -605,6 +608,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
           <CitationPanel page={page} />
           <DownloadPanel page={page} />
           <ContactPanel page={page} />
+          <DiscussionAccordionPanel page={page} />
           <nav className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {previousPath && (
               <button onClick={() => onNavigate(previousPath)} className="glass-panel p-5 bg-white/[0.015] border-white/5 hover:border-amber-500/30 text-left transition-colors">
@@ -1061,6 +1065,265 @@ function ContactForm() {
         </button>
       </form>
     </section>
+  );
+}
+
+type DiscussionPrompt = {
+  question: string;
+  guidance: string;
+  historical?: string;
+  scenario?: string;
+  contemporary?: string;
+  feedback: string;
+};
+
+const discussionPrompts: Record<string, DiscussionPrompt[]> = {
+  'Group Discussion Guide': [
+    {
+      question: 'What would make this group a place where people can honestly lower or raise confidence?',
+      guidance: 'Look for norms that reward careful updates instead of quick victories. Good answers should mention charity, evidence, confidence levels, and permission to say “I do not know yet.”',
+      scenario: 'A participant says, “Only an idiot would believe that.” How should the group redirect the comment without pretending all views are equally supported?',
+      feedback: 'Strong groups correct contempt quickly while still allowing criticism of bad reasoning. The target is the belief state, not the person’s worth.',
+    },
+    {
+      question: 'How should the group handle a claim that is emotionally important to one member?',
+      guidance: 'Distinguish personal respect from evidential agreement. The group can slow down, ask permission before pressing, and use public or hypothetical examples first.',
+      contemporary: 'Many discussions about religion, politics, identity, or health decisions are not just about facts. They involve belonging, fear, loyalty, and memory.',
+      feedback: 'A good answer protects dignity without making the claim immune to evidence.',
+    },
+    {
+      question: 'What is the difference between a debate club and a credencing group?',
+      guidance: 'A debate club often rewards persuasion. A credencing group rewards calibrated confidence, clear update conditions, and careful repair.',
+      historical: 'Socratic dialogues often worked by exposing confusion rather than scoring points. The best moments were not victories but clearer questions.',
+      feedback: 'The clearest answer: debate asks “Who won?” Credencing asks “What confidence is warranted, and what would move it?”',
+    },
+  ],
+  'Session 1: Credences and Confidence': [
+    {
+      question: 'Choose a common claim and assign it a confidence level. What makes that number too high, too low, or reasonable?',
+      guidance: 'Encourage ranges: 40-60 percent is often more honest than 52 percent. Ask what evidence would move the number by at least 10 points.',
+      scenario: 'A friend says, “I am sure this new study proves coffee is bad for everyone.” What confidence would you assign before reading the study?',
+      contemporary: 'Health headlines, sports predictions, college admissions guesses, and economic forecasts all invite confidence levels rather than simple belief.',
+      feedback: 'Good responses explain the number. Weak responses give a number with no evidence or update condition.',
+    },
+    {
+      question: 'When does saying “I believe it” hide too much information?',
+      guidance: 'Have participants compare “I believe it at 51 percent” with “I believe it at 95 percent.” Both may count as belief, but they should not guide action in the same way.',
+      historical: 'Weather forecasting became more useful when it moved from yes/no predictions to probabilities such as a 30 percent chance of rain.',
+      feedback: 'The key insight is that belief has strength. Two people may both “believe” something while holding very different levels of confidence.',
+    },
+    {
+      question: 'Why do people often prefer certainty language even when they are uncertain?',
+      guidance: 'Look for social rewards: confidence can sound smart, loyal, brave, or decisive. Uncertainty can be mistaken for weakness.',
+      scenario: 'In a group project, one student is 60 percent confident the plan will work. Another says, “It will definitely work.” Who sounds stronger, and who may be reasoning better?',
+      feedback: 'Good answers separate emotional comfort from epistemic accuracy.',
+    },
+  ],
+  'Session 2: Evidence and Perception': [
+    {
+      question: 'How can two honest people look at the same event and perceive different evidence?',
+      guidance: 'Ask about attention, background knowledge, memory, trust, framing, and missing context. The point is to explain divergence before accusing anyone.',
+      historical: 'Eyewitness testimony has often been treated as strong evidence, but later DNA exonerations showed that sincere perception can be mistaken.',
+      feedback: 'A strong answer names mechanisms of error, not just “people are biased.”',
+    },
+    {
+      question: 'What is an example of Objective Evidence (E0) being different from Perceived Evidence (EP)?',
+      guidance: 'Use simple examples: a misleading graph, a viral video missing context, a medical symptom that feels serious but has a common harmless cause.',
+      scenario: 'A short video shows a public figure saying something awful. Later, the full clip changes the meaning. What changed: E0, EP, or CA?',
+      feedback: 'The best answer: the original evidence in the world may include the full context, but the viewer’s perceived evidence was narrowed by the clip.',
+    },
+    {
+      question: 'When is poor perception blameworthy, and when is it understandable?',
+      guidance: 'Use the responsibility filter: access, skill, time, pressure, and willingness to repair.',
+      contemporary: 'Algorithmic feeds can repeatedly show one kind of story until it feels typical. The viewer may be misled, but the platform also shaped the evidence environment.',
+      feedback: 'Good answers avoid both extremes: “no one is responsible” and “every mistake is bad faith.”',
+    },
+  ],
+  'Session 3: Priors, Base Rates, and Likelihoods': [
+    {
+      question: 'Why should background rates matter even when a case feels vivid?',
+      guidance: 'Ask participants to compare one memorable example with the larger pattern. A vivid story can be real and still not representative.',
+      historical: 'Insurance, public health, and safety engineering all depend on base rates. They ask how often events happen, not only how dramatic one event feels.',
+      feedback: 'A strong answer says base rates do not erase details; they anchor details.',
+    },
+    {
+      question: 'How can a medical test be positive while the condition is still not certain?',
+      guidance: 'Introduce false positives, false negatives, and base rates. Keep the math simple: if a condition is rare, even a good test can produce some false alarms.',
+      scenario: 'A disease affects 1 in 1,000 people. A test is very good but not perfect. What else do you need to know before assigning confidence after a positive result?',
+      feedback: 'Good answers ask for sensitivity, specificity, and the base rate.',
+    },
+    {
+      question: 'What makes a piece of evidence diagnostic rather than merely interesting?',
+      guidance: 'Diagnostic evidence should be more expected if the claim is true than if it is false.',
+      contemporary: 'A celebrity endorsement is evidence that someone is promoting a product, but it may be weak evidence that the product works.',
+      feedback: 'Good answers distinguish attention-grabbing evidence from likelihood-shifting evidence.',
+    },
+  ],
+  'Session 4: Updating and Changing Minds': [
+    {
+      question: 'What would count as an honest update that is not a total reversal?',
+      guidance: 'Use small confidence movements. A participant might move from 80 to 65 percent, or from 40 to 55 percent.',
+      historical: 'Scientific change often happens gradually. Evidence for germ theory, plate tectonics, or heliocentrism accumulated before many people fully changed their views.',
+      feedback: 'A good answer treats updating as proportional movement, not humiliation.',
+    },
+    {
+      question: 'What update condition would lower your confidence in a view you currently hold?',
+      guidance: 'This can be private or low-stakes. The goal is to practice answerability, not force confession.',
+      scenario: 'A student believes a school policy is unfair. What evidence would make them less confident: data on outcomes, testimony from affected students, cost information, or something else?',
+      feedback: 'Strong answers name evidence that could genuinely move the person, not impossible standards.',
+    },
+    {
+      question: 'Why do people sometimes refuse to update after admitting the evidence changed?',
+      guidance: 'Look for identity, fear, sunk costs, public commitment, and group pressure.',
+      contemporary: 'Public figures may avoid updates because opponents call it weakness. Groups can ask how public culture could reward honest revision.',
+      feedback: 'Good answers distinguish evidence processing from social cost.',
+    },
+  ],
+  'Session 5: Bias, Identity, and Core Rationality': [
+    {
+      question: 'How can intelligence make motivated reasoning worse rather than better?',
+      guidance: 'An intelligent person may generate better defenses for a preferred conclusion. Ask whether their standards are symmetrical.',
+      historical: 'Educated defenders of bad institutions have often produced sophisticated arguments for preserving power, status, or tradition.',
+      feedback: 'The key phrase is directional intelligence: skill aimed at protection rather than truth.',
+    },
+    {
+      question: 'What does it feel like when Assigned Credence (CA) pulls away from Perceived Evidence (EP)?',
+      guidance: 'Use ordinary language: “I know this probably is not true, but I need it to be.” Or, “I see the objection, but I cannot let myself accept it.”',
+      scenario: 'A student knows they did not study enough but insists the test was unfair because that feels easier than admitting responsibility.',
+      feedback: 'Good answers notice inner pressure without turning it into a character attack.',
+    },
+    {
+      question: 'How can a group make changing one’s mind socially survivable?',
+      guidance: 'Suggest phrases such as “That is a good update” or “Thanks for revising.” Make revision a respected move.',
+      contemporary: 'Online communities often punish members for disagreeing with the group. That makes Core Rationality harder.',
+      feedback: 'The strongest answer changes the social reward structure around updating.',
+    },
+  ],
+  'Session 6: Uncertainty, Action, and Risk': [
+    {
+      question: 'When is it rational to act before being certain?',
+      guidance: 'Separate confidence from stakes. High stakes can justify action at lower confidence if waiting is dangerous, or require higher confidence if action is risky.',
+      historical: 'Public health decisions during outbreaks often require action while evidence is still developing.',
+      feedback: 'Good answers mention both probability and cost of error.',
+    },
+    {
+      question: 'How can uncertainty be honest rather than evasive?',
+      guidance: 'Honest uncertainty is specific and updateable. Evasive uncertainty appears only when evidence threatens a preferred conclusion.',
+      scenario: 'A person says “we can never know” only after evidence starts going against their side. What makes that suspicious?',
+      feedback: 'The key is consistency: do they apply uncertainty standards evenly?',
+    },
+    {
+      question: 'How should the group discuss risk without letting fear inflate confidence?',
+      guidance: 'Ask participants to name the feared outcome, estimate likelihood, identify evidence, and separate dread from probability.',
+      contemporary: 'Crime stories, health scares, economic panic, and safety debates often make rare outcomes feel common.',
+      feedback: 'Strong answers respect real harm without letting vividness replace likelihood.',
+    },
+  ],
+  'Session 7: Media, Institutions, and Public Debate': [
+    {
+      question: 'How do institutions shape what counts as public evidence?',
+      guidance: 'Ask what gets measured, reported, repeated, hidden, rewarded, or punished.',
+      historical: 'The Watergate investigation showed how documents, reporting, courts, hearings, and public pressure can change public confidence over time.',
+      feedback: 'Good answers identify evidence pipelines rather than blaming only individual readers.',
+    },
+    {
+      question: 'Why does public debate often reward overconfidence?',
+      guidance: 'Discuss sound bites, team loyalty, audience applause, and the difficulty of saying “I am not sure” in public.',
+      scenario: 'In a televised debate, one speaker gives a simple confident answer while another gives a careful uncertain answer. Who seems more convincing, and who may be more accurate?',
+      feedback: 'A strong answer separates performance confidence from evidential confidence.',
+    },
+    {
+      question: 'What would healthier media credencing look like?',
+      guidance: 'Look for visible uncertainty, source links, correction records, base rates, expert disagreement, and clear separation between reporting and opinion.',
+      contemporary: 'Breaking news often changes quickly. The first report may be incomplete even when journalists are acting responsibly.',
+      feedback: 'Good answers make speed accountable to correction.',
+    },
+  ],
+  'Session 8: AI, Expertise, and the Future': [
+    {
+      question: 'Why can a fluent AI answer feel more reliable than it is?',
+      guidance: 'Fluency is not the same as evidence. Ask what sources, checks, uncertainty, and domain knowledge support the output.',
+      historical: 'Earlier technologies such as radio, television, and search engines also made information feel more authoritative when it was easier to access.',
+      feedback: 'The key distinction is presentation quality versus evidential support.',
+    },
+    {
+      question: 'When should people defer to experts, and when should they ask for more explanation?',
+      guidance: 'Expertise matters most inside a domain and when experts show methods, uncertainty, and track records. Deference should not become blind trust.',
+      scenario: 'A doctor, an AI chatbot, and a social media influencer give different health advice. What questions should a patient ask before assigning confidence?',
+      feedback: 'Strong answers weigh domain expertise, evidence, incentives, and verification.',
+    },
+    {
+      question: 'What future institutions will need better confidence governance?',
+      guidance: 'Discuss schools, courts, hospitals, AI labs, journalism, government agencies, and companies.',
+      contemporary: 'AI-generated content, deepfakes, automated decisions, and model-based forecasts all require clearer confidence labels and accountability.',
+      feedback: 'Good answers focus on systems that make confidence visible and correctable.',
+    },
+  ],
+  'Facilitator Toolkit': [
+    {
+      question: 'What should a facilitator do when the group becomes polarized?',
+      guidance: 'Slow the discussion, restate the claim, ask each side for its strongest evidence, and require confidence levels rather than slogans.',
+      scenario: 'Two participants start arguing about politics. Each thinks the other side is dishonest. How can the facilitator return to evidence and confidence?',
+      feedback: 'A good facilitator lowers heat without flattening real disagreement.',
+    },
+    {
+      question: 'How can feedback be honest without being insulting?',
+      guidance: 'Use precise, model-based language. Say “I am not seeing the evidence for that confidence level” rather than “you are irrational.”',
+      feedback: 'Strong feedback names the gap and invites repair.',
+    },
+    {
+      question: 'How should a group end a session so learning continues?',
+      guidance: 'Ask each participant to write one update, one uncertainty, and one question for next time.',
+      contemporary: 'Prediction logs, shared notes, and follow-up checks help groups practice calibration over time.',
+      feedback: 'A strong closing turns discussion into a record of learning.',
+    },
+  ],
+};
+
+function DiscussionAccordionPanel({ page }: { page: ContentPage }) {
+  if (page.groupPath !== '/discussion-groups') return null;
+  const prompts = discussionPrompts[page.title] ?? [];
+  if (prompts.length === 0) return null;
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-amber-500/[0.035] border-amber-500/20 space-y-5">
+      <div className="space-y-2">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Discussion Questions</p>
+        <h3 className="text-2xl font-light text-white">Questions with expandable guidance</h3>
+        <p className="text-stone-400 text-sm leading-relaxed">
+          Open each question for facilitator notes, examples, scenarios, and feedback. The aim is careful discussion at a senior high school reading level.
+        </p>
+      </div>
+      <div className="space-y-3">
+        {prompts.map((prompt, index) => (
+          <details key={prompt.question} className="group rounded-xl border border-white/10 bg-black/15 open:bg-black/25">
+            <summary className="cursor-pointer list-none p-4 text-white flex items-start justify-between gap-4">
+              <span>
+                <span className="block text-[9px] uppercase tracking-widest text-amber-300 mb-2">Question {index + 1}</span>
+                <span className="text-base font-light leading-snug">{prompt.question}</span>
+              </span>
+              <span className="text-amber-300 text-xl leading-none group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div className="px-4 pb-4 grid gap-3 text-sm text-stone-300 leading-relaxed">
+              <DiscussionNote label="Guidance" text={prompt.guidance} />
+              {prompt.historical && <DiscussionNote label="Historical Example" text={prompt.historical} />}
+              {prompt.scenario && <DiscussionNote label="Hypothetical Scenario" text={prompt.scenario} />}
+              {prompt.contemporary && <DiscussionNote label="Contemporary Issue" text={prompt.contemporary} />}
+              <DiscussionNote label="Feedback" text={prompt.feedback} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function DiscussionNote({ label, text }: { label: string; text: string }) {
+  return (
+    <div className="rounded-lg border border-white/5 bg-white/[0.02] p-3">
+      <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-1">{label}</span>
+      <span>{text}</span>
+    </div>
   );
 }
 

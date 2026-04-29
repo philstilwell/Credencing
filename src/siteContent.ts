@@ -133,6 +133,23 @@ export const pageGroups: PageGroup[] = [
     ],
   },
   {
+    title: 'Discussion Groups',
+    path: '/discussion-groups',
+    summary: 'Session plans, discussion questions, scenarios, historical examples, and facilitator guidance for groups studying credencing together.',
+    pages: [
+      'Group Discussion Guide',
+      'Session 1: Credences and Confidence',
+      'Session 2: Evidence and Perception',
+      'Session 3: Priors, Base Rates, and Likelihoods',
+      'Session 4: Updating and Changing Minds',
+      'Session 5: Bias, Identity, and Core Rationality',
+      'Session 6: Uncertainty, Action, and Risk',
+      'Session 7: Media, Institutions, and Public Debate',
+      'Session 8: AI, Expertise, and the Future',
+      'Facilitator Toolkit',
+    ],
+  },
+  {
     title: 'Applications',
     path: '/applications',
     summary: 'Where credencing matters: science, medicine, journalism, law, public debate, AI alignment, personal decisions, and institutional diagnostics.',
@@ -188,6 +205,7 @@ export const featuredPaths = [
   '/start-here',
   '/interactive-lab',
   '/core-ideas',
+  '/discussion-groups',
   '/case-studies',
   '/skills',
   '/library',
@@ -2567,6 +2585,406 @@ export const skillPages: ContentPage[] = [
   ),
 ];
 
+function discussionPage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/discussion-groups', title),
+    groupTitle: 'Discussion Groups',
+    groupPath: '/discussion-groups',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const discussionPages: ContentPage[] = [
+  discussionPage(
+    'Group Discussion Guide',
+    'A practical guide for using Credencing in classrooms, clubs, reading groups, workshops, and civic discussion circles.',
+    [
+      {
+        heading: 'Purpose',
+        body: [
+          'This section is for groups that want to practice better disagreement. The goal is not to win arguments. The goal is to make confidence visible, ask what evidence would move us, and notice the difference between honest uncertainty and defensive certainty.',
+          'The sessions are written at a senior high school level, but they can be used by adults, college classes, teacher groups, civic groups, or informal reading circles. Each session includes discussion questions plus expandable guidance and feedback.',
+        ],
+      },
+      {
+        heading: 'Group Norms',
+        body: [
+          'A good Credencing discussion begins with charity and precision. Participants should speak in degrees of confidence, name the evidence they are using, distinguish evidence from identity, and say what would change their minds.',
+          'The group should avoid turning the model into a weapon. Saying “you are irrational” usually ends inquiry. A better sentence is: “I think there may be a gap between the evidence you described and the confidence you assigned.”',
+        ],
+      },
+      {
+        heading: 'Basic Session Rhythm',
+        body: [
+          'A useful rhythm is: define the concept, examine a historical example, test a hypothetical scenario, apply the idea to a contemporary issue, and close with a private reflection.',
+          'Most sessions can fit into 45 to 75 minutes. For shorter meetings, use one historical example and one discussion question. For longer meetings, split into small groups and compare diagnoses.',
+        ],
+      },
+      {
+        heading: 'Facilitator Cautions',
+        body: [
+          'Do not demand personal disclosure. Participants can practice the model with public examples, fictional cases, or low-stakes personal decisions before discussing sensitive beliefs.',
+          'When disagreement becomes tense, return to the model: What is the claim? What is the evidence? What confidence is being assigned? What would count as an update?',
+        ],
+      },
+    ],
+    [
+      'The group goal is better inquiry, not debate victory.',
+      'Participants should practice confidence levels, update conditions, and diagnostic charity.',
+      'The model should be used to clarify gaps, not insult people.',
+      'Each session moves from concept to examples to reflection.',
+    ],
+    [
+      pagePath('/discussion-groups', 'Facilitator Toolkit'),
+      pagePath('/library', 'Teaching Materials'),
+      pagePath('/skills', 'Practice Exercises'),
+    ],
+  ),
+  discussionPage(
+    'Session 1: Credences and Confidence',
+    'This session introduces credences as degrees of confidence rather than simple yes-or-no belief.',
+    [
+      {
+        heading: 'Concept Focus',
+        body: [
+          'A credence is a confidence level. Instead of saying only “I believe it” or “I do not believe it,” participants practice saying “I am 60 percent confident” or “I lean toward this, but weakly.”',
+          'The session helps participants see why binary belief is too crude for real reasoning. Many claims deserve partial confidence, and many arguments fail because people treat partial confidence as certainty.',
+        ],
+      },
+      {
+        heading: 'Historical Example',
+        body: [
+          'Before weather forecasting became data-rich, people often relied on sayings, local memory, and visible signs. Modern forecasting improved by turning uncertainty into probabilities: a 30 percent chance of rain is not a failed prediction if rain does not occur.',
+          'This example shows why confidence levels matter. The point is not to erase uncertainty, but to make uncertainty useful.',
+        ],
+      },
+      {
+        heading: 'Contemporary Issue',
+        body: [
+          'Online headlines often push readers toward instant certainty. A group can ask: what confidence would this headline deserve before reading the full article? What confidence after checking the source, evidence, and context?',
+        ],
+      },
+    ],
+    [
+      'Credences are degrees of confidence.',
+      'Binary belief often hides important uncertainty.',
+      'Probabilistic language can make disagreement calmer and clearer.',
+    ],
+    [
+      pagePath('/start-here', 'Why Binary Belief Is Too Crude'),
+      pagePath('/core-ideas', 'Confidence Levels'),
+      pagePath('/discussion-groups', 'Session 2: Evidence and Perception'),
+    ],
+  ),
+  discussionPage(
+    'Session 2: Evidence and Perception',
+    'This session separates evidence in the world from what people notice, interpret, remember, and feel.',
+    [
+      {
+        heading: 'Concept Focus',
+        body: [
+          'Credencing separates Objective Evidence (E0) from Perceived Evidence (EP). Objective Evidence is the evidential situation. Perceived Evidence is what an agent takes the evidence to show after attention, framing, memory, and interpretation.',
+          'The session helps participants understand honest error. A person can be wrong because they had poor evidence, missed important context, or interpreted real evidence badly.',
+        ],
+      },
+      {
+        heading: 'Historical Example',
+        body: [
+          'In the early history of medicine, some treatments were trusted because they fit familiar theories or because respected authorities recommended them. Later evidence showed that some practices were ineffective or harmful.',
+          'The lesson is not that earlier people were stupid. Often they lacked better measurement tools, controlled experiments, or reliable comparison groups.',
+        ],
+      },
+      {
+        heading: 'Contemporary Issue',
+        body: [
+          'Social media feeds shape perceived evidence by repeating some examples and hiding others. A person may feel that an event is common because their feed shows it often, even if the wider base rate is low.',
+        ],
+      },
+    ],
+    [
+      'Evidence and perceived evidence are not always the same.',
+      'Bad perception can come from poor access, weak tools, or distorted environments.',
+      'Repair often begins by improving evidence access and context.',
+    ],
+    [
+      pagePath('/core-ideas', 'Objective Evidence (E0)'),
+      pagePath('/core-ideas', 'Perceived Evidence (EP)'),
+      pagePath('/discussion-groups', 'Session 3: Priors, Base Rates, and Likelihoods'),
+    ],
+  ),
+  discussionPage(
+    'Session 3: Priors, Base Rates, and Likelihoods',
+    'This session teaches participants to use background rates and diagnostic evidence before jumping to conclusions.',
+    [
+      {
+        heading: 'Concept Focus',
+        body: [
+          'A prior is a starting confidence before new evidence is considered. A base rate is the background frequency of something in a relevant group. A likelihood asks how expected the evidence would be if a claim were true.',
+          'The session helps participants avoid being captured by vivid stories. A dramatic example may matter, but it should be judged against the background rate and the diagnostic strength of the detail.',
+        ],
+      },
+      {
+        heading: 'Historical Example',
+        body: [
+          'In wartime, governments sometimes overestimated threats because vivid incidents were easier to remember than quieter background data. Good intelligence work requires asking how common an event is and how strongly a new signal changes the estimate.',
+          'This illustrates why base rates are not cold or irrelevant. They protect judgment from being ruled by the most dramatic case.',
+        ],
+      },
+      {
+        heading: 'Contemporary Issue',
+        body: [
+          'Medical screening tests are a useful modern example. A positive test result can be serious without being certain. The meaning depends on the condition’s base rate and the test’s false-positive and false-negative rates.',
+        ],
+      },
+    ],
+    [
+      'Priors and base rates anchor confidence before new evidence arrives.',
+      'Likelihoods measure how diagnostic new evidence is.',
+      'Vivid stories should be integrated with background rates.',
+    ],
+    [
+      pagePath('/core-ideas', 'Priors'),
+      pagePath('/case-studies', 'Medical Testing'),
+      pagePath('/discussion-groups', 'Session 4: Updating and Changing Minds'),
+    ],
+  ),
+  discussionPage(
+    'Session 4: Updating and Changing Minds',
+    'This session treats changing one’s mind as a rational skill rather than a social defeat.',
+    [
+      {
+        heading: 'Concept Focus',
+        body: [
+          'Updating means changing confidence when evidence changes. A rational update does not always mean flipping sides. Sometimes it means moving from 80 percent confidence to 65 percent confidence.',
+          'The session emphasizes update conditions: what observation, argument, or evidence would make your confidence go up or down?',
+        ],
+      },
+      {
+        heading: 'Historical Example',
+        body: [
+          'Scientific revolutions often involve difficult updates. When better evidence supported heliocentrism, germ theory, or plate tectonics, many people had to revise views that had once seemed obvious or respectable.',
+          'These cases show that updating can be slow when new evidence threatens authority, tradition, or professional identity.',
+        ],
+      },
+      {
+        heading: 'Contemporary Issue',
+        body: [
+          'Public figures often avoid admitting updates because opponents may call it weakness. The group can discuss how a healthier public culture would distinguish careless flip-flopping from honest revision.',
+        ],
+      },
+    ],
+    [
+      'Updating is movement in confidence, not always a total reversal.',
+      'Update conditions make reasoning accountable.',
+      'A healthy group rewards honest revision.',
+    ],
+    [
+      pagePath('/core-ideas', 'Bayesian Updating'),
+      pagePath('/skills', 'How to Update with New Evidence'),
+      pagePath('/discussion-groups', 'Session 5: Bias, Identity, and Core Rationality'),
+    ],
+  ),
+  discussionPage(
+    'Session 5: Bias, Identity, and Core Rationality',
+    'This session examines how fear, loyalty, status, and identity can pull assigned confidence away from perceived evidence.',
+    [
+      {
+        heading: 'Concept Focus',
+        body: [
+          'Core Rationality is the willingness to assign confidence according to what one takes the evidence to show. Core Irrationality appears when Assigned Credence (CA) pulls away from Perceived Evidence (EP).',
+          'The point is not to shame people. The point is to notice when identity, fear, loyalty, or incentives are doing the work that evidence should do.',
+        ],
+      },
+      {
+        heading: 'Historical Example',
+        body: [
+          'During political scandals, supporters often apply different standards to their own side than to opponents. The same evidence may be dismissed as irrelevant when it threatens the group, but treated as decisive when it harms the rival group.',
+          'This shows selective skepticism: high standards for unwelcome evidence, low standards for welcome evidence.',
+        ],
+      },
+      {
+        heading: 'Contemporary Issue',
+        body: [
+          'Online communities can make belief feel like loyalty. A person may privately see that a claim is weak but continue defending it because changing their mind would risk belonging.',
+        ],
+      },
+    ],
+    [
+      'Core Rationality concerns belief integrity.',
+      'Bias often protects identity, status, or belonging.',
+      'The repair may require social safety, not just more facts.',
+    ],
+    [
+      pagePath('/core-ideas', 'Core Rationality'),
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/discussion-groups', 'Session 6: Uncertainty, Action, and Risk'),
+    ],
+  ),
+  discussionPage(
+    'Session 6: Uncertainty, Action, and Risk',
+    'This session separates what confidence is warranted from what action is appropriate under risk.',
+    [
+      {
+        heading: 'Concept Focus',
+        body: [
+          'Uncertainty is not failure. Sometimes uncertainty is exactly what the evidence warrants. The important question is whether confidence is calibrated and whether the action threshold has been met.',
+          'Credence and action are related but distinct. A person may act on incomplete evidence when the cost of waiting is high, or wait for more evidence when the cost of a mistake is high.',
+        ],
+      },
+      {
+        heading: 'Historical Example',
+        body: [
+          'Public health decisions often require action before perfect certainty. During outbreaks, leaders must balance evidence quality, delay costs, economic costs, and public trust.',
+          'The discussion should separate factual confidence from action thresholds: how confident are we that X is true, and how much confidence is enough to act?',
+        ],
+      },
+      {
+        heading: 'Contemporary Issue',
+        body: [
+          'Climate policy, emergency alerts, medical treatment, and school safety decisions all involve action under uncertainty. Groups can ask which mistakes are most costly and how that changes the action threshold.',
+        ],
+      },
+    ],
+    [
+      'Uncertainty can be rational.',
+      'Action thresholds depend on stakes.',
+      'Good decisions separate confidence, values, and costs of error.',
+    ],
+    [
+      pagePath('/core-ideas', 'Warranted Uncertainty'),
+      pagePath('/case-studies', 'Pragmatic Encroachment'),
+      pagePath('/discussion-groups', 'Session 7: Media, Institutions, and Public Debate'),
+    ],
+  ),
+  discussionPage(
+    'Session 7: Media, Institutions, and Public Debate',
+    'This session applies credencing to journalism, organizations, public debate, and institutional trust.',
+    [
+      {
+        heading: 'Concept Focus',
+        body: [
+          'Institutions shape what people perceive as evidence. Newsrooms, courts, schools, governments, and companies decide what is measured, reported, repeated, hidden, rewarded, or punished.',
+          'The group should ask whether an institution has good evidence pipelines and whether it can update publicly without treating correction as humiliation.',
+        ],
+      },
+      {
+        heading: 'Historical Example',
+        body: [
+          'The Watergate investigation is a useful example of institutional evidence work: reporting, documents, hearings, courts, and public pressure gradually changed what many people were willing to believe.',
+          'It also shows why public trust depends on methods. People need to know not only what is claimed, but how the claim was checked.',
+        ],
+      },
+      {
+        heading: 'Contemporary Issue',
+        body: [
+          'Misinformation spreads faster when people reward confidence over accuracy. A group can discuss how platforms, schools, and news organizations could make confidence claims more accountable.',
+        ],
+      },
+    ],
+    [
+      'Institutions mediate public evidence.',
+      'Public debate often rewards overconfidence.',
+      'Trust improves when methods, uncertainty, and corrections are visible.',
+    ],
+    [
+      pagePath('/applications', 'Journalism'),
+      pagePath('/applications', 'Institutional Diagnostics'),
+      pagePath('/discussion-groups', 'Session 8: AI, Expertise, and the Future'),
+    ],
+  ),
+  discussionPage(
+    'Session 8: AI, Expertise, and the Future',
+    'This session uses credencing to discuss AI systems, expert judgment, overtrust, and future decision-making.',
+    [
+      {
+        heading: 'Concept Focus',
+        body: [
+          'AI makes credencing more important because it can produce fluent answers that feel authoritative. A user must ask: what evidence supports this output, how confident should I be, and what checks are needed before acting?',
+          'Expertise also requires credencing. Experts deserve more weight inside their domain, but expertise is not unlimited authority and does not remove uncertainty.',
+        ],
+      },
+      {
+        heading: 'Historical Example',
+        body: [
+          'Earlier technologies such as printing, radio, television, and search engines changed how people formed beliefs. Each made some knowledge easier to share, but each also created new ways to spread error or propaganda.',
+          'AI continues that pattern. The issue is not only whether the tool is powerful, but how people assign confidence to what the tool produces.',
+        ],
+      },
+      {
+        heading: 'Contemporary Issue',
+        body: [
+          'Students, doctors, lawyers, journalists, and managers now face AI-assisted work. Groups can discuss where AI is useful, where verification is essential, and when human overtrust becomes the main danger.',
+        ],
+      },
+    ],
+    [
+      'AI outputs require calibrated confidence, not automatic trust.',
+      'Experts deserve domain-sensitive deference, not unlimited authority.',
+      'Future institutions need better confidence governance.',
+    ],
+    [
+      pagePath('/applications', 'AI Alignment'),
+      pagePath('/applications', 'Science'),
+      pagePath('/discussion-groups', 'Facilitator Toolkit'),
+    ],
+  ),
+  discussionPage(
+    'Facilitator Toolkit',
+    'The facilitator toolkit provides practical methods for running fair, focused, and productive Credencing discussions.',
+    [
+      {
+        heading: 'Before the Meeting',
+        body: [
+          'Choose one claim, one concept, and one case. A group that tries to discuss “truth,” “politics,” and “AI” all at once will usually drift into slogans.',
+          'Prepare a visible board with four columns: Claim, Evidence, Confidence, Update Condition. This keeps discussion concrete.',
+        ],
+      },
+      {
+        heading: 'During the Meeting',
+        body: [
+          'Invite participants to state confidence levels in ranges, such as 40-60 percent, rather than demanding exact numbers. Ask follow-up questions gently: what evidence moves you, what evidence would lower confidence, and what uncertainty remains?',
+          'When conflict rises, slow the conversation. Ask each side to restate the other side’s strongest evidence before replying.',
+        ],
+      },
+      {
+        heading: 'After the Meeting',
+        body: [
+          'Close by asking each person to write one sentence: “My confidence changed from ___ to ___ because ___.” If confidence did not change, ask what evidence would have changed it.',
+          'Groups improve when they track updates over time. A simple prediction log or discussion journal can turn conversation into calibration practice.',
+        ],
+      },
+      {
+        heading: 'Feedback Language',
+        body: [
+          'Useful feedback is specific and non-accusatory. Try: “I hear strong confidence, but I am not yet hearing the evidence that supports that level.” Or: “It sounds like the evidence changed, but the confidence did not. Is that right?”',
+          'Avoid turning the model into labels for people. Diagnose belief states, not whole persons.',
+        ],
+      },
+    ],
+    [
+      'Good facilitation keeps claims specific.',
+      'Confidence ranges are often better than fake precision.',
+      'Participants should practice update conditions and charitable restatement.',
+      'Feedback should target belief states, not personal worth.',
+    ],
+    [
+      pagePath('/discussion-groups', 'Group Discussion Guide'),
+      pagePath('/library', 'Teaching Materials'),
+      pagePath('/about', 'Contact'),
+    ],
+  ),
+];
+
 function applicationPage(
   title: string,
   summary: string,
@@ -3845,4 +4263,4 @@ export const aboutPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...applicationPages, ...libraryPages, ...aboutPages];
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...discussionPages, ...applicationPages, ...libraryPages, ...aboutPages];
