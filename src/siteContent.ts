@@ -1813,6 +1813,7 @@ export const interactiveLabPages: ContentPage[] = [
         heading: 'Then Read the Commitment',
         body: [
           'After Perceived Evidence (EP), look at Assigned Credence (CA). This is where the agent finally places belief. When Assigned Credence (CA) tracks Perceived Evidence (EP), the agent is internally consistent even if they are mistaken about the world. When Assigned Credence (CA) diverges from Perceived Evidence (EP), the agent is believing against their own evidential perception.',
+          'The outer semicircle from 0% on the left to 100% on the right is the epistemic gradient. It is the confidence scale on which the epistemic agent applies a credence. A point near 0% means the agent treats the claim as very unlikely; a point near 100% means the agent treats it as very likely.',
         ],
       },
       {
@@ -1844,6 +1845,7 @@ export const interactiveLabPages: ContentPage[] = [
         heading: 'Markers and Lines',
         body: [
           'The objective evidence marker indicates the evidential target. The perceived evidence marker indicates what the agent takes the evidence to show. The assigned credence line shows the final confidence commitment.',
+          'The left-to-right semicircle is the epistemic gradient: the 0% to 100% scale on which Objective Evidence (E0), Perceived Evidence (EP), and Assigned Credence (CA) are positioned. Assigned Credence (CA) is the epistemic agent\'s chosen location on that gradient.',
           'When these elements cluster together, the state is aligned. When they separate, the model asks which kind of separation has occurred.',
         ],
       },
@@ -1865,6 +1867,7 @@ export const interactiveLabPages: ContentPage[] = [
     ],
     [
       'Markers show Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD).',
+      'The 0% to 100% semicircle is the epistemic gradient on which the agent applies credence.',
       'Green uncertainty can be warranted.',
       'Red divergence shows the Perceived Evidence to Assigned Credence gap (EP-CA).',
     ],
