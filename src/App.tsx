@@ -58,13 +58,13 @@ const glossaryTerms = [
 
 const tagCatalog = [
   { id: 'evidence', label: 'Evidence', description: 'Evidence quality, access, objective evidence, perceived evidence, and evidential support.', aliases: ['evidence', 'evidential', 'objective evidence', 'perceived evidence', 'e0', 'ep'] },
-  { id: 'credence', label: 'Credence', description: 'Degrees of belief, assigned credence, confidence levels, and belief strength.', aliases: ['credence', 'credences', 'belief', 'belief strength', 'assigned credence', 'confidence', 'confidence levels', 'ca'] },
-  { id: 'bayesian', label: 'Bayesian Updating', description: 'Priors, likelihoods, posteriors, Bayes factors, base rates, and probabilistic revision.', aliases: ['bayesian', 'prior', 'priors', 'likelihood', 'likelihoods', 'posterior', 'posteriors', 'bayes', 'base-rate', 'base rate'] },
+  { id: 'credence', label: 'Credence', description: 'Degrees of belief, assigned credence, confidence levels, and belief strength.', aliases: ['credence', 'credences', 'belief', 'belief strength', 'assigned credence', 'confidence', 'confidence levels', 'graded confidence', 'scalar confidence', 'ca'] },
+  { id: 'bayesian', label: 'Bayesian Updating', description: 'Priors, likelihoods, posteriors, Bayes factors, base rates, and probabilistic revision.', aliases: ['bayesian', 'prior', 'priors', 'likelihood', 'likelihoods', 'posterior', 'posteriors', 'bayes', 'base-rate', 'base rate', 'bayesian audit', 'miracle audit'] },
   { id: 'bayes-theorem', label: 'Bayes Theorem', description: 'The formula, prior, likelihood, evidence term, posterior, and scientific use of Bayesian reasoning.', aliases: ['bayes theorem', 'bayes formula', 'p(h|e)', 'p(e|h)', 'denominator', 'theorem', 'posterior confidence'] },
   { id: 'calibration', label: 'Calibration', description: 'The fit between confidence and actual reliability, including overconfidence and forecasting.', aliases: ['calibration', 'calibrated', 'overconfidence', 'forecast', 'prediction record', 'reliability'] },
   { id: 'uncertainty', label: 'Uncertainty', description: 'Warranted uncertainty, warranted slack, excess IC, action thresholds, and humility.', aliases: ['uncertainty', 'warranted uncertainty', 'warranted slack', 'excess ic', 'excess core irrationality', 'omega', 'threshold'] },
-  { id: 'core-rationality', label: 'Core Rationality', description: 'Belief integrity, motivated override, epistemic akrasia, and the EP-CA gap.', aliases: ['core rationality', 'core irrationality', 'ic', 'ep-ca', 'akrasia', 'integrity', 'motivated override'] },
-  { id: 'deep-rationality', label: 'Deep Rationality', description: 'Inferential skill, calculation error, evidence processing, and the E0-EP gap.', aliases: ['deep rationality', 'sd', 'calculation error', 'de', 'e0-ep', 'skill', 'tools', 'statistics'] },
+  { id: 'core-rationality', label: 'Core Rationality', description: 'Belief integrity, motivated override, epistemic akrasia, and the EP-CA gap.', aliases: ['core rationality', 'core irrationality', 'ic', 'ep-ca', 'akrasia', 'integrity', 'motivated override', 'affective veto'] },
+  { id: 'deep-rationality', label: 'Deep Rationality', description: 'Inferential skill, calculation error, evidence processing, and the E0-EP gap.', aliases: ['deep rationality', 'sd', 'calculation error', 'de', 'e0-ep', 'skill', 'tools', 'statistics', 'operator knowledge', 'operator-centered'] },
   { id: 'diagnosis', label: 'Diagnosis', description: 'Diagnostic safeguards, responsibility filters, repair strategies, and model interpretation.', aliases: ['diagnosis', 'diagnostic', 'safeguard', 'responsibility filter', 'repair', 'interpretation guide', 'overdiagnosis'] },
   { id: 'archetypes', label: 'Archetypes', description: 'Ideal agents, honest novices, biased experts, delusion thresholds, and model presets.', aliases: ['archetype', 'archetypes', 'ideal agent', 'honest novice', 'biased expert', 'delusion', 'preset', 'scenario'] },
   { id: 'motivated-reasoning', label: 'Motivated Reasoning', description: 'Identity protection, rationalization, selective skepticism, tribalism, and fear-driven belief.', aliases: ['motivated', 'motivation', 'rationalization', 'identity', 'tribalism', 'tribe', 'fear', 'selective skepticism'] },
@@ -73,10 +73,67 @@ const tagCatalog = [
   { id: 'discussion', label: 'Discussion Groups', description: 'Group sessions, facilitation, discussion questions, scenarios, and guided feedback.', aliases: ['discussion', 'group discussion', 'discussion groups', 'session', 'facilitator', 'facilitation', 'questions', 'scenario'] },
   { id: 'teaching', label: 'Teaching', description: 'Classroom use, lesson sequences, teaching materials, downloads, and education.', aliases: ['teaching', 'classroom', 'lesson', 'education', 'download', 'worksheet', 'materials'] },
   { id: 'institutions', label: 'Institutions', description: 'Organizations, public reasoning, journalism, law, policy, governance, and accountability.', aliases: ['institution', 'institutional', 'organization', 'journalism', 'law', 'policy', 'public debate', 'governance', 'accountability'] },
-  { id: 'science-medicine', label: 'Science and Medicine', description: 'Scientific reasoning, medical testing, replication, measurement, and expert judgment.', aliases: ['science', 'medicine', 'medical', 'testing', 'replication', 'measurement', 'expert'] },
-  { id: 'ai', label: 'AI Alignment', description: 'AI confidence, human overtrust, deployment thresholds, and collective reasoning with models.', aliases: ['ai', 'artificial intelligence', 'alignment', 'model confidence', 'overtrust', 'deployment'] },
+  { id: 'science-medicine', label: 'Science and Medicine', description: 'Scientific reasoning, medical testing, replication, measurement, and expert judgment.', aliases: ['science', 'medicine', 'medical', 'testing', 'replication', 'measurement', 'expert', 'methodological naturalism', 'inductive density'] },
+  { id: 'ai', label: 'AI Alignment', description: 'AI confidence, human overtrust, deployment thresholds, and collective reasoning with models.', aliases: ['ai', 'artificial intelligence', 'alignment', 'model confidence', 'overtrust', 'deployment', 'digital intermediaries', 'epistemic prosthetics'] },
   { id: 'library', label: 'Library', description: 'Papers, essays, references, glossary, FAQ, project notes, and visual archive.', aliases: ['paper', 'papers', 'essay', 'essays', 'glossary', 'faq', 'reference', 'visual archive', 'project notes'] },
   { id: 'author-project', label: 'Author and Project', description: 'Author profile, project overview, methodology, contact, and future directions.', aliases: ['author', 'phil stilwell', 'project', 'methodology', 'contact', 'future directions', 'about'] },
+];
+
+const researchPapers = [
+  {
+    title: 'A Formal Framework for Core and Deep Rationality',
+    url: 'https://www.academia.edu/165572684/_A_Formal_Framework_for_Core_and_Deep_Rationality',
+    role: 'Foundational model',
+    relevance: 'Defines Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), Deep Rationality (SD), Calculation Error (DE), and Core Irrationality (IC).',
+  },
+  {
+    title: 'Core Rationality',
+    url: 'https://www.academia.edu/145488011/_Core_Rationality',
+    role: 'Conceptual bridge',
+    relevance: 'Introduces core rationality as evidence-proportionate credence, distinct from mastery of formal probability, logic, and decision theory.',
+  },
+  {
+    title: "Credence First: Against Plantinga's Warrant as an Epistemic Upgrade",
+    url: 'https://www.academia.edu/164569364/_Credence_First_Against_Plantingas_Warrant_as_an_Epistemic_Upgrade',
+    role: 'Credence-first epistemology',
+    relevance: 'Argues that graded credencing is a better epistemic target than binary knowledge or warrant, especially when certainty can become miscalibrated.',
+  },
+  {
+    title: 'The Gravity of Grammar: Binary Inertia and the Distortion of Epistemic Calibration',
+    url: 'https://www.academia.edu/157221306/_The_Gravity_of_Grammar_Binary_Inertia_and_the_Distortion_of_Epistemic_Calibration',
+    role: 'Language and calibration',
+    relevance: 'Explains how ordinary assertion can compress scalar confidence into binary belief-talk, distorting epistemic self-reporting.',
+  },
+  {
+    title: 'Beyond the Binary: Linguistic Evolution and the Transition to Credence-Based Discourse',
+    url: 'https://www.academia.edu/158724677/_Beyond_the_Binary_Linguistic_Evolution_and_the_Transition_to_Credence_Based_Discourse',
+    role: 'Linguistic repair',
+    relevance: 'Develops a scalar lexicon, Bayesian update protocol, and discussion norms for keeping belief revision explicit and socially usable.',
+  },
+  {
+    title: 'The Miracle Audit: A Probabilistic Framework for Differentiating Anomalies from Supernatural Interventions',
+    url: 'https://www.academia.edu/145365502/_The_Miracle_Audit_A_Probabilistic_Framework_for_Differentiating_Anomalies_from_Supernatural_Interventions',
+    role: 'Applied Bayesian audit',
+    relevance: 'Applies probabilistic discipline to extraordinary claims by separating anomaly, causal link, evidential rigor, and burden of proof.',
+  },
+  {
+    title: 'The Architecture of Explanatory Satisfaction and the Affective Veto Against Stochastic Reality',
+    url: 'https://www.academia.edu/145350819/_The_Architecture_of_Explanatory_Satisfaction_and_the_Affective_Veto_Against_Stochastic_Reality',
+    role: 'Motivated cognition',
+    relevance: 'Connects explanatory hunger, agency bias, and affective resistance to stochastic explanations with the site\'s Core Rationality (IC) diagnosis.',
+  },
+  {
+    title: 'Foundational Choices for the Autodidact',
+    url: 'https://www.academia.edu/145733284/_Foundational_Choices_for_the_Autodidact',
+    role: 'Operator knowledge',
+    relevance: 'Defends transferable reasoning operators: base rates, causal inference, measurement discipline, calibration, and feedback-rich practice.',
+  },
+  {
+    title: 'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism',
+    url: 'https://www.academia.edu/145260354/_The_Asymptote_of_the_Natural_Inductive_Density_and_the_A_Posteriori_Justification_of_Methodological_Naturalism',
+    role: 'Methodological naturalism',
+    relevance: 'Frames naturalistic inquiry as a Bayesian and risk-management strategy grounded in projectibility, constraint, and historical evidential yield.',
+  },
 ];
 
 const basePath = import.meta.env.BASE_URL;
@@ -513,7 +570,15 @@ function ContextPanel({ activeTab, onOpenModel }: { activeTab: Tab; onOpenModel:
         rel="noopener noreferrer"
         className="block text-[10px] text-amber-400 font-mono uppercase tracking-[0.2em]"
       >
-        Full Reference Paper
+        Foundational Reference Paper
+      </a>
+      <a
+        href="https://www.academia.edu/164569364/_Credence_First_Against_Plantingas_Warrant_as_an_Epistemic_Upgrade"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block text-[10px] text-amber-400 font-mono uppercase tracking-[0.2em]"
+      >
+        Credence-First Companion Paper
       </a>
     </motion.div>
   );
@@ -586,6 +651,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-8 space-y-6">
           <AuthorFeature page={page} />
+          <ResearchPapersPanel page={page} />
           <BayesTheoremPanel page={page} />
           {page.sections.map((section) => (
             <section key={section.heading} className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
@@ -736,6 +802,46 @@ function AuthorFeature({ page }: { page: ContentPage }) {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+function ResearchPapersPanel({ page }: { page: ContentPage }) {
+  const showPanel = [
+    pagePath('/about', 'Author'),
+    pagePath('/library', 'Papers'),
+    pagePath('/library', 'A Formal Framework for Core and Deep Rationality'),
+  ].includes(page.path);
+
+  if (!showPanel) return null;
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-white/[0.02] border-amber-500/20 space-y-5">
+      <div className="space-y-2">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Related Research Papers</p>
+        <h3 className="text-2xl md:text-3xl font-light text-white">The paper cluster behind Credencing</h3>
+        <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+          These Academia.edu papers support the public site as a connected research program: formal modeling, credence-first epistemology, scalar language, Bayesian audit methods, motivated-cognition diagnosis, and operator-centered learning.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {researchPapers.map((paper) => (
+          <a
+            key={paper.title}
+            href={paper.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl border border-white/5 bg-black/10 p-4 hover:border-amber-500/40 transition-colors"
+          >
+            <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">{paper.role}</span>
+            <span className="block text-white text-sm font-medium leading-snug mb-2">{paper.title}</span>
+            <span className="block text-stone-400 text-xs leading-relaxed">{paper.relevance}</span>
+          </a>
+        ))}
+      </div>
+      <a href="https://suj.academia.edu/PhilStilwell" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[10px] text-amber-300 font-bold uppercase tracking-[0.2em]">
+        View full Academia.edu profile <ArrowRight size={12} />
+      </a>
     </section>
   );
 }
