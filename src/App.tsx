@@ -34,6 +34,7 @@ const navItems = [
   { label: 'Home', path: '/', icon: <Home size={14} /> },
   { label: 'Start', path: '/start-here', icon: <Compass size={14} /> },
   { label: 'Ideas', path: '/core-ideas', icon: <Brain size={14} /> },
+  { label: 'Bayes', path: '/bayes-theorem', icon: <BookOpen size={14} /> },
   { label: 'Lab', path: '/interactive-lab', icon: <Activity size={14} /> },
   { label: 'Groups', path: '/discussion-groups', icon: <Users size={14} /> },
   { label: 'Library', path: '/library', icon: <Library size={14} /> },
@@ -59,6 +60,7 @@ const tagCatalog = [
   { id: 'evidence', label: 'Evidence', description: 'Evidence quality, access, objective evidence, perceived evidence, and evidential support.', aliases: ['evidence', 'evidential', 'objective evidence', 'perceived evidence', 'e0', 'ep'] },
   { id: 'credence', label: 'Credence', description: 'Degrees of belief, assigned credence, confidence levels, and belief strength.', aliases: ['credence', 'credences', 'belief', 'belief strength', 'assigned credence', 'confidence', 'confidence levels', 'ca'] },
   { id: 'bayesian', label: 'Bayesian Updating', description: 'Priors, likelihoods, posteriors, Bayes factors, base rates, and probabilistic revision.', aliases: ['bayesian', 'prior', 'priors', 'likelihood', 'likelihoods', 'posterior', 'posteriors', 'bayes', 'base-rate', 'base rate'] },
+  { id: 'bayes-theorem', label: 'Bayes Theorem', description: 'The formula, prior, likelihood, evidence term, posterior, and scientific use of Bayesian reasoning.', aliases: ['bayes theorem', 'bayes formula', 'p(h|e)', 'p(e|h)', 'denominator', 'theorem', 'posterior confidence'] },
   { id: 'calibration', label: 'Calibration', description: 'The fit between confidence and actual reliability, including overconfidence and forecasting.', aliases: ['calibration', 'calibrated', 'overconfidence', 'forecast', 'prediction record', 'reliability'] },
   { id: 'uncertainty', label: 'Uncertainty', description: 'Warranted uncertainty, warranted slack, excess IC, action thresholds, and humility.', aliases: ['uncertainty', 'warranted uncertainty', 'warranted slack', 'excess ic', 'excess core irrationality', 'omega', 'threshold'] },
   { id: 'core-rationality', label: 'Core Rationality', description: 'Belief integrity, motivated override, epistemic akrasia, and the EP-CA gap.', aliases: ['core rationality', 'core irrationality', 'ic', 'ep-ca', 'akrasia', 'integrity', 'motivated override'] },
@@ -584,6 +586,7 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-8 space-y-6">
           <AuthorFeature page={page} />
+          <BayesTheoremPanel page={page} />
           {page.sections.map((section) => (
             <section key={section.heading} className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
               <h3 className="text-2xl font-light text-white">{section.heading}</h3>
@@ -733,6 +736,25 @@ function AuthorFeature({ page }: { page: ContentPage }) {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+function BayesTheoremPanel({ page }: { page: ContentPage }) {
+  if (page.groupPath !== '/bayes-theorem') return null;
+
+  return (
+    <section className="glass-panel p-5 md:p-6 bg-white/[0.02] border-amber-500/20 space-y-4">
+      <div className="overflow-hidden rounded-2xl border border-amber-500/20 bg-black/20">
+        <img
+          src={`${basePath}images/bayes-theorem.svg`}
+          alt="Bayes theorem: P(H given E) equals P(E given H) times P(H), divided by P(E)."
+          className="w-full h-auto"
+        />
+      </div>
+      <p className="text-stone-400 text-xs leading-relaxed">
+        The site does not bundle a LaTeX renderer, so the theorem is rendered as an SVG image. Read it left to right: updated confidence equals the diagnostic strength of the evidence times starting confidence, normalized by how expected the evidence is overall.
+      </p>
     </section>
   );
 }

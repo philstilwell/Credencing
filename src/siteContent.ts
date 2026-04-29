@@ -78,6 +78,22 @@ export const pageGroups: PageGroup[] = [
     ],
   },
   {
+    title: 'Bayes Theorem',
+    path: '/bayes-theorem',
+    summary: 'A dedicated walkthrough of Bayes theorem, its formula, its mental parts, and how scientists use it to revise confidence.',
+    pages: [
+      'Bayes Theorem Overview',
+      'The Formula',
+      'The Prior',
+      'The Likelihood',
+      'The Evidence Term',
+      'The Posterior',
+      'Scientific Walkthrough',
+      'Common Mistakes',
+      'Practice Examples',
+    ],
+  },
+  {
     title: 'Interactive Lab',
     path: '/interactive-lab',
     summary: 'The live model, scenario presets, visual legend, comparison tools, and an interpretation guide for reading epistemic states.',
@@ -205,6 +221,7 @@ export const featuredPaths = [
   '/start-here',
   '/interactive-lab',
   '/core-ideas',
+  '/bayes-theorem',
   '/discussion-groups',
   '/case-studies',
   '/skills',
@@ -1321,6 +1338,378 @@ export const coreIdeasPages: ContentPage[] = [
       pagePath('/interactive-lab', 'Ideal Agent'),
       pagePath('/interactive-lab', 'Honest Novice'),
       pagePath('/interactive-lab', 'Biased Expert'),
+    ],
+  ),
+];
+
+function bayesPage(
+  title: string,
+  summary: string,
+  sections: ContentSection[],
+  keyTakeaways: string[],
+  related: string[],
+): ContentPage {
+  return {
+    title,
+    path: pagePath('/bayes-theorem', title),
+    groupTitle: 'Bayes Theorem',
+    groupPath: '/bayes-theorem',
+    summary,
+    sections,
+    keyTakeaways,
+    related,
+  };
+}
+
+export const bayesPages: ContentPage[] = [
+  bayesPage(
+    'Bayes Theorem Overview',
+    'Bayes theorem is a disciplined way to revise confidence when evidence arrives.',
+    [
+      {
+        heading: 'The Question Bayes Answers',
+        body: [
+          'Bayes theorem answers a simple but deep question: after seeing some evidence, how confident should I now be in a hypothesis?',
+          'It is not a machine for turning weak evidence into certainty. It is a rule for updating. It tells you how to combine your starting confidence with the diagnostic strength of new evidence.',
+        ],
+      },
+      {
+        heading: 'The Everyday Shape',
+        body: [
+          'You already use a rough version of Bayes when you revise expectations. If a reliable friend says the train is delayed, your confidence rises. If a stranger with no source says the same thing, your confidence may barely move.',
+          'The difference is not just the claim. It is how expected that report would be if the train really were delayed, how often such reports are false, and what you already knew about the train system.',
+        ],
+      },
+      {
+        heading: 'Why It Matters for Credencing',
+        body: [
+          'Credencing asks whether confidence is proportional to evidence. Bayes theorem gives one powerful account of proportionality: confidence should move by the strength of the evidence, not by fear, vividness, loyalty, or wishful thinking.',
+          'In the Credencing model, Bayesian reasoning mainly improves Deep Rationality (SD): it helps the agent move from Objective Evidence (E0) toward a better Perceived Evidence (EP). Core Rationality then asks whether Assigned Credence (CA) actually follows that improved perception.',
+        ],
+      },
+    ],
+    [
+      'Bayes theorem updates confidence after evidence.',
+      'It combines prior confidence with the diagnostic strength of evidence.',
+      'It improves the evidence-processing side of credencing.',
+      'It does not remove the need for honesty about the final assigned credence.',
+    ],
+    [
+      pagePath('/bayes-theorem', 'The Formula'),
+      pagePath('/core-ideas', 'Bayesian Updating'),
+      pagePath('/core-ideas', 'Deep Rationality (SD)'),
+    ],
+  ),
+  bayesPage(
+    'The Formula',
+    'The formula shows posterior confidence as prior confidence multiplied by likelihood and normalized by total evidence.',
+    [
+      {
+        heading: 'The Compact Form',
+        body: [
+          'The most common form is: posterior equals likelihood times prior, divided by the evidence term. In symbols, it asks how probable the hypothesis is after the evidence is known.',
+          'The formula may look abstract, but each part has a mental job. The prior asks where you start. The likelihood asks how expected the evidence is if the hypothesis is true. The evidence term asks how expected the evidence is overall. The posterior is where your confidence lands after the update.',
+        ],
+      },
+      {
+        heading: 'The Expanded Denominator',
+        body: [
+          'When there are only two live options, hypothesis and not-hypothesis, the denominator can be expanded. It includes the probability of the evidence if the hypothesis is true, plus the probability of the evidence if the hypothesis is false, each weighted by its prior probability.',
+          'This is the part many people forget. Evidence is not strong merely because it fits your favored explanation. It is strong when it fits your favored explanation better than it fits the alternatives.',
+        ],
+      },
+      {
+        heading: 'A Plain-English Version',
+        body: [
+          'Ask: How plausible was my hypothesis before this evidence? How likely would I be to see this evidence if the hypothesis were true? How likely would I be to see this evidence anyway if the hypothesis were false? After comparing those, where should my confidence now be?',
+          'That mental sequence is the heart of Bayesian reasoning. Scientists, doctors, detectives, historians, and careful citizens use versions of it whenever they ask whether evidence really distinguishes between explanations.',
+        ],
+      },
+    ],
+    [
+      'The posterior is updated confidence.',
+      'The prior is starting confidence.',
+      'The likelihood measures how expected the evidence is under a hypothesis.',
+      'The denominator prevents evidence from being judged in isolation from alternatives.',
+    ],
+    [
+      pagePath('/bayes-theorem', 'The Prior'),
+      pagePath('/bayes-theorem', 'The Likelihood'),
+      pagePath('/bayes-theorem', 'The Evidence Term'),
+    ],
+  ),
+  bayesPage(
+    'The Prior',
+    'The prior is the confidence you assign before the new evidence is added.',
+    [
+      {
+        heading: 'What the Prior Does',
+        body: [
+          'A prior is your starting credence in a hypothesis before the new evidence is taken into account. It may come from base rates, previous studies, background theory, experience, or a deliberately cautious default.',
+          'A prior is not a prejudice in the bad sense. It is a way of admitting that evidence does not arrive in a vacuum. Some claims begin as common, some as rare, and some as extraordinary.',
+        ],
+      },
+      {
+        heading: 'How Scientists Use Priors',
+        body: [
+          'A scientist may begin with background theory and past research. If a new drug is similar to many failed drugs, the starting confidence may be modest. If it is based on a well-supported mechanism, the starting confidence may be higher.',
+          'Good scientists do not make priors invisible. They ask whether the starting assumptions are justified, whether they are too confident, and whether the evidence is strong enough to move them.',
+        ],
+      },
+      {
+        heading: 'Mental Walk-Through',
+        body: [
+          'Before reacting to new evidence, pause and ask: how common is this kind of thing? What do I already know? What would a reasonable person have believed before seeing this particular report?',
+          'This pause protects you from being captured by the newest, loudest, or most emotionally vivid evidence.',
+        ],
+      },
+    ],
+    [
+      'A prior is starting confidence before new evidence.',
+      'Good priors often come from base rates and background knowledge.',
+      'Priors should be explicit enough to criticize.',
+    ],
+    [
+      pagePath('/core-ideas', 'Priors'),
+      pagePath('/skills', 'How to Estimate Priors'),
+      pagePath('/bayes-theorem', 'The Likelihood'),
+    ],
+  ),
+  bayesPage(
+    'The Likelihood',
+    'The likelihood asks how expected the evidence would be if a hypothesis were true.',
+    [
+      {
+        heading: 'The Likelihood Question',
+        body: [
+          'The likelihood is not the probability that the hypothesis is true. It is the probability of seeing this evidence if the hypothesis were true.',
+          'That distinction is crucial. People often confuse “this evidence fits my theory” with “my theory is probably true.” Bayes asks a sharper question: would this evidence be much more expected if my theory were true than if it were false?',
+        ],
+      },
+      {
+        heading: 'How Practitioners Use It',
+        body: [
+          'A scientist asks whether an observation is what the theory predicted, whether rival theories predicted it too, and whether the measurement could be noise. A doctor asks whether a symptom is common under one condition but rare under another.',
+          'A historian asks whether a document, action, or pattern would be expected if one explanation were true, and whether it would also be expected under rival explanations.',
+        ],
+      },
+      {
+        heading: 'Mental Walk-Through',
+        body: [
+          'Imagine the hypothesis is true. Would this evidence surprise you? Now imagine the hypothesis is false. Would the evidence still be easy to explain?',
+          'Evidence becomes powerful when it is expected under one explanation and surprising under alternatives.',
+        ],
+      },
+    ],
+    [
+      'Likelihood is about evidence under a hypothesis.',
+      'It is not the same as posterior confidence.',
+      'Strong evidence discriminates between rival explanations.',
+    ],
+    [
+      pagePath('/core-ideas', 'Likelihoods'),
+      pagePath('/skills', 'How to Read Likelihoods'),
+      pagePath('/bayes-theorem', 'The Evidence Term'),
+    ],
+  ),
+  bayesPage(
+    'The Evidence Term',
+    'The evidence term normalizes the update by asking how expected the evidence is overall.',
+    [
+      {
+        heading: 'Why the Denominator Matters',
+        body: [
+          'The evidence term, often written P(E), asks how likely the evidence is across the whole space of possibilities. It prevents the update from looking only at the favored hypothesis.',
+          'If evidence is common under many explanations, it should not move confidence very far. If evidence is common under one explanation and rare under alternatives, it can move confidence a lot.',
+        ],
+      },
+      {
+        heading: 'Rival Explanations',
+        body: [
+          'Practitioners mentally compare live alternatives. A scientist asks whether an experimental result supports the theory or whether it could come from measurement error, confounding variables, or chance.',
+          'This is why strong reasoning does not stop at “my explanation can explain it.” Many explanations can explain many things after the fact. The stronger question is which explanation expected the evidence beforehand.',
+        ],
+      },
+      {
+        heading: 'Mental Walk-Through',
+        body: [
+          'Ask: how else might this evidence have appeared? Is it a unique signal, or would it happen often even if my hypothesis were wrong?',
+          'This step is a safeguard against confirmation bias. It forces your favored explanation to compete with alternatives.',
+        ],
+      },
+    ],
+    [
+      'P(E) asks how expected the evidence is overall.',
+      'It requires attention to rival explanations.',
+      'Evidence that fits many theories is often weak evidence.',
+    ],
+    [
+      pagePath('/bayes-theorem', 'The Likelihood'),
+      pagePath('/core-ideas', 'Evidence'),
+      pagePath('/case-studies', 'Motivated Reasoning'),
+    ],
+  ),
+  bayesPage(
+    'The Posterior',
+    'The posterior is the updated confidence after the prior and evidence have been combined.',
+    [
+      {
+        heading: 'Where Confidence Lands',
+        body: [
+          'The posterior is the confidence level after the update. It is where you land after combining the prior, the likelihood, and the evidence term.',
+          'The posterior may be high, low, or only slightly changed. Bayes theorem does not guarantee dramatic updates. Sometimes new evidence is weak, expected anyway, or already included in the prior.',
+        ],
+      },
+      {
+        heading: 'Posterior vs Assigned Credence',
+        body: [
+          'In Credencing terms, the posterior is the confidence warranted by the Bayesian update. Assigned Credence (CA) is the confidence the agent actually adopts.',
+          'A person may calculate or perceive a moderate posterior, then assign a much stronger confidence because of fear, hope, identity, or pressure. That is where the Core Rationality part of the project enters.',
+        ],
+      },
+      {
+        heading: 'Mental Walk-Through',
+        body: [
+          'After seeing the evidence, ask: where should my confidence be now, and did it move by the right amount?',
+          'Then ask a second question: am I actually willing to live with that confidence, or am I inflating or deflating it for non-evidential reasons?',
+        ],
+      },
+    ],
+    [
+      'The posterior is updated confidence.',
+      'A good posterior moves by the right amount, not always by a large amount.',
+      'Credencing distinguishes warranted posterior from actual assigned credence.',
+    ],
+    [
+      pagePath('/core-ideas', 'Posteriors'),
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
+      pagePath('/bayes-theorem', 'Scientific Walkthrough'),
+    ],
+  ),
+  bayesPage(
+    'Scientific Walkthrough',
+    'Scientists use Bayesian thinking to compare hypotheses, update confidence, and avoid being fooled by isolated evidence.',
+    [
+      {
+        heading: 'A Research Example',
+        body: [
+          'Suppose researchers are testing whether a new treatment helps a condition. The prior comes from previous studies, biological plausibility, and what similar treatments have done. The evidence comes from a new trial.',
+          'The likelihood asks whether the trial result is expected if the treatment works. The evidence term asks whether the same result could also appear because of chance, bias, small sample size, selective reporting, or a placebo effect.',
+        ],
+      },
+      {
+        heading: 'The Scientist’s Mental Sequence',
+        body: [
+          'First, set the starting expectation: what did we believe before this study? Second, inspect the evidence: how strong, clean, and expected is the result? Third, compare alternatives: could the result be explained without the hypothesis? Fourth, update confidence by an amount proportional to the evidence.',
+          'A careful scientist does not ask only whether a result is exciting. They ask whether it should change the field’s confidence, and by how much.',
+        ],
+      },
+      {
+        heading: 'Connection to Credencing',
+        body: [
+          'This is Deep Rationality in action. The scientist is trying to reduce the gap between Objective Evidence (E0) and Perceived Evidence (EP).',
+          'But the institution also needs Core Rationality. Researchers, journals, companies, and universities must be willing to assign confidence according to the evidence, even when the result threatens funding, prestige, or a favored theory.',
+        ],
+      },
+    ],
+    [
+      'Scientific reasoning compares hypotheses, not isolated facts.',
+      'New evidence should move confidence in proportion to diagnostic strength.',
+      'Bayesian thinking improves Deep Rationality, but institutions also need Core Rationality.',
+    ],
+    [
+      pagePath('/applications', 'Science'),
+      pagePath('/applications', 'Medicine'),
+      pagePath('/bayes-theorem', 'Common Mistakes'),
+    ],
+  ),
+  bayesPage(
+    'Common Mistakes',
+    'Many reasoning errors come from misusing one part of Bayes theorem or silently skipping it.',
+    [
+      {
+        heading: 'Ignoring the Prior',
+        body: [
+          'People often treat a new fact as if it starts the whole inquiry from zero. This makes vivid evidence too powerful. A rare claim usually needs stronger evidence than a common claim.',
+          'The repair is to ask for the base rate or background expectation before reacting to the new evidence.',
+        ],
+      },
+      {
+        heading: 'Confusing Likelihood With Posterior',
+        body: [
+          'A common mistake is saying, “This evidence would fit my theory, so my theory is probably true.” That skips the question of whether the evidence also fits rival theories.',
+          'The repair is to ask: would this evidence be much less expected if my theory were false?',
+        ],
+      },
+      {
+        heading: 'Forgetting the Evidence Term',
+        body: [
+          'If evidence is easy to produce under many explanations, it may not strongly support any one explanation. Anecdotes, rumors, and vague predictions often fail here.',
+          'The repair is to compare alternatives before assigning confidence.',
+        ],
+      },
+      {
+        heading: 'Updating Too Much or Too Little',
+        body: [
+          'Fear, hope, identity, and social pressure can cause over-updating or under-updating. A person may leap to certainty from one weak study, or refuse to move after a strong body of evidence.',
+          'The repair is calibration: ask whether the size of the confidence shift matches the strength of the evidence.',
+        ],
+      },
+    ],
+    [
+      'Ignoring priors makes vivid evidence too powerful.',
+      'Likelihood is not posterior probability.',
+      'Evidence must be compared across alternatives.',
+      'Good updating moves confidence by the right amount.',
+    ],
+    [
+      pagePath('/case-studies', 'Base-Rate Neglect'),
+      pagePath('/case-studies', 'Risk Inflation'),
+      pagePath('/bayes-theorem', 'Practice Examples'),
+    ],
+  ),
+  bayesPage(
+    'Practice Examples',
+    'Practice examples help readers mentally rehearse Bayes theorem without needing advanced mathematics.',
+    [
+      {
+        heading: 'Example 1: The Medical Test',
+        body: [
+          'A test result comes back positive. Before jumping to certainty, ask: how common is the condition, how accurate is the test, and how often does this test produce false positives?',
+          'The prior is the base rate of the condition. The likelihood is the chance of a positive test if the condition is present. The evidence term includes positive tests from both true cases and false positives. The posterior is the updated chance the patient has the condition after the result.',
+        ],
+      },
+      {
+        heading: 'Example 2: The News Report',
+        body: [
+          'A breaking news report claims an official has resigned. Ask: how plausible was this before the report, how reliable is the source, and how often do early reports of this kind turn out wrong?',
+          'A reliable source with documents should move confidence more than an anonymous viral post. A cautious reader updates, but leaves room for correction.',
+        ],
+      },
+      {
+        heading: 'Example 3: The Scientific Claim',
+        body: [
+          'A new study reports that a supplement improves memory. Ask: what did previous research show, how large was the sample, was the study preregistered, was there a control group, and have other labs replicated it?',
+          'The posterior after one study may be only modestly higher. Strong confidence usually requires converging evidence, not one dramatic result.',
+        ],
+      },
+      {
+        heading: 'Practice Template',
+        body: [
+          'For any claim, write four lines: Prior: what should I believe before this evidence? Likelihood: how expected is this evidence if the claim is true? Alternatives: how expected is it if the claim is false or another explanation is true? Posterior: where should my confidence now be?',
+          'Then add the Credencing question: am I actually assigning that confidence, or am I being pulled away from it by fear, loyalty, desire, or social pressure?',
+        ],
+      },
+    ],
+    [
+      'Bayes can be practiced without complex notation.',
+      'Medical tests, news claims, and scientific studies all require priors, likelihoods, alternatives, and posteriors.',
+      'The final Credencing question asks whether assigned credence follows the warranted update.',
+    ],
+    [
+      pagePath('/skills', 'How to Estimate Priors'),
+      pagePath('/skills', 'How to Read Likelihoods'),
+      pagePath('/discussion-groups', 'Session 3: Priors, Base Rates, and Likelihoods'),
     ],
   ),
 ];
@@ -4263,4 +4652,4 @@ export const aboutPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...discussionPages, ...applicationPages, ...libraryPages, ...aboutPages];
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...bayesPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...discussionPages, ...applicationPages, ...libraryPages, ...aboutPages];
