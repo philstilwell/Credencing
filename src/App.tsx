@@ -26,7 +26,7 @@ import {
 import { EpistemicData } from './types';
 import EpistemicChart from './components/EpistemicChart';
 import Dashboard from './components/Dashboard';
-import { contentPages, featuredPaths, pageGroups, pagePath, PageGroup, ContentPage } from './siteContent';
+import { contentPages, featuredPaperTitles, featuredPaths, pageGroups, pagePath, PageGroup, ContentPage } from './siteContent';
 
 type Tab = 'intro' | 'model' | 'explanation' | 'formalization';
 
@@ -204,57 +204,150 @@ const tagCatalog = [
 const researchPapers = [
   {
     title: 'A Formal Framework for Core and Deep Rationality',
+    path: pagePath('/library', 'A Formal Framework for Core and Deep Rationality'),
     url: 'https://www.academia.edu/165572684/_A_Formal_Framework_for_Core_and_Deep_Rationality',
     role: 'Foundational model',
     relevance: 'Defines Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), Deep Rationality (SD), Calculation Error (DE), and Core Irrationality (IC).',
   },
   {
     title: 'Core Rationality',
+    path: pagePath('/library', 'Core Rationality'),
     url: 'https://www.academia.edu/145488011/_Core_Rationality',
     role: 'Conceptual bridge',
     relevance: 'Introduces core rationality as evidence-proportionate credence, distinct from mastery of formal probability, logic, and decision theory.',
   },
   {
+    title: 'Evidence-Proportioned Belief: A Credence-First Reframing of Faith and Rationality',
+    path: pagePath('/library', 'Evidence-Proportioned Belief: A Credence-First Reframing of Faith and Rationality'),
+    url: 'https://www.academia.edu/166079979/_Evidence_Proportioned_Belief_A_Credence_First_Reframing_of_Faith_and_Rationality',
+    role: 'Credence-first entry point',
+    relevance: 'Frames belief as confidence scaled to evidence rather than a binary status or performance of conviction.',
+  },
+  {
     title: "Credence First: Against Plantinga's Warrant as an Epistemic Upgrade",
+    path: pagePath('/library', "Credence First: Against Plantinga's Warrant as an Epistemic Upgrade"),
     url: 'https://www.academia.edu/164569364/_Credence_First_Against_Plantingas_Warrant_as_an_Epistemic_Upgrade',
     role: 'Credence-first epistemology',
     relevance: 'Argues that graded credencing is a better epistemic target than binary knowledge or warrant, especially when certainty can become miscalibrated.',
   },
   {
+    title: 'The Moving Horizon: Artificial Intelligence and the Unbounded Expansion of Human Agency',
+    path: pagePath('/library', 'The Moving Horizon: Artificial Intelligence and the Unbounded Expansion of Human Agency'),
+    url: 'https://www.academia.edu/164863960/_The_Moving_Horizon_Artificial_Intelligence_and_the_Unbounded_Expansion_of_Human_Agency',
+    role: 'AI and agency',
+    relevance: 'Treats AI as leverage that moves human agency toward goal selection, evidence calibration, and system design.',
+  },
+  {
+    title: 'Humanity as a Middle Child in the Age of AI: Patterns of Delegation and Epistemic Atrophy',
+    path: pagePath('/library', 'Humanity as a Middle Child in the Age of AI: Patterns of Delegation and Epistemic Atrophy'),
+    url: 'https://suj.academia.edu/PhilStilwell',
+    role: 'AI over-delegation warning',
+    relevance: 'Warns that AI can weaken human judgment when people outsource inference without retaining responsibility for credence.',
+  },
+  {
     title: 'The Gravity of Grammar: Binary Inertia and the Distortion of Epistemic Calibration',
+    path: pagePath('/library', 'The Gravity of Grammar: Binary Inertia and the Distortion of Epistemic Calibration'),
     url: 'https://www.academia.edu/157221306/_The_Gravity_of_Grammar_Binary_Inertia_and_the_Distortion_of_Epistemic_Calibration',
     role: 'Language and calibration',
     relevance: 'Explains how ordinary assertion can compress scalar confidence into binary belief-talk, distorting epistemic self-reporting.',
   },
   {
     title: 'Beyond the Binary: Linguistic Evolution and the Transition to Credence-Based Discourse',
+    path: pagePath('/library', 'Beyond the Binary: Linguistic Evolution and the Transition to Credence-Based Discourse'),
     url: 'https://www.academia.edu/158724677/_Beyond_the_Binary_Linguistic_Evolution_and_the_Transition_to_Credence_Based_Discourse',
     role: 'Linguistic repair',
     relevance: 'Develops a scalar lexicon, Bayesian update protocol, and discussion norms for keeping belief revision explicit and socially usable.',
   },
   {
     title: 'The Miracle Audit: A Probabilistic Framework for Differentiating Anomalies from Supernatural Interventions',
+    path: pagePath('/library', 'The Miracle Audit: A Probabilistic Framework for Differentiating Anomalies from Supernatural Interventions'),
     url: 'https://www.academia.edu/145365502/_The_Miracle_Audit_A_Probabilistic_Framework_for_Differentiating_Anomalies_from_Supernatural_Interventions',
     role: 'Applied Bayesian audit',
     relevance: 'Applies probabilistic discipline to extraordinary claims by separating anomaly, causal link, evidential rigor, and burden of proof.',
   },
   {
     title: 'The Architecture of Explanatory Satisfaction and the Affective Veto Against Stochastic Reality',
+    path: pagePath('/library', 'The Architecture of Explanatory Satisfaction and the Affective Veto Against Stochastic Reality'),
     url: 'https://www.academia.edu/145350819/_The_Architecture_of_Explanatory_Satisfaction_and_the_Affective_Veto_Against_Stochastic_Reality',
     role: 'Motivated cognition',
     relevance: 'Connects explanatory hunger, agency bias, and affective resistance to stochastic explanations with the site\'s Core Rationality (IC) diagnosis.',
   },
   {
     title: 'Foundational Choices for the Autodidact',
+    path: pagePath('/library', 'Foundational Choices for the Autodidact'),
     url: 'https://www.academia.edu/145733284/_Foundational_Choices_for_the_Autodidact',
     role: 'Operator knowledge',
     relevance: 'Defends transferable reasoning operators: base rates, causal inference, measurement discipline, calibration, and feedback-rich practice.',
   },
   {
     title: 'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism',
+    path: pagePath('/library', 'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism'),
     url: 'https://www.academia.edu/145260354/_The_Asymptote_of_the_Natural_Inductive_Density_and_the_A_Posteriori_Justification_of_Methodological_Naturalism',
     role: 'Methodological naturalism',
     relevance: 'Frames naturalistic inquiry as a Bayesian and risk-management strategy grounded in projectibility, constraint, and historical evidential yield.',
+  },
+  {
+    title: 'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic',
+    path: pagePath('/library', 'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic'),
+    url: 'https://www.academia.edu/145261482/_The_Threshold_of_the_Real_Inductive_Density_and_the_Emergence_of_the_Human_Ontic',
+    role: 'Ontology and induction',
+    relevance: 'Explains objecthood and category confidence as a function of predictive reliability and cognitive cost.',
+  },
+  {
+    title: 'The "Ontic Snap" as a Cognitive Phase Transition',
+    path: pagePath('/library', 'The "Ontic Snap" as a Cognitive Phase Transition'),
+    url: 'https://www.academia.edu/145263885/_The_Ontic_Snap_as_a_Cognitive_Phase_Transition',
+    role: 'Reification mechanism',
+    relevance: 'Models the moment noisy input becomes a stable “thing,” helping diagnose premature closure and overconfident categories.',
+  },
+  {
+    title: 'Mereological Indigestion: Why We Cannot Divvy Up the Blob',
+    path: pagePath('/library', 'Mereological Indigestion: Why We Cannot Divvy Up the Blob'),
+    url: 'https://www.academia.edu/162263051/_Mereological_Indigestion_Why_We_Cannot_Divvy_Up_the_Blob',
+    role: 'Category humility',
+    relevance: 'Challenges overconfident partitions of reality and supports the site’s caution about reifying useful categories.',
+  },
+  {
+    title: 'Useful Fictions Common in Philosophical Pedagogy',
+    path: pagePath('/library', 'Useful Fictions Common in Philosophical Pedagogy'),
+    url: 'https://www.academia.edu/145245319/_Useful_Fictions_Common_in_Philosophical_Pedagogy',
+    role: 'Pedagogical scaffolding',
+    relevance: 'Clarifies when simplified teaching models help inquiry and when they become overconfident substitutes for mature understanding.',
+  },
+  {
+    title: 'The Eddy of Agency: Locating Subjective Will in an Objective Flow',
+    path: pagePath('/library', 'The Eddy of Agency: Locating Subjective Will in an Objective Flow'),
+    url: 'https://www.academia.edu/161261615/_The_Eddy_of_Agency_Locating_Subjective_Will_in_an_Objective_Flow',
+    role: 'Agency and feedback',
+    relevance: 'Places human agency inside natural causal flow while preserving feedback, responsibility, and recalibration.',
+  },
+  {
+    title: 'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution',
+    path: pagePath('/library', 'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution'),
+    url: 'https://www.academia.edu/162786554/_Against_the_Great_Man_A_Systems_Theoretic_Critique_of_Individual_Attribution',
+    role: 'Attribution calibration',
+    relevance: 'Uses a control coefficient to calibrate praise and blame in noisy systems where individual agency may be weak.',
+  },
+  {
+    title: 'The Alchemy of Ought: Tracing the Socio-Cognitive Reification of Human Rights',
+    path: pagePath('/library', 'The Alchemy of Ought: Tracing the Socio-Cognitive Reification of Human Rights'),
+    url: 'https://www.academia.edu/146034821/_The_Alchemy_of_Ought_Tracing_the_Socio_Cognitive_Reification_of_Human_Rights',
+    role: 'Normative reification',
+    relevance: 'Shows how shared commitments can acquire the feeling of objectivity, a useful case for calibrating confidence in ought-language.',
+  },
+  {
+    title: 'The Mechanics of Non-Moral Civility: Evolutionary, Psychological, and Sociological Foundations of Social Order in the Absence of Moral Realism',
+    path: pagePath('/library', 'The Mechanics of Non-Moral Civility: Evolutionary, Psychological, and Sociological Foundations of Social Order in the Absence of Moral Realism'),
+    url: 'https://www.academia.edu/145554977/_The_Mechanics_of_Non_Moral_Civility_Evolutionary_Psychological_and_Sociological_Foundations_of_Social_Order_in_the_Absence_of_Moral_Realism',
+    role: 'Civic pragmatics',
+    relevance: 'Separates social functionality from metaphysical overclaiming and supports evidence-based public reasoning.',
+  },
+  {
+    title: 'Impotent Obligation and the Attempt to Reify Emotions',
+    path: pagePath('/library', 'Impotent Obligation and the Attempt to Reify Emotions'),
+    url: 'https://www.academia.edu/145537514/_Impotent_Obligation_and_the_Attempt_to_Reify_Emotions',
+    role: 'Emotion and authority',
+    relevance: 'Diagnoses how strong feelings can be converted into obligation language without enough evidential support.',
   },
 ];
 
@@ -262,6 +355,7 @@ const basePath = import.meta.env.BASE_URL;
 
 const nestedPageTitles: Record<string, Record<string, string[]>> = {
   '/library': {
+    Papers: featuredPaperTitles,
     Essays: [
       'Evidence Mapping Is a Practice, Not a Slogan',
       'Labels Are Not Credences',
@@ -904,7 +998,7 @@ function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (pat
                     className="w-full text-left p-3 rounded-lg border border-white/5 bg-black/10 hover:border-amber-500/30 transition-colors"
                   >
                     <span className="block text-xs text-amber-100">{childPage}</span>
-                    <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">Essay</span>
+                    <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">{page === 'Papers' ? 'Paper' : 'Essay'}</span>
                   </button>
                 ))}
               </div>
@@ -984,7 +1078,8 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-8 space-y-6">
           <AuthorFeature page={page} />
-          <ResearchPapersPanel page={page} />
+          <ResearchPapersPanel page={page} onNavigate={onNavigate} />
+          <PaperSourcePanel page={page} />
           <BayesTheoremPanel page={page} />
           {page.sections.map((section) => (
             <section key={section.heading} className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
@@ -1156,7 +1251,7 @@ function AuthorFeature({ page }: { page: ContentPage }) {
   );
 }
 
-function ResearchPapersPanel({ page }: { page: ContentPage }) {
+function ResearchPapersPanel({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
   const showPanel = [
     pagePath('/about', 'Author'),
     pagePath('/library', 'Papers'),
@@ -1176,21 +1271,37 @@ function ResearchPapersPanel({ page }: { page: ContentPage }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {researchPapers.map((paper) => (
-          <a
+          <button
             key={paper.title}
-            href={paper.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-xl border border-white/5 bg-black/10 p-4 hover:border-amber-500/40 transition-colors"
+            onClick={() => onNavigate(paper.path)}
+            className="rounded-xl border border-white/5 bg-black/10 p-4 hover:border-amber-500/40 transition-colors text-left"
           >
             <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">{paper.role}</span>
             <span className="block text-white text-sm font-medium leading-snug mb-2">{paper.title}</span>
             <span className="block text-stone-400 text-xs leading-relaxed">{paper.relevance}</span>
-          </a>
+          </button>
         ))}
       </div>
       <a href="https://suj.academia.edu/PhilStilwell" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[10px] text-amber-300 font-bold uppercase tracking-[0.2em]">
         View full Academia.edu profile <ArrowRight size={12} />
+      </a>
+    </section>
+  );
+}
+
+function PaperSourcePanel({ page }: { page: ContentPage }) {
+  const paper = researchPapers.find((item) => item.path === page.path);
+
+  if (!paper) return null;
+
+  return (
+    <section className="glass-panel p-5 md:p-6 bg-amber-500/[0.035] border-amber-500/20 space-y-3">
+      <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Source Paper</p>
+      <p className="text-stone-300 text-sm leading-relaxed">
+        This page is a simplified guide to the paper. The full text is hosted on Academia.edu when available; the guide here keeps the main idea accessible and tied back to the site’s model.
+      </p>
+      <a href={paper.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[10px] text-amber-300 font-bold uppercase tracking-[0.2em]">
+        Open on Academia.edu <ArrowRight size={12} />
       </a>
     </section>
   );

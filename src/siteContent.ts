@@ -34,6 +34,30 @@ export function pagePath(groupPath: string, title: string) {
   return `${groupPath}/${slugify(title)}`;
 }
 
+export const featuredPaperTitles = [
+  'A Formal Framework for Core and Deep Rationality',
+  'Core Rationality',
+  'Evidence-Proportioned Belief: A Credence-First Reframing of Faith and Rationality',
+  "Credence First: Against Plantinga's Warrant as an Epistemic Upgrade",
+  'The Moving Horizon: Artificial Intelligence and the Unbounded Expansion of Human Agency',
+  'Humanity as a Middle Child in the Age of AI: Patterns of Delegation and Epistemic Atrophy',
+  'The Gravity of Grammar: Binary Inertia and the Distortion of Epistemic Calibration',
+  'Beyond the Binary: Linguistic Evolution and the Transition to Credence-Based Discourse',
+  'The Miracle Audit: A Probabilistic Framework for Differentiating Anomalies from Supernatural Interventions',
+  'The Architecture of Explanatory Satisfaction and the Affective Veto Against Stochastic Reality',
+  'Foundational Choices for the Autodidact',
+  'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism',
+  'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic',
+  'The "Ontic Snap" as a Cognitive Phase Transition',
+  'Mereological Indigestion: Why We Cannot Divvy Up the Blob',
+  'Useful Fictions Common in Philosophical Pedagogy',
+  'The Eddy of Agency: Locating Subjective Will in an Objective Flow',
+  'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution',
+  'The Alchemy of Ought: Tracing the Socio-Cognitive Reification of Human Rights',
+  'The Mechanics of Non-Moral Civility: Evolutionary, Psychological, and Sociological Foundations of Social Order in the Absence of Moral Realism',
+  'Impotent Obligation and the Attempt to Reify Emotions',
+];
+
 export const pageGroups: PageGroup[] = [
   {
     title: 'Start Here',
@@ -188,7 +212,7 @@ export const pageGroups: PageGroup[] = [
     summary: 'Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.',
     pages: [
       'Papers',
-      'A Formal Framework for Core and Deep Rationality',
+      ...featuredPaperTitles,
       'Future Papers',
       'Essays',
       'Evidence Mapping Is a Practice, Not a Slogan',
@@ -3827,6 +3851,542 @@ function libraryPage(
   };
 }
 
+type PaperIntro = {
+  title: string;
+  summary: string;
+  plainAbstract: string[];
+  siteConnection: string[];
+  readerUse: string[];
+  keyTakeaways: string[];
+  related: string[];
+};
+
+function paperIntroPage(paper: PaperIntro): ContentPage {
+  return libraryPage(
+    paper.title,
+    paper.summary,
+    [
+      {
+        heading: 'Low-Register Abstract',
+        body: paper.plainAbstract,
+      },
+      {
+        heading: 'How It Fits Credencing',
+        body: paper.siteConnection,
+      },
+      {
+        heading: 'How to Read It',
+        body: paper.readerUse,
+      },
+    ],
+    paper.keyTakeaways,
+    [pagePath('/library', 'Papers'), ...paper.related],
+  );
+}
+
+const paperIntroPages: ContentPage[] = [
+  paperIntroPage({
+    title: 'Core Rationality',
+    summary: 'A simple introduction to the difference between being good at reasoning tools and being honest with the evidence one already sees.',
+    plainAbstract: [
+      'This paper says that rationality has two parts that are often mixed together. One part is technical skill: knowing probability, logic, statistics, and formal argument. The other part is evidence-responsiveness: keeping your confidence close to what the evidence seems to support.',
+      'The main claim is simple: a person can be highly trained and still dodge evidence, while a less trained person can still be admirably responsive to what they honestly see. That is why the site separates Deep Rationality from Core Rationality.',
+    ],
+    siteConnection: [
+      'This is the conceptual bridge for the entire model. Deep Rationality (SD) tracks skill at reading evidence. Core Rationality tracks whether assigned credence follows perceived evidence.',
+      'The interactive archetypes make this distinction visible: the honest novice may have low technical reach but little internal override, while the biased expert may have high technical reach and a serious integrity gap.',
+    ],
+    readerUse: [
+      'Read this before the formal framework if you want the basic distinction first. Keep asking: is the problem lack of skill, lack of evidence, or resistance to evidence already perceived?',
+    ],
+    keyTakeaways: [
+      'Rational skill and rational integrity are not the same thing.',
+      'Core Rationality means keeping confidence responsive to perceived evidence.',
+      'The distinction helps explain why smart people can still be badly miscalibrated.',
+    ],
+    related: [
+      pagePath('/core-ideas', 'Core Rationality'),
+      pagePath('/core-ideas', 'Deep Rationality (SD)'),
+      pagePath('/interactive-lab', 'Epistemic Archetypes'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Evidence-Proportioned Belief: A Credence-First Reframing of Faith and Rationality',
+    summary: 'A credence-first argument for treating rational belief as confidence scaled to evidence rather than as a binary yes-or-no state.',
+    plainAbstract: [
+      'This paper starts from a practical idea: belief should come in degrees. If the evidence is weak, confidence should be low. If the evidence is strong, confidence can rise. If the evidence changes, confidence should move with it.',
+      'The paper pushes against language that treats faith, belief, or conviction as valuable simply because it is firm. On a credencing view, firmness is not the achievement. Calibration is the achievement.',
+    ],
+    siteConnection: [
+      'This paper supplies one of the site’s central norms: do not ask only whether someone believes a claim. Ask how confident they are, what evidence that confidence is tracking, and whether the confidence would change if the evidence changed.',
+      'It also supports the Bayes theorem pages, where the point is not mathematical performance for its own sake but disciplined movement from prior confidence to posterior confidence.',
+    ],
+    readerUse: [
+      'Read this as the plain-language doorway into the whole project. Then use the Bayes section and the credence skills pages to practice scaling confidence instead of merely choosing sides.',
+    ],
+    keyTakeaways: [
+      'Belief is better treated as graded confidence.',
+      'The goal is calibration, not stubborn firmness.',
+      'Evidence-proportioned belief is the heart of credencing.',
+    ],
+    related: [
+      pagePath('/start-here', 'What Is Credencing?'),
+      pagePath('/bayes-theorem', 'Bayes Theorem Overview'),
+      pagePath('/skills', 'How to Scale Confidence to Evidence'),
+    ],
+  }),
+  paperIntroPage({
+    title: "Credence First: Against Plantinga's Warrant as an Epistemic Upgrade",
+    summary: 'A critique of binary knowledge and warrant language in favor of graded confidence and measurable calibration.',
+    plainAbstract: [
+      'This paper argues that asking whether a belief has warrant can distract from the more useful question: how well calibrated is the person’s confidence? A belief can be held with great certainty even when the evidence does not deserve that certainty.',
+      'The paper treats credencing as a better target than knowledge-talk because credencing stays continuous. It asks how much confidence is justified, not whether a belief has crossed some special status line.',
+    ],
+    siteConnection: [
+      'This supports the site’s move away from all-or-nothing belief language. It also explains why overconfidence is not merely a social flaw; it is a measurable mismatch between evidence and assigned confidence.',
+      'The critique is especially relevant to religious or ideological certainty, where a person may treat inner confidence as if it were itself evidence of truth.',
+    ],
+    readerUse: [
+      'Read this after the basic credencing pages. Do not worry if the Plantinga discussion is technical; the practical point is that a high-confidence state still needs calibration against evidence.',
+    ],
+    keyTakeaways: [
+      'Binary warrant language can hide miscalibration.',
+      'Credencing asks how much confidence a claim deserves.',
+      'Certainty is not automatically an epistemic achievement.',
+    ],
+    related: [
+      pagePath('/core-ideas', 'Assigned Credence (CA)'),
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/library', 'Faith, Trust, and Evidence-Weighted Confidence'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Moving Horizon: Artificial Intelligence and the Unbounded Expansion of Human Agency',
+    summary: 'An AI paper arguing that automation can shift human agency upward toward goal-setting, evidence calibration, and design.',
+    plainAbstract: [
+      'This paper argues against the idea that AI simply subtracts human agency. When tools remove the cost of execution, people often move to higher-level work: choosing goals, judging evidence, designing systems, and deciding what should be built.',
+      'The moving horizon is the frontier of human attention. As machines take over some tasks, the frontier moves toward more abstract questions about intention, values, calibration, and responsibility.',
+    ],
+    siteConnection: [
+      'Credencing becomes more important in an AI-rich environment because people must decide when to trust outputs, when to challenge them, and how to keep their own judgment active.',
+      'This paper connects to the site’s AI Alignment application: alignment is not only a technical problem inside models. It is also a human credencing problem around model claims, authority, convenience, and evidence.',
+    ],
+    readerUse: [
+      'Read this as a hopeful AI companion to the warning pages. The useful question is not “Will AI replace thought?” but “Which parts of thought must humans practice more deliberately because AI makes execution easier?”',
+    ],
+    keyTakeaways: [
+      'AI can move human agency toward higher-level judgment.',
+      'Automation increases the need for evidence calibration.',
+      'Human fulfillment can depend on better intent, not more toil.',
+    ],
+    related: [
+      pagePath('/applications', 'AI Alignment'),
+      pagePath('/discussion-groups', 'Session 8: AI, Expertise, and the Future'),
+      pagePath('/skills', 'How to Ask Better Epistemic Questions'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Humanity as a Middle Child in the Age of AI: Patterns of Delegation and Epistemic Atrophy',
+    summary: 'A warning that over-delegating inference to AI can weaken the very judgment humans need to supervise it.',
+    plainAbstract: [
+      'This paper treats humanity as caught between older human reasoning habits and newer machine reasoning systems. The danger is not only that AI will be wrong. The danger is that people may stop practicing the effortful parts of judgment.',
+      'Epistemic atrophy means a weakening of our ability to ask, doubt, compare, revise, and take responsibility for confidence. If a system gives fluent answers too easily, the user may outsource the struggle that normally builds rational skill.',
+    ],
+    siteConnection: [
+      'The paper reinforces the site’s distinction between using tools and surrendering credence. AI can help with evidence search, comparison, and explanation, but the user still has to decide how much confidence is warranted.',
+      'It also deepens the discussion of Deep Rationality (SD): formal and technical capacity can move into tools, but Core Rationality still requires active human responsiveness to perceived evidence.',
+    ],
+    readerUse: [
+      'Read this alongside the AI Alignment and skills pages. A good practical test is: after using AI, can you explain what changed your confidence and why?',
+    ],
+    keyTakeaways: [
+      'Delegation can become epistemic dependence.',
+      'AI use should preserve friction, doubt, and revision.',
+      'Users still own their assigned credence.',
+    ],
+    related: [
+      pagePath('/applications', 'AI Alignment'),
+      pagePath('/core-ideas', 'Deep Rationality (SD)'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Gravity of Grammar: Binary Inertia and the Distortion of Epistemic Calibration',
+    summary: 'A language paper about how ordinary grammar pulls graded confidence into misleading yes-or-no claims.',
+    plainAbstract: [
+      'This paper argues that language often makes uncertainty sound more settled than it is. We say “X is true” or “I believe X,” even when our actual confidence might be 55%, 70%, or 90%.',
+      'The problem is called binary inertia: the pull toward yes-or-no speech. That pull can make people sound more certain than they are and can make public disagreement harsher than the evidence deserves.',
+    ],
+    siteConnection: [
+      'This paper explains why the site keeps returning to percentages, confidence levels, priors, likelihoods, and posteriors. Those tools help resist the flattening pressure of ordinary belief language.',
+      'It also clarifies why the glossary and discussion pages encourage phrases such as “I assign moderate confidence” rather than simply “I believe.”',
+    ],
+    readerUse: [
+      'Read this when a debate feels stuck in labels. The practical move is to translate binary sentences into confidence claims: how sure, on what evidence, and open to what update?',
+    ],
+    keyTakeaways: [
+      'Language can distort confidence by forcing binary form.',
+      'Scalar speech protects nuance.',
+      'Credencing needs better public vocabulary.',
+    ],
+    related: [
+      pagePath('/start-here', 'Why Binary Belief Is Too Crude'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+      pagePath('/library', 'Binary Thinking and Gradient Thinking'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Beyond the Binary: Linguistic Evolution and the Transition to Credence-Based Discourse',
+    summary: 'A follow-up on how communities could learn more graded, update-friendly ways of speaking.',
+    plainAbstract: [
+      'This paper asks what would have to change for people to speak in credences more naturally. It is not enough to tell people to be less certain. They need usable phrases, social rewards for updating, and habits that make revision feel intelligent rather than humiliating.',
+      'The paper imagines a shift from belief-as-identity to belief-as-calibration. In that shift, changing your mind is not losing. It is successful tracking.',
+    ],
+    siteConnection: [
+      'The discussion-group section depends on this idea. Groups need conversational norms that make uncertainty, updating, and partial confidence socially safe.',
+      'The paper also supports the related-pages and tag-index structure: readers should move across terms because credencing is a network of practices, not a single slogan.',
+    ],
+    readerUse: [
+      'Read this as the social repair piece. Ask how your classroom, club, workplace, or online community could reward honest updates instead of only rewarding confident performance.',
+    ],
+    keyTakeaways: [
+      'Credence-based discourse requires social habits, not only concepts.',
+      'Updating should become a high-status move.',
+      'Better language makes better calibration easier.',
+    ],
+    related: [
+      pagePath('/discussion-groups', 'Group Discussion Guide'),
+      pagePath('/skills', 'How to Update with New Evidence'),
+      pagePath('/utility', 'Tag Index'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Miracle Audit: A Probabilistic Framework for Differentiating Anomalies from Supernatural Interventions',
+    summary: 'A probabilistic audit for extraordinary claims that separates anomaly from supernatural explanation.',
+    plainAbstract: [
+      'This paper asks how we should evaluate reports of miracles. It does not begin by assuming that all unusual events are fake. It asks a more careful question: what would the evidence have to show before a supernatural explanation beat natural alternatives?',
+      'The audit separates several issues that are often blurred: whether the event happened, whether it is unusual, whether it points to a specific cause, whether other explanations are available, and how strong the comparison really is.',
+    ],
+    siteConnection: [
+      'This is a direct application of Bayesian thinking. Extraordinary claims need attention to priors, likelihoods, alternative explanations, and evidential rigor.',
+      'It also illustrates why assigned credence should not jump from “strange” to “therefore supernatural.” The size and direction of an update depend on comparative evidence.',
+    ],
+    readerUse: [
+      'Read this after the Bayes theorem walkthrough. Try applying the same structure to any extraordinary claim: first separate the anomaly from the proposed explanation.',
+    ],
+    keyTakeaways: [
+      'An anomaly is not yet an explanation.',
+      'Extraordinary claims require comparative likelihoods.',
+      'Bayesian discipline slows premature certainty.',
+    ],
+    related: [
+      pagePath('/bayes-theorem', 'Scientific Walkthrough'),
+      pagePath('/case-studies', 'Conspiracy Thinking'),
+      pagePath('/skills', 'How to Read Likelihoods'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Architecture of Explanatory Satisfaction and the Affective Veto Against Stochastic Reality',
+    summary: 'A paper on why people often prefer emotionally satisfying explanations over probabilistic ones.',
+    plainAbstract: [
+      'This paper looks at a common human pattern: random or probabilistic explanations often feel unsatisfying, even when they are true. People want causes with purpose, agency, and moral shape.',
+      'The affective veto is the emotional rejection of an explanation because it feels cold, empty, or incomplete. The problem is that emotional dissatisfaction is not the same as evidential weakness.',
+    ],
+    siteConnection: [
+      'This paper is central to Core Irrationality (IC). A person may see that a stochastic explanation is strong and still assign credence to a more comforting story.',
+      'It also helps explain why conspiracy thinking, miracle claims, moralized narratives, and tribal explanations can feel more complete than the evidence justifies.',
+    ],
+    readerUse: [
+      'Read this when a true explanation feels too accidental or impersonal. Ask whether the discomfort is evidence against the explanation or merely a human dislike of randomness.',
+    ],
+    keyTakeaways: [
+      'Explanatory satisfaction can diverge from truth-tracking.',
+      'Randomness often feels worse than agency.',
+      'Emotional vetoes can distort assigned credence.',
+    ],
+    related: [
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/case-studies', 'Fear Overrides'),
+      pagePath('/case-studies', 'Conspiracy Thinking'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Foundational Choices for the Autodidact',
+    summary: 'A learning paper about building transferable reasoning tools before piling up isolated facts.',
+    plainAbstract: [
+      'This paper argues that self-learners should prioritize operator knowledge: tools that help them reason across many topics. Examples include probability, statistics, causal reasoning, measurement, calibration, and basic computation.',
+      'Leaf knowledge is still valuable, but it stays trapped in one domain if the learner lacks good operators. Operator knowledge lets a learner test, transfer, and extend what they learn.',
+    ],
+    siteConnection: [
+      'This paper is the educational backbone for the skills section. Credencing is not only a theory; it is a practice built through repeated estimation, updating, and error correction.',
+      'It also supports the distinction between deep competence and mere information accumulation. A person may know many facts and still lack the tools to update well.',
+    ],
+    readerUse: [
+      'Read this as a study strategy. If you are learning independently, build the tools that help you ask better questions about every field you enter.',
+    ],
+    keyTakeaways: [
+      'Operator knowledge transfers across domains.',
+      'Calibration improves through feedback-rich practice.',
+      'Good self-education compounds through reasoning tools.',
+    ],
+    related: [
+      pagePath('/skills', 'Practice Exercises'),
+      pagePath('/skills', 'How to Estimate Priors'),
+      pagePath('/applications', 'Education'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism',
+    summary: 'A Bayesian defense of methodological naturalism as a historically earned confidence pattern rather than a dogmatic rule.',
+    plainAbstract: [
+      'This paper asks why science usually sticks to natural explanations. The answer offered is not “because the supernatural is impossible by definition.” The answer is that natural explanations have built a long record of successful, testable, projectible results.',
+      'Methodological naturalism becomes a practical confidence strategy. The more one kind of explanation keeps working and another keeps failing to produce reliable predictions, the more confidence shifts toward the working kind.',
+    ],
+    siteConnection: [
+      'This paper connects methodological naturalism to Bayesian updating. It treats the history of inquiry as evidence that changes priors and expectations.',
+      'It also fits the site’s emphasis on inductive density: explanations earn credibility by becoming predictively dense, constrained, and repeatably useful.',
+    ],
+    readerUse: [
+      'Read this as a model for method-level credencing. Instead of asking whether a rule is sacred, ask what track record justifies relying on it.',
+    ],
+    keyTakeaways: [
+      'Methodological naturalism can be defended by evidential precedent.',
+      'Scientific confidence grows from repeated projective success.',
+      'Bayesian updating applies to methods as well as claims.',
+    ],
+    related: [
+      pagePath('/applications', 'Science'),
+      pagePath('/about', 'Methodological Commitments'),
+      pagePath('/core-ideas', 'Likelihoods'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic',
+    summary: 'A paper on how objects and categories become real enough for human use when they are predictively reliable.',
+    plainAbstract: [
+      'This paper asks what makes something count as a real object for human thinkers. The answer is not simply “it exists out there” or “we construct it.” The proposed answer is that some patterns become stable and useful enough to treat as objects.',
+      'Inductive density means that a pattern supports good prediction at reasonable mental cost. When a pattern crosses that threshold, the mind treats it as a thing.',
+    ],
+    siteConnection: [
+      'This matters for credencing because many disputes depend on what categories we allow into our model of the world. Some categories track dense patterns; others are low-density conveniences or confusions.',
+      'The paper helps explain why the site distinguishes useful compression from overconfident reification.',
+    ],
+    readerUse: [
+      'Read this when arguing about whether a category is real. Ask what predictions the category helps make, what it hides, and whether its usefulness is being mistaken for metaphysical certainty.',
+    ],
+    keyTakeaways: [
+      'Objecthood can be treated as predictive usefulness crossing a threshold.',
+      'Some categories are useful but still provisional.',
+      'Reification should be calibrated, not automatic.',
+    ],
+    related: [
+      pagePath('/core-ideas', 'Evidence'),
+      pagePath('/library', 'Useful Fictions Common in Philosophical Pedagogy'),
+      pagePath('/about', 'Methodological Commitments'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The "Ontic Snap" as a Cognitive Phase Transition',
+    summary: 'A companion paper on the moment the mind turns noisy input into a stable object.',
+    plainAbstract: [
+      'This paper describes the mental shift from raw, uncertain input to “that is a thing.” The snap is not a slow, conscious decision. It is a fast cognitive commitment that makes the world usable.',
+      'The danger is that once the mind has snapped a pattern into object form, the result can feel more settled than the evidence deserves. Useful perception can become overconfident ontology.',
+    ],
+    siteConnection: [
+      'The paper supports the site’s warning about premature closure. A person may move too quickly from evidence to category, and from category to confidence.',
+      'It also connects to Bayesian updating: a snap may be useful, but later evidence must still be allowed to revise or dissolve it.',
+    ],
+    readerUse: [
+      'Read this as a caution about first impressions. Ask whether a category that now feels obvious might be a fast compression rather than a final truth.',
+    ],
+    keyTakeaways: [
+      'The mind turns noise into objects through fast commitments.',
+      'Fast usefulness can feel like certainty.',
+      'Good credencing keeps categories revisable.',
+    ],
+    related: [
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/skills', 'How to Update with New Evidence'),
+      pagePath('/library', 'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Mereological Indigestion: Why We Cannot Divvy Up the Blob',
+    summary: 'A metaphysical critique of treating human-made partitions as if they were automatically deep divisions in reality.',
+    plainAbstract: [
+      'This paper argues that humans divide the world into parts for practical reasons, but those divisions can be mistaken for deep metaphysical joints. We name pieces of reality, then forget that the names often serve our purposes.',
+      'The point is not that distinctions are useless. The point is that distinctions should be held with the right confidence and tested for predictive work.',
+    ],
+    siteConnection: [
+      'This paper extends the credencing project into ontology. It asks whether our categories are tracking evidence or merely carrying inherited grammar and convenience.',
+      'It pairs naturally with the Threshold and Ontic Snap papers: all three ask how patterns become things in our reasoning.',
+    ],
+    readerUse: [
+      'Read this when a debate depends on where one object, cause, or category ends and another begins. Ask whether the boundary is discovered, useful, negotiated, or merely assumed.',
+    ],
+    keyTakeaways: [
+      'Human partitions are not automatically metaphysical facts.',
+      'Categories should earn confidence by doing predictive work.',
+      'Useful distinctions can still be provisional.',
+    ],
+    related: [
+      pagePath('/library', 'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic'),
+      pagePath('/library', 'The "Ontic Snap" as a Cognitive Phase Transition'),
+      pagePath('/about', 'Descriptive Rather than Prescriptive Orientation'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Useful Fictions Common in Philosophical Pedagogy',
+    summary: 'A teaching paper about simplified ideas that help beginners but can mislead if treated as final.',
+    plainAbstract: [
+      'This paper says philosophy often teaches beginners with useful simplifications. Those simplifications can be good ladders: they help students climb into a topic.',
+      'But a ladder is not the destination. If a learner treats early simplifications as final truth, the tool becomes a trap. Mature reasoning requires knowing when a fiction has stopped helping.',
+    ],
+    siteConnection: [
+      'The site itself uses simplified models, especially for Bayes theorem and the interactive lab. This paper keeps that simplification honest by reminding readers that teaching models are maps, not the territory.',
+      'It also supports the project’s low-register pages: simple language is good when it opens inquiry, bad when it closes inquiry too soon.',
+    ],
+    readerUse: [
+      'Read this as a guardrail for learning. Ask whether a concept is a beginner handle, a useful bridge, or a serious research-level commitment.',
+    ],
+    keyTakeaways: [
+      'Simplified ideas can be useful teaching tools.',
+      'A useful fiction becomes harmful when treated as final.',
+      'Good pedagogy tells readers when to outgrow the scaffold.',
+    ],
+    related: [
+      pagePath('/applications', 'Education'),
+      pagePath('/library', 'Teaching Materials'),
+      pagePath('/discussion-groups', 'Facilitator Toolkit'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Eddy of Agency: Locating Subjective Will in an Objective Flow',
+    summary: 'A naturalist account of agency that treats human will as a real pattern inside a causally determined world.',
+    plainAbstract: [
+      'This paper tries to make sense of agency without appealing to magical freedom. A person is part of the physical flow of causes, but the person can still be a real organizing loop inside that flow.',
+      'The eddy image means a local pattern with its own shape and effects. Human agency may be like that: not outside nature, but still important as a stable pattern for prediction, correction, and responsibility.',
+    ],
+    siteConnection: [
+      'Credencing depends on agents who can revise, respond, and be guided by feedback. This paper explains how that can matter even in a naturalistic picture.',
+      'It also gives a softer model of responsibility: not guilt from nowhere, but feedback aimed at recalibrating future prediction and action.',
+    ],
+    readerUse: [
+      'Read this alongside the sections on responsibility filters and core failure. The point is to improve diagnosis and correction without pretending humans stand outside causes.',
+    ],
+    keyTakeaways: [
+      'Agency can be real without being supernatural.',
+      'Responsibility can be feedback-oriented.',
+      'Credencing works inside causal systems, not outside them.',
+    ],
+    related: [
+      pagePath('/core-ideas', 'Diagnostic Safeguards'),
+      pagePath('/case-studies', 'Pragmatic Encroachment'),
+      pagePath('/about', 'Descriptive Rather than Prescriptive Orientation'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution',
+    summary: 'A systems paper about calibrating credit and blame when individual control is weakened by noise and complexity.',
+    plainAbstract: [
+      'This paper argues that people often over-credit or over-blame leaders for outcomes produced by large systems. When a system is noisy, the link between a leader’s choice and the final result may be weak.',
+      'The paper introduces a control coefficient: a way of asking how much of an outcome can plausibly be attributed to a person’s signal rather than to environmental drift.',
+    ],
+    siteConnection: [
+      'This is institutional credencing. It asks how much confidence we should assign to stories about heroes, villains, CEOs, politicians, generals, or experts.',
+      'The paper also connects to base-rate neglect and public debate: simple narratives often feel satisfying while underweighting system noise.',
+    ],
+    readerUse: [
+      'Read this when judging leadership, success, failure, scandal, or historical causation. Ask how strong the control channel really was before assigning confidence to praise or blame.',
+    ],
+    keyTakeaways: [
+      'Attribution should track control, not just status.',
+      'High-noise systems weaken individual signal.',
+      'Credit and blame need evidential calibration.',
+    ],
+    related: [
+      pagePath('/applications', 'Institutional Diagnostics'),
+      pagePath('/case-studies', 'Public Debate'),
+      pagePath('/case-studies', 'Base-Rate Neglect'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Alchemy of Ought: Tracing the Socio-Cognitive Reification of Human Rights',
+    summary: 'A genealogy of how shared social commitments can come to feel like mind-independent moral facts.',
+    plainAbstract: [
+      'This paper asks how rights-talk can feel objective even if rights are built through human practices, institutions, emotions, and enforcement. The claim is not that rights are useless. The claim is that their felt objectivity may be produced by social stability.',
+      'People can turn shared commitments into things that feel discovered rather than made. That transformation is powerful, but it needs epistemic clarity.',
+    ],
+    siteConnection: [
+      'The paper extends credencing into moral and political language. It asks whether confidence in ought claims is tracking evidence, social consensus, emotion, institutional force, or some mixture.',
+      'It also links to the site’s concern with reification: useful frameworks should not be mistaken too quickly for independent objects.',
+    ],
+    readerUse: [
+      'Read this when moral or political claims feel unquestionable. Ask which parts are evidence, which parts are coordination tools, and which parts are inherited emotional force.',
+    ],
+    keyTakeaways: [
+      'Social commitments can acquire the feel of objectivity.',
+      'Usefulness is not the same as mind-independent reality.',
+      'Moral and political confidence still needs calibration.',
+    ],
+    related: [
+      pagePath('/applications', 'Law'),
+      pagePath('/applications', 'Public Debate'),
+      pagePath('/library', 'Impotent Obligation and the Attempt to Reify Emotions'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'The Mechanics of Non-Moral Civility: Evolutionary, Psychological, and Sociological Foundations of Social Order in the Absence of Moral Realism',
+    summary: 'A paper arguing that social order can be explained through cooperation, incentives, and shared systems without moral realism.',
+    plainAbstract: [
+      'This paper addresses a fear: if moral facts are not real in a strong metaphysical sense, will society fall apart? The answer offered is no. Cooperation can be supported by evolution, psychology, law, habit, incentives, and shared interests.',
+      'The point is descriptive. Humans can build civility and order through systems that work, even if those systems are not grounded in supernatural or mind-independent moral properties.',
+    ],
+    siteConnection: [
+      'This matters for credencing because it separates practical confidence from metaphysical overclaiming. A system can be useful, stable, and humane without requiring inflated certainty about its ultimate status.',
+      'It also helps the site discuss public reasoning in a less polemical way: evaluate what a framework does, what evidence supports it, and where confidence should remain limited.',
+    ],
+    readerUse: [
+      'Read this as a civic application of calibrated thinking. Ask how social practices can be defended by evidence of function rather than by claims that outrun the evidence.',
+    ],
+    keyTakeaways: [
+      'Social order can be explained without moral realism.',
+      'Practical usefulness can be real without metaphysical inflation.',
+      'Civic confidence should track function and evidence.',
+    ],
+    related: [
+      pagePath('/applications', 'Policy'),
+      pagePath('/applications', 'Public Debate'),
+      pagePath('/about', 'Methodological Commitments'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Impotent Obligation and the Attempt to Reify Emotions',
+    summary: 'A descriptive account of how emotions can be upgraded into social claims of duty, debt, guilt, or desert.',
+    plainAbstract: [
+      'This paper examines a common move: someone feels approval, anger, disgust, fear, or resentment, and that emotion gets translated into the language of obligation. A private reaction starts sounding like an external law.',
+      'The paper does not say emotions are irrelevant. It says we should notice when emotion is being converted into authority without enough evidence.',
+    ],
+    siteConnection: [
+      'This is a Core Irrationality case. A person may assign high confidence to a duty-claim because the emotion is strong, not because the evidence is strong.',
+      'It also supports the site’s diagnostic safeguards: before accusing someone of irrationality, separate evidence, feeling, social pressure, and practical consequences.',
+    ],
+    readerUse: [
+      'Read this when disagreement becomes moral pressure. Ask what reasons are being offered, what emotions are doing the work, and whether the assigned confidence has been inflated by social force.',
+    ],
+    keyTakeaways: [
+      'Emotions can be mistaken for external authority.',
+      'Strong feeling is not automatically strong evidence.',
+      'Obligation language should be evidence-audited.',
+    ],
+    related: [
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/skills', 'How to Detect Motivated Override'),
+    ],
+  }),
+];
+
 export const libraryPages: ContentPage[] = [
   libraryPage(
     'Papers',
@@ -3844,7 +4404,7 @@ export const libraryPages: ContentPage[] = [
         body: [
           'The central paper is “A Formal Framework for Core and Deep Rationality.” It supplies the basic architecture: objective evidence (E0), perceived evidence (EP), assigned credence (CA), deep rationality (SD), calculation error, core irrationality, and the archetypes generated by different gap patterns.',
           'A second nearby strand is the “credence first” argument: the claim that rational evaluation should begin with graded confidence rather than binary belief. That strand links the project to Bayesian epistemology, philosophy of religion, calibration, and the practical ethics of changing one’s mind.',
-          'The broader research cluster now featured here includes “Core Rationality,” “Credence First,” “The Gravity of Grammar,” “Beyond the Binary,” “The Miracle Audit,” “The Architecture of Explanatory Satisfaction and the Affective Veto,” “Foundational Choices for the Autodidact,” and “The Asymptote of the Natural.” Together, these papers treat Credencing not as one isolated model but as a program for replacing all-or-nothing belief language with calibrated, updateable confidence.',
+          'The broader research cluster now featured here includes papers on AI delegation, binary language, miracle auditing, explanatory hunger, operator learning, methodological naturalism, ontological commitment, agency, historical attribution, and the reification of norms and emotions. Together, these papers treat Credencing not as one isolated model but as a program for replacing all-or-nothing belief language with calibrated, updateable confidence.',
         ],
       },
       {
@@ -3887,6 +4447,13 @@ export const libraryPages: ContentPage[] = [
     'This page anchors the project’s central distinction between rational skill and rational integrity.',
     [
       {
+        heading: 'Low-Register Abstract',
+        body: [
+          'This paper gives the site its basic model. It says that a person can go wrong in two different places: they may fail to see the evidence well, or they may see the evidence well enough and still assign the wrong level of confidence.',
+          'Deep Rationality (SD) is about evidence-reading skill. Core Rationality is about whether confidence stays honest once the evidence has been perceived. The model turns that distinction into variables, gaps, and archetypes that can be visualized in the interactive lab.',
+        ],
+      },
+      {
         heading: 'Central Thesis',
         body: [
           'The formal framework distinguishes Deep Rationality from Core Rationality. Deep Rationality concerns the tools that allow an agent to perceive evidential support accurately. Core Rationality concerns whether the agent assigns credence according to that perceived support.',
@@ -3917,6 +4484,7 @@ export const libraryPages: ContentPage[] = [
       pagePath('/library', 'Future Papers'),
     ],
   ),
+  ...paperIntroPages,
   libraryPage(
     'Future Papers',
     'Future papers extend the framework into measurement, institutions, AI, disagreement, and pedagogy.',
@@ -5511,7 +6079,7 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'Research Profile',
         body: [
-          'Stilwell’s Academia.edu profile lists work in epistemology, philosophy of religion, philosophy of science, decision-making, and related areas. Papers especially relevant to this site include “Core Rationality,” “A Formal Framework for Core and Deep Rationality,” “Credence First: Against Plantinga’s Warrant as an Epistemic Upgrade,” “The Gravity of Grammar,” “Beyond the Binary,” “The Miracle Audit,” “The Architecture of Explanatory Satisfaction and the Affective Veto,” “Foundational Choices for the Autodidact,” and “The Asymptote of the Natural.”',
+          'Stilwell’s Academia.edu profile lists work in epistemology, philosophy of religion, philosophy of science, decision-making, AI, ontology, agency, and public reasoning. The Credencing site now features a focused paper cluster with short internal guides and source links for the papers most directly connected to calibrated confidence, rationality, Bayesian updating, AI delegation, methodological naturalism, reification, and evidential attribution.',
           'Taken together, these papers frame Credencing as a shift from binary belief-possession to graded confidence management. The site’s public language should therefore foreground calibration, updateability, base rates, evidential constraints, and social conditions that make revision easier or harder.',
           'The author page makes that research context visible while keeping the focus on the public project: a usable framework for mapping evidence, perception, confidence, rational skill, and rational integrity.',
         ],
