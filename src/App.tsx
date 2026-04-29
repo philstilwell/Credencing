@@ -304,6 +304,7 @@ export default function App() {
                 kicker="Interactive Lab"
               />
               <InteractiveExperience initialTab="model" />
+              <LabComparisonCallout onNavigate={setRoute} />
               <PageCluster group={pageGroups.find((group) => group.path === '/interactive-lab')!} onNavigate={setRoute} />
             </motion.main>
           )}
@@ -726,6 +727,28 @@ function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (pat
         {group.pages.map((page, index) => (
           <PageTeaser key={page} group={group} page={page} index={index} onNavigate={onNavigate} />
         ))}
+      </div>
+    </section>
+  );
+}
+
+function LabComparisonCallout({ onNavigate }: { onNavigate: (path: string) => void }) {
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-amber-500/[0.045] border-amber-500/25">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+        <div className="space-y-3 max-w-3xl">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Next Lab Move</p>
+          <h3 className="text-2xl md:text-3xl font-light text-white">Compare two scenarios side by side</h3>
+          <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+            Once a single scenario makes sense, the comparison lab shows why two agents can share a surface belief while differing sharply in evidence-reading skill, assigned credence, and belief integrity.
+          </p>
+        </div>
+        <button
+          onClick={() => onNavigate(pagePath('/interactive-lab', 'Compare Two Scenarios'))}
+          className="w-full sm:w-fit px-5 py-3 bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/50 rounded-xl text-xs font-bold tracking-widest transition-all text-amber-200 flex items-center justify-center gap-3 uppercase"
+        >
+          Open Comparison Lab <Network size={14} />
+        </button>
       </div>
     </section>
   );
