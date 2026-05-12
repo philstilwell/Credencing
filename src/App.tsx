@@ -52,6 +52,7 @@ const navItems = [
   { label: 'Ideas', path: '/core-ideas', icon: <Brain size={14} /> },
   { label: 'Bayes', path: '/bayes-theorem', icon: <BookOpen size={14} /> },
   { label: 'Lab', path: '/interactive-lab', icon: <Activity size={14} /> },
+  { label: 'Q&A', path: '/q-and-a', icon: <Info size={14} /> },
   { label: 'Groups', path: '/discussion-groups', icon: <Users size={14} /> },
   { label: 'Library', path: '/library', icon: <Library size={14} /> },
   { label: 'Search', path: '/search', icon: <Search size={14} /> },

@@ -6184,4 +6184,236 @@ export const aboutPages: ContentPage[] = [
   ),
 ];
 
-export const contentPages = [...startHerePages, ...coreIdeasPages, ...bayesPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...discussionPages, ...applicationPages, ...libraryPages, ...aboutPages];
+const qaPages: ContentPage[] = [
+  {
+    title: 'Q&A',
+    path: '/q-and-a',
+    groupTitle: 'Q&A',
+    groupPath: '/q-and-a',
+    summary: 'A visitor-facing question-and-answer guide to Credencing, evidence, Bayesian updating, the interactive model, and common misunderstandings.',
+    sections: [
+      {
+        heading: 'What is Credencing in one sentence?',
+        body: [
+          'Credencing is the practice of matching confidence to evidence, then changing that confidence when the evidence changes.',
+          'The site adds a visual model for a simple but important distinction: people can go wrong because they do not perceive the evidence well, or because they perceive it well enough and still assign the wrong level of confidence.',
+        ],
+        bullets: [
+          'Objective Evidence (E0): the support actually available in the world.',
+          'Perceived Evidence (EP): the support the agent manages to see or understand.',
+          'Assigned Credence (CA): the confidence the agent actually gives the claim.',
+          'Deep Rationality (SD): the skill used to read evidence well.',
+        ],
+      },
+      {
+        heading: 'Why use the word credence instead of belief?',
+        body: [
+          'Belief usually sounds yes-or-no. Credence is graded. It lets someone say, "I am 55% confident," "I am 80% confident," or "I should not go higher than a cautious lean yet."',
+          'That matters because many arguments become confused when a weak lean, a working assumption, a practical decision threshold, and near-certainty are all called belief. Credencing makes the strength of the attitude visible.',
+        ],
+      },
+      {
+        heading: 'Is this just Bayesianism?',
+        body: [
+          'No. The project is Bayesian-friendly, but it is not only Bayesianism. Bayes theorem explains how confidence should move when new evidence arrives. Credencing also asks whether a person is willing to let their confidence move.',
+          'A person can understand priors, likelihoods, and posteriors and still protect a favored conclusion. The site therefore treats Bayesian skill as part of Deep Rationality (SD), while Core Rationality asks whether assigned confidence stays responsive to perceived evidence.',
+        ],
+      },
+      {
+        heading: 'What are H and E in Bayes theorem?',
+        body: [
+          'H is the hypothesis: the possible explanation or claim you are testing. E is the evidence: the clue, observation, measurement, testimony, or result you just encountered.',
+          'In ordinary terms, Bayes theorem asks: after seeing this evidence, how much more or less confident should I be in this hypothesis? You compare how expected the evidence would be if the hypothesis were true against how expected it would be overall or under alternatives.',
+        ],
+      },
+      {
+        heading: 'How would a non-philosopher use this?',
+        body: [
+          'Start with a real question: Is this medical test result alarming? Is this news story reliable? Is this product review trustworthy? Is this person likely to be right? Then ask four practical questions.',
+        ],
+        bullets: [
+          'What did I believe before seeing this new evidence?',
+          'How likely would this evidence be if the claim were true?',
+          'How likely would this evidence be if the claim were false or explained another way?',
+          'How much should my confidence move, and what evidence would move it again?',
+        ],
+      },
+      {
+        heading: 'What is the difference between being wrong and being irrational?',
+        body: [
+          'Being wrong can happen honestly. Evidence can be incomplete, misleading, difficult, or unavailable. A person can make a reasonable judgment and still land on a false conclusion.',
+          'Irrationality becomes more serious when the person has enough access to the direction of the evidence but assigns confidence in a way that protects identity, comfort, group loyalty, fear, status, or a prior commitment.',
+        ],
+      },
+      {
+        heading: 'What is Deep Rationality?',
+        body: [
+          'Deep Rationality (SD) is the evidence-reading skill layer. It includes statistical reasoning, base-rate awareness, causal reasoning, measurement discipline, probability, logic, and the ability to notice alternative explanations.',
+          'Someone with low Deep Rationality may misread the evidence without being dishonest. They may need better tools, better examples, better data, or more practice.',
+        ],
+      },
+      {
+        heading: 'What is Core Rationality?',
+        body: [
+          'Core Rationality is belief integrity. It asks whether assigned credence follows perceived evidence. If someone sees the evidence as weak but assigns extreme confidence anyway, the problem is not merely technical.',
+          'Core Rationality is why the model can distinguish an honest novice from a biased expert. The honest novice may lack tools but stay aligned with what they see. The biased expert may have tools but use them to defend a conclusion that their own evidence does not support.',
+        ],
+      },
+      {
+        heading: 'Is Core Irrationality a moral accusation?',
+        body: [
+          'Not automatically. It is first a structural diagnosis: a gap between Perceived Evidence (EP) and Assigned Credence (CA). Moral blame requires more information.',
+          'Before blaming someone, ask whether they had access to the evidence, enough time, enough skill, emotional safety, freedom from coercion, and a realistic chance to repair the gap. The model should slow accusation, not make accusation easier.',
+        ],
+      },
+      {
+        heading: 'What does warranted uncertainty mean?',
+        body: [
+          'Warranted uncertainty is uncertainty that the evidence actually calls for. It is not weakness. It is often intellectual honesty.',
+          'If the evidence is thin, noisy, early, contested, or difficult to measure, then modest confidence may be the most rational position. The failure is not being uncertain. The failure is pretending the evidence supports more certainty than it does.',
+        ],
+      },
+      {
+        heading: 'Why does the site use percentages?',
+        body: [
+          'Percentages make hidden differences visible. A person who says "I believe it" might mean 51%, 70%, 90%, or 99%. Those states behave very differently in argument and action.',
+          'The site does not claim that every human attitude can be measured exactly. The numbers are often rough teaching tools. Their value is that they force readers to ask whether confidence is too high, too low, or properly scaled.',
+        ],
+      },
+      {
+        heading: 'What if assigning numbers feels artificial?',
+        body: [
+          'That is a reasonable worry. The answer is to treat numbers as disciplined approximations, not as magic precision. You can use ranges: low confidence, moderate confidence, high confidence, or "somewhere between 60% and 75%."',
+          'The important move is not the exact number. The important move is refusing to let every attitude collapse into "believe" or "do not believe."',
+        ],
+      },
+      {
+        heading: 'How should I read the interactive model?',
+        body: [
+          'Read the bottom semicircle as the evidence or confidence gradient from 0% on the left to 100% on the right. The agent applies a credence somewhere along that gradient.',
+          'Read the upward depth as Deep Rationality (SD). Higher depth means stronger evidence-reading skill. This can feel counterintuitive because depth is shown upward, so the percentage markers are there to keep the visual direction clear.',
+        ],
+      },
+      {
+        heading: 'What does it mean when Objective Evidence and Perceived Evidence differ?',
+        body: [
+          'That gap means the agent is not seeing the evidence accurately. The cause might be missing information, poor statistics, bad framing, propaganda, weak methods, misleading testimony, limited education, or ordinary human error.',
+          'This is not automatically a character failure. It may be a skill, access, or environment problem. Repair often means better data, better tools, better instruction, or better feedback.',
+        ],
+      },
+      {
+        heading: 'What does it mean when Perceived Evidence and Assigned Credence differ?',
+        body: [
+          'That gap means the agent is assigning confidence that does not match what they seem to perceive. This is where motivated reasoning, fear, identity, loyalty, wishful thinking, pride, or social pressure may enter.',
+          'The key question is: what makes this person unable or unwilling to let perceived evidence govern confidence?',
+        ],
+      },
+      {
+        heading: 'Can experts be irrational?',
+        body: [
+          'Yes. Expertise increases the ability to process evidence, but it does not guarantee willingness to accept what the processed evidence implies.',
+          'A biased expert may be especially dangerous because high skill can become a better defense system for a preferred conclusion. The model is built to make that distinction visible.',
+        ],
+      },
+      {
+        heading: 'Can ordinary people be rational without technical training?',
+        body: [
+          'Yes. A person can have limited formal tools and still show good Core Rationality by keeping confidence modest, listening to better evidence, and updating honestly.',
+          'Technical training helps, especially in hard domains, but humility and updateability matter. The honest novice is one of the important archetypes in the model.',
+        ],
+      },
+      {
+        heading: 'How does this apply to science?',
+        body: [
+          'Science is a disciplined public method for making confidence answerable to evidence. It uses measurement, replication, peer criticism, prediction, and error correction to prevent private certainty from drifting too far from reality.',
+          'Credencing interprets science as a set of tools for improving Deep Rationality and for building institutions that make updates easier to notice and harder to suppress.',
+        ],
+      },
+      {
+        heading: 'How does this apply to medicine?',
+        body: [
+          'Medicine often requires reasoning under uncertainty. Test results, symptoms, base rates, false positives, false negatives, treatment risks, and patient differences all affect what confidence is warranted.',
+          'Credencing helps readers avoid common mistakes such as treating a positive test as certainty, ignoring base rates, or letting fear inflate the probability of a frightening diagnosis.',
+        ],
+      },
+      {
+        heading: 'How does this apply to politics and public debate?',
+        body: [
+          'Politics often rewards confidence, loyalty, speed, and identity protection. Those incentives can pull assigned credence away from perceived evidence.',
+          'A credencing approach asks people to slow down: What is the claim? What is the evidence? What would change my mind? Am I applying the same standard to my side and the other side?',
+        ],
+      },
+      {
+        heading: 'How does this apply to religion or faith?',
+        body: [
+          'Credencing criticizes faith when faith means confidence insulated from evidence. The issue is not only religious. Any ideology, identity, institution, or personal hope can become faith-like when it protects a conclusion from ordinary updating.',
+          'The site asks whether confidence is evidence-proportioned. If a belief is held beyond the evidence, against the evidence, or immune to future evidence, the model treats that as a problem of calibration.',
+        ],
+      },
+      {
+        heading: 'How does this apply to AI?',
+        body: [
+          'AI can help people gather information, compare alternatives, and explain concepts. It can also make people overconfident by giving fluent answers that feel more reliable than they are.',
+          'Credencing asks users to keep ownership of their confidence. Do not ask only, "What did the model say?" Ask, "What evidence supports this, how could it be wrong, and how much confidence should I assign?"',
+        ],
+      },
+      {
+        heading: 'What should groups discuss first?',
+        body: [
+          'A good first group session should avoid abstract combat and begin with ordinary examples: weather forecasts, medical tests, news headlines, product reviews, rumors, or predictions about a sports game.',
+          'Once the group can talk comfortably about degrees of confidence, move to harder topics. The goal is to build the practice before applying it to identity-loaded issues.',
+        ],
+      },
+      {
+        heading: 'How can I disagree with someone using this framework?',
+        body: [
+          'Do not begin by calling the person irrational. Begin by locating the disagreement. Are you disagreeing about the evidence itself, how to interpret it, the prior probability, the likelihood, or the level of confidence that follows?',
+          'The most useful question is often: "What evidence would move you, and how much would it move you?" If no possible evidence would matter, the conversation has revealed something important.',
+        ],
+      },
+      {
+        heading: 'What are common mistakes visitors should avoid?',
+        body: [
+          'The first mistake is fake precision: acting as if rough teaching numbers are exact measurements. The second is overdiagnosis: treating every disagreement as irrationality. The third is using the model as a weapon against opponents rather than as a mirror for one’s own confidence.',
+          'The model works best when it increases humility. It should help people say, "My confidence is too high," "I need better evidence," or "I am protecting this conclusion more than I thought."',
+        ],
+        bullets: [
+          'Do not confuse uncertainty with weakness.',
+          'Do not confuse confidence with evidence.',
+          'Do not confuse fluency with reliability.',
+          'Do not confuse disagreement with bad faith.',
+        ],
+      },
+      {
+        heading: 'What would count as progress?',
+        body: [
+          'Progress is better calibration. Confidence becomes more proportionate to evidence. Updates become easier to state. People become clearer about what they know, what they merely suspect, and what would change their minds.',
+          'At the institutional level, progress means systems that notice reality earlier, protect dissent, correct public claims, reward accurate uncertainty, and keep records of predictions and updates.',
+        ],
+      },
+      {
+        heading: 'Where should I go next?',
+        body: [
+          'New visitors should read Start Here, then open the Interactive Lab, then read the Bayes theorem overview. Readers who want vocabulary should use the Glossary and Tag Index. Readers who want practice should use the Skills and Discussion Groups sections.',
+          'The site is meant to be navigated as a web. If one term feels unclear, follow the related links rather than forcing yourself through a single linear path.',
+        ],
+      },
+    ],
+    keyTakeaways: [
+      'Credencing means matching confidence to evidence and updating when evidence changes.',
+      'The framework separates evidence-reading skill from belief integrity.',
+      'Bayesian tools help with updating, but they do not guarantee willingness to update.',
+      'Numbers are teaching tools for clarifying confidence, not claims of perfect precision.',
+      'The model should increase humility, not become a weapon for overdiagnosing others.',
+    ],
+    related: [
+      pagePath('/start-here', 'What Is Credencing?'),
+      pagePath('/interactive-lab', 'Interactive Model'),
+      pagePath('/bayes-theorem', 'Bayes Theorem Overview'),
+      pagePath('/library', 'Glossary'),
+      pagePath('/library', 'FAQ'),
+    ],
+  },
+];
+
+export const contentPages = [...startHerePages, ...coreIdeasPages, ...bayesPages, ...interactiveLabPages, ...caseStudyPages, ...skillPages, ...discussionPages, ...applicationPages, ...libraryPages, ...aboutPages, ...qaPages];
