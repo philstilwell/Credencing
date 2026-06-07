@@ -264,7 +264,9 @@ export const featuredPaths = [
   '/discussion-groups',
   '/case-studies',
   '/skills',
+  '/applications',
   '/library',
+  '/about',
 ];
 
 export const startHerePages: ContentPage[] = [

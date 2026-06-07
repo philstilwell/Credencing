@@ -48,15 +48,34 @@ type UtilityFeaturePage = {
 
 const navItems = [
   { label: 'Home', path: '/', icon: <Home size={14} /> },
-  { label: 'Start', path: '/start-here', icon: <Compass size={14} /> },
-  { label: 'Ideas', path: '/core-ideas', icon: <Brain size={14} /> },
-  { label: 'Bayes', path: '/bayes-theorem', icon: <BookOpen size={14} /> },
-  { label: 'Lab', path: '/interactive-lab', icon: <Activity size={14} /> },
-  { label: 'Q&A', path: '/q-and-a', icon: <Info size={14} /> },
-  { label: 'Groups', path: '/discussion-groups', icon: <Users size={14} /> },
+  { label: 'Start Here', path: '/start-here', icon: <Compass size={14} /> },
+  { label: 'Core Ideas', path: '/core-ideas', icon: <Brain size={14} /> },
+  { label: 'Bayes Theorem', path: '/bayes-theorem', icon: <BookOpen size={14} /> },
+  { label: 'Interactive Lab', path: '/interactive-lab', icon: <Activity size={14} /> },
+  { label: 'Case Studies', path: '/case-studies', icon: <ShieldAlert size={14} /> },
+  { label: 'Skills', path: '/skills', icon: <Terminal size={14} /> },
+  { label: 'Discussion Groups', path: '/discussion-groups', icon: <Users size={14} /> },
+  { label: 'Applications', path: '/applications', icon: <Network size={14} /> },
   { label: 'Library', path: '/library', icon: <Library size={14} /> },
+  { label: 'About', path: '/about', icon: <Info size={14} /> },
+  { label: 'Q&A', path: '/q-and-a', icon: <Info size={14} /> },
   { label: 'Search', path: '/search', icon: <Search size={14} /> },
-  { label: 'Map', path: '/site-map', icon: <MapIcon size={14} /> },
+  { label: 'Site Map', path: '/site-map', icon: <MapIcon size={14} /> },
+];
+
+const navSections = [
+  {
+    label: 'Learn',
+    items: navItems.filter((item) => ['/', '/start-here', '/core-ideas', '/bayes-theorem', '/interactive-lab'].includes(item.path)),
+  },
+  {
+    label: 'Practice',
+    items: navItems.filter((item) => ['/case-studies', '/skills', '/discussion-groups', '/applications'].includes(item.path)),
+  },
+  {
+    label: 'Resources',
+    items: navItems.filter((item) => ['/library', '/about', '/q-and-a', '/search', '/site-map'].includes(item.path)),
+  },
 ];
 
 const utilityFeaturePages: UtilityFeaturePage[] = [
@@ -377,6 +396,356 @@ const nestedPageTitles: Record<string, Record<string, string[]>> = {
   },
 };
 
+type PageCollection = {
+  label: string;
+  description: string;
+  pages: string[];
+};
+
+const sectionCollections: Record<string, PageCollection[]> = {
+  '/start-here': [
+    {
+      label: 'Orientation',
+      description: 'Begin with the basic idea: credence, confidence, evidence, and updating.',
+      pages: [
+        'What Is Credencing?',
+        'Why Binary Belief Is Too Crude',
+        'Evidence and Confidence',
+        'What Bayesian Updating Is',
+      ],
+    },
+    {
+      label: 'Diagnosis and Next Steps',
+      description: 'Move from the basic model into failure modes and the recommended route through the site.',
+      pages: [
+        'Why People Go Wrong',
+        'The Difference Between Being Mistaken and Being Epistemically Inconsistent',
+        'Where to Go Next',
+      ],
+    },
+  ],
+  '/core-ideas': [
+    {
+      label: 'Credence Vocabulary',
+      description: 'The probability and confidence terms used throughout the project.',
+      pages: [
+        'Credences',
+        'Evidence',
+        'Confidence Levels',
+        'Priors',
+        'Likelihoods',
+        'Posteriors',
+        'Bayesian Updating',
+        'Calibration',
+        'Uncertainty',
+        'Warranted Uncertainty',
+      ],
+    },
+    {
+      label: 'Two-Gap Model',
+      description: 'The formal values that separate evidence access, evidence perception, and assigned confidence.',
+      pages: [
+        'Objective Evidence (E0)',
+        'Perceived Evidence (EP)',
+        'Assigned Credence (CA)',
+        'Deep Rationality (SD)',
+        'Core Rationality',
+        'Calculation Error (DE)',
+        'Core Irrationality (IC)',
+      ],
+    },
+    {
+      label: 'Failure and Repair',
+      description: 'Diagnostic concepts for identifying and repairing misalignment.',
+      pages: [
+        'Diagnostic Safeguards',
+        'Epistemic Akrasia',
+        'Core vs Deep Rationality',
+        'Epistemic Archetypes',
+      ],
+    },
+  ],
+  '/bayes-theorem': [
+    {
+      label: 'Formula Parts',
+      description: 'Read the theorem as a set of roles: hypothesis, prior, likelihood, evidence, and posterior.',
+      pages: [
+        'Bayes Theorem Overview',
+        'The Formula',
+        'The Prior',
+        'The Likelihood',
+        'The Evidence Term',
+        'The Posterior',
+      ],
+    },
+    {
+      label: 'Use and Misuse',
+      description: 'Apply Bayes to scientific reasoning, practice cases, and common mistakes.',
+      pages: [
+        'Scientific Walkthrough',
+        'Common Mistakes',
+        'Practice Examples',
+      ],
+    },
+  ],
+  '/interactive-lab': [
+    {
+      label: 'Read the Model',
+      description: 'Start with the live model, its visual legend, and the guide to interpreting the diagram.',
+      pages: [
+        'Interactive Model',
+        'How to Read the Model',
+        'Visual Legend',
+      ],
+    },
+    {
+      label: 'Scenario Presets',
+      description: 'Compare standard epistemic archetypes before building your own examples.',
+      pages: [
+        'Preset Scenarios',
+        'Ideal Agent',
+        'Honest Novice',
+        'Biased Expert',
+        'Epistemic Delusion',
+      ],
+    },
+    {
+      label: 'Experiment',
+      description: 'Create or compare cases, then use the interpretation guide to diagnose the gaps.',
+      pages: [
+        'Build Your Own Scenario',
+        'Compare Two Scenarios',
+        'Interpretation Guide',
+      ],
+    },
+  ],
+  '/case-studies': [
+    {
+      label: 'Everyday and Technical Cases',
+      description: 'Classic reasoning failures where evidence, base rates, and perceived risk diverge.',
+      pages: [
+        'Base-Rate Neglect',
+        'Medical Testing',
+        'Risk Inflation',
+        'Pragmatic Encroachment',
+        'Fear Overrides',
+      ],
+    },
+    {
+      label: 'Social and Institutional Cases',
+      description: 'Cases where group pressure, identity, media systems, or public conflict shape credence.',
+      pages: [
+        'Motivated Reasoning',
+        'Political Tribalism',
+        'Conspiracy Thinking',
+      ],
+    },
+    {
+      label: 'Archetype Cases',
+      description: 'Concrete examples built around the model’s agent types.',
+      pages: [
+        'Honest Novice Cases',
+        'Biased Expert Cases',
+        'Delusion Threshold Cases',
+      ],
+    },
+  ],
+  '/skills': [
+    {
+      label: 'Core Practices',
+      description: 'The basic habits: state credences, scale confidence, update, and use base rates.',
+      pages: [
+        'How to Think in Credences',
+        'How to Scale Confidence to Evidence',
+        'How to Update with New Evidence',
+        'How to Estimate Priors',
+        'How to Read Likelihoods',
+        'How to Avoid Base-Rate Neglect',
+      ],
+    },
+    {
+      label: 'Diagnostic Practices',
+      description: 'Find overconfidence, motivated override, core/deep mismatch, and poor uncertainty language.',
+      pages: [
+        'How to Detect Overconfidence',
+        'How to Detect Motivated Override',
+        'How to Separate Core from Deep Failure',
+        'How to Express Uncertainty Honestly',
+        'How to Ask Better Epistemic Questions',
+        'Practice Exercises',
+      ],
+    },
+  ],
+  '/discussion-groups': [
+    {
+      label: 'Program Sequence',
+      description: 'A session-by-session route from credences to AI, institutions, and public reasoning.',
+      pages: [
+        'Group Discussion Guide',
+        'Session 1: Credences and Confidence',
+        'Session 2: Evidence and Perception',
+        'Session 3: Priors, Base Rates, and Likelihoods',
+        'Session 4: Updating and Changing Minds',
+        'Session 5: Bias, Identity, and Core Rationality',
+        'Session 6: Uncertainty, Action, and Risk',
+        'Session 7: Media, Institutions, and Public Debate',
+        'Session 8: AI, Expertise, and the Future',
+      ],
+    },
+    {
+      label: 'Facilitation',
+      description: 'Support material for running the sequence with groups.',
+      pages: [
+        'Facilitator Toolkit',
+      ],
+    },
+  ],
+  '/applications': [
+    {
+      label: 'Knowledge Domains',
+      description: 'Fields where evidence quality, expert judgment, and calibration are central.',
+      pages: [
+        'Science',
+        'Medicine',
+        'Journalism',
+        'Law',
+        'Education',
+      ],
+    },
+    {
+      label: 'Public and Personal Systems',
+      description: 'Contexts where credences become decisions, policies, institutional claims, or AI-mediated judgment.',
+      pages: [
+        'Public Debate',
+        'Policy',
+        'Personal Decision-Making',
+        'AI Alignment',
+        'Institutional Diagnostics',
+      ],
+    },
+  ],
+  '/library': [
+    {
+      label: 'Research Spine',
+      description: 'Formal papers, the future research roadmap, and the main paper archive.',
+      pages: [
+        'Papers',
+        'Future Papers',
+      ],
+    },
+    {
+      label: 'Short Essays',
+      description: 'Accessible essays that turn the framework into vivid examples and conceptual repairs.',
+      pages: [
+        'Essays',
+      ],
+    },
+    {
+      label: 'Reference and Teaching',
+      description: 'Definitions, frequently asked questions, sources, visuals, and classroom materials.',
+      pages: [
+        'Glossary',
+        'FAQ',
+        'References',
+        'Visual Archive',
+        'Teaching Materials',
+        'Downloads',
+        'Project Notes',
+      ],
+    },
+  ],
+  '/about': [
+    {
+      label: 'Project Orientation',
+      description: 'What the project is, how it uses the term Credencing, and how to read the site.',
+      pages: [
+        'Project Overview',
+        'Why the Term "Credencing"',
+        'Methodological Commitments',
+        'Descriptive Rather than Prescriptive Orientation',
+        'How to Use This Site',
+      ],
+    },
+    {
+      label: 'Author and Continuation',
+      description: 'Author context, contact, and directions for future development.',
+      pages: [
+        'Author',
+        'Contact',
+        'Future Directions',
+      ],
+    },
+  ],
+};
+
+const relatedGroupPaths: Record<string, string[]> = {
+  '/start-here': ['/core-ideas', '/interactive-lab', '/skills'],
+  '/core-ideas': ['/start-here', '/bayes-theorem', '/interactive-lab'],
+  '/bayes-theorem': ['/core-ideas', '/skills', '/case-studies'],
+  '/interactive-lab': ['/core-ideas', '/case-studies', '/skills'],
+  '/case-studies': ['/skills', '/applications', '/interactive-lab'],
+  '/skills': ['/case-studies', '/discussion-groups', '/applications'],
+  '/discussion-groups': ['/skills', '/library', '/applications'],
+  '/applications': ['/case-studies', '/library', '/skills'],
+  '/library': ['/core-ideas', '/applications', '/about'],
+  '/about': ['/start-here', '/library', '/site-map'],
+};
+
+function getNestedChildren(groupPath: string) {
+  return nestedPageTitles[groupPath] ?? {};
+}
+
+function getNestedChildTitleSet(groupPath: string) {
+  return new Set(Object.values(getNestedChildren(groupPath)).flat());
+}
+
+function getTopLevelPageTitles(group: PageGroup) {
+  const childTitles = getNestedChildTitleSet(group.path);
+  return group.pages.filter((page) => !childTitles.has(page));
+}
+
+function getSectionCollections(group: PageGroup): PageCollection[] {
+  const topLevelPages = getTopLevelPageTitles(group);
+  const available = new Set(topLevelPages);
+  const seen = new Set<string>();
+  const configured = (sectionCollections[group.path] ?? [])
+    .map((collection) => ({
+      ...collection,
+      pages: collection.pages.filter((page) => available.has(page)),
+    }))
+    .filter((collection) => collection.pages.length > 0);
+
+  configured.forEach((collection) => collection.pages.forEach((page) => seen.add(page)));
+
+  const uncategorized = topLevelPages.filter((page) => !seen.has(page));
+  if (uncategorized.length === 0) return configured;
+
+  return [
+    ...configured,
+    {
+      label: 'Additional Pages',
+      description: 'Pages that belong to this section but have not yet been assigned to a smaller reading cluster.',
+      pages: uncategorized,
+    },
+  ];
+}
+
+function getParentCollection(page: ContentPage) {
+  const nested = getNestedChildren(page.groupPath);
+  const entry = Object.entries(nested).find(([, children]) => children.includes(page.title));
+  if (!entry) return null;
+  const [title] = entry;
+  return {
+    title,
+    path: pagePath(page.groupPath, title),
+  };
+}
+
+function isActiveNavPath(route: string, path: string) {
+  if (path === '/') return route === '/';
+  return route === path || route.startsWith(`${path}/`);
+}
+
 type ScenarioState = EpistemicData & {
   name: string;
   claim: string;
@@ -542,6 +911,7 @@ export default function App() {
               <SectionHero
                 group={pageGroups.find((group) => group.path === '/interactive-lab')!}
                 kicker="Interactive Lab"
+                onNavigate={setRoute}
               />
               <InteractiveExperience initialTab="model" onNavigate={setRoute} />
               <PageCluster group={pageGroups.find((group) => group.path === '/interactive-lab')!} onNavigate={setRoute} />
@@ -557,7 +927,7 @@ export default function App() {
               transition={{ duration: 0.2 }}
               className="space-y-10"
             >
-              <SectionHero group={activeGroup} />
+              <SectionHero group={activeGroup} onNavigate={setRoute} />
               <PageCluster group={activeGroup} onNavigate={setRoute} />
               <RelatedGroups currentPath={activeGroup.path} onNavigate={setRoute} />
             </motion.main>
@@ -684,29 +1054,36 @@ function useHashRoute(): [string, (path: string) => void] {
 function SiteHeader({ route, onNavigate }: { route: string; onNavigate: (path: string) => void }) {
   return (
     <header className="pb-10 space-y-6">
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div className="flex flex-col gap-6">
         <button onClick={() => onNavigate('/')} className="text-left">
           <p className="text-[10px] text-stone-400 font-mono uppercase tracking-widest mb-2">Credencing.com</p>
-          <h1 className="text-4xl md:text-5xl font-light tracking-tight text-white leading-none">
+          <h1 className="text-3xl md:text-5xl font-light tracking-tight text-white leading-none">
             Credencing: <span className="opacity-40">Visualizing & Minimizing Irrationality</span>
           </h1>
         </button>
-        <div className="glass-panel p-1 border border-white/5 rounded-full flex flex-wrap gap-1 w-fit">
-          {navItems.map((item) => (
-            <button
-              key={item.path}
-              onClick={() => onNavigate(item.path)}
-              className={`px-4 py-2 rounded-full flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider transition-all ${
-                route === item.path
-                  ? 'bg-amber-600/20 text-amber-300 border border-amber-500/50'
-                  : 'text-stone-400 hover:text-stone-200 hover:bg-white/10'
-              }`}
-            >
-              {item.icon}
-              {item.label}
-            </button>
+        <nav aria-label="Primary navigation" className="grid grid-cols-1 xl:grid-cols-[1.05fr_1.05fr_1.1fr] gap-2">
+          {navSections.map((section) => (
+            <div key={section.label} className="glass-panel p-2 border border-white/5 rounded-2xl">
+              <p className="px-2 pb-2 text-[9px] uppercase tracking-[0.24em] text-stone-600 font-bold">{section.label}</p>
+              <div className="flex flex-wrap gap-1">
+                {section.items.map((item) => (
+                  <button
+                    key={item.path}
+                    onClick={() => onNavigate(item.path)}
+                    className={`px-3 py-2 rounded-xl flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider transition-all ${
+                      isActiveNavPath(route, item.path)
+                        ? 'bg-amber-600/20 text-amber-300 border border-amber-500/50'
+                        : 'text-stone-400 border border-transparent hover:text-stone-200 hover:bg-white/10'
+                    }`}
+                  >
+                    {item.icon}
+                    <span>{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           ))}
-        </div>
+        </nav>
       </div>
     </header>
   );
@@ -967,44 +1344,99 @@ function ContextPanel({ activeTab, onOpenModel }: { key?: string; activeTab: Tab
   );
 }
 
-function SectionHero({ group, kicker }: { group: PageGroup; kicker?: string }) {
+function SectionHero({ group, kicker, onNavigate }: { group: PageGroup; kicker?: string; onNavigate: (path: string) => void }) {
+  const collections = getSectionCollections(group);
+  const firstPage = getTopLevelPageTitles(group)[0];
+  const firstPath = firstPage ? pagePath(group.path, firstPage) : group.path;
+
   return (
     <section className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
       <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">{kicker ?? group.title}</p>
       <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">{group.title}</h2>
       <p className="text-stone-300 max-w-3xl text-base md:text-lg leading-relaxed">{group.summary}</p>
+      <div className="flex flex-wrap gap-3 pt-2">
+        {firstPage && (
+          <button
+            onClick={() => onNavigate(firstPath)}
+            className="px-4 py-2 rounded-xl border border-amber-500/40 bg-amber-600/15 text-amber-200 text-[10px] font-bold uppercase tracking-wider hover:border-amber-400/70 transition-colors flex items-center gap-2"
+          >
+            Start Section <ArrowRight size={13} />
+          </button>
+        )}
+        <button
+          onClick={() => onNavigate('/search')}
+          className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-stone-300 text-[10px] font-bold uppercase tracking-wider hover:border-amber-500/40 hover:text-amber-200 transition-colors flex items-center gap-2"
+        >
+          Search Site <Search size={13} />
+        </button>
+        <button
+          onClick={() => onNavigate('/site-map')}
+          className="px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-stone-300 text-[10px] font-bold uppercase tracking-wider hover:border-amber-500/40 hover:text-amber-200 transition-colors flex items-center gap-2"
+        >
+          Full Map <MapIcon size={13} />
+        </button>
+      </div>
+      {collections.length > 0 && (
+        <div className="flex flex-wrap gap-2 pt-3">
+          {collections.map((collection, index) => (
+            <button
+              key={collection.label}
+              onClick={() => onNavigate(pagePath(group.path, collection.pages[0]))}
+              className="rounded-xl border border-white/10 bg-black/10 px-4 py-3 text-left hover:border-amber-500/40 transition-colors"
+            >
+              <span className="block text-[9px] uppercase tracking-widest text-stone-600 mb-1">Part {String(index + 1).padStart(2, '0')}</span>
+              <span className="block text-xs text-white">{collection.label}</span>
+            </button>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
 
 function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (path: string) => void }) {
-  const nestedChildren = nestedPageTitles[group.path] ?? {};
-  const childTitles = new Set(Object.values(nestedChildren).flat());
-  const topLevelPages = group.pages.filter((page) => !childTitles.has(page));
+  const nestedChildren = getNestedChildren(group.path);
+  const collections = getSectionCollections(group);
 
   return (
-    <section className="space-y-5">
-      <h3 className="text-xl font-light text-white">Pages in this section</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {topLevelPages.map((page, index) => (
-          <div key={page} className="space-y-2">
-            <PageTeaser group={group} page={page} index={index} onNavigate={onNavigate} />
-            {nestedChildren[page] && (
-              <div className="ml-5 border-l border-amber-500/20 pl-4 space-y-2">
-                <p className="text-[9px] uppercase tracking-[0.22em] text-stone-500 font-bold">Essays in this collection</p>
-                {nestedChildren[page].map((childPage) => (
-                  <button
-                    key={childPage}
-                    onClick={() => onNavigate(pagePath(group.path, childPage))}
-                    className="w-full text-left p-3 rounded-lg border border-white/5 bg-black/10 hover:border-amber-500/30 transition-colors"
-                  >
-                    <span className="block text-xs text-amber-100">{childPage}</span>
-                    <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">{page === 'Papers' ? 'Paper' : 'Essay'}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+    <section className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold mb-2">Section Contents</p>
+          <h3 className="text-2xl font-light text-white">Organized reading blocks</h3>
+        </div>
+        <p className="text-[10px] uppercase tracking-widest text-stone-600">{group.pages.length} mapped pages</p>
+      </div>
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        {collections.map((collection) => (
+          <section key={collection.label} className="space-y-4">
+            <div className="border-l border-amber-500/30 pl-4 space-y-2">
+              <h4 className="text-xl text-white font-light">{collection.label}</h4>
+              <p className="text-stone-400 text-xs leading-relaxed">{collection.description}</p>
+            </div>
+            <div className="space-y-3">
+              {collection.pages.map((page) => (
+                <div key={page} className="space-y-2">
+                  <PageTeaser group={group} page={page} index={group.pages.indexOf(page)} onNavigate={onNavigate} />
+                  {nestedChildren[page] && (
+                    <div className="ml-4 border-l border-amber-500/20 pl-4 space-y-2">
+                      <p className="text-[9px] uppercase tracking-[0.22em] text-stone-500 font-bold">{page === 'Papers' ? 'Papers in this cluster' : 'Essays in this cluster'}</p>
+                      {nestedChildren[page].map((childPage) => (
+                        <button
+                          key={childPage}
+                          onClick={() => onNavigate(pagePath(group.path, childPage))}
+                          className="w-full text-left p-3 rounded-lg border border-white/5 bg-black/10 hover:border-amber-500/30 transition-colors"
+                        >
+                          <span className="block text-xs text-amber-100">{childPage}</span>
+                          <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">{page === 'Papers' ? 'Paper' : 'Essay'}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </section>
@@ -1035,7 +1467,8 @@ function ComparisonRecommendation({ onNavigate }: { onNavigate: (path: string) =
 
 function PageTeaser({ group, page, index, onNavigate }: { group: PageGroup; page: string; index: number; onNavigate: (path: string) => void }) {
   const targetPath = pagePath(group.path, page);
-  const hasContent = contentPages.some((contentPage) => contentPage.path === targetPath);
+  const contentPage = contentPages.find((item) => item.path === targetPath);
+  const hasContent = Boolean(contentPage);
 
   return (
     <button
@@ -1048,6 +1481,9 @@ function PageTeaser({ group, page, index, onNavigate }: { group: PageGroup; page
         <div>
           <p className="text-[9px] text-stone-600 font-mono uppercase tracking-widest mb-2">Page {String(index + 1).padStart(2, '0')}</p>
           <h4 className="text-white font-medium leading-snug">{page}</h4>
+          {contentPage?.summary && (
+            <p className="text-stone-500 text-xs leading-relaxed mt-2 line-clamp-2">{contentPage.summary}</p>
+          )}
         </div>
         <span className={`text-[9px] border rounded-full px-2 py-1 uppercase tracking-wider ${hasContent ? 'text-amber-300 border-amber-500/30' : 'text-stone-500 border-white/10'}`}>
           {hasContent ? 'Read' : 'Draft'}
@@ -1161,35 +1597,40 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
             <div className="glass-panel p-6 bg-white/[0.015] border-white/5 space-y-4">
               <h3 className="text-[10px] uppercase tracking-[0.25em] text-stone-500 font-bold">Section Sequence</h3>
               <div className="space-y-2">
-                {group.pages.filter((pageTitle) => !new Set(Object.values(nestedPageTitles[group.path] ?? {}).flat()).has(pageTitle)).map((pageTitle) => {
-                  const path = pagePath(group.path, pageTitle);
-                  return (
-                    <div key={pageTitle} className="space-y-1">
-                      <button
-                        onClick={() => onNavigate(path)}
-                        className={`w-full text-left text-xs p-2 rounded border transition-colors ${path === page.path ? 'text-amber-300 border-amber-500/30 bg-amber-500/10' : 'text-stone-400 border-transparent hover:border-white/10 hover:bg-white/5'}`}
-                      >
-                        {pageTitle}
-                      </button>
-                      {nestedPageTitles[group.path]?.[pageTitle] && (
-                        <div className="ml-3 border-l border-amber-500/20 pl-2 space-y-1">
-                          {nestedPageTitles[group.path][pageTitle].map((childTitle) => {
-                            const childPath = pagePath(group.path, childTitle);
-                            return (
-                              <button
-                                key={childTitle}
-                                onClick={() => onNavigate(childPath)}
-                                className={`w-full text-left text-[11px] p-2 rounded border transition-colors ${childPath === page.path ? 'text-amber-200 border-amber-500/30 bg-amber-500/10' : 'text-stone-500 border-transparent hover:border-white/10 hover:bg-white/5'}`}
-                              >
-                                {childTitle}
-                              </button>
-                            );
-                          })}
+                {getSectionCollections(group).map((collection) => (
+                  <div key={collection.label} className="rounded-xl border border-white/5 bg-black/10 p-3 space-y-2">
+                    <p className="text-[9px] uppercase tracking-widest text-stone-600 font-bold">{collection.label}</p>
+                    {collection.pages.map((pageTitle) => {
+                      const path = pagePath(group.path, pageTitle);
+                      return (
+                        <div key={pageTitle} className="space-y-1">
+                          <button
+                            onClick={() => onNavigate(path)}
+                            className={`w-full text-left text-xs p-2 rounded border transition-colors ${path === page.path ? 'text-amber-300 border-amber-500/30 bg-amber-500/10' : 'text-stone-400 border-transparent hover:border-white/10 hover:bg-white/5'}`}
+                          >
+                            {pageTitle}
+                          </button>
+                          {getNestedChildren(group.path)[pageTitle] && (
+                            <div className="ml-3 border-l border-amber-500/20 pl-2 space-y-1">
+                              {getNestedChildren(group.path)[pageTitle].map((childTitle) => {
+                                const childPath = pagePath(group.path, childTitle);
+                                return (
+                                  <button
+                                    key={childTitle}
+                                    onClick={() => onNavigate(childPath)}
+                                    className={`w-full text-left text-[11px] p-2 rounded border transition-colors ${childPath === page.path ? 'text-amber-200 border-amber-500/30 bg-amber-500/10' : 'text-stone-500 border-transparent hover:border-white/10 hover:bg-white/5'}`}
+                                  >
+                                    {childTitle}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  );
-                })}
+                      );
+                    })}
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -1610,12 +2051,20 @@ function largerGapLabel(a: number, b: number, aLabel: string, bLabel: string) {
 }
 
 function Breadcrumbs({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
+  const parentCollection = getParentCollection(page);
+
   return (
     <div className="flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.24em] font-bold">
       <button onClick={() => onNavigate('/')} className="text-stone-500 hover:text-amber-300">Home</button>
       <span className="text-stone-700">/</span>
       <button onClick={() => onNavigate(page.groupPath)} className="text-amber-400 hover:text-amber-300">{page.groupTitle}</button>
       <span className="text-stone-700">/</span>
+      {parentCollection && (
+        <>
+          <button onClick={() => onNavigate(parentCollection.path)} className="text-amber-300 hover:text-amber-200">{parentCollection.title}</button>
+          <span className="text-stone-700">/</span>
+        </>
+      )}
       <span className="text-stone-500">{page.title}</span>
     </div>
   );
@@ -1700,7 +2149,7 @@ function PriorityExpansion({ page }: { page: ContentPage }) {
       heading: 'Reading Calculation Error Carefully',
       body: [
         'Calculation Error (DE) should not be heard as a sneer. It is a name for the distance between the evidence field and the agent’s interpretation of it. That distance may come from poor education, unavailable data, hostile information environments, or genuinely difficult evidence.',
-        'The repair question is therefore practical: what would improve the agent’s perception? Better measurement, better statistical tools, more reliable testimony, a broader reference class, and slower inference can all reduce DE without moral drama.',
+        'The repair question is therefore practical: what would improve the agent’s perception? Better measurement, better statistical tools, more reliable testimony, a broader reference class, and slower inference can all reduce DE without accusatory drama.',
       ],
     },
     [pagePath('/core-ideas', 'Core Irrationality (IC)')]: {
@@ -2180,8 +2629,8 @@ const discussionPrompts: Record<string, DiscussionPrompt[]> = {
       feedback: 'The best answer: the original evidence in the world may include the full context, but the viewer’s perceived evidence was narrowed by the clip.',
     },
     {
-      question: 'When is poor perception blameworthy, and when is it understandable?',
-      guidance: 'Use the responsibility filter: access, skill, time, pressure, and willingness to repair.',
+      question: 'When is poor perception avoidable, and when is it understandable?',
+      guidance: 'Use the repair filter: access, skill, time, pressure, and willingness to correct the gap.',
       contemporary: 'Algorithmic feeds can repeatedly show one kind of story until it feels typical. The viewer may be misled, but the platform also shaped the evidence environment.',
       feedback: 'Good answers avoid both extremes: “no one is responsible” and “every mistake is bad faith.”',
     },
@@ -2375,16 +2824,17 @@ function DiscussionNote({ label, text }: { label: string; text: string }) {
 }
 
 function RelatedGroups({ currentPath, onNavigate }: { currentPath: string; onNavigate: (path: string) => void }) {
+  const relatedGroups = (relatedGroupPaths[currentPath] ?? pageGroups.filter((group) => group.path !== currentPath).slice(0, 3).map((group) => group.path))
+    .map((path) => pageGroups.find((group) => group.path === path))
+    .filter((group): group is PageGroup => Boolean(group));
+
   return (
     <section className="space-y-5">
       <p className="text-[10px] uppercase tracking-[0.3em] text-stone-500 font-bold">Related Paths</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {pageGroups
-          .filter((group) => group.path !== currentPath)
-          .slice(0, 3)
-          .map((group) => (
-            <GroupCard key={group.path} group={group} onNavigate={onNavigate} />
-          ))}
+        {relatedGroups.map((group) => (
+          <GroupCard key={group.path} group={group} onNavigate={onNavigate} />
+        ))}
       </div>
     </section>
   );
@@ -2398,7 +2848,7 @@ function GroupCard({ group, onNavigate }: { key?: string; group: PageGroup; onNa
         <ArrowRight size={16} className="text-stone-600 group-hover:text-amber-300 transition-colors" />
       </div>
       <p className="text-stone-400 text-xs leading-relaxed mb-5">{group.summary}</p>
-      <p className="text-[9px] uppercase tracking-widest text-stone-600">{group.pages.length} pages</p>
+      <p className="text-[9px] uppercase tracking-widest text-stone-600">{getSectionCollections(group).length} clusters / {group.pages.length} pages</p>
     </button>
   );
 }
@@ -2455,6 +2905,29 @@ function SearchAndTopicIndex({ onNavigate }: { onNavigate: (path: string) => voi
         <p className="text-[11px] text-stone-500">
           Showing {results.length} of {searchIndex.length} pages{activeTagLabel ? ` tagged ${activeTagLabel}` : ''}{query.trim() ? ` matching "${query.trim()}"` : ''}.
         </p>
+      </div>
+      <div className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-5">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold mb-2">Section Index</p>
+            <h3 className="text-2xl text-white font-light">Browse by site area</h3>
+          </div>
+          <button onClick={() => onNavigate('/site-map')} className="w-full sm:w-fit px-4 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-stone-300 text-[10px] font-bold uppercase tracking-wider hover:border-amber-500/40 hover:text-amber-200 transition-colors flex items-center justify-center gap-2">
+            Full Map <MapIcon size={13} />
+          </button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3">
+          {pageGroups.map((group) => (
+            <button
+              key={group.path}
+              onClick={() => onNavigate(group.path)}
+              className="rounded-xl border border-white/5 bg-black/10 p-4 text-left hover:border-amber-500/30 transition-colors"
+            >
+              <span className="block text-sm text-white font-light">{group.title}</span>
+              <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-2">{getSectionCollections(group).length} clusters / {group.pages.length} pages</span>
+            </button>
+          ))}
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {results.length === 0 && (
@@ -2747,13 +3220,6 @@ function UtilityFeatureArticle({ feature, onNavigate }: { feature: UtilityFeatur
 }
 
 function TopicIndexArticle({ feature, onNavigate }: { feature: UtilityFeaturePage; onNavigate: (path: string) => void }) {
-  const childTitlesByGroup = useMemo(
-    () => Object.fromEntries(
-      pageGroups.map((group) => [group.path, new Set(Object.values(nestedPageTitles[group.path] ?? {}).flat())]),
-    ) as Record<string, Set<string>>,
-    [],
-  );
-
   return (
     <article className="space-y-8">
       <header className="glass-panel p-8 md:p-12 bg-white/[0.02] border-white/5 space-y-5">
@@ -2774,32 +3240,35 @@ function TopicIndexArticle({ feature, onNavigate }: { feature: UtilityFeaturePag
               <h3 className="text-xl text-white font-light group-hover:text-amber-200 transition-colors">{group.title}</h3>
             </button>
             <p className="text-stone-400 text-xs leading-relaxed">{group.summary}</p>
-            <div className="space-y-2 pt-2">
-              {group.pages
-                .filter((pageTitle) => !childTitlesByGroup[group.path]?.has(pageTitle))
-                .map((pageTitle) => (
-                  <div key={pageTitle} className="space-y-1">
-                    <button
-                      onClick={() => onNavigate(pagePath(group.path, pageTitle))}
-                      className="text-left text-xs text-stone-300 hover:text-amber-300 transition-colors"
-                    >
-                      {pageTitle}
-                    </button>
-                    {nestedPageTitles[group.path]?.[pageTitle] && (
-                      <div className="ml-4 border-l border-amber-500/20 pl-3 space-y-1">
-                        {nestedPageTitles[group.path][pageTitle].map((childTitle) => (
-                          <button
-                            key={childTitle}
-                            onClick={() => onNavigate(pagePath(group.path, childTitle))}
-                            className="block text-left text-[11px] text-stone-500 hover:text-amber-300 transition-colors"
-                          >
-                            {childTitle}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+            <div className="space-y-4 pt-2">
+              {getSectionCollections(group).map((collection) => (
+                <div key={collection.label} className="space-y-2">
+                  <p className="text-[9px] uppercase tracking-widest text-stone-600 font-bold">{collection.label}</p>
+                  {collection.pages.map((pageTitle) => (
+                    <div key={pageTitle} className="space-y-1">
+                      <button
+                        onClick={() => onNavigate(pagePath(group.path, pageTitle))}
+                        className="text-left text-xs text-stone-300 hover:text-amber-300 transition-colors"
+                      >
+                        {pageTitle}
+                      </button>
+                      {getNestedChildren(group.path)[pageTitle] && (
+                        <div className="ml-4 border-l border-amber-500/20 pl-3 space-y-1">
+                          {getNestedChildren(group.path)[pageTitle].map((childTitle) => (
+                            <button
+                              key={childTitle}
+                              onClick={() => onNavigate(pagePath(group.path, childTitle))}
+                              className="block text-left text-[11px] text-stone-500 hover:text-amber-300 transition-colors"
+                            >
+                              {childTitle}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
           </section>
         ))}
@@ -2886,48 +3355,61 @@ function SiteMap({ onNavigate }: { onNavigate: (path: string) => void }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {pageGroups.map((group) => (
           <div key={group.path} className="glass-panel p-6 bg-white/[0.015] border-white/5">
-            <h3 className="text-white font-light text-xl mb-4">{group.title}</h3>
-            <ul className="space-y-2">
-              {group.pages.filter((page) => !new Set(Object.values(nestedPageTitles[group.path] ?? {}).flat()).has(page)).map((page) => (
-                <li key={page} className="text-stone-400 text-xs">
-                  <div className="flex items-start gap-2">
-                  <span className="text-amber-500/70 mt-0.5">|</span>
-                  {(() => {
-                    const path = pagePath(group.path, page);
-                    const drafted = isDraftedPage(path);
-                    return (
-                      <button
-                        onClick={() => drafted && onNavigate(path)}
-                        disabled={!drafted}
-                        className={`text-left transition-colors ${drafted ? 'hover:text-amber-300' : 'cursor-default text-stone-600'}`}
-                      >
-                        {page}
-                      </button>
-                    );
-                  })()}
-                  </div>
-                  {nestedPageTitles[group.path]?.[page] && (
-                    <ul className="ml-5 mt-2 space-y-1 border-l border-amber-500/20 pl-3">
-                      {nestedPageTitles[group.path][page].map((childPage) => {
-                        const childPath = pagePath(group.path, childPage);
-                        const childDrafted = isDraftedPage(childPath);
-                        return (
-                          <li key={childPage}>
-                            <button
-                              onClick={() => childDrafted && onNavigate(childPath)}
-                              disabled={!childDrafted}
-                              className={`text-left transition-colors ${childDrafted ? 'text-stone-500 hover:text-amber-300' : 'cursor-default text-stone-700'}`}
-                            >
-                              {childPage}
-                            </button>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-                </li>
+            <div className="flex items-start justify-between gap-4 mb-5">
+              <button onClick={() => onNavigate(group.path)} className="text-left group">
+                <h3 className="text-white font-light text-xl group-hover:text-amber-200 transition-colors">{group.title}</h3>
+                <p className="text-[9px] uppercase tracking-widest text-stone-600 mt-2">{getSectionCollections(group).length} clusters / {group.pages.length} mapped pages</p>
+              </button>
+              <ArrowRight size={16} className="text-stone-600" />
+            </div>
+            <div className="space-y-5">
+              {getSectionCollections(group).map((collection) => (
+                <div key={collection.label} className="space-y-2">
+                  <p className="text-[9px] uppercase tracking-widest text-amber-400 font-bold">{collection.label}</p>
+                  <ul className="space-y-2">
+                    {collection.pages.map((page) => (
+                      <li key={page} className="text-stone-400 text-xs">
+                        <div className="flex items-start gap-2">
+                          <span className="text-amber-500/70 mt-0.5">|</span>
+                          {(() => {
+                            const path = pagePath(group.path, page);
+                            const drafted = isDraftedPage(path);
+                            return (
+                              <button
+                                onClick={() => drafted && onNavigate(path)}
+                                disabled={!drafted}
+                                className={`text-left transition-colors ${drafted ? 'hover:text-amber-300' : 'cursor-default text-stone-600'}`}
+                              >
+                                {page}
+                              </button>
+                            );
+                          })()}
+                        </div>
+                        {getNestedChildren(group.path)[page] && (
+                          <ul className="ml-5 mt-2 space-y-1 border-l border-amber-500/20 pl-3">
+                            {getNestedChildren(group.path)[page].map((childPage) => {
+                              const childPath = pagePath(group.path, childPage);
+                              const childDrafted = isDraftedPage(childPath);
+                              return (
+                                <li key={childPage}>
+                                  <button
+                                    onClick={() => childDrafted && onNavigate(childPath)}
+                                    disabled={!childDrafted}
+                                    className={`text-left transition-colors ${childDrafted ? 'text-stone-500 hover:text-amber-300' : 'cursor-default text-stone-700'}`}
+                                  >
+                                    {childPage}
+                                  </button>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </div>
