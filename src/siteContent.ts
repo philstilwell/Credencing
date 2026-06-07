@@ -529,7 +529,7 @@ export const startHerePages: ContentPage[] = [
         ],
       },
       {
-        heading: 'Why This Distinction Matters Morally',
+        heading: 'Why This Distinction Matters Diagnostically',
         body: [
           'Without this distinction, we misjudge people. We treat sincere error as dishonesty, or we excuse motivated belief because the conclusion happens to be popular or true. The model encourages a more careful posture: ask what evidence was available, how the person perceived it, and whether their final confidence honored that perception.',
           'This is especially important in public debate. A community that cannot distinguish error from bad faith will punish learning and reward performance.',
@@ -970,7 +970,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'Slack Before Blame',
         body: [
-          'Warranted uncertainty also creates diagnostic slack. If Assigned Credence (CA) differs modestly from Perceived Evidence (EP), but the case is noisy and the agent has limited skill, the model should not immediately treat the gap as blameworthy.',
+          'Warranted uncertainty also creates diagnostic slack. If Assigned Credence (CA) differs modestly from Perceived Evidence (EP), but the case is noisy and the agent has limited skill, the model should not immediately treat the gap as excess misalignment.',
           'The improved model therefore distinguishes Core Irrationality (the raw EP-CA distance) from Excess Core Irrationality, the part of that distance that remains after warranted uncertainty is allowed.',
         ],
       },
@@ -1046,7 +1046,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'EP and Responsibility',
         body: [
-          'A distorted EP may or may not be blameworthy. The agent may have had no access to better information, or they may have avoided it. This is why the model separates diagnosis from moral accusation.',
+          'A distorted EP may or may not reflect avoidant processing. The agent may have had no access to better information, or they may have avoided it. This is why the model separates structural diagnosis from responsibility assessment.',
         ],
       },
     ],
@@ -1240,7 +1240,7 @@ export const coreIdeasPages: ContentPage[] = [
         heading: 'Raw Gap vs Warranted Diagnosis',
         body: [
           'The model should distinguish a raw Perceived Evidence to Assigned Credence gap (EP-CA) from a warranted diagnosis of Core Irrationality. A raw gap is evidence that something deserves attention. It is not yet proof of bad faith.',
-          'The improved interactive model therefore tracks Excess Core Irrationality: the portion of the EP-CA gap that remains after allowing for warranted uncertainty. This keeps the model from treating every small deviation, noisy estimate, or high-uncertainty case as a moral failure.',
+          'The improved interactive model therefore tracks Excess Core Irrationality: the portion of the EP-CA gap that remains after allowing for warranted uncertainty. This keeps the model from treating every small deviation, noisy estimate, or high-uncertainty case as excess misalignment.',
         ],
       },
       {
@@ -1860,7 +1860,7 @@ export const interactiveLabPages: ContentPage[] = [
         body: [
           'Deep Rationality (SD) functions like resolution. High SD means the agent has better tools for narrowing the distance between the world and their perception. Low SD means more fog and wider warranted uncertainty.',
           'On the chart, Deep Rationality (SD) increases as the yellow skill marker moves farther away from the center point and toward the outer semicircle. This is intentionally radial: greater depth is farther out, even though people may intuitively expect “deeper” to mean lower.',
-          'Do not read low Deep Rationality (SD) as moral failure by itself. A novice may lack tools and still be honest. The model becomes morally interesting when you compare Deep Rationality (SD) with the Perceived Evidence to Assigned Credence gap (EP-CA).',
+          'Do not read low Deep Rationality (SD) as failure of integrity by itself. A novice may lack tools and still be honest. The model becomes diagnostically interesting when you compare Deep Rationality (SD) with the Perceived Evidence to Assigned Credence gap (EP-CA).',
         ],
       },
     ],
@@ -2413,7 +2413,7 @@ export const caseStudyPages: ContentPage[] = [
         heading: 'The Pattern',
         body: [
           'Risk inflation begins with a real possibility. Something could happen. The mistake is allowing could to become likely, and likely to become effectively certain, without corresponding evidence.',
-          'This is common when outcomes are frightening, vivid, morally charged, or personally salient. The imagination supplies detail; credence follows the detail rather than the evidence.',
+          'This is common when outcomes are frightening, vivid, value-charged, or personally salient. The imagination supplies detail; credence follows the detail rather than the evidence.',
         ],
       },
       {
@@ -3692,7 +3692,7 @@ export const applicationPages: ContentPage[] = [
       {
         heading: 'Policy as Collective Action Under Uncertainty',
         body: [
-          'Policy rarely enjoys certainty. Leaders must act with incomplete evidence, contested models, moral tradeoffs, and delayed feedback. Credencing helps separate factual confidence from value judgments and action thresholds.',
+          'Policy rarely enjoys certainty. Leaders must act with incomplete evidence, contested models, value tradeoffs, and delayed feedback. Credencing helps separate factual confidence from value judgments and action thresholds.',
         ],
       },
       {
@@ -3710,7 +3710,7 @@ export const applicationPages: ContentPage[] = [
     ],
     [
       'Policy must act before certainty.',
-      'Separate empirical confidence from moral preference.',
+      'Separate empirical confidence from value preference.',
       'Evaluation and revision should be built into policy design.',
     ],
     [
@@ -4190,12 +4190,12 @@ const paperIntroPages: ContentPage[] = [
     title: 'The Architecture of Explanatory Satisfaction and the Affective Veto Against Stochastic Reality',
     summary: 'A paper on why people often prefer emotionally satisfying explanations over probabilistic ones.',
     plainAbstract: [
-      'This paper looks at a common human pattern: random or probabilistic explanations often feel unsatisfying, even when they are true. People want causes with purpose, agency, and moral shape.',
+      'This paper looks at a common human pattern: random or probabilistic explanations often feel unsatisfying, even when they are true. People want causes with purpose, agency, and narrative shape.',
       'The affective veto is the emotional rejection of an explanation because it feels cold, empty, or incomplete. The problem is that emotional dissatisfaction is not the same as evidential weakness.',
     ],
     siteConnection: [
       'This paper is central to Core Irrationality (IC). A person may see that a stochastic explanation is strong and still assign credence to a more comforting story.',
-      'It also helps explain why conspiracy thinking, miracle claims, moralized narratives, and tribal explanations can feel more complete than the evidence justifies.',
+      'It also helps explain why conspiracy thinking, miracle claims, value-loaded narratives, and tribal explanations can feel more complete than the evidence justifies.',
     ],
     readerUse: [
       'Read this when a true explanation feels too accidental or impersonal. Ask whether the discomfort is evidence against the explanation or merely a human dislike of randomness.',
@@ -4492,41 +4492,85 @@ export const libraryPages: ContentPage[] = [
   ...paperIntroPages,
   libraryPage(
     'Future Papers',
-    'Future papers extend the framework into measurement, likelihood literacy, audit trails, disagreement, human-AI alignment, and pedagogy.',
+    'Future papers and projects extend the framework only where a new question is not already answered by the current Credencing spine.',
     [
       {
-        heading: 'Measurement and Validation',
+        heading: 'Already Absorbed by the Current Spine',
         body: [
-          'The first research need is measurement: how can Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD) be estimated in real contexts without smuggling in the evaluator’s own bias? A measurement paper would distinguish rough pedagogical scoring from serious empirical validation.',
-          'The key question is diagnostic: what would count as evidence of a Core Rationality failure rather than merely a difficult evidential environment, incomplete information, bad luck, or honest disagreement?',
+          'Several earlier future-paper ideas have now become part of the published or drafted spine. The two-gap paper absorbs the general E0-EP and EP-CA distinction. Warranted Uncertainty absorbs the discipline of not knowing and the first treatment of diagnostic slack. The rationalization-engine paper absorbs the biased-expert case. Institutional Credencing absorbs the first organizational extension. The AI prosthetic paper absorbs the first AI-mediated inquiry treatment.',
+          'Future work should therefore avoid restating those claims at the same level of generality. A new paper should either formalize a narrower mechanism, apply the model to a new domain, build a usable practice, or test a hard objection that the current papers leave unresolved.',
+        ],
+        bullets: [
+          'Do not rewrite the two-gap model; specify a new gap, threshold, or repair method.',
+          'Do not merely repeat warranted uncertainty; show how uncertainty should be represented, taught, audited, or bounded.',
+          'Do not merely repeat AI as prosthetic; isolate a concrete AI-mediated failure mode or alignment practice.',
+          'Do not merely repeat institutional credencing; design a procedure, audit artifact, or case taxonomy.',
         ],
       },
       {
-        heading: 'Audit Trails and Suppressed Evidence',
+        heading: 'Independent Paper Candidates',
         body: [
-          'Now that institutional credencing has a first treatment, future work can become more operational. Audit-trail papers should ask how evidence entered the pipeline, who saw it, what uncertainty was recorded, when official confidence was assigned, and what update conditions were stated.',
-          'A suppressed-evidence paper would examine the difference between not having evidence, failing to notice evidence, noticing it internally but not registering it officially, and reporting public confidence that no longer matches the internal record.',
+          'These papers are close enough to strengthen Credencing but narrow enough to stand on their own. Each should have a distinct question, diagnostic target, and practical output.',
+        ],
+        bullets: [
+          'Excess Core Irrationality: distinguish raw EP-CA mismatch from excess mismatch after warranted slack, pressure, access limits, and skill limits have been accounted for.',
+          'The Epistemology of Belief Integrity: give a philosophical account of what it means to follow what one takes the evidence to show.',
+          'Bayesian Updating Without False Precision: translate Bayesian structure into rough priors, likelihood comparisons, and confidence bands without fake numerical sharpness.',
+          'Priors as Disciplined Memory: defend priors as revisable background knowledge rather than mere bias or inherited prejudice.',
+          'Likelihood Literacy: focus entirely on the neglected question of how expected the evidence is under rival hypotheses.',
+          'Base Rates, Identity, and Statistical Resistance: examine why base rates are rejected when they threaten hope, fear, identity, or group narratives.',
+          'The Evidential History of a Posterior: treat final credence as answerable to the update path that produced it, not as a free-floating confidence state.',
+          'Epistemic Akrasia and the Fear of Updating: analyze cases where an agent senses that confidence should move but cannot bring assigned credence along.',
+          'Identity-Protective Credencing: isolate the mechanisms by which belonging, self-concept, and public commitment distort CA without necessarily damaging EP.',
+          'The Phenomenology of Certainty: explain why certainty can feel like evidence even when it is only closure, fluency, or social reinforcement.',
+          'Credence Grammar: build a public language for confidence bands, update conditions, capped confidence, and live alternatives.',
+          'Assertion, Confidence, and Social Risk: study why public speech rewards overstatement and makes calibrated uncertainty socially costly.',
+          'Disagreement Without Diagnosis: develop norms for disagreement that avoid premature classification of other agents as irrational.',
+          'Category Confidence: ask how much confidence we should assign to the categories used to frame claims, not only to claims inside those categories.',
         ],
       },
       {
-        heading: 'Model Fluency and Human-AI Alignment',
+        heading: 'Institutional and AI Project Track',
         body: [
-          'The AI prosthetic paper opens a larger research track. Future work should examine model fluency, false credence, benchmark interpretation, human overtrust, institutional deployment thresholds, and the social systems that decide when AI outputs become believed.',
-          'The central risk is not only that AI systems make mistakes. It is that people, companies, classrooms, and agencies may assign confidence to AI outputs through authority, convenience, speed, or social pressure rather than calibrated evidence.',
+          'The institutional and AI papers now exist as first statements, so the next work should be more procedural. These projects should produce checklists, audit trails, templates, case taxonomies, or decision protocols.',
+        ],
+        bullets: [
+          'Suppressed Evidence and Official Confidence: classify ways internal evidence can fail to become public confidence, from ignored signals to strategic delay.',
+          'Audit Trails for Belief: design a record format for predictions, confidence levels, evidence sources, updates, and reasons for revision.',
+          'Epistemic Governance: specify institutional designs that notice reality earlier, protect dissent, lower update costs, and preserve uncertainty records.',
+          'The Incentive Structure of Denial: map how organizations reward false confidence and make accurate updating expensive.',
+          'Delegated Credence Protocols: design handoff rules for when AI may gather evidence, summarize evidence, recommend confidence bands, or trigger human review.',
+          'Model Fluency and False Credence: explain why polished AI outputs create overconfidence when source quality and uncertainty remain unclear.',
+          'Human-AI Epistemic Alignment: define when users should trust, doubt, defer to, contest, or override model outputs.',
         ],
       },
       {
-        heading: 'Disagreement and Pedagogy',
+        heading: 'Teaching and Tool Projects',
         body: [
-          'A disagreement paper would compare two agents with different Objective Evidence (E0) access, Perceived Evidence (EP) interpretation, Assigned Credence (CA) assignment, and update histories. This would make the model useful for public debate without reducing every conflict to protected confidence.',
-          'A pedagogy paper would translate the framework into classroom practice: calibration exercises, evidence-mapping assignments, peer disagreement protocols, and reflective prompts that help students separate “I disagree” from “I have located a specific gap.”',
+          'Some future work should become classroom practice or site tooling rather than another long paper. These projects would make Credencing easier to teach, test, and reuse.',
+        ],
+        bullets: [
+          'Teaching Credences Before Conclusions: make confidence, uncertainty, and update conditions part of answer formation before students are rewarded for correctness.',
+          'Calibration Exercises for Classrooms: build forecast journals, confidence scoring tasks, likelihood-comparison drills, and post-update reflections.',
+          'Discussion Groups as Epistemic Training: treat group discussion as practice in humility, updateability, and non-defensive disagreement.',
+          'The Honest Novice as an Educational Ideal: defend low-tool, high-updateability learners as a genuine achievement, not a deficit state.',
+          'Scenario Builder: let users create, save, compare, and export E0-EP-CA-SD cases from the interactive lab.',
+          'Credence Audit Worksheet: turn the model into a printable and editable sequence of evidence, perception, confidence, uncertainty, and update-condition prompts.',
+          'Likelihood Literacy Module: add a guided practice path focused on comparing evidence under rival hypotheses.',
+        ],
+      },
+      {
+        heading: 'Selection Rule for New Work',
+        body: [
+          'A future paper or project should be accepted into the roadmap only if it adds a distinct unit of work. It should answer a question the current site does not already answer, introduce a new diagnostic distinction, produce a usable tool, or apply the framework to a domain where the variables behave differently.',
+          'The test is simple: if the proposed work can be summarized as “the two-gap model, but again,” it should be folded into an existing page. If it creates a new practice, measurement problem, language protocol, institutional artifact, or AI-use rule, it belongs here.',
         ],
       },
     ],
     [
-      'Future work improves measurement, validation, and objection handling.',
-      'Audit trails can make evidence pipelines and confidence assignments inspectable.',
-      'AI, disagreement, and pedagogy remain major credencing problems at scale.',
+      'The next roadmap avoids repeating the newly published spine.',
+      'Independent future papers need a distinct mechanism, objection, application, or practice.',
+      'Some of the best next work should be tools, worksheets, modules, and audit artifacts rather than papers.',
     ],
     [
       pagePath('/applications', 'AI Alignment'),
@@ -4783,7 +4827,7 @@ export const libraryPages: ContentPage[] = [
         heading: 'Doubt Is Not the Opposite of Rationality',
         body: [
           'In many communities, doubt is treated as a temporary problem to be overcome. Sometimes that is appropriate: doubt based on confusion, misinformation, or anxiety may diminish when evidence improves. But doubt is not irrational merely because it remains.',
-          'When evidence is less than conclusive, some uncertainty is rational. If an agent assigns 70 percent confidence to a proposition, the remaining 30 percent is not a moral flaw or intellectual weakness. It is the space reserved for live alternatives, measurement limits, and possible error.',
+          'When evidence is less than conclusive, some uncertainty is rational. If an agent assigns 70 percent confidence to a proposition, the remaining 30 percent is not a flaw or intellectual weakness. It is the space reserved for live alternatives, measurement limits, and possible error.',
         ],
       },
       {
@@ -4804,7 +4848,7 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Doubt and Social Pressure',
         body: [
-          'Groups often regulate doubt because doubt affects cohesion. A member who voices uncertainty may be perceived as unreliable, insufficiently committed, or dangerous to morale. This social cost can cause people to assign more confidence than their perceived evidence warrants.',
+          'Groups often regulate doubt because doubt affects cohesion. A member who voices uncertainty may be perceived as unreliable, insufficiently committed, or disruptive to group confidence. This social cost can cause people to assign more confidence than their perceived evidence warrants.',
           'The result is not simply private discomfort. It is a structural EP-CA problem: the agent sees uncertainty internally but assigns or performs certainty externally. Over time, the performance may harden into belief.',
         ],
       },
@@ -4842,7 +4886,7 @@ export const libraryPages: ContentPage[] = [
         heading: 'The Coherence Trap',
         body: [
           'Coherence matters. A belief that contradicts itself has a problem. But coherence is not enough. Many belief systems can achieve internal fit by controlling definitions, insulating assumptions, and explaining away anomalies.',
-          'A worldview can be elegant, emotionally satisfying, morally motivating, and socially stabilizing while still failing to connect with the external world. Credencing therefore distinguishes internal fit from evidence-tracking.',
+          'A worldview can be elegant, emotionally satisfying, identity-forming, and socially stabilizing while still failing to connect with the external world. Credencing therefore distinguishes internal fit from evidence-tracking.',
         ],
       },
       {
@@ -4973,7 +5017,7 @@ export const libraryPages: ContentPage[] = [
         heading: 'Action Still Matters',
         body: [
           'Gradient thinking does not prevent action. It improves action by separating the evidential question from the decision threshold. You can be 60 percent confident it will rain and still bring an umbrella because the cost is low. You should not convict someone at 60 percent because the cost of error is high.',
-          'This distinction matters morally. People often demand certainty before acting on urgent risks or act with certainty on weak evidence. Credencing asks both questions: what does the evidence support, and what threshold does the action require?',
+          'This distinction matters for action. People often demand certainty before acting on urgent risks or act with certainty on weak evidence. Credencing asks both questions: what does the evidence support, and what threshold does the action require?',
         ],
       },
       {
@@ -5380,7 +5424,7 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Credencing Requires Stable Propositions',
         body: [
-          'Before assigning confidence, identify the proposition. Is the claim that a belief is emotionally sustaining, morally formative, historically probable, metaphysically true, socially useful, or evidentially warranted? These are different claims.',
+          'Before assigning confidence, identify the proposition. Is the claim that a belief is emotionally sustaining, character-forming, historically probable, metaphysically true, socially useful, or evidentially warranted? These are different claims.',
           'Once the proposition is stable, credence can be assigned. Without that stability, people may appear to disagree about evidence when they are actually sliding among meanings.',
         ],
       },
@@ -5413,7 +5457,7 @@ export const libraryPages: ContentPage[] = [
           'Credence: a graded degree of confidence in a claim, hypothesis, possibility, or interpretation. Objective Evidence (E0): the evidential support that exists in the world apart from the agent. Perceived Evidence (EP): what the agent takes the evidence to show after attention, interpretation, memory, social pressure, and reasoning have done their work.',
           'Assigned Credence (CA): the confidence the agent actually adopts. Deep Rationality (SD): the skill side of rationality, including statistical literacy, causal reasoning, Bayesian updating, hypothesis comparison, and sensitivity to base rates. Core Rationality: the integrity side of rationality, the willingness to assign confidence in line with what one takes the evidence to show.',
           'Calculation Error (DE): the gap between objective evidence and perceived evidence. Core Irrationality (IC): the gap between perceived evidence and assigned credence. Warranted Slack: the amount of EP-CA variation treated as reasonable under uncertainty. Excess Core Irrationality: the portion of Core Irrationality that remains after warranted slack is allowed. Warranted Uncertainty: the range of doubt that remains rational given limited evidence, limited skill, and the stakes of judgment.',
-          'Diagnostic Safeguard: a rule that prevents the model from treating every gap as blameworthy. Responsibility Filter: the check for evidence access, skill, pressure, and willingness to repair before moving from diagnosis to moral judgment. Epistemic Akrasia: believing against one’s own judgment about what the evidence supports.',
+          'Diagnostic Safeguard: a rule that prevents the model from treating every gap as excess misalignment. Responsibility Filter: the check for evidence access, skill, pressure, and willingness to repair before moving from structural diagnosis to responsibility assessment. Epistemic Akrasia: believing against one’s own judgment about what the evidence supports.',
         ],
       },
       {
@@ -5487,9 +5531,9 @@ export const libraryPages: ContentPage[] = [
         ],
       },
       {
-        heading: 'Is Core Irrationality a Moral Accusation?',
+        heading: 'Is Core Irrationality an Accusation?',
         body: [
-          'Not automatically. It is a structural diagnosis of a Perceived Evidence to Assigned Credence gap (EP-CA). Moral assessment depends on context, access, incentives, trauma, social pressure, and whether the agent is willing to repair the gap.',
+          'Not automatically. It is a structural diagnosis of a Perceived Evidence to Assigned Credence gap (EP-CA). Responsibility assessment depends on context, access, incentives, trauma, social pressure, and whether the agent is willing to repair the gap.',
           'The model is intentionally diagnostic before it is accusatory. It asks where the gap opens before deciding whether the gap reflects dishonesty, fear, social pressure, ignorance, confusion, or a mixed case.',
         ],
       },
@@ -5559,7 +5603,7 @@ export const libraryPages: ContentPage[] = [
     ],
     [
       'The framework is Bayesian-friendly but broader.',
-      'Core Irrationality is diagnostic before it is moralized.',
+      'Core Irrationality is diagnostic before it is used for responsibility assessment.',
       'Excess Core Irrationality helps prevent overdiagnosis.',
       'The model uses numbers to clarify relationships, not to fake precision.',
       'The FAQ clarifies how Credencing treats uncertainty, expertise, faith, disagreement, and progress.',
@@ -5757,8 +5801,9 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Open Questions',
         body: [
-          'Open questions include how to estimate model variables in real cases, how to distinguish sincere misperception from avoidant misperception, how to avoid moralizing too quickly, and how to adapt the model for groups and institutions.',
-          'Other open questions include how numerically precise the model should become, how to validate archetype assignments, how to handle disagreement among competent observers, and how to teach the framework without encouraging overconfident diagnosis of others.',
+          'Open questions now begin downstream of the current paper spine. The project still needs better methods for estimating model variables in real cases, distinguishing sincere misperception from avoidant misperception, preventing diagnostic overclassification, and deciding when a new idea deserves its own paper rather than a revision to an existing page.',
+          'Other open questions include how numerically precise the model should become, how to validate archetype assignments, how to handle disagreement among competent observers, how to represent confidence bands in public language, and how to teach the framework without encouraging overconfident diagnosis of others.',
+          'The next project layer should favor artifacts that make credencing inspectable: audit worksheets, update logs, likelihood-comparison exercises, confidence-band templates, AI-output review protocols, and institutional evidence-trail formats.',
         ],
       },
       {
@@ -5894,13 +5939,13 @@ export const aboutPages: ContentPage[] = [
         heading: 'Separate the Evidence from the Agent',
         body: [
           'Credencing distinguishes Objective Evidence (E0), Perceived Evidence (EP), and Assigned Credence (CA) because different failures occur at different locations. A person may lack access to the relevant evidence, misread the evidence they have, or understand the evidence fairly well and then assign a confidence level that serves some other need.',
-          'This separation prevents both over-blame and under-blame. It is unfair to treat every false belief as a moral failure. It is also too lenient to treat every distorted belief as mere ignorance. The model asks where the distortion entered before deciding what kind of responsibility or repair is appropriate.',
+          'This separation prevents both overclassification and underclassification. It is unhelpful to treat every false belief as a failure of integrity. It is also too lenient to treat every distorted belief as mere ignorance. The model asks where the distortion entered before deciding what kind of responsibility or repair is appropriate.',
         ],
       },
       {
         heading: 'Diagnostic Before Accusatory',
         body: [
-          'The model is meant to diagnose where a gap opens before assigning blame. An Objective Evidence to Perceived Evidence gap (E0-EP) may reflect limited tools or bad evidence access. A Perceived Evidence to Assigned Credence gap (EP-CA) may reflect identity pressure or motivated override. Moral evaluation comes after diagnosis, not before.',
+          'The model is meant to diagnose where a gap opens before assigning responsibility. An Objective Evidence to Perceived Evidence gap (E0-EP) may reflect limited tools or bad evidence access. A Perceived Evidence to Assigned Credence gap (EP-CA) may reflect identity pressure or motivated override. Responsibility assessment comes after diagnosis, not before.',
           'This is a commitment to charity, but not to softness. Diagnostic charity means giving the most accurate account of the error, not the most flattering one. Sometimes the charitable explanation is that the person lacked statistical tools. Sometimes it is that they had the tools but protected a preferred conclusion. In both cases, the first obligation is precision.',
         ],
       },
@@ -5985,7 +6030,7 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'Description First',
         body: [
-          'The model begins by asking what is happening: what evidence exists, what is perceived, what confidence is assigned, and where the gaps open. This descriptive posture prevents premature moralizing.',
+          'The model begins by asking what is happening: what evidence exists, what is perceived, what confidence is assigned, and where the gaps open. This descriptive posture prevents premature overclassification.',
         ],
       },
       {
@@ -6143,15 +6188,15 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'Near-Term Content',
         body: [
-          'The near-term content path is now clear: deepen the paper library, add essay sequences, expand the visual archive, refine glossary definitions, and make the case studies more concrete without turning them into partisan scorecards.',
-          'The most useful new pages will be those that help readers move between levels: from one term to one scenario, from one scenario to one skill, from one skill to one institutional application.',
+          'The near-term content path is now less about adding broad first statements and more about differentiating the next layer. The site should deepen likelihood literacy, base-rate reasoning, belief-integrity language, disagreement norms, AI-output review, and institutional audit practice without rewriting the two-gap framework each time.',
+          'The most useful new pages will help readers move between levels: from one term to one scenario, from one scenario to one skill, from one skill to one paper, and from one paper to a worksheet or audit artifact.',
         ],
       },
       {
         heading: 'Tool Expansion',
         body: [
-          'The interactive lab can grow into scenario saving, scenario comparison, visual exports, classroom worksheets, and a guided diagnostic wizard that asks the user where the gaps appear.',
-          'The strongest tool additions would let readers build a case, compare two interpretations, export a diagram, and then follow links to the relevant glossary terms and repair skills.',
+          'The interactive lab can grow into scenario saving, scenario comparison, visual exports, classroom worksheets, a likelihood-literacy module, and a guided diagnostic wizard that asks the user where the gaps appear.',
+          'The strongest tool additions would let readers build a case, compare two interpretations, state confidence bands, record update conditions, export a diagram, and then follow links to the relevant glossary terms and repair skills.',
         ],
       },
       {
@@ -6164,8 +6209,8 @@ export const aboutPages: ContentPage[] = [
       {
         heading: 'Research Expansion',
         body: [
-          'The deepest future work is validation: how to estimate variables, how to distinguish sincere from avoidant misperception, how to measure institutional credencing, and how to apply the framework without overclaiming.',
-          'Research expansion should include objection handling. The model becomes stronger when it states where its variables are rough, where diagnostic confidence should remain low, and where ordinary disagreement should not be treated as irrationality.',
+          'The deepest future work is validation plus differentiation: how to estimate variables, how to distinguish sincere from avoidant misperception, how to measure institutional credencing, how to review AI-mediated evidence, and how to apply the framework without overclaiming.',
+          'Research expansion should include objection handling and candidate triage. A future paper should survive the independence test: it must add a mechanism, domain, practice, measurement problem, or public language protocol that is not already handled by the current paper spine.',
         ],
       },
       {
@@ -6178,8 +6223,8 @@ export const aboutPages: ContentPage[] = [
     ],
     [
       'The site can grow in content, tools, teaching materials, and research depth.',
-      'Scenario saving, richer comparison, visual exports, and printable formats are natural next features.',
-      'Validation, measurement, and objection handling remain major open questions.',
+      'Scenario saving, richer comparison, likelihood practice, visual exports, and printable audit formats are natural next features.',
+      'Validation, measurement, objection handling, and independence triage remain major open questions.',
     ],
     [
       pagePath('/library', 'Future Papers'),
@@ -6265,9 +6310,9 @@ const qaPages: ContentPage[] = [
         ],
       },
       {
-        heading: 'Is Core Irrationality a moral accusation?',
+        heading: 'Is Core Irrationality an accusation?',
         body: [
-          'Not automatically. It is first a structural diagnosis: a gap between Perceived Evidence (EP) and Assigned Credence (CA). Moral blame requires more information.',
+          'Not automatically. It is first a structural diagnosis: a gap between Perceived Evidence (EP) and Assigned Credence (CA). Responsibility assessment requires more information.',
           'Before blaming someone, ask whether they had access to the evidence, enough time, enough skill, emotional safety, freedom from coercion, and a realistic chance to repair the gap. The model should slow accusation, not make accusation easier.',
         ],
       },
