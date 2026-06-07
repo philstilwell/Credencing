@@ -4694,6 +4694,13 @@ export const libraryPages: ContentPage[] = [
           'The practical rule is simple: if the evidence weakens, confidence should be allowed to weaken without treating the person as disloyal. If the evidence strengthens, confidence may rise. A system that permits only upward movement in confidence is not mapping evidence; it is protecting identity.',
         ],
       },
+      {
+        heading: 'A Thermostat Example',
+        body: [
+          'Imagine a thermostat that proudly announces it is "temperature-mapped," but its setting never changes when the room gets colder. The label on the device is irrelevant; the test is whether the dial responds to the room.',
+          'Evidence-mapping works the same way. A person can say "I follow the evidence" while treating contrary evidence as noise, betrayal, or a test of loyalty. The real question is whether new information is allowed to move Perceived Evidence (EP) and then Assigned Credence (CA).',
+        ],
+      },
     ],
     [
       'Evidence-mapping is shown by update behavior, not by rhetoric.',
@@ -4753,6 +4760,13 @@ export const libraryPages: ContentPage[] = [
           'This practice does not eliminate identity. It simply prevents identity from pretending to be an argument. Labels may begin a conversation; they should not be allowed to end it.',
         ],
       },
+      {
+        heading: 'The Suitcase Analogy',
+        body: [
+          'A label is like a luggage tag: useful for routing, useless for knowing what is inside the suitcase. Two bags marked "skeptic" may contain very different distributions of confidence, fears, methods, and update conditions.',
+          'A better conversation opens the suitcase. Which claims are inside? How much confidence attaches to each one? Which piece of evidence would make the contents change?',
+        ],
+      },
     ],
     [
       'Labels compress belief-states and often hide the credences that matter.',
@@ -4805,6 +4819,13 @@ export const libraryPages: ContentPage[] = [
           'Collapsing all uncertainty into faith weakens public reasoning. It implies that careful inference and insulated conviction occupy the same epistemic category simply because both fall short of certainty.',
           'A better vocabulary preserves the gradient. We can say that some trust is well calibrated, some is risky but understandable, and some is overconfident or protected from correction. The question is not whether uncertainty exists; the question is how responsibly confidence is managed within it.',
           'This distinction also protects ordinary trust from cynicism. If every trust relation is called faith, then evidence-sensitive reliance looks no better than dogmatic commitment. Credencing keeps rational dependence visible: we can rely on others, tools, and institutions while still asking whether the reliance is calibrated.',
+        ],
+      },
+      {
+        heading: 'Bridge Trust and Fog Trust',
+        body: [
+          'Consider two bridges. One has inspection records, load ratings, maintenance logs, and a history of safe crossings. The other is hidden in fog, and its defenders say crossing requires trust. Both cases involve uncertainty, but they do not deserve the same credence.',
+          'Evidence-weighted trust is like the inspected bridge: confidence rises because reliability has been constrained by tests. Protected commitment is like being told that the fog itself should count as evidence that the bridge is sound.',
         ],
       },
     ],
@@ -4866,6 +4887,13 @@ export const libraryPages: ContentPage[] = [
           'The repair is not “eliminate doubt.” The repair is “make doubt evidence-responsive.” In practice, this means specifying what would lower uncertainty, what would raise confidence, and what uncertainty must responsibly remain.',
         ],
       },
+      {
+        heading: 'The Empty Chair Thought Experiment',
+        body: [
+          'Imagine a committee deciding a case with one chair left empty for "what we do not yet know." Bad inquiry tries to fill the chair immediately so the room feels complete. Good inquiry lets the empty chair remain visible until the missing evidence arrives.',
+          'Doubt functions like that chair. It is not an enemy of belief; it marks the space that live alternatives, unknown base rates, and possible error still occupy.',
+        ],
+      },
     ],
     [
       'Doubt is the rational remainder when evidence falls short of certainty.',
@@ -4925,6 +4953,13 @@ export const libraryPages: ContentPage[] = [
           'A responsible agent asks both questions: does this view cohere internally, and does it remain answerable externally? The first protects against nonsense. The second protects against beautiful insulation.',
         ],
       },
+      {
+        heading: 'The Locked-Room Novel',
+        body: [
+          'A locked-room mystery can be beautifully coherent: every clue fits, every character has a motive, and the ending feels elegant. But if the author can rewrite the clues after every objection, coherence stops being evidence and becomes control over the story.',
+          'A worldview can achieve the same effect. Internal fit matters, but Credencing asks whether anything outside the story is allowed to push back.',
+        ],
+      },
     ],
     [
       'Internal coherence is valuable but insufficient for truth-tracking.',
@@ -4974,6 +5009,13 @@ export const libraryPages: ContentPage[] = [
         body: [
           'For one important belief, write a sentence in this form: “Given the evidence I currently see, I assign roughly X percent confidence.” Then add: “The strongest reason is...” and “The main thing that would lower my confidence is...”',
           'This small practice converts belief from identity into calibration. It makes confidence inspectable, revisable, and less likely to harden into a slogan.',
+        ],
+      },
+      {
+        heading: 'The Volume Knob',
+        body: [
+          'Belief is often treated like a light switch, but credence is more like a volume knob. Weak evidence should not produce maximum volume; mixed evidence should sound mixed; stronger evidence can turn the signal up.',
+          'The discipline is not to keep the volume low forever. It is to let the evidence control the volume rather than comfort, urgency, or the desire to sound certain.',
         ],
       },
     ],
@@ -5027,6 +5069,13 @@ export const libraryPages: ContentPage[] = [
           'A slider makes updateability normal. It reduces the shame of revision because changing from 0.65 to 0.55 is not collapse; it is calibration.',
         ],
       },
+      {
+        heading: 'Umbrellas and Courtrooms',
+        body: [
+          'A person may bring an umbrella at 55 percent confidence of rain, but no one should convict a defendant at 55 percent confidence of guilt. The action is binary in both cases, but the required threshold is different.',
+          'Gradient thinking keeps the threshold visible. It lets us act when action is required without pretending the underlying credence has become all-or-nothing.',
+        ],
+      },
     ],
     [
       'Belief is usually gradient even when action must be binary.',
@@ -5076,6 +5125,13 @@ export const libraryPages: ContentPage[] = [
         body: [
           'Repair begins by making standards public before knowing which side they will favor. Define what counts as evidence, what counts as a defeater, how much uncertainty remains, and what would lower confidence.',
           'The practice is uncomfortable because it removes some freedom to protect preferred beliefs after the fact. That discomfort is a sign that the repair is working.',
+        ],
+      },
+      {
+        heading: 'Two Flashlights',
+        body: [
+          'Imagine searching a room with two flashlights: one bright beam for evidence you like and one weak beam for evidence you dislike. You will sincerely report that the room contains mostly what the bright beam reveals.',
+          'Selective blindness often feels honest from the inside because the agent really is looking. The asymmetry lies in where the light is aimed, how long it stays there, and whether the dim side is allowed to matter.',
         ],
       },
     ],
@@ -5129,6 +5185,13 @@ export const libraryPages: ContentPage[] = [
           'The answer may vary. Intuition may be useful for social nuance and poor for statistics. Testimony may be strong in ordinary contexts and weak under incentive pressure. Instruments may be powerful when calibrated and misleading when misunderstood. Methods have domains, limits, and track records.',
         ],
       },
+      {
+        heading: 'The Toolbelt Analogy',
+        body: [
+          'Different ways of knowing are like tools in a belt. A thermometer, a map, a memory, a testimony, and a statistical model can all be useful, but none should be treated as a universal instrument.',
+          'Grounding asks what each tool is good for, where it fails, and how its outputs are checked. A hammer is not discredited because it cannot measure fever; it is discredited only when someone uses it as if it could.',
+        ],
+      },
     ],
     [
       'Ways of knowing need reliability, not just confidence.',
@@ -5178,6 +5241,13 @@ export const libraryPages: ContentPage[] = [
         body: [
           'Children should not be forced to carry adult epistemic burdens too early. But they should gradually be given the tools to distinguish testimony from evidence, authority from reliability, and confidence from certainty.',
           'A healthy intellectual culture protects children while preparing them to outgrow passive dependence. It welcomes the moment when a learner begins to ask, “How do we know?”',
+        ],
+      },
+      {
+        heading: 'Training Wheels for Trust',
+        body: [
+          'Childlike trust is like training wheels: valuable because it lets the learner move before balance is fully developed. The problem is not that the wheels existed; the problem comes when the rider is told that removing them would be a failure.',
+          'Mature inquiry keeps the gift of trust but adds balance: track record, comparison, accountability, and the courage to revise when trusted sources fail.',
         ],
       },
     ],
@@ -5231,6 +5301,13 @@ export const libraryPages: ContentPage[] = [
           'This practice is common in good science and good forecasting because it limits after-the-fact rationalization. Credencing extends the same discipline to ordinary belief.',
         ],
       },
+      {
+        heading: 'The Moving Finish Line',
+        body: [
+          'Picture a race where the finish line moves whenever the favored runner falls behind. The runner may still be fast, but the race no longer measures speed. It measures control over the rules.',
+          'A claim with moving goalposts works the same way. If failed expectations never lower confidence, the inquiry is no longer using outcomes as evidence.',
+        ],
+      },
     ],
     [
       'A belief that cannot be corrected cannot be calibrated.',
@@ -5280,6 +5357,13 @@ export const libraryPages: ContentPage[] = [
         body: [
           'To audit a belief, list the assumptions it needs. Which are independently supported? Which are introduced only because the conclusion needs them? Which could be removed without losing predictive power?',
           'Then assign confidence to the whole structure, not merely to the most emotionally appealing assumption. Parsimony keeps credence from being inflated by hidden costs.',
+        ],
+      },
+      {
+        heading: 'The Backpack of Assumptions',
+        body: [
+          'Every extra assumption is like another object placed in a backpack before a long hike. One item may be harmless; twenty may change the whole journey. The question is not whether each item is possible, but whether each earns its weight.',
+          'Parsimony asks a belief to carry only the assumptions it can pay for with explanatory gain, predictive power, or independent support.',
         ],
       },
     ],
@@ -5333,6 +5417,13 @@ export const libraryPages: ContentPage[] = [
           'A belief system need not reduce everything to laboratory measurement, but any truth claim that asks for high credence should expose itself to some form of reality contact.',
         ],
       },
+      {
+        heading: 'The Castle on Balloons',
+        body: [
+          'A castle on balloons may look impressive from a distance: towers, walls, flags, and guards. But if it never touches the ground, no one can test its foundations.',
+          'The floating fortress problem is not that the structure lacks internal architecture. It is that high confidence is being maintained without ordinary contact with evidence, prediction, or correction.',
+        ],
+      },
     ],
     [
       'Insulated theories can feel strong because they avoid correction.',
@@ -5384,6 +5475,13 @@ export const libraryPages: ContentPage[] = [
           'This does not remove all ambiguity, but it reduces motivated interpretation. It turns prediction from a confidence-preserving ritual into a calibration tool.',
         ],
       },
+      {
+        heading: 'The Sealed Scoreboard',
+        body: [
+          'Imagine a scoreboard where goals for your team are displayed clearly, but goals against your team are sealed behind a curtain and later reinterpreted. The game may continue, but the score no longer calibrates confidence in who is playing better.',
+          'Protected predictions create the same asymmetry. Hits are counted as evidence; misses are absorbed as complexity. A fair evidential scoreboard must let both outcomes move credence.',
+        ],
+      },
     ],
     [
       'Predictions teach only when misses count as well as hits.',
@@ -5433,6 +5531,13 @@ export const libraryPages: ContentPage[] = [
         body: [
           'Ask for a working definition before evaluating the claim. Then ask whether the definition remains the same when objections arise. If the definition changes, restart the credence assessment with the new proposition clearly named.',
           'This is not pedantry. It is intellectual hygiene. Stable meanings let confidence become inspectable and prevent language from doing the work evidence should do.',
+        ],
+      },
+      {
+        heading: 'The Shape-Shifting Key',
+        body: [
+          'A shape-shifting key can open any lock because it becomes whatever shape is needed at the moment. That sounds powerful, but it also means you never learn which key actually fits which door.',
+          'When a word like faith shifts from trust to hope to loyalty to confidence to mystery, the discussion may keep moving while the proposition disappears. Credencing asks the key to hold still long enough for the lock to be tested.',
         ],
       },
     ],
