@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+@source ".";
 
 @theme {
   --color-accent-amber: #f6b44b;

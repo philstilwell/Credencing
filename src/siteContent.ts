@@ -37,9 +37,13 @@ export function pagePath(groupPath: string, title: string) {
 export const featuredPaperTitles = [
   'A Formal Framework for Core and Deep Rationality',
   'Core Rationality',
+  'The Two-Gap Theory of Irrationality: Evidence Perception, Belief Integrity, and Diagnostic Repair',
+  'Warranted Uncertainty: The Discipline of Not Knowing in a Credence-First Epistemology',
+  'Intelligence as Rationalization Engine: Deep Rationality, Core Rationality, and the Biased Expert',
+  'Institutional Credencing: Official Confidence, Evidence Pipelines, and Organizational Belief Integrity',
+  'AI as Deep Rationality Prosthetic: Evidence Processing, Delegated Credence, and Core Rationality in AI-Mediated Inquiry',
   'Evidence-Proportioned Belief: A Credence-First Reframing of Faith and Rationality',
   "Credence First: Against Plantinga's Warrant as an Epistemic Upgrade",
-  'The Moving Horizon: Artificial Intelligence and the Unbounded Expansion of Human Agency',
   'Humanity as a Middle Child in the Age of AI: Patterns of Delegation and Epistemic Atrophy',
   'The Gravity of Grammar: Binary Inertia and the Distortion of Epistemic Calibration',
   'Beyond the Binary: Linguistic Evolution and the Transition to Credence-Based Discourse',
@@ -51,11 +55,7 @@ export const featuredPaperTitles = [
   'The "Ontic Snap" as a Cognitive Phase Transition',
   'Mereological Indigestion: Why We Cannot Divvy Up the Blob',
   'Useful Fictions Common in Philosophical Pedagogy',
-  'The Eddy of Agency: Locating Subjective Will in an Objective Flow',
   'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution',
-  'The Alchemy of Ought: Tracing the Socio-Cognitive Reification of Human Rights',
-  'The Mechanics of Non-Moral Civility: Evolutionary, Psychological, and Sociological Foundations of Social Order in the Absence of Moral Realism',
-  'Impotent Obligation and the Attempt to Reify Emotions',
 ];
 
 export const pageGroups: PageGroup[] = [
@@ -1080,7 +1080,7 @@ export const coreIdeasPages: ContentPage[] = [
       {
         heading: 'CA Is the Site of Integrity',
         body: [
-          'The model treats CA as ethically important because it reveals whether the agent honors their own perception. A person cannot always control E0, and may only partly control EP, but the adoption of credence is where epistemic integrity becomes visible.',
+          'The model treats CA as diagnostically important because it reveals whether the agent honors their own perception. A person cannot always control E0, and may only partly control EP, but the adoption of credence is where epistemic integrity becomes visible.',
         ],
       },
     ],
@@ -3911,6 +3911,131 @@ const paperIntroPages: ContentPage[] = [
     ],
   }),
   paperIntroPage({
+    title: 'The Two-Gap Theory of Irrationality: Evidence Perception, Belief Integrity, and Diagnostic Repair',
+    summary: 'The central two-gap paper distinguishing failures of evidence perception from failures of assigned confidence.',
+    plainAbstract: [
+      'This paper gives the Credencing project its most important diagnostic split. A person can go wrong because they do not see the evidence clearly, or because they see the evidence clearly enough but assign a confidence level that no longer follows what they see.',
+      'The first gap runs from Objective Evidence (E0) to Perceived Evidence (EP). The second runs from Perceived Evidence (EP) to Assigned Credence (CA). Once those gaps are separated, repair becomes more precise: improve access and skill for the first gap; improve belief integrity and updateability for the second.',
+    ],
+    siteConnection: [
+      'This paper is the new spine for the public model. It explains why the site separates Calculation Error (DE) from Core Irrationality (IC), and why the interactive archetypes should not be read as one generic scale from rational to irrational.',
+      'It also gives the Library a cleaner research map. The later papers on uncertainty, rationalization, institutions, and AI all extend the same two-gap architecture rather than starting separate projects.',
+    ],
+    readerUse: [
+      'Read this after the formal framework if you want the diagnostic version of the model. Keep asking where the breakdown occurs: evidence access, evidence processing, confidence assignment, or update resistance.',
+    ],
+    keyTakeaways: [
+      'Irrationality has at least two structurally different gaps.',
+      'E0-EP failures call for better evidence processing.',
+      'EP-CA failures call for better belief integrity and update conditions.',
+    ],
+    related: [
+      pagePath('/library', 'A Formal Framework for Core and Deep Rationality'),
+      pagePath('/core-ideas', 'Calculation Error (DE)'),
+      pagePath('/core-ideas', 'Core Irrationality (IC)'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Warranted Uncertainty: The Discipline of Not Knowing in a Credence-First Epistemology',
+    summary: 'A calibration paper defending honest uncertainty as an achievement rather than a failure of inquiry.',
+    plainAbstract: [
+      'This paper argues that not knowing can be rationally disciplined. When evidence is incomplete, noisy, ambiguous, or model-dependent, the right response may be a confidence band rather than a single sharp number.',
+      'The paper protects Credencing from becoming overconfident about its own diagnostics. A gap between Perceived Evidence (EP) and Assigned Credence (CA) matters, but some slack can be warranted by limited evidence, unclear base rates, competing hypotheses, or bounded skill.',
+    ],
+    siteConnection: [
+      'This paper deepens the Warranted Uncertainty page and the interactive model’s slack zone. It explains why the site should distinguish raw disagreement between EP and CA from excess Core Irrationality after warranted uncertainty is considered.',
+      'It also keeps Bayesian language usable. The goal is not false precision. The goal is confidence that stays answerable to evidence while admitting how much resolution the evidence can actually support.',
+    ],
+    readerUse: [
+      'Read this whenever a discussion forces premature certainty. The practical move is to state confidence bands, live alternatives, missing evidence, and update conditions instead of pretending the evidence is sharper than it is.',
+    ],
+    keyTakeaways: [
+      'Uncertainty can be rationally warranted.',
+      'Confidence bands often fit evidence better than sharp numbers.',
+      'Diagnostic slack prevents the model from overcalling irrationality.',
+    ],
+    related: [
+      pagePath('/core-ideas', 'Warranted Uncertainty'),
+      pagePath('/skills', 'How to Express Uncertainty Honestly'),
+      pagePath('/bayes-theorem', 'Common Mistakes'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Intelligence as Rationalization Engine: Deep Rationality, Core Rationality, and the Biased Expert',
+    summary: 'A biased-expert paper explaining how high reasoning skill can defend a credence the evidence no longer supports.',
+    plainAbstract: [
+      'This paper asks why smart, trained, articulate people can be so hard to update. The answer is not that intelligence is bad. The answer is that intelligence improves evidence-processing power, and that power can serve either correction or defense.',
+      'The biased expert may have a small Objective Evidence to Perceived Evidence gap because they understand the material well. The problem appears when Assigned Credence (CA) is pulled away from Perceived Evidence (EP) by identity, status, incentives, fear, hope, loyalty, or prior commitment.',
+    ],
+    siteConnection: [
+      'This paper gives the Biased Expert archetype its full research treatment. It explains why Deep Rationality (SD) can reduce one gap while leaving the EP-CA gap large.',
+      'It also adds safeguards against overdiagnosis. The paper requires traces such as asymmetric scrutiny, moving standards, directional update resistance, or refusal to state update conditions before treating disagreement as rationalization.',
+    ],
+    readerUse: [
+      'Read this when expertise seems to make a person more convincing but not more updateable. Ask whether the reasoning is tracking evidence, or whether the tools are being used to protect a settled confidence level.',
+    ],
+    keyTakeaways: [
+      'Intelligence can improve either inquiry or rationalization.',
+      'The biased expert is a high-SD, high-IC pattern.',
+      'Rationalization diagnoses need safeguards, not vibes.',
+    ],
+    related: [
+      pagePath('/interactive-lab', 'Epistemic Archetypes'),
+      pagePath('/case-studies', 'Motivated Reasoning'),
+      pagePath('/skills', 'How to Detect Motivated Override'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'Institutional Credencing: Official Confidence, Evidence Pipelines, and Organizational Belief Integrity',
+    summary: 'An institutional extension of Credencing for official confidence, evidence pipelines, dissent, and update trails.',
+    plainAbstract: [
+      'This paper extends the Credencing model from individual people to organizations. Institutions do not believe exactly as persons do, but they gather evidence, filter reports, produce internal assessments, publish official claims, and decide when to update.',
+      'That means institutions can have analogues of Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), and Deep Rationality (SD). They can miss evidence through damaged sensing channels, or they can register evidence internally while public confidence remains shaped by incentives, authority, legal exposure, or institutional identity.',
+    ],
+    siteConnection: [
+      'This paper anchors the Institutional Diagnostics application. It explains how the two-gap model scales to committees, agencies, companies, labs, courts, media institutions, and schools.',
+      'It also gives practical substance to audit trails, source traceability, dissent protection, confidence disclosure, and update records. Institutional credencing asks not only what an organization says, but how its confidence was formed and whether it can be revised.',
+    ],
+    readerUse: [
+      'Read this when evaluating official statements, expert panels, public agencies, corporate claims, or academic consensus. Ask where the organization senses evidence, where it filters evidence, and where official confidence gets assigned.',
+    ],
+    keyTakeaways: [
+      'Institutions have evidence pipelines and public credence states.',
+      'Official confidence can diverge from internal evidence.',
+      'Credence audits require traceability, dissent channels, and update trails.',
+    ],
+    related: [
+      pagePath('/applications', 'Institutional Diagnostics'),
+      pagePath('/applications', 'Journalism'),
+      pagePath('/library', 'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution'),
+    ],
+  }),
+  paperIntroPage({
+    title: 'AI as Deep Rationality Prosthetic: Evidence Processing, Delegated Credence, and Core Rationality in AI-Mediated Inquiry',
+    summary: 'An AI-mediated inquiry paper arguing that better evidence processing does not automatically produce better assigned credence.',
+    plainAbstract: [
+      'This paper treats AI as a possible prosthetic for Deep Rationality. AI can widen search, summarize complex material, generate rival hypotheses, identify base rates, compare likelihoods, and find contradictions. Used well, it can help a user perceive the evidence more clearly.',
+      'But AI cannot by itself secure Core Rationality. The final assignment of confidence still passes through human or institutional uptake. A user can use AI to see better, or use AI to make a preferred conclusion look better than the evidence warrants.',
+    ],
+    siteConnection: [
+      'This paper ties the AI Alignment application directly into the two-gap model. AI can reduce E0-EP gaps while leaving EP-CA gaps untouched, hidden, or amplified.',
+      'It also clarifies the site’s AI warnings: the danger is not only hallucination. The danger includes fluent false confidence, false precision, motivated prompting, automation bias, source opacity, delegated credence, and institutional laundering.',
+    ],
+    readerUse: [
+      'Read this when using AI for research, teaching, policy, diagnosis, writing, or institutional review. Ask what the AI changed in your perceived evidence, what uncertainty remains, and who is assigning the final credence.',
+    ],
+    keyTakeaways: [
+      'AI can improve Deep Rationality without guaranteeing Core Rationality.',
+      'Delegated evidence processing is not delegated credence.',
+      'AI-mediated inquiry needs confidence bands, traceability, rival hypotheses, and update conditions.',
+    ],
+    related: [
+      pagePath('/applications', 'AI Alignment'),
+      pagePath('/discussion-groups', 'Session 8: AI, Expertise, and the Future'),
+      pagePath('/library', 'Humanity as a Middle Child in the Age of AI: Patterns of Delegation and Epistemic Atrophy'),
+    ],
+  }),
+  paperIntroPage({
     title: 'Evidence-Proportioned Belief: A Credence-First Reframing of Faith and Rationality',
     summary: 'A credence-first argument for treating rational belief as confidence scaled to evidence rather than as a binary yes-or-no state.',
     plainAbstract: [
@@ -3960,31 +4085,7 @@ const paperIntroPages: ContentPage[] = [
       pagePath('/library', 'Faith, Trust, and Evidence-Weighted Confidence'),
     ],
   }),
-  paperIntroPage({
-    title: 'The Moving Horizon: Artificial Intelligence and the Unbounded Expansion of Human Agency',
-    summary: 'An AI paper arguing that automation can shift human agency upward toward goal-setting, evidence calibration, and design.',
-    plainAbstract: [
-      'This paper argues against the idea that AI simply subtracts human agency. When tools remove the cost of execution, people often move to higher-level work: choosing goals, judging evidence, designing systems, and deciding what should be built.',
-      'The moving horizon is the frontier of human attention. As machines take over some tasks, the frontier moves toward more abstract questions about intention, values, calibration, and responsibility.',
-    ],
-    siteConnection: [
-      'Credencing becomes more important in an AI-rich environment because people must decide when to trust outputs, when to challenge them, and how to keep their own judgment active.',
-      'This paper connects to the site’s AI Alignment application: alignment is not only a technical problem inside models. It is also a human credencing problem around model claims, authority, convenience, and evidence.',
-    ],
-    readerUse: [
-      'Read this as a hopeful AI companion to the warning pages. The useful question is not “Will AI replace thought?” but “Which parts of thought must humans practice more deliberately because AI makes execution easier?”',
-    ],
-    keyTakeaways: [
-      'AI can move human agency toward higher-level judgment.',
-      'Automation increases the need for evidence calibration.',
-      'Human fulfillment can depend on better intent, not more toil.',
-    ],
-    related: [
-      pagePath('/applications', 'AI Alignment'),
-      pagePath('/discussion-groups', 'Session 8: AI, Expertise, and the Future'),
-      pagePath('/skills', 'How to Ask Better Epistemic Questions'),
-    ],
-  }),
+
   paperIntroPage({
     title: 'Humanity as a Middle Child in the Age of AI: Patterns of Delegation and Epistemic Atrophy',
     summary: 'A warning that over-delegating inference to AI can weaken the very judgment humans need to supervise it.',
@@ -4260,31 +4361,7 @@ const paperIntroPages: ContentPage[] = [
       pagePath('/discussion-groups', 'Facilitator Toolkit'),
     ],
   }),
-  paperIntroPage({
-    title: 'The Eddy of Agency: Locating Subjective Will in an Objective Flow',
-    summary: 'A naturalist account of agency that treats human will as a real pattern inside a causally determined world.',
-    plainAbstract: [
-      'This paper tries to make sense of agency without appealing to magical freedom. A person is part of the physical flow of causes, but the person can still be a real organizing loop inside that flow.',
-      'The eddy image means a local pattern with its own shape and effects. Human agency may be like that: not outside nature, but still important as a stable pattern for prediction, correction, and responsibility.',
-    ],
-    siteConnection: [
-      'Credencing depends on agents who can revise, respond, and be guided by feedback. This paper explains how that can matter even in a naturalistic picture.',
-      'It also gives a softer model of responsibility: not guilt from nowhere, but feedback aimed at recalibrating future prediction and action.',
-    ],
-    readerUse: [
-      'Read this alongside the sections on responsibility filters and core failure. The point is to improve diagnosis and correction without pretending humans stand outside causes.',
-    ],
-    keyTakeaways: [
-      'Agency can be real without being supernatural.',
-      'Responsibility can be feedback-oriented.',
-      'Credencing works inside causal systems, not outside them.',
-    ],
-    related: [
-      pagePath('/core-ideas', 'Diagnostic Safeguards'),
-      pagePath('/case-studies', 'Pragmatic Encroachment'),
-      pagePath('/about', 'Descriptive Rather than Prescriptive Orientation'),
-    ],
-  }),
+
   paperIntroPage({
     title: 'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution',
     summary: 'A systems paper about calibrating credit and blame when individual control is weakened by noise and complexity.',
@@ -4310,81 +4387,9 @@ const paperIntroPages: ContentPage[] = [
       pagePath('/case-studies', 'Base-Rate Neglect'),
     ],
   }),
-  paperIntroPage({
-    title: 'The Alchemy of Ought: Tracing the Socio-Cognitive Reification of Human Rights',
-    summary: 'A genealogy of how shared social commitments can come to feel like mind-independent moral facts.',
-    plainAbstract: [
-      'This paper asks how rights-talk can feel objective even if rights are built through human practices, institutions, emotions, and enforcement. The claim is not that rights are useless. The claim is that their felt objectivity may be produced by social stability.',
-      'People can turn shared commitments into things that feel discovered rather than made. That transformation is powerful, but it needs epistemic clarity.',
-    ],
-    siteConnection: [
-      'The paper extends credencing into moral and political language. It asks whether confidence in ought claims is tracking evidence, social consensus, emotion, institutional force, or some mixture.',
-      'It also links to the site’s concern with reification: useful frameworks should not be mistaken too quickly for independent objects.',
-    ],
-    readerUse: [
-      'Read this when moral or political claims feel unquestionable. Ask which parts are evidence, which parts are coordination tools, and which parts are inherited emotional force.',
-    ],
-    keyTakeaways: [
-      'Social commitments can acquire the feel of objectivity.',
-      'Usefulness is not the same as mind-independent reality.',
-      'Moral and political confidence still needs calibration.',
-    ],
-    related: [
-      pagePath('/applications', 'Law'),
-      pagePath('/applications', 'Public Debate'),
-      pagePath('/library', 'Impotent Obligation and the Attempt to Reify Emotions'),
-    ],
-  }),
-  paperIntroPage({
-    title: 'The Mechanics of Non-Moral Civility: Evolutionary, Psychological, and Sociological Foundations of Social Order in the Absence of Moral Realism',
-    summary: 'A paper arguing that social order can be explained through cooperation, incentives, and shared systems without moral realism.',
-    plainAbstract: [
-      'This paper addresses a fear: if moral facts are not real in a strong metaphysical sense, will society fall apart? The answer offered is no. Cooperation can be supported by evolution, psychology, law, habit, incentives, and shared interests.',
-      'The point is descriptive. Humans can build civility and order through systems that work, even if those systems are not grounded in supernatural or mind-independent moral properties.',
-    ],
-    siteConnection: [
-      'This matters for credencing because it separates practical confidence from metaphysical overclaiming. A system can be useful, stable, and humane without requiring inflated certainty about its ultimate status.',
-      'It also helps the site discuss public reasoning in a less polemical way: evaluate what a framework does, what evidence supports it, and where confidence should remain limited.',
-    ],
-    readerUse: [
-      'Read this as a civic application of calibrated thinking. Ask how social practices can be defended by evidence of function rather than by claims that outrun the evidence.',
-    ],
-    keyTakeaways: [
-      'Social order can be explained without moral realism.',
-      'Practical usefulness can be real without metaphysical inflation.',
-      'Civic confidence should track function and evidence.',
-    ],
-    related: [
-      pagePath('/applications', 'Policy'),
-      pagePath('/applications', 'Public Debate'),
-      pagePath('/about', 'Methodological Commitments'),
-    ],
-  }),
-  paperIntroPage({
-    title: 'Impotent Obligation and the Attempt to Reify Emotions',
-    summary: 'A descriptive account of how emotions can be upgraded into social claims of duty, debt, guilt, or desert.',
-    plainAbstract: [
-      'This paper examines a common move: someone feels approval, anger, disgust, fear, or resentment, and that emotion gets translated into the language of obligation. A private reaction starts sounding like an external law.',
-      'The paper does not say emotions are irrelevant. It says we should notice when emotion is being converted into authority without enough evidence.',
-    ],
-    siteConnection: [
-      'This is a Core Irrationality case. A person may assign high confidence to a duty-claim because the emotion is strong, not because the evidence is strong.',
-      'It also supports the site’s diagnostic safeguards: before accusing someone of irrationality, separate evidence, feeling, social pressure, and practical consequences.',
-    ],
-    readerUse: [
-      'Read this when disagreement becomes moral pressure. Ask what reasons are being offered, what emotions are doing the work, and whether the assigned confidence has been inflated by social force.',
-    ],
-    keyTakeaways: [
-      'Emotions can be mistaken for external authority.',
-      'Strong feeling is not automatically strong evidence.',
-      'Obligation language should be evidence-audited.',
-    ],
-    related: [
-      pagePath('/core-ideas', 'Core Irrationality (IC)'),
-      pagePath('/case-studies', 'Motivated Reasoning'),
-      pagePath('/skills', 'How to Detect Motivated Override'),
-    ],
-  }),
+
+
+
 ];
 
 export const libraryPages: ContentPage[] = [
@@ -4403,8 +4408,8 @@ export const libraryPages: ContentPage[] = [
         heading: 'Current Paper Spine',
         body: [
           'The central paper is “A Formal Framework for Core and Deep Rationality.” It supplies the basic architecture: objective evidence (E0), perceived evidence (EP), assigned credence (CA), deep rationality (SD), calculation error, core irrationality, and the archetypes generated by different gap patterns.',
-          'A second nearby strand is the “credence first” argument: the claim that rational evaluation should begin with graded confidence rather than binary belief. That strand links the project to Bayesian epistemology, philosophy of religion, calibration, and the practical ethics of changing one’s mind.',
-          'The broader research cluster now featured here includes papers on AI delegation, binary language, miracle auditing, explanatory hunger, operator learning, methodological naturalism, ontological commitment, agency, historical attribution, and the reification of norms and emotions. Together, these papers treat Credencing not as one isolated model but as a program for replacing all-or-nothing belief language with calibrated, updateable confidence.',
+          'The new research spine develops that architecture in five directions. “The Two-Gap Theory of Irrationality” makes the diagnostic split explicit. “Warranted Uncertainty” protects the model from false precision. “Intelligence as Rationalization Engine” explains the biased expert. “Institutional Credencing” scales the model to organizations. “AI as Deep Rationality Prosthetic” applies the same distinction to AI-mediated inquiry.',
+          'The older supporting cluster remains narrower than before: credence-first epistemology, scalar language, Bayesian audit methods, explanatory hunger, operator learning, methodological naturalism, ontological commitment, and calibrated attribution. Together, these papers treat Credencing as a program for replacing all-or-nothing belief language with calibrated, updateable confidence.',
         ],
       },
       {
@@ -4418,8 +4423,8 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Objections to Develop',
         body: [
-          'The papers section is also where the strongest objections belong. Important objections include whether E0 can be estimated without pretending to have God’s-eye access, whether EP can be separated from CA in messy human cases, whether “core irrationality” moralizes too quickly, and whether Bayesian language can be made practical without false precision.',
-          'The newer alignment with the paper cluster adds further objections worth developing: whether scalar language can remain usable in ordinary conversation, whether AI tools can improve calibration without encouraging dependence, whether Bayesian audit rubrics smuggle in contested priors, and whether methodological naturalism is best defended as a risk-management strategy rather than as an a priori rule.',
+          'The papers section is also where the strongest objections belong. Important objections include whether E0 can be estimated without pretending to have God’s-eye access, whether EP can be separated from CA in messy human cases, whether “core irrationality” overclassifies hard disagreement, and whether Bayesian language can be made practical without false precision.',
+          'The newer alignment with the paper cluster adds further objections worth developing: whether scalar language can remain usable in ordinary conversation, whether AI tools can improve calibration without encouraging dependence, whether institutional audits can distinguish internal evidence from official confidence, and whether Bayesian audit rubrics smuggle in contested priors.',
           'Each objection should be treated as a stress test rather than a threat. If an objection forces a cleaner definition, a humbler claim, or a better diagnostic distinction, it improves the project.',
         ],
       },
@@ -4427,7 +4432,7 @@ export const libraryPages: ContentPage[] = [
         heading: 'How to Read',
         body: [
           'Read the public Start Here and Core Ideas sections first. Then use the papers to inspect the formal structure, not as a replacement for the interactive model but as its theoretical support.',
-          'A good reading order is: “Core Rationality,” the central framework paper, “Credence First,” the binary-language papers, the Bayes theorem section, the interactive archetypes, and then the applied papers on miracle auditing, methodological naturalism, operator learning, and affective vetoes. That order moves from definition to calibration to diagnosis to application.',
+          'A good reading order is: “Core Rationality,” the formal framework, the two-gap paper, “Warranted Uncertainty,” “Intelligence as Rationalization Engine,” “Institutional Credencing,” and “AI as Deep Rationality Prosthetic.” After that, move outward to the credence-first, binary-language, Bayesian audit, methodological naturalism, operator-learning, and affective-veto papers.',
         ],
       },
     ],
@@ -4487,7 +4492,7 @@ export const libraryPages: ContentPage[] = [
   ...paperIntroPages,
   libraryPage(
     'Future Papers',
-    'Future papers extend the framework into measurement, institutions, AI, disagreement, and pedagogy.',
+    'Future papers extend the framework into measurement, likelihood literacy, audit trails, disagreement, human-AI alignment, and pedagogy.',
     [
       {
         heading: 'Measurement and Validation',
@@ -4497,31 +4502,31 @@ export const libraryPages: ContentPage[] = [
         ],
       },
       {
-        heading: 'Institutional Extensions',
+        heading: 'Audit Trails and Suppressed Evidence',
         body: [
-          'Another direction is institutional epistemology. Organizations have evidence pipelines, public credences, incentives, and update failures. The two-gap model can be extended from individual agents to committees, agencies, labs, courts, and media institutions.',
-          'A paper in this line would ask how institutions notice evidence, convert it into internal perception, assign public confidence, and revise policy when the public confidence no longer matches the internal evidence.',
+          'Now that institutional credencing has a first treatment, future work can become more operational. Audit-trail papers should ask how evidence entered the pipeline, who saw it, what uncertainty was recorded, when official confidence was assigned, and what update conditions were stated.',
+          'A suppressed-evidence paper would examine the difference between not having evidence, failing to notice evidence, noticing it internally but not registering it officially, and reporting public confidence that no longer matches the internal record.',
         ],
       },
       {
-        heading: 'AI and Collective Reasoning',
+        heading: 'Model Fluency and Human-AI Alignment',
         body: [
-          'AI systems make credencing both more urgent and more complex. Future work should examine model confidence, human overtrust, benchmark interpretation, institutional deployment thresholds, and the social systems that decide when AI outputs become believed.',
+          'The AI prosthetic paper opens a larger research track. Future work should examine model fluency, false credence, benchmark interpretation, human overtrust, institutional deployment thresholds, and the social systems that decide when AI outputs become believed.',
           'The central risk is not only that AI systems make mistakes. It is that people, companies, classrooms, and agencies may assign confidence to AI outputs through authority, convenience, speed, or social pressure rather than calibrated evidence.',
         ],
       },
       {
         heading: 'Disagreement and Pedagogy',
         body: [
-          'A disagreement paper would compare two agents with different Objective Evidence (E0) access, Perceived Evidence (EP) interpretation, Assigned Credence (CA) assignment, and update histories. This would make the model useful for public debate without reducing every conflict to bad faith.',
+          'A disagreement paper would compare two agents with different Objective Evidence (E0) access, Perceived Evidence (EP) interpretation, Assigned Credence (CA) assignment, and update histories. This would make the model useful for public debate without reducing every conflict to protected confidence.',
           'A pedagogy paper would translate the framework into classroom practice: calibration exercises, evidence-mapping assignments, peer disagreement protocols, and reflective prompts that help students separate “I disagree” from “I have located a specific gap.”',
         ],
       },
     ],
     [
       'Future work improves measurement, validation, and objection handling.',
-      'Institutions can be analyzed with the same two-gap model.',
-      'AI, disagreement, and pedagogy create new credencing problems at scale.',
+      'Audit trails can make evidence pipelines and confidence assignments inspectable.',
+      'AI, disagreement, and pedagogy remain major credencing problems at scale.',
     ],
     [
       pagePath('/applications', 'AI Alignment'),

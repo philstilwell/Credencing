@@ -211,6 +211,41 @@ const researchPapers = [
     relevance: 'Defines Objective Evidence (E0), Perceived Evidence (EP), Assigned Credence (CA), Deep Rationality (SD), Calculation Error (DE), and Core Irrationality (IC).',
   },
   {
+    title: 'The Two-Gap Theory of Irrationality: Evidence Perception, Belief Integrity, and Diagnostic Repair',
+    path: pagePath('/library', 'The Two-Gap Theory of Irrationality: Evidence Perception, Belief Integrity, and Diagnostic Repair'),
+    url: 'https://www.academia.edu/168308847/The_Two_Gap_Theory_of_Irrationality_Evidence_Perception_Belief_Integrity_and_Diagnostic_Repair',
+    role: 'Two-gap model',
+    relevance: 'Separates E0-EP evidence-perception failures from EP-CA belief-integrity failures, giving the framework its main diagnostic repair map.',
+  },
+  {
+    title: 'Warranted Uncertainty: The Discipline of Not Knowing in a Credence-First Epistemology',
+    path: pagePath('/library', 'Warranted Uncertainty: The Discipline of Not Knowing in a Credence-First Epistemology'),
+    url: 'https://www.academia.edu/168309143/Warranted_Uncertainty_The_Discipline_of_Not_Knowing_in_a_Credence_First_Epistemology',
+    role: 'Confidence discipline',
+    relevance: 'Defends confidence bands, warranted slack, and honest uncertainty so credencing does not collapse into false precision.',
+  },
+  {
+    title: 'Intelligence as Rationalization Engine: Deep Rationality, Core Rationality, and the Biased Expert',
+    path: pagePath('/library', 'Intelligence as Rationalization Engine: Deep Rationality, Core Rationality, and the Biased Expert'),
+    url: 'https://www.academia.edu/168310008/Intelligence_as_Rationalization_Engine_Deep_Rationality_Core_Rationality_and_the_Biased_Expert',
+    role: 'Biased expert diagnosis',
+    relevance: 'Explains how high Deep Rationality can reduce evidence-processing error while still defending an assigned credence the agent is motivated to keep.',
+  },
+  {
+    title: 'Institutional Credencing: Official Confidence, Evidence Pipelines, and Organizational Belief Integrity',
+    path: pagePath('/library', 'Institutional Credencing: Official Confidence, Evidence Pipelines, and Organizational Belief Integrity'),
+    url: 'https://www.academia.edu/168313905/Institutional_Credencing_Official_Confidence_Evidence_Pipelines_and_Organizational_Belief_Integrity',
+    role: 'Institutional extension',
+    relevance: 'Extends E0, EP, CA, and SD to organizations through evidence pipelines, public confidence, dissent channels, and update trails.',
+  },
+  {
+    title: 'AI as Deep Rationality Prosthetic: Evidence Processing, Delegated Credence, and Core Rationality in AI-Mediated Inquiry',
+    path: pagePath('/library', 'AI as Deep Rationality Prosthetic: Evidence Processing, Delegated Credence, and Core Rationality in AI-Mediated Inquiry'),
+    url: 'https://www.academia.edu/168328017/AI_as_Deep_Rationality_Prosthetic_Evidence_Processing_Delegated_Credence_and_Core_Rationality_in_AI_Mediated_Inquiry',
+    role: 'AI-mediated credencing',
+    relevance: 'Shows how AI can improve evidence processing while leaving final credence vulnerable to motivated uptake, false precision, and delegation errors.',
+  },
+  {
     title: 'Core Rationality',
     path: pagePath('/library', 'Core Rationality'),
     url: 'https://www.academia.edu/145488011/_Core_Rationality',
@@ -230,13 +265,6 @@ const researchPapers = [
     url: 'https://www.academia.edu/164569364/_Credence_First_Against_Plantingas_Warrant_as_an_Epistemic_Upgrade',
     role: 'Credence-first epistemology',
     relevance: 'Argues that graded credencing is a better epistemic target than binary knowledge or warrant, especially when certainty can become miscalibrated.',
-  },
-  {
-    title: 'The Moving Horizon: Artificial Intelligence and the Unbounded Expansion of Human Agency',
-    path: pagePath('/library', 'The Moving Horizon: Artificial Intelligence and the Unbounded Expansion of Human Agency'),
-    url: 'https://www.academia.edu/164863960/_The_Moving_Horizon_Artificial_Intelligence_and_the_Unbounded_Expansion_of_Human_Agency',
-    role: 'AI and agency',
-    relevance: 'Treats AI as leverage that moves human agency toward goal selection, evidence calibration, and system design.',
   },
   {
     title: 'Humanity as a Middle Child in the Age of AI: Patterns of Delegation and Epistemic Atrophy',
@@ -316,39 +344,11 @@ const researchPapers = [
     relevance: 'Clarifies when simplified teaching models help inquiry and when they become overconfident substitutes for mature understanding.',
   },
   {
-    title: 'The Eddy of Agency: Locating Subjective Will in an Objective Flow',
-    path: pagePath('/library', 'The Eddy of Agency: Locating Subjective Will in an Objective Flow'),
-    url: 'https://www.academia.edu/161261615/_The_Eddy_of_Agency_Locating_Subjective_Will_in_an_Objective_Flow',
-    role: 'Agency and feedback',
-    relevance: 'Places human agency inside natural causal flow while preserving feedback, responsibility, and recalibration.',
-  },
-  {
     title: 'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution',
     path: pagePath('/library', 'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution'),
     url: 'https://www.academia.edu/162786554/_Against_the_Great_Man_A_Systems_Theoretic_Critique_of_Individual_Attribution',
     role: 'Attribution calibration',
     relevance: 'Uses a control coefficient to calibrate praise and blame in noisy systems where individual agency may be weak.',
-  },
-  {
-    title: 'The Alchemy of Ought: Tracing the Socio-Cognitive Reification of Human Rights',
-    path: pagePath('/library', 'The Alchemy of Ought: Tracing the Socio-Cognitive Reification of Human Rights'),
-    url: 'https://www.academia.edu/146034821/_The_Alchemy_of_Ought_Tracing_the_Socio_Cognitive_Reification_of_Human_Rights',
-    role: 'Normative reification',
-    relevance: 'Shows how shared commitments can acquire the feeling of objectivity, a useful case for calibrating confidence in ought-language.',
-  },
-  {
-    title: 'The Mechanics of Non-Moral Civility: Evolutionary, Psychological, and Sociological Foundations of Social Order in the Absence of Moral Realism',
-    path: pagePath('/library', 'The Mechanics of Non-Moral Civility: Evolutionary, Psychological, and Sociological Foundations of Social Order in the Absence of Moral Realism'),
-    url: 'https://www.academia.edu/145554977/_The_Mechanics_of_Non_Moral_Civility_Evolutionary_Psychological_and_Sociological_Foundations_of_Social_Order_in_the_Absence_of_Moral_Realism',
-    role: 'Civic pragmatics',
-    relevance: 'Separates social functionality from metaphysical overclaiming and supports evidence-based public reasoning.',
-  },
-  {
-    title: 'Impotent Obligation and the Attempt to Reify Emotions',
-    path: pagePath('/library', 'Impotent Obligation and the Attempt to Reify Emotions'),
-    url: 'https://www.academia.edu/145537514/_Impotent_Obligation_and_the_Attempt_to_Reify_Emotions',
-    role: 'Emotion and authority',
-    relevance: 'Diagnoses how strong feelings can be converted into obligation language without enough evidential support.',
   },
 ];
 
@@ -911,7 +911,7 @@ function FormalizationPanel() {
   );
 }
 
-function ContextPanel({ activeTab, onOpenModel }: { activeTab: Tab; onOpenModel: () => void }) {
+function ContextPanel({ activeTab, onOpenModel }: { key?: string; activeTab: Tab; onOpenModel: () => void }) {
   if (activeTab === 'intro') {
     return (
       <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="glass-panel p-8 space-y-6 bg-amber-500/[0.06] border-amber-500/40 shadow-2xl">
@@ -1267,7 +1267,7 @@ function ResearchPapersPanel({ page, onNavigate }: { page: ContentPage; onNaviga
         <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Related Research Papers</p>
         <h3 className="text-2xl md:text-3xl font-light text-white">The paper cluster behind Credencing</h3>
         <p className="text-stone-300 text-sm md:text-base leading-relaxed">
-          These Academia.edu papers support the public site as a connected research program: formal modeling, credence-first epistemology, scalar language, Bayesian audit methods, motivated-cognition diagnosis, and operator-centered learning.
+          These Academia.edu papers support the public site as a connected research program: formal modeling, two-gap diagnosis, warranted uncertainty, institutional credencing, AI-mediated inquiry, scalar language, Bayesian audit methods, and motivated-cognition diagnosis.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -1704,9 +1704,9 @@ function PriorityExpansion({ page }: { page: ContentPage }) {
       ],
     },
     [pagePath('/core-ideas', 'Core Irrationality (IC)')]: {
-      heading: 'Why Core Irrationality (IC) Is the Ethical Pressure Point',
+      heading: 'Why Core Irrationality (IC) Is the Diagnostic Pressure Point',
       body: [
-        'Core Irrationality (IC) becomes ethically important because it is the place where an agent stops following their own evidential lights. The issue is not whether they possess perfect evidence; it is whether they honor what they take themselves to have seen.',
+        'Core Irrationality (IC) becomes diagnostically important because it is the place where an agent stops following their own evidential lights. The issue is not whether they possess perfect evidence; it is whether they honor what they take themselves to have seen.',
         'That is why Core Irrationality (IC) should be handled carefully. It is not a quick insult. It is a serious diagnosis of doxastic misalignment.',
       ],
     },
@@ -2390,7 +2390,7 @@ function RelatedGroups({ currentPath, onNavigate }: { currentPath: string; onNav
   );
 }
 
-function GroupCard({ group, onNavigate }: { group: PageGroup; onNavigate: (path: string) => void }) {
+function GroupCard({ group, onNavigate }: { key?: string; group: PageGroup; onNavigate: (path: string) => void }) {
   return (
     <button onClick={() => onNavigate(group.path)} className="glass-panel p-6 text-left bg-white/[0.015] border-white/5 hover:border-amber-500/40 transition-all group min-h-[210px]">
       <div className="flex items-center justify-between gap-4 mb-5">
@@ -3071,7 +3071,7 @@ function Formula({ code, title, text }: { code: string; title: string; text: str
   );
 }
 
-function ArchetypeCard({ name, icon, desc }: { name: string; icon: ReactNode; desc: string }) {
+function ArchetypeCard({ name, icon, desc }: { key?: string; name: string; icon: ReactNode; desc: string }) {
   return (
     <div className="glass-panel p-5 bg-white/[0.01] border-white/5 hover:border-white/10 transition-colors space-y-3">
       <div className="flex items-center gap-2">
