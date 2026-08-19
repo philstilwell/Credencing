@@ -1,5 +1,7 @@
 @import "tailwindcss" source(none);
-@source ".";
+@source "./App.tsx";
+@source "./main.tsx";
+@source "./components";
 
 @theme {
   --color-accent-amber: #f6b44b;

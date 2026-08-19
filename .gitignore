@@ -6,3 +6,5 @@ coverage/
 *.log
 .env*
 !.env.example
+Credencing-site-on-GitHub-backup-*.zip
+credencing-app/
