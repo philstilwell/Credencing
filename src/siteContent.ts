@@ -39,7 +39,6 @@ export const featuredPaperTitles = [
   'Core Rationality',
   'The Two-Gap Theory of Irrationality: Evidence Perception, Belief Integrity, and Diagnostic Repair',
   'Warranted Uncertainty: The Discipline of Not Knowing in a Credence-First Epistemology',
-  'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
   'Intelligence as Rationalization Engine: Deep Rationality, Core Rationality, and the Biased Expert',
   'Institutional Credencing: Official Confidence, Evidence Pipelines, and Organizational Belief Integrity',
   'AI as Deep Rationality Prosthetic: Evidence Processing, Delegated Credence, and Core Rationality in AI-Mediated Inquiry',
@@ -57,6 +56,12 @@ export const featuredPaperTitles = [
   'Mereological Indigestion: Why We Cannot Divvy Up the Blob',
   'Useful Fictions Common in Philosophical Pedagogy',
   'Against the Great Man: A Systems-Theoretic Critique of Individual Attribution',
+];
+
+export const featuredBookTitles = [
+  'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
+  'The Ontic Snap',
+  'The Primacy of Induction',
 ];
 
 export const pageGroups: PageGroup[] = [
@@ -210,8 +215,10 @@ export const pageGroups: PageGroup[] = [
   {
     title: 'Library',
     path: '/library',
-    summary: 'Papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.',
+    summary: 'Books, papers, essays, glossary entries, references, visual archive, teaching materials, downloads, and project notes.',
     pages: [
+      'Books',
+      ...featuredBookTitles,
       'Papers',
       ...featuredPaperTitles,
       'Future Papers',
@@ -3887,6 +3894,117 @@ function paperIntroPage(paper: PaperIntro): ContentPage {
   );
 }
 
+function bookIntroPage(book: PaperIntro): ContentPage {
+  return libraryPage(
+    book.title,
+    book.summary,
+    [
+      {
+        heading: 'Low-Register Abstract',
+        body: book.plainAbstract,
+      },
+      {
+        heading: 'How It Fits Credencing',
+        body: book.siteConnection,
+      },
+      {
+        heading: 'How to Read It',
+        body: book.readerUse,
+      },
+    ],
+    book.keyTakeaways,
+    [pagePath('/library', 'Books'), ...book.related],
+  );
+}
+
+const bookIntroPages: ContentPage[] = [
+  bookIntroPage({
+    title: 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
+    summary: 'A book-length treatment placing induction, Bayes, deduction, abduction, science, and ontology inside one bounded account of human inquiry.',
+    plainAbstract: [
+      'This book argues that finite knowers do not need an unreachable guarantee before they can reason responsibly. We are limited creatures with limited time, memory, evidence, and attention. We still learn by watching what happens next, comparing expectations with outcomes, and revising the tools that fail.',
+      'The central claim is that induction is sufficient for bounded inquiry. This does not mean that everything is induction, or that deduction, mathematics, perception, testimony, Bayes, and abduction are unimportant. It means those tools earn world-facing trust through performance-sensitive use: they help us predict, correct, compare, and revise.',
+    ],
+    siteConnection: [
+      'This book sits behind the site’s methodological layer. It explains why Credencing can be Bayesian in spirit without pretending Bayes is an oracle, why scientific method deserves high confidence without becoming dogma, and why practical ontology should remain revisable even when a pattern has become extremely reliable.',
+      'It also ties together several existing paper pages. “The Asymptote of the Natural” treats methodological naturalism as historically earned confidence. “The Threshold of the Real,” “The Ontic Snap,” and “Mereological Indigestion” treat objects and categories as stable but revisable commitments. “The Suspended Web of Induction” supplies the larger account: contact, compression, correction, and commitment form a maintained web rather than a certainty tower.',
+    ],
+    readerUse: [
+      'Read this after the introductory Credencing papers if you want the deeper philosophical basis. The easiest entry point is the book’s four-part cycle: contact with evidence, compression into models or categories, correction by prediction and criticism, and commitment calibrated to the surviving record.',
+      'The practical lesson is plain: do not demand certainty before inquiry can begin, but also do not let successful habits harden into untouchable foundations. Good inquiry preserves routes for future correction.',
+    ],
+    keyTakeaways: [
+      'Induction is defended as bounded sufficiency, not absolute certainty.',
+      'Bayesian analysis is explicit bookkeeping for credence, not a source of automatic inputs.',
+      'Deduction, abduction, perception, testimony, institutions, and mathematics retain distinct roles.',
+      'Ontology should be treated as stable commitment that remains open to revision.',
+      'The book becomes the bridge between Credencing, methodological naturalism, and revisable ontology.',
+    ],
+    related: [
+      pagePath('/core-ideas', 'Bayesian Updating'),
+      pagePath('/bayes-theorem', 'Scientific Walkthrough'),
+      pagePath('/applications', 'Science'),
+      pagePath('/about', 'Methodological Commitments'),
+      pagePath('/library', 'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism'),
+      pagePath('/library', 'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic'),
+    ],
+  }),
+  bookIntroPage({
+    title: 'The Ontic Snap',
+    summary: 'A book-length treatment of how stable “things” emerge for human minds from noisy, continuous experience.',
+    plainAbstract: [
+      'This book asks why the world appears to us as a field of stable objects instead of an undivided stream of sensation. The answer is not that the mind simply invents things from nothing, nor that objects arrive already packaged in human categories. The mind learns where stability, prediction, and useful compression repeatedly succeed.',
+      'The “ontic snap” names the shift from pattern to object: a cluster of experience becomes treated as a thing when it becomes reliable enough, useful enough, and costly enough to ignore.',
+    ],
+    siteConnection: [
+      'Credencing depends on calibrated confidence not only in claims but also in categories. This book supports the site’s caution about premature reification: treating a useful category as if it were a final feature of reality.',
+      'It connects closely to the pages on evidence, calibration, warranted uncertainty, and methodological commitments. It also gives deeper support to the paper “The Ontic Snap as a Cognitive Phase Transition.”',
+    ],
+    readerUse: [
+      'Read this when you want the ontological side of Credencing: how we come to say that something is real, stable, countable, or category-worthy. The guiding question is simple: when does a pattern earn enough inductive support to become a practical object for us?',
+    ],
+    keyTakeaways: [
+      'Objecthood is treated as an earned, revisable commitment.',
+      'A category can be useful without being final.',
+      'The mind compresses experience into objects when prediction and action improve.',
+      'Premature object-making can distort inquiry.',
+    ],
+    related: [
+      pagePath('/library', 'The "Ontic Snap" as a Cognitive Phase Transition'),
+      pagePath('/library', 'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic'),
+      pagePath('/library', 'Mereological Indigestion: Why We Cannot Divvy Up the Blob'),
+      pagePath('/core-ideas', 'Evidence'),
+    ],
+  }),
+  bookIntroPage({
+    title: 'The Primacy of Induction',
+    summary: 'A broad defense of induction as the practical center of inquiry for finite agents.',
+    plainAbstract: [
+      'This book argues that induction is not a weak substitute for real knowledge. For finite minds, induction is the main way inquiry makes contact with the world: we notice patterns, test expectations, track failures, and preserve methods that continue to work.',
+      'Deduction, formal modeling, explanation, and Bayesian reasoning remain important, but they do not float above experience. Their world-facing credibility depends on how well they survive contact with repeated evidence.',
+    ],
+    siteConnection: [
+      'This is one of the deepest foundations for the Credencing project. The site asks readers to scale confidence to evidence, revise with new evidence, and avoid treating certainty as the default goal. The Primacy of Induction explains why that posture is not a compromise but a mature picture of inquiry.',
+      'It pairs naturally with “The Suspended Web of Induction.” The Primacy of Induction states the central priority; The Suspended Web explains how induction coordinates with Bayes, deduction, abduction, scientific practice, and revisable ontology.',
+    ],
+    readerUse: [
+      'Read this before the more technical induction papers if you want the philosophical heartbeat first. Keep one question in view: which methods keep earning confidence by making better contact with reality over time?',
+    ],
+    keyTakeaways: [
+      'Induction is the practical center of finite inquiry.',
+      'Methods earn trust by predictive and corrective performance.',
+      'Deduction and Bayes matter, but their inputs and applications remain accountable to experience.',
+      'Credencing is an inductive practice of calibrated revision.',
+    ],
+    related: [
+      pagePath('/library', 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology'),
+      pagePath('/library', 'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism'),
+      pagePath('/core-ideas', 'Bayesian Updating'),
+      pagePath('/applications', 'Science'),
+    ],
+  }),
+];
+
 const paperIntroPages: ContentPage[] = [
   paperIntroPage({
     title: 'Core Rationality',
@@ -3961,37 +4079,6 @@ const paperIntroPages: ContentPage[] = [
       pagePath('/core-ideas', 'Warranted Uncertainty'),
       pagePath('/skills', 'How to Express Uncertainty Honestly'),
       pagePath('/bayes-theorem', 'Common Mistakes'),
-    ],
-  }),
-  paperIntroPage({
-    title: 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
-    summary: 'A keystone paper placing induction, Bayes, deduction, abduction, science, and ontology inside one bounded account of human inquiry.',
-    plainAbstract: [
-      'This paper argues that finite knowers do not need an unreachable guarantee before they can reason responsibly. We are limited creatures with limited time, memory, evidence, and attention. We still learn by watching what happens next, comparing expectations with outcomes, and revising the tools that fail.',
-      'The central claim is that induction is sufficient for bounded inquiry. This does not mean that everything is induction, or that deduction, mathematics, perception, testimony, Bayes, and abduction are unimportant. It means those tools earn world-facing trust through performance-sensitive use: they help us predict, correct, compare, and revise.',
-    ],
-    siteConnection: [
-      'This paper sits behind the site’s methodological layer. It explains why Credencing can be Bayesian in spirit without pretending Bayes is an oracle, why scientific method deserves high confidence without becoming dogma, and why practical ontology should remain revisable even when a pattern has become extremely reliable.',
-      'It also ties together several existing paper pages. “The Asymptote of the Natural” treats methodological naturalism as historically earned confidence. “The Threshold of the Real,” “The Ontic Snap,” and “Mereological Indigestion” treat objects and categories as stable but revisable commitments. “The Suspended Web of Induction” supplies the larger account: contact, compression, correction, and commitment form a maintained web rather than a certainty tower.',
-    ],
-    readerUse: [
-      'Read this after the introductory Credencing papers if you want the deeper philosophical basis. The easiest entry point is the paper’s four-part cycle: contact with evidence, compression into models or categories, correction by prediction and criticism, and commitment calibrated to the surviving record.',
-      'The practical lesson is plain: do not demand certainty before inquiry can begin, but also do not let successful habits harden into untouchable foundations. Good inquiry preserves routes for future correction.',
-    ],
-    keyTakeaways: [
-      'Induction is defended as bounded sufficiency, not absolute certainty.',
-      'Bayesian analysis is explicit bookkeeping for credence, not a source of automatic inputs.',
-      'Deduction, abduction, perception, testimony, institutions, and mathematics retain distinct roles.',
-      'Ontology should be treated as stable commitment that remains open to revision.',
-      'The paper becomes the bridge between Credencing, methodological naturalism, and revisable ontology.',
-    ],
-    related: [
-      pagePath('/core-ideas', 'Bayesian Updating'),
-      pagePath('/bayes-theorem', 'Scientific Walkthrough'),
-      pagePath('/applications', 'Science'),
-      pagePath('/about', 'Methodological Commitments'),
-      pagePath('/library', 'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism'),
-      pagePath('/library', 'The Threshold of the Real: Inductive Density and the Emergence of the Human Ontic'),
     ],
   }),
   paperIntroPage({
@@ -4428,6 +4515,46 @@ const paperIntroPages: ContentPage[] = [
 
 export const libraryPages: ContentPage[] = [
   libraryPage(
+    'Books',
+    'Books gathers the long-form works that carry the deepest foundations of the Credencing project.',
+    [
+      {
+        heading: 'Purpose',
+        body: [
+          'The Books shelf is for works broad enough to set the background philosophy for the whole site. These are not merely isolated papers. They develop the deeper account of induction, objecthood, predictive power, Bayesian bookkeeping, and revisable ontology that makes Credencing more than a diagnostic diagram.',
+          'The public pages remain the easiest way into the project. The books are for readers who want to see the larger architecture: why confidence should be graded, why induction is central for finite knowers, and why our categories should be stable enough to use while still open to correction.',
+        ],
+      },
+      {
+        heading: 'Current Book Shelf',
+        body: [
+          '“The Primacy of Induction” gives the broadest philosophical heartbeat: finite agents learn by tracking patterns, testing expectations, and preserving methods that keep earning confidence.',
+          '“The Suspended Web of Induction” then shows how induction coordinates Bayes, deduction, abduction, scientific practice, and revisable ontology without pretending to supply certainty.',
+          '“The Ontic Snap” develops the objecthood side of the project: how stable “things” emerge for human minds when patterns become reliable enough for prediction, action, and communication.',
+        ],
+      },
+      {
+        heading: 'How to Read',
+        body: [
+          'A good reading order is: “The Primacy of Induction,” “The Suspended Web of Induction,” and then “The Ontic Snap.” That path moves from the general defense of induction, to the full bounded epistemology, to the ontology of stable objects and categories.',
+          'After that, return to the Papers shelf for shorter treatments of the same architecture: the formal Credencing model, warranted uncertainty, the two-gap theory of irrationality, methodological naturalism, and the ontic-snap paper.',
+        ],
+      },
+    ],
+    [
+      'Books hold the long-form foundations of the project.',
+      'The current shelf centers induction, predictive power, and revisable ontology.',
+      'The Papers shelf remains the place for shorter formal and semi-formal extensions.',
+    ],
+    [
+      pagePath('/library', 'The Primacy of Induction'),
+      pagePath('/library', 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology'),
+      pagePath('/library', 'The Ontic Snap'),
+      pagePath('/library', 'Papers'),
+    ],
+  ),
+  ...bookIntroPages,
+  libraryPage(
     'Papers',
     'The Papers page gathers formal and semi-formal work behind the Credencing framework.',
     [
@@ -4442,8 +4569,14 @@ export const libraryPages: ContentPage[] = [
         heading: 'Current Paper Spine',
         body: [
           'The central paper is “A Formal Framework for Core and Deep Rationality.” It supplies the basic architecture: objective evidence (E0), perceived evidence (EP), assigned credence (CA), deep rationality (SD), calculation error, core irrationality, and the archetypes generated by different gap patterns.',
-          'The new research spine develops that architecture in six directions. “The Two-Gap Theory of Irrationality” makes the diagnostic split explicit. “Warranted Uncertainty” protects the model from false precision. “The Suspended Web of Induction” supplies the broader epistemological basis: finite agents can reason responsibly through prediction, correction, Bayesian bookkeeping, and revisable commitments without pretending to possess certainty. “Intelligence as Rationalization Engine” explains the biased expert. “Institutional Credencing” scales the model to organizations. “AI as Deep Rationality Prosthetic” applies the same distinction to AI-mediated inquiry.',
+          'The new research spine develops that architecture in five directions. “The Two-Gap Theory of Irrationality” makes the diagnostic split explicit. “Warranted Uncertainty” protects the model from false precision. “Intelligence as Rationalization Engine” explains the biased expert. “Institutional Credencing” scales the model to organizations. “AI as Deep Rationality Prosthetic” applies the same distinction to AI-mediated inquiry.',
           'The older supporting cluster remains narrower than before: credence-first epistemology, scalar language, Bayesian audit methods, explanatory hunger, operator learning, methodological naturalism, ontological commitment, and calibrated attribution. Together, these papers treat Credencing as a program for replacing all-or-nothing belief language with calibrated, updateable confidence.',
+        ],
+      },
+      {
+        heading: 'Relation to the Books Shelf',
+        body: [
+          'The Books shelf now carries the larger foundations: induction as the center of bounded inquiry, Bayesian bookkeeping as disciplined credence tracking, and ontology as stable but revisable commitment. The Papers shelf should be read as the shorter formal and applied cluster around that larger background.',
         ],
       },
       {
@@ -4466,7 +4599,7 @@ export const libraryPages: ContentPage[] = [
         heading: 'How to Read',
         body: [
           'Read the public Start Here and Core Ideas sections first. Then use the papers to inspect the formal structure, not as a replacement for the interactive model but as its theoretical support.',
-          'A good reading order is: “Core Rationality,” the formal framework, the two-gap paper, “Warranted Uncertainty,” “The Suspended Web of Induction,” “Intelligence as Rationalization Engine,” “Institutional Credencing,” and “AI as Deep Rationality Prosthetic.” After that, move outward to the credence-first, binary-language, Bayesian audit, methodological naturalism, operator-learning, and affective-veto papers.',
+          'A good reading order is: “Core Rationality,” the formal framework, the two-gap paper, “Warranted Uncertainty,” “Intelligence as Rationalization Engine,” “Institutional Credencing,” and “AI as Deep Rationality Prosthetic.” After that, move outward to the credence-first, binary-language, Bayesian audit, methodological naturalism, operator-learning, and affective-veto papers. For the deeper background, move sideways to the Books shelf.',
         ],
       },
     ],
@@ -4531,7 +4664,7 @@ export const libraryPages: ContentPage[] = [
       {
         heading: 'Already Absorbed by the Current Spine',
         body: [
-          'Several earlier future-paper ideas have now become part of the published or drafted spine. The two-gap paper absorbs the general E0-EP and EP-CA distinction. Warranted Uncertainty absorbs the discipline of not knowing and the first treatment of diagnostic slack. The Suspended Web of Induction absorbs the broad methodological argument for predictive power, Bayesian bookkeeping, and revisable ontology. The rationalization-engine paper absorbs the biased-expert case. Institutional Credencing absorbs the first organizational extension. The AI prosthetic paper absorbs the first AI-mediated inquiry treatment.',
+          'Several earlier future-paper ideas have now become part of the published or drafted spine. The two-gap paper absorbs the general E0-EP and EP-CA distinction. Warranted Uncertainty absorbs the discipline of not knowing and the first treatment of diagnostic slack. The long-form Books shelf now absorbs the broad methodological argument for predictive power, Bayesian bookkeeping, induction, and revisable ontology. The rationalization-engine paper absorbs the biased-expert case. Institutional Credencing absorbs the first organizational extension. The AI prosthetic paper absorbs the first AI-mediated inquiry treatment.',
           'Future work should therefore avoid restating those claims at the same level of generality. A new paper should either formalize a narrower mechanism, apply the model to a new domain, build a usable practice, or test a hard objection that the current papers leave unresolved.',
         ],
         bullets: [

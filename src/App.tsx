@@ -26,7 +26,7 @@ import {
 import { EpistemicData } from './types';
 import EpistemicChart from './components/EpistemicChart';
 import Dashboard from './components/Dashboard';
-import { contentPages, featuredPaperTitles, featuredPaths, pageGroups, pagePath, PageGroup, ContentPage } from './siteContent';
+import { contentPages, featuredBookTitles, featuredPaperTitles, featuredPaths, pageGroups, pagePath, PageGroup, ContentPage } from './siteContent';
 
 type Tab = 'intro' | 'model' | 'explanation' | 'formalization';
 
@@ -217,7 +217,7 @@ const tagCatalog = [
   { id: 'institutions', label: 'Institutions', description: 'Organizations, public reasoning, journalism, law, policy, governance, and accountability.', aliases: ['institution', 'institutional', 'organization', 'journalism', 'law', 'policy', 'public debate', 'governance', 'accountability'] },
   { id: 'science-medicine', label: 'Science and Medicine', description: 'Scientific reasoning, medical testing, replication, measurement, and expert judgment.', aliases: ['science', 'medicine', 'medical', 'testing', 'replication', 'measurement', 'expert', 'methodological naturalism', 'inductive density'] },
   { id: 'ai', label: 'AI Alignment', description: 'AI confidence, human overtrust, deployment thresholds, and collective reasoning with models.', aliases: ['ai', 'artificial intelligence', 'alignment', 'model confidence', 'overtrust', 'deployment', 'digital intermediaries', 'epistemic prosthetics'] },
-  { id: 'library', label: 'Library', description: 'Papers, essays, references, glossary, FAQ, project notes, and visual archive.', aliases: ['paper', 'papers', 'essay', 'essays', 'glossary', 'faq', 'reference', 'visual archive', 'project notes'] },
+  { id: 'library', label: 'Library', description: 'Books, papers, essays, references, glossary, FAQ, project notes, and visual archive.', aliases: ['book', 'books', 'paper', 'papers', 'essay', 'essays', 'glossary', 'faq', 'reference', 'visual archive', 'project notes'] },
   { id: 'author-project', label: 'Author and Project', description: 'Author profile, project overview, methodology, contact, and future directions.', aliases: ['author', 'phil stilwell', 'project', 'methodology', 'contact', 'future directions', 'about'] },
 ];
 
@@ -242,13 +242,6 @@ const researchPapers = [
     url: 'https://www.academia.edu/168309143/Warranted_Uncertainty_The_Discipline_of_Not_Knowing_in_a_Credence_First_Epistemology',
     role: 'Confidence discipline',
     relevance: 'Defends confidence bands, warranted slack, and honest uncertainty so credencing does not collapse into false precision.',
-  },
-  {
-    title: 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
-    path: pagePath('/library', 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology'),
-    url: './downloads/the-suspended-web-of-induction.pdf',
-    role: 'Bounded epistemology',
-    relevance: 'Positions induction as the performance-sensitive governance layer that coordinates Bayes, deduction, abduction, science, and revisable ontology without pretending to deliver certainty.',
   },
   {
     title: 'Intelligence as Rationalization Engine: Deep Rationality, Core Rationality, and the Biased Expert',
@@ -378,10 +371,37 @@ const researchPapers = [
   },
 ];
 
+const researchBooks = [
+  {
+    title: 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
+    path: pagePath('/library', 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology'),
+    url: './downloads/the-suspended-web-of-induction.pdf',
+    role: 'Bounded epistemology',
+    relevance: 'A long-form foundation showing how induction coordinates Bayes, deduction, abduction, science, predictive power, and revisable ontology.',
+  },
+  {
+    title: 'The Ontic Snap',
+    path: pagePath('/library', 'The Ontic Snap'),
+    url: 'https://www.academia.edu/145842180/_The_Ontic_Snap',
+    role: 'Revisable ontology',
+    relevance: 'Develops the objecthood side of the project: how patterns become stable “things” for finite minds without becoming unrevisable metaphysical givens.',
+  },
+  {
+    title: 'The Primacy of Induction',
+    path: pagePath('/library', 'The Primacy of Induction'),
+    url: 'https://www.academia.edu/145815798/_The_Primacy_of_Induction',
+    role: 'Inductive foundation',
+    relevance: 'Places induction at the center of finite inquiry, grounding credence revision in predictive and corrective contact with experience.',
+  },
+];
+
+const sourceWorks = [...researchPapers, ...researchBooks];
+
 const basePath = import.meta.env.BASE_URL;
 
 const nestedPageTitles: Record<string, Record<string, string[]>> = {
   '/library': {
+    Books: featuredBookTitles,
     Papers: featuredPaperTitles,
     Essays: [
       'Evidence Mapping Is a Practice, Not a Slogan',
@@ -632,6 +652,13 @@ const sectionCollections: Record<string, PageCollection[]> = {
     },
   ],
   '/library': [
+    {
+      label: 'Books',
+      description: 'Long-form works that carry the deeper foundation for induction, objecthood, and bounded inquiry.',
+      pages: [
+        'Books',
+      ],
+    },
     {
       label: 'Research Spine',
       description: 'Formal papers, the future research roadmap, and the main paper archive.',
@@ -1522,8 +1549,9 @@ function ContentArticle({ page, onNavigate }: { page: ContentPage; onNavigate: (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-8 space-y-6">
           <AuthorFeature page={page} />
+          <ResearchBooksPanel page={page} onNavigate={onNavigate} />
           <ResearchPapersPanel page={page} onNavigate={onNavigate} />
-          <PaperSourcePanel page={page} />
+          <SourceWorkPanel page={page} />
           <BayesTheoremPanel page={page} />
           {page.sections.map((section) => (
             <section key={section.heading} className="glass-panel p-6 md:p-8 bg-white/[0.015] border-white/5 space-y-4">
@@ -1700,6 +1728,39 @@ function AuthorFeature({ page }: { page: ContentPage }) {
   );
 }
 
+function ResearchBooksPanel({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
+  const showPanel = [
+    pagePath('/library', 'Books'),
+  ].includes(page.path);
+
+  if (!showPanel) return null;
+
+  return (
+    <section className="glass-panel p-6 md:p-8 bg-white/[0.02] border-amber-500/20 space-y-5">
+      <div className="space-y-2">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Books</p>
+        <h3 className="text-2xl md:text-3xl font-light text-white">The long-form foundation</h3>
+        <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+          These book-length works carry the deeper philosophical background for Credencing: induction, predictive power, Bayesian bookkeeping, objecthood, and revisable ontology.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {researchBooks.map((book) => (
+          <button
+            key={book.title}
+            onClick={() => onNavigate(book.path)}
+            className="rounded-xl border border-white/5 bg-black/10 p-4 hover:border-amber-500/40 transition-colors text-left"
+          >
+            <span className="block text-[9px] uppercase tracking-widest text-stone-500 mb-2">{book.role}</span>
+            <span className="block text-white text-sm font-medium leading-snug mb-2">{book.title}</span>
+            <span className="block text-stone-400 text-xs leading-relaxed">{book.relevance}</span>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ResearchPapersPanel({ page, onNavigate }: { page: ContentPage; onNavigate: (path: string) => void }) {
   const showPanel = [
     pagePath('/about', 'Author'),
@@ -1738,20 +1799,21 @@ function ResearchPapersPanel({ page, onNavigate }: { page: ContentPage; onNaviga
   );
 }
 
-function PaperSourcePanel({ page }: { page: ContentPage }) {
-  const paper = researchPapers.find((item) => item.path === page.path);
+function SourceWorkPanel({ page }: { page: ContentPage }) {
+  const work = sourceWorks.find((item) => item.path === page.path);
 
-  if (!paper) return null;
+  if (!work) return null;
 
-  const isAcademiaLink = paper.url.includes('academia.edu');
+  const isAcademiaLink = work.url.includes('academia.edu');
+  const isBook = researchBooks.some((item) => item.path === page.path);
 
   return (
     <section className="glass-panel p-5 md:p-6 bg-amber-500/[0.035] border-amber-500/20 space-y-3">
-      <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Source Paper</p>
+      <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Source {isBook ? 'Book' : 'Paper'}</p>
       <p className="text-stone-300 text-sm leading-relaxed">
-        This page is a simplified guide to the paper. The source document is linked below; the guide here keeps the main idea accessible and tied back to the site’s model.
+        This page is a simplified guide to the {isBook ? 'book' : 'paper'}. The source document is linked below; the guide here keeps the main idea accessible and tied back to the site’s model.
       </p>
-      <a href={paper.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[10px] text-amber-300 font-bold uppercase tracking-[0.2em]">
+      <a href={work.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[10px] text-amber-300 font-bold uppercase tracking-[0.2em]">
         {isAcademiaLink ? 'Open on Academia.edu' : 'Open PDF'} <ArrowRight size={12} />
       </a>
     </section>
