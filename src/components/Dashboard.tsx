@@ -5,7 +5,12 @@
 
 import { ReactNode, memo, useCallback, useMemo } from 'react';
 import { EpistemicData, EpistemicArchetype } from '../types';
-import { Target, Eye, User, Brain, AlertTriangle, Activity } from 'lucide-react';
+import Activity from 'lucide-react/dist/esm/icons/activity.js';
+import AlertTriangle from 'lucide-react/dist/esm/icons/alert-triangle.js';
+import Brain from 'lucide-react/dist/esm/icons/brain.js';
+import Eye from 'lucide-react/dist/esm/icons/eye.js';
+import Target from 'lucide-react/dist/esm/icons/target.js';
+import User from 'lucide-react/dist/esm/icons/user.js';
 
 interface DashboardProps {
   data: EpistemicData;

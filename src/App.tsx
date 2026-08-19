@@ -5,24 +5,22 @@
 
 import { useCallback, useEffect, useMemo, useState, ReactNode, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import {
-  Activity,
-  ArrowRight,
-  BookOpen,
-  Brain,
-  Compass,
-  Home,
-  Info,
-  Library,
-  Map as MapIcon,
-  Network,
-  Search,
-  ShieldAlert,
-  Terminal,
-  Users,
-  UserCheck,
-  UserMinus,
-} from 'lucide-react';
+import Activity from 'lucide-react/dist/esm/icons/activity.js';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right.js';
+import BookOpen from 'lucide-react/dist/esm/icons/book-open.js';
+import Brain from 'lucide-react/dist/esm/icons/brain.js';
+import Compass from 'lucide-react/dist/esm/icons/compass.js';
+import Home from 'lucide-react/dist/esm/icons/home.js';
+import Info from 'lucide-react/dist/esm/icons/info.js';
+import Library from 'lucide-react/dist/esm/icons/library.js';
+import MapIcon from 'lucide-react/dist/esm/icons/map.js';
+import Network from 'lucide-react/dist/esm/icons/network.js';
+import Search from 'lucide-react/dist/esm/icons/search.js';
+import ShieldAlert from 'lucide-react/dist/esm/icons/shield-alert.js';
+import Terminal from 'lucide-react/dist/esm/icons/terminal.js';
+import Users from 'lucide-react/dist/esm/icons/users.js';
+import UserCheck from 'lucide-react/dist/esm/icons/user-check.js';
+import UserMinus from 'lucide-react/dist/esm/icons/user-minus.js';
 import { EpistemicData } from './types';
 import EpistemicChart from './components/EpistemicChart';
 import Dashboard from './components/Dashboard';
