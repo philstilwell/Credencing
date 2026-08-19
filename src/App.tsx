@@ -201,7 +201,7 @@ const glossaryTerms = [
 const tagCatalog = [
   { id: 'evidence', label: 'Evidence', description: 'Evidence quality, access, objective evidence, perceived evidence, and evidential support.', aliases: ['evidence', 'evidential', 'objective evidence', 'perceived evidence', 'e0', 'ep'] },
   { id: 'credence', label: 'Credence', description: 'Degrees of belief, assigned credence, confidence levels, and belief strength.', aliases: ['credence', 'credences', 'belief', 'belief strength', 'assigned credence', 'confidence', 'confidence levels', 'graded confidence', 'scalar confidence', 'ca'] },
-  { id: 'bayesian', label: 'Bayesian Updating', description: 'Priors, likelihoods, posteriors, Bayes factors, base rates, and probabilistic revision.', aliases: ['bayesian', 'prior', 'priors', 'likelihood', 'likelihoods', 'posterior', 'posteriors', 'bayes', 'base-rate', 'base rate', 'bayesian audit', 'miracle audit'] },
+  { id: 'bayesian', label: 'Bayesian Updating', description: 'Priors, likelihoods, posteriors, Bayes factors, base rates, induction, and probabilistic revision.', aliases: ['bayesian', 'prior', 'priors', 'likelihood', 'likelihoods', 'posterior', 'posteriors', 'bayes', 'base-rate', 'base rate', 'bayesian audit', 'miracle audit', 'induction', 'predictive power', 'deduction', 'abduction', 'bayesian bookkeeping', 'revisable ontology'] },
   { id: 'bayes-theorem', label: 'Bayes Theorem', description: 'The formula, prior, likelihood, evidence term, posterior, and scientific use of Bayesian reasoning.', aliases: ['bayes theorem', 'bayes formula', 'p(h|e)', 'p(e|h)', 'denominator', 'theorem', 'posterior confidence'] },
   { id: 'calibration', label: 'Calibration', description: 'The fit between confidence and actual reliability, including overconfidence and forecasting.', aliases: ['calibration', 'calibrated', 'overconfidence', 'forecast', 'prediction record', 'reliability'] },
   { id: 'uncertainty', label: 'Uncertainty', description: 'Warranted uncertainty, warranted slack, excess IC, action thresholds, and humility.', aliases: ['uncertainty', 'warranted uncertainty', 'warranted slack', 'excess ic', 'excess core irrationality', 'omega', 'threshold'] },
@@ -242,6 +242,13 @@ const researchPapers = [
     url: 'https://www.academia.edu/168309143/Warranted_Uncertainty_The_Discipline_of_Not_Knowing_in_a_Credence_First_Epistemology',
     role: 'Confidence discipline',
     relevance: 'Defends confidence bands, warranted slack, and honest uncertainty so credencing does not collapse into false precision.',
+  },
+  {
+    title: 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
+    path: pagePath('/library', 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology'),
+    url: './downloads/the-suspended-web-of-induction.pdf',
+    role: 'Bounded epistemology',
+    relevance: 'Positions induction as the performance-sensitive governance layer that coordinates Bayes, deduction, abduction, science, and revisable ontology without pretending to deliver certainty.',
   },
   {
     title: 'Intelligence as Rationalization Engine: Deep Rationality, Core Rationality, and the Biased Expert',
@@ -1736,14 +1743,16 @@ function PaperSourcePanel({ page }: { page: ContentPage }) {
 
   if (!paper) return null;
 
+  const isAcademiaLink = paper.url.includes('academia.edu');
+
   return (
     <section className="glass-panel p-5 md:p-6 bg-amber-500/[0.035] border-amber-500/20 space-y-3">
       <p className="text-[10px] uppercase tracking-[0.3em] text-amber-400 font-bold">Source Paper</p>
       <p className="text-stone-300 text-sm leading-relaxed">
-        This page is a simplified guide to the paper. The full text is hosted on Academia.edu when available; the guide here keeps the main idea accessible and tied back to the site’s model.
+        This page is a simplified guide to the paper. The source document is linked below; the guide here keeps the main idea accessible and tied back to the site’s model.
       </p>
       <a href={paper.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[10px] text-amber-300 font-bold uppercase tracking-[0.2em]">
-        Open on Academia.edu <ArrowRight size={12} />
+        {isAcademiaLink ? 'Open on Academia.edu' : 'Open PDF'} <ArrowRight size={12} />
       </a>
     </section>
   );
