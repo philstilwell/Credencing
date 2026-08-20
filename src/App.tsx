@@ -1429,6 +1429,11 @@ function SectionHero({ group, kicker, onNavigate }: { group: PageGroup; kicker?:
 function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (path: string) => void }) {
   const nestedChildren = getNestedChildren(group.path);
   const collections = getSectionCollections(group);
+  const nestedLabel = (page: string) => {
+    if (page === 'Books') return 'Book';
+    if (page === 'Papers') return 'Paper';
+    return 'Essay';
+  };
 
   return (
     <section className="space-y-6">
@@ -1452,7 +1457,7 @@ function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (pat
                   <PageTeaser group={group} page={page} index={group.pages.indexOf(page)} onNavigate={onNavigate} />
                   {nestedChildren[page] && (
                     <div className="ml-4 border-l border-amber-500/20 pl-4 space-y-2">
-                      <p className="text-[9px] uppercase tracking-[0.22em] text-stone-500 font-bold">{page === 'Papers' ? 'Papers in this cluster' : 'Essays in this cluster'}</p>
+                      <p className="text-[9px] uppercase tracking-[0.22em] text-stone-500 font-bold">{nestedLabel(page)}s in this cluster</p>
                       {nestedChildren[page].map((childPage) => (
                         <button
                           key={childPage}
@@ -1460,7 +1465,7 @@ function PageCluster({ group, onNavigate }: { group: PageGroup; onNavigate: (pat
                           className="w-full text-left p-3 rounded-lg border border-white/5 bg-black/10 hover:border-amber-500/30 transition-colors"
                         >
                           <span className="block text-xs text-amber-100">{childPage}</span>
-                          <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">{page === 'Papers' ? 'Paper' : 'Essay'}</span>
+                          <span className="block text-[9px] uppercase tracking-widest text-stone-600 mt-1">{nestedLabel(page)}</span>
                         </button>
                       ))}
                     </div>
