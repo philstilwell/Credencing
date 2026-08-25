@@ -371,8 +371,8 @@ const researchPapers = [
 
 const researchBooks = [
   {
-    title: 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
-    path: pagePath('/library', 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology'),
+    title: "The Suspended Web of Induction: How the Brain's Attention to Regularities Matures into Reliable Knowledge",
+    path: pagePath('/library', "The Suspended Web of Induction: How the Brain's Attention to Regularities Matures into Reliable Knowledge"),
     url: './downloads/the-suspended-web-of-induction.pdf',
     role: 'Bounded epistemology',
     relevance: 'A long-form foundation showing how induction coordinates Bayes, deduction, abduction, science, predictive power, and revisable ontology.',

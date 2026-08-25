@@ -59,7 +59,7 @@ export const featuredPaperTitles = [
 ];
 
 export const featuredBookTitles = [
-  'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
+  "The Suspended Web of Induction: How the Brain's Attention to Regularities Matures into Reliable Knowledge",
   'The Ontic Snap',
   'The Primacy of Induction',
 ];
@@ -3919,8 +3919,8 @@ function bookIntroPage(book: PaperIntro): ContentPage {
 
 const bookIntroPages: ContentPage[] = [
   bookIntroPage({
-    title: 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology',
-    summary: 'A book-length treatment placing induction, Bayes, deduction, abduction, science, and ontology inside one bounded account of human inquiry.',
+    title: "The Suspended Web of Induction: How the Brain's Attention to Regularities Matures into Reliable Knowledge",
+    summary: 'A book-length treatment of how attention to regularities matures into reliable knowledge through induction, Bayes, prediction, and revision.',
     plainAbstract: [
       'This book argues that finite knowers do not need an unreachable guarantee before they can reason responsibly. We are limited creatures with limited time, memory, evidence, and attention. We still learn by watching what happens next, comparing expectations with outcomes, and revising the tools that fail.',
       'The central claim is that induction is sufficient for bounded inquiry. This does not mean that everything is induction, or that deduction, mathematics, perception, testimony, Bayes, and abduction are unimportant. It means those tools earn world-facing trust through performance-sensitive use: they help us predict, correct, compare, and revise.',
@@ -3997,7 +3997,7 @@ const bookIntroPages: ContentPage[] = [
       'Credencing is an inductive practice of calibrated revision.',
     ],
     related: [
-      pagePath('/library', 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology'),
+      pagePath('/library', "The Suspended Web of Induction: How the Brain's Attention to Regularities Matures into Reliable Knowledge"),
       pagePath('/library', 'The Asymptote of the Natural: Inductive Density and the A Posteriori Justification of Methodological Naturalism'),
       pagePath('/core-ideas', 'Bayesian Updating'),
       pagePath('/applications', 'Science'),
@@ -4548,7 +4548,7 @@ export const libraryPages: ContentPage[] = [
     ],
     [
       pagePath('/library', 'The Primacy of Induction'),
-      pagePath('/library', 'The Suspended Web of Induction: A Bounded Epistemology of Predictive Power, Bayesian Bookkeeping, and Revisable Ontology'),
+      pagePath('/library', "The Suspended Web of Induction: How the Brain's Attention to Regularities Matures into Reliable Knowledge"),
       pagePath('/library', 'The Ontic Snap'),
       pagePath('/library', 'Papers'),
     ],
